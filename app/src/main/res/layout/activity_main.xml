@@ -18,95 +18,12 @@
         android:textStyle="bold" />
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="25dp"
-        android:background="login_linear_bg"
-        android:padding="10dp"
-        android:orientation="vertical"
-        android:elevation="10dp">
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="username"
-            android:textColorHint="#191816"
-            app:boxCornerRadiusBottomEnd="10dp"
-            app:boxCornerRadiusBottomStart="10dp"
-            app:boxCornerRadiusTopEnd="10dp"
-            app:boxCornerRadiusTopStart="10dp"
-            app:endIconMode="clear_text"
-            app:boxStrokeColor="#B8953A"
-            android:layout_marginTop="15dp"
-            app:boxStrokeWidth="3dp"
-
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="password"
-            android:textColorHint="#191816"
-            app:boxCornerRadiusBottomEnd="10dp"
-            app:boxCornerRadiusBottomStart="10dp"
-            app:boxCornerRadiusTopEnd="10dp"
-            app:boxCornerRadiusTopStart="10dp"
-            app:endIconMode="password_toggle"
-            app:boxStrokeColor="#B8953A"
-            android:layout_marginTop="15dp"
-            app:boxStrokeWidth="3dp"
-
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="forget"
-            android:layout_gravity="end"
-            android:textSize="23sp"
-            android:layout_marginTop="10dp"
-            android:textStyle="bold" />
-
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="#B8953A"
-            android:textColor="@color/black"
-            android:text="login"
-            android:textSize="25sp"
-            app:cornerRadius="10dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="create_account"
-            android:layout_gravity="center"
-            android:textSize="20sp"
-            android:layout_marginTop="10dp"
-            android:textStyle="bold"/>
-
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="@android:color/transparent"
-            android:textColor="@color/black"
-            android:text="register"
-            android:textSize="25sp"
-            app:cornerRadius="10dp" />
+  <com.google.android.material.button.MaterialButton
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="adamweb"
+      app:cornerRadius="15dp"/>
 
 
-    </LinearLayout>
 
 </LinearLayout>
