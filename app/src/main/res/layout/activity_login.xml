@@ -129,6 +129,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:layout_width="match_parent"
+                android:id="@+id/registerBtn"
                 android:layout_height="60dp"
                 android:layout_marginTop="12dp"
                 android:backgroundTint="@android:color/transparent"
