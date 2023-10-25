@@ -5,5 +5,9 @@
     <string name="forgot">Forgot Password?</string>
     <string name="login">LogIn</string>
     <string name="register">Register</string>
+    <string name="sarcoPixel">Sarco Pixel</string>
+    <string name="getStarted">Get Started</string>
+    <string name="welcome_note">your photo Album is your school memory, the easiest way to get connected with your school mates. yeh!! We Solved it!, you can access it everywhere.</string>
+    <string name="memories">Memories, Chat With Friends.</string>
     <string name="noAccount">Don\'t Have an Account?</string>
 </resources>
