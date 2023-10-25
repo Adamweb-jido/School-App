@@ -85,7 +85,8 @@
                     android:backgroundTint="#FF5722"
                     android:text="@string/getStarted"
                     android:fontFamily="@font/suez_one"
-                    android:textColor="@color/white"
+                    android:textAllCaps="false"
+                    android:textColor="#000204"
                     android:textSize="25sp"
                     android:textStyle="bold"
                     app:cornerRadius="10dp" />
