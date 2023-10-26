@@ -8,18 +8,21 @@ import android.view.View;
 
 import com.google.android.material.button.MaterialButton;
 
+
 public class LoginActivity extends AppCompatActivity {
 
-    MaterialButton register = findViewById(R.id.registerBtn);
+    MaterialButton btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        register.setOnClickListener(new View.OnClickListener() {
+        btn = findViewById(R.id.myRegBtn);
+        btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
+                Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
                 startActivity(intent);
+
             }
         });
     }
