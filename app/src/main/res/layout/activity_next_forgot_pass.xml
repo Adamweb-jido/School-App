@@ -111,7 +111,7 @@
                 android:layout_marginBottom="5dp"
                 android:backgroundTint="#0D1F82"
                 android:fontFamily="@font/suez_one"
-                android:text="@string/next"
+                android:text="@string/verify"
                 android:textSize="20sp"
                 app:cornerRadius="10dp" />
         </LinearLayout>

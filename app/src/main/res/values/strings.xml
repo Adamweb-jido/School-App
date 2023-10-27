@@ -23,6 +23,7 @@
     <string name="submit">Submit</string>
     <string name="code">Enter the Code</string>
     <string name="finish">Finish</string>
+    <string name="verify">Verify</string>
     <string name="newPassword">New Password</string>
     <string name="codeSent">We have sent a verification code to your email Address, copy the code and paste it here.</string>
     <string name="forgotPage">Password Recovery</string>
