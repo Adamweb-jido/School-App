@@ -6,4 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".forgotPassActivity">
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@drawable/forgot_bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="@string/forgotPage"
+            android:textSize="40sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:fontFamily="@font/suez_one"
+            android:alpha="0.9"
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
