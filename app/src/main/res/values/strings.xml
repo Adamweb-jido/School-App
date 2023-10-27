@@ -11,6 +11,7 @@
     <string name="lName">Last Name</string>
     <string name="email">Email Address</string>
     <string name="next">Continue</string>
+    <string name="remember">Remember Your Password?</string>
     <string name="haveAccount">Already Have An Account?</string>
     <string name="CreatePass">Create Password</string>
     <string name="confirmPass">Confirm Password</string>
