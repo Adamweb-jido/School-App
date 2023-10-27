@@ -14,8 +14,13 @@
         android:layout_height="220dp"
         android:alpha="0.8"
         android:background="@drawable/camera"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:orientation="horizontal">
+        app:layout_constraintVertical_bias="0.0">
 
     </LinearLayout>
 
@@ -25,7 +30,7 @@
         android:orientation="vertical"
         android:padding="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/circleImageView">
 
@@ -39,42 +44,43 @@
             tools:ignore="UselessParent">
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:hint="@string/username"
+                android:textColorHint="#0D1F82"
                 app:boxCornerRadiusBottomEnd="10dp"
                 app:boxCornerRadiusBottomStart="10dp"
                 app:boxCornerRadiusTopEnd="10dp"
                 app:boxCornerRadiusTopStart="10dp"
-                app:endIconMode="clear_text"
                 app:boxStrokeColor="#0D1F82"
-                android:hint="@string/username"
-                app:hintTextColor="#0D1F82"
-                android:textColorHint="#0D1F82"
-                android:layout_marginTop="5dp"
-                app:boxStrokeWidthFocused="3dp"
                 app:boxStrokeWidth="3dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                app:boxStrokeWidthFocused="3dp"
+                app:endIconMode="clear_text"
+                app:hintTextColor="#0D1F82">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
+
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="29dp"
+                android:hint="@string/password"
+                android:textColorHint="#0D1F82"
                 app:boxCornerRadiusBottomEnd="10dp"
                 app:boxCornerRadiusBottomStart="10dp"
                 app:boxCornerRadiusTopEnd="10dp"
                 app:boxCornerRadiusTopStart="10dp"
-                app:endIconMode="password_toggle"
                 app:boxStrokeColor="#0D1F82"
-                android:hint="@string/password"
-                app:hintTextColor="#0D1F82"
-                android:textColorHint="#0D1F82"
-                android:layout_marginTop="29dp"
                 app:boxStrokeWidth="3dp"
                 app:boxStrokeWidthFocused="3dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                app:endIconMode="password_toggle"
+                app:hintTextColor="#0D1F82">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -86,21 +92,21 @@
                 android:id="@+id/forgetPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="5dp"
                 android:text="@string/forgot"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginTop="5dp"
-                android:layout_gravity="end"/>
+                android:textStyle="bold" />
 
             <com.google.android.material.button.MaterialButton
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                app:cornerRadius="10dp"
-                android:backgroundTint="#0D1F82"
                 android:layout_marginTop="12dp"
+                android:backgroundTint="#0D1F82"
+                android:fontFamily="@font/suez_one"
                 android:text="@string/login"
                 android:textSize="20sp"
-                android:fontFamily="@font/suez_one"/>
+                app:cornerRadius="10dp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -118,10 +124,10 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="12dp"
                 android:backgroundTint="@android:color/transparent"
+                android:fontFamily="@font/suez_one"
                 android:text="@string/register"
                 android:textColor="#444040"
                 android:textSize="20sp"
-                android:fontFamily="@font/suez_one"
                 app:cornerRadius="10dp" />
         </LinearLayout>
     </LinearLayout>
@@ -130,13 +136,14 @@
         android:id="@+id/circleImageView"
         android:layout_width="160dp"
         android:layout_height="160dp"
-        android:layout_marginBottom="416dp"
         android:src="@drawable/circle_logo"
         app:civ_border_color="#0D1F82"
         app:civ_border_width="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout" />
+        app:layout_constraintStart_toStartOf="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.276" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
