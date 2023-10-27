@@ -11,6 +11,7 @@
     <string name="lName">Last Name</string>
     <string name="email">Email Address</string>
     <string name="next">Continue</string>
+    <string name="forgetPassNote">Forgot Your Password? No worry, be calm we will help you to recover your Account.</string>
     <string name="remember">Remember Your Password?</string>
     <string name="haveAccount">Already Have An Account?</string>
     <string name="CreatePass">Create Password</string>
@@ -19,7 +20,12 @@
     <string name="SerialNo">Serial No:</string>
     <string name="comment">Comment</string>
     <string name="signup">Sign Up</string>
-    <string name="forgotPage">Forget Password</string>
+    <string name="submit">Submit</string>
+    <string name="code">Enter the Code</string>
+    <string name="finish">Finish</string>
+    <string name="newPassword">New Password</string>
+    <string name="codeSent">We have sent a verification code to your email Address, copy the code and paste it here.</string>
+    <string name="forgotPage">Password Recovery</string>
     <string name="welcome_note">your photo Album is your school memory, the easiest way to get connected with your school mates. yeh!! We Solved it!, you can access it everywhere.</string>
     <string name="memories">Memories, Chat With Friends.</string>
     <string name="noAccount">Don\'t Have an Account?</string>

@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#EBE4D0"
-    tools:context=".ForgotPassActivity">
-
+    tools:context=".CreatePassActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -44,22 +43,6 @@
         app:srcCompat="@drawable/forgot_pass_bg"
         android:contentDescription="@string/forgot"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="207dp"
-        android:fontFamily="@font/suez_one"
-        android:text="@string/forgetPassNote"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:textAlignment="center"
-        android:textColor="#0D1F82"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
-
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
@@ -71,11 +54,11 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/login_background"
             android:elevation="10dp"
             android:orientation="vertical"
@@ -86,7 +69,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:hint="@string/email"
+                android:hint="@string/newPassword"
                 android:textColorHint="#0D1F82"
                 app:boxCornerRadiusBottomEnd="10dp"
                 app:boxCornerRadiusBottomStart="10dp"
@@ -95,13 +78,36 @@
                 app:boxStrokeWidth="3dp"
                 app:boxStrokeColor="#0D1F82"
                 app:boxStrokeWidthFocused="3dp"
-                app:endIconMode="clear_text"
+                app:endIconMode="password_toggle"
                 app:hintTextColor="#0D1F82">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress" />
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:hint="@string/confirmPass"
+                android:textColorHint="#0D1F82"
+                app:boxStrokeColor="#0D1F82"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
+                app:boxStrokeWidth="3dp"
+                app:boxStrokeWidthFocused="3dp"
+                app:endIconMode="password_toggle"
+                app:hintTextColor="#0D1F82">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
@@ -112,7 +118,7 @@
                 android:layout_marginBottom="5dp"
                 android:backgroundTint="#0D1F82"
                 android:fontFamily="@font/suez_one"
-                android:text="@string/submit"
+                android:text="@string/finish"
                 android:textSize="20sp"
                 app:cornerRadius="10dp" />
         </LinearLayout>
@@ -151,6 +157,5 @@
 
         </LinearLayout>
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

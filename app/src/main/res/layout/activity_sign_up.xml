@@ -6,25 +6,34 @@
     android:layout_height="match_parent"
     android:background="#EBE4D0"
     android:orientation="vertical"
-    android:padding="15dp"
     tools:context=".SignUpActivity">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="@string/register"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        android:textSize="50sp"
-        android:textAllCaps="true"
-        android:fontFamily="@font/suez_one"/>
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="150dp"
+       android:orientation="vertical"
+       android:background="@drawable/forgot_bg">
+
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="50dp"
+           android:text="@string/register"
+           android:textColor="@color/white"
+           android:alpha="0.9"
+           android:textAlignment="center"
+           android:textStyle="bold"
+           android:textSize="45sp"
+           android:textAllCaps="true"
+           android:fontFamily="@font/suez_one"/>
+   </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@drawable/login_background"
         android:orientation="vertical"
+        android:elevation="10dp"
         android:padding="10dp">
 
         <com.google.android.material.textfield.TextInputLayout
@@ -35,6 +44,7 @@
             app:boxStrokeWidthFocused="3dp"
             app:endIconMode="clear_text"
             android:hint="@string/fName"
+            app:boxStrokeColor="#0D1F82"
             app:hintTextColor="#0D1F82"
             android:textColorHint="#0D1F82"
             app:boxCornerRadiusBottomEnd="10dp"
@@ -57,6 +67,7 @@
             app:boxStrokeWidthFocused="3dp"
             app:endIconMode="clear_text"
             android:hint="@string/lName"
+            app:boxStrokeColor="#0D1F82"
             app:hintTextColor="#0D1F82"
             android:textColorHint="#0D1F82"
             app:boxCornerRadiusBottomEnd="10dp"
@@ -79,6 +90,7 @@
             app:boxStrokeWidthFocused="3dp"
             app:endIconMode="clear_text"
             android:hint="@string/email"
+            app:boxStrokeColor="#0D1F82"
             app:hintTextColor="#0D1F82"
             android:textColorHint="#0D1F82"
             app:boxCornerRadiusBottomEnd="10dp"
@@ -101,6 +113,7 @@
             app:boxStrokeWidthFocused="3dp"
             app:endIconMode="password_toggle"
             android:hint="@string/CreatePass"
+            app:boxStrokeColor="#0D1F82"
             app:hintTextColor="#0D1F82"
             android:textColorHint="#0D1F82"
             app:boxCornerRadiusBottomEnd="10dp"
@@ -123,6 +136,7 @@
             app:boxStrokeWidthFocused="3dp"
             app:endIconMode="password_toggle"
             android:hint="@string/confirmPass"
+            app:boxStrokeColor="#0D1F82"
             app:hintTextColor="#0D1F82"
             android:textColorHint="#0D1F82"
             app:boxCornerRadiusBottomEnd="10dp"

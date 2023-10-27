@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#EBE4D0"
-    tools:context=".ForgotPassActivity">
-
+    tools:context=".NextForgotPassActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -49,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="207dp"
         android:fontFamily="@font/suez_one"
-        android:text="@string/forgetPassNote"
+        android:text="@string/codeSent"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:textAlignment="center"
@@ -86,14 +85,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:hint="@string/email"
+                android:hint="@string/code"
                 android:textColorHint="#0D1F82"
+                app:boxStrokeColor="#0D1F82"
                 app:boxCornerRadiusBottomEnd="10dp"
                 app:boxCornerRadiusBottomStart="10dp"
                 app:boxCornerRadiusTopEnd="10dp"
                 app:boxCornerRadiusTopStart="10dp"
                 app:boxStrokeWidth="3dp"
-                app:boxStrokeColor="#0D1F82"
                 app:boxStrokeWidthFocused="3dp"
                 app:endIconMode="clear_text"
                 app:hintTextColor="#0D1F82">
@@ -101,7 +100,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress" />
+                    android:inputType="phone" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
@@ -112,7 +111,7 @@
                 android:layout_marginBottom="5dp"
                 android:backgroundTint="#0D1F82"
                 android:fontFamily="@font/suez_one"
-                android:text="@string/submit"
+                android:text="@string/next"
                 android:textSize="20sp"
                 app:cornerRadius="10dp" />
         </LinearLayout>
@@ -151,6 +150,5 @@
 
         </LinearLayout>
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
