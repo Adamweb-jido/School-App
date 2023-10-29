@@ -130,7 +130,44 @@
               </LinearLayout>
             </HorizontalScrollView>
 
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="10dp">
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="10dp">
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="10dp">
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="10dp">
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="10dp">
+
+            </androidx.cardview.widget.CardView>
+
         </LinearLayout>
+
     </androidx.core.widget.NestedScrollView>
 
 

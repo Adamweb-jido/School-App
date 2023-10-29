@@ -12,7 +12,7 @@ import com.google.android.material.button.MaterialButton;
 
 public class LoginActivity extends AppCompatActivity {
 
-    MaterialButton btn;
+    MaterialButton btn, loginBtn;
     TextView forgetPass;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +33,15 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), ForgotPassActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        loginBtn = findViewById(R.id.myLoginBtn);
+        loginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(intent);
             }
         });
