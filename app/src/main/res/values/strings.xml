@@ -11,6 +11,7 @@
     <string name="lName">Last Name</string>
     <string name="email">Email Address</string>
     <string name="next">Continue</string>
+    <string name="changePassNote">You Can Now Change your Password, we recommend to use a strong password.</string>
     <string name="forgetPassNote">Forgot Your Password? No worry, be calm we will help you to recover your Account.</string>
     <string name="remember">Remember Your Password?</string>
     <string name="haveAccount">Already Have An Account?</string>
