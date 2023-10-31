@@ -12,8 +12,38 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal"
+        android:padding="5dp"
         android:background="#0D1F82">
 
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="43dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_baseline_home_24"/>
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="43dp"
+            android:layout_gravity="center"
+            android:src="@drawable/album_icon"/>
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="43dp"
+            android:layout_gravity="center"
+            android:src="@drawable/message_icon"/>
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="43dp"
+            android:layout_gravity="center"
+            android:src="@drawable/profile_icon"/>
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="43dp"
+            android:layout_gravity="center"
+            android:src="@drawable/menu_icon"/>
 
 
     </LinearLayout>
@@ -246,7 +276,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/header_bg"
-                android:padding="10dp"
+                android:padding="15dp"
                 android:orientation="vertical">
 
                 <androidx.cardview.widget.CardView
