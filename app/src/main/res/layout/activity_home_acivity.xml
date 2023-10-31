@@ -72,7 +72,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Welcome Adam"
+            android:text="@string/welcome"
             android:textSize="28sp"
             android:textStyle="bold"
             android:fontFamily="@font/suez_one"
