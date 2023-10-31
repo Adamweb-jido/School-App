@@ -16,32 +16,37 @@
         android:background="#0D1F82">
 
         <ImageView
-            android:layout_width="70dp"
-            android:layout_height="43dp"
+            android:layout_width="40dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
             android:layout_gravity="center"
-            android:src="@drawable/ic_baseline_home_24"/>
+            android:src="@drawable/home_icon"/>
 
         <ImageView
-            android:layout_width="70dp"
-            android:layout_height="43dp"
+            android:layout_width="25dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="50dp"
             android:layout_gravity="center"
             android:src="@drawable/album_icon"/>
 
         <ImageView
-            android:layout_width="70dp"
-            android:layout_height="43dp"
+            android:layout_width="25dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="50dp"
             android:layout_gravity="center"
             android:src="@drawable/message_icon"/>
 
         <ImageView
-            android:layout_width="70dp"
-            android:layout_height="43dp"
+            android:layout_width="50dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="50dp"
             android:layout_gravity="center"
-            android:src="@drawable/profile_icon"/>
+            android:src="@drawable/user_profile_icon"/>
 
         <ImageView
-            android:layout_width="70dp"
+            android:layout_width="50dp"
             android:layout_height="43dp"
+            android:layout_marginStart="50dp"
             android:layout_gravity="center"
             android:src="@drawable/menu_icon"/>
 
