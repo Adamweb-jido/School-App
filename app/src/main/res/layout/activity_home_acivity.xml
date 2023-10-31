@@ -393,7 +393,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:background="#03216E"
-                                android:text="Level CO."
+                                android:text="Level CO.;;"
                                 android:textAllCaps="true"
                                 android:textAlignment="center"
                                 android:textColor="@color/white"
