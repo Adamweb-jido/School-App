@@ -80,7 +80,7 @@
               android:layout_marginTop="10dp"
               android:text="@string/name"
               android:textAllCaps="true"
-              android:textColor="#020562"
+              android:textColor="@color/black"
               android:textSize="20sp"
               android:textStyle="bold"
               android:fontFamily="@font/suez_one"/>
@@ -134,7 +134,7 @@
                      android:fontFamily="@font/amaranth_bold"
                      android:text="@string/welcome"
                      android:textSize="22sp"
-                     android:textColor="#041768"
+                     android:textColor="@color/black"
                      android:textAlignment="center"
                      tools:ignore="InOrMmUsage" />
 
@@ -239,7 +239,7 @@
                 android:textStyle="bold"
                 android:fontFamily="@font/suez_one"
                 android:textSize="20sp"
-                android:textColor="#0D1F82"
+                android:textColor="@color/black"
                 android:textAlignment="center"/>
 
             <LinearLayout
@@ -418,7 +418,7 @@
                 android:textStyle="bold"
                 android:fontFamily="@font/suez_one"
                 android:textSize="20sp"
-                android:textColor="#0D1F82"
+                android:textColor="@color/black"
                 android:textAlignment="center"/>
 
             <LinearLayout
