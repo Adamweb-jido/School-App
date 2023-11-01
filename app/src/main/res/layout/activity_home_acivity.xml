@@ -64,7 +64,7 @@
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="117dp"
             android:layout_height="80dp"
-            android:src="@drawable/login_logo"
+            android:src="@drawable/user_dp"
             app:civ_border_color="#0D1F82"
             app:civ_border_overlay="true"
             app:civ_border_width="5dp"/>
@@ -275,7 +275,7 @@
                                android:layout_width="match_parent"
                                android:layout_height="120dp"
                                android:scaleType="fitXY"
-                               android:src="@drawable/circle_logo"/>
+                               android:src="@drawable/user_profile_dp"/>
 
                            <TextView
                                android:layout_width="match_parent"
@@ -312,7 +312,7 @@
                                android:layout_width="match_parent"
                                android:layout_height="120dp"
                                android:scaleType="fitXY"
-                               android:src="@drawable/circle_logo"/>
+                               android:src="@drawable/user_profile_dp"/>
 
                            <TextView
                                android:layout_width="match_parent"
@@ -353,7 +353,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="120dp"
                                 android:scaleType="fitXY"
-                                android:src="@drawable/circle_logo"/>
+                                android:src="@drawable/user_profile_dp"/>
 
                             <TextView
                                 android:layout_width="match_parent"
@@ -388,7 +388,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="120dp"
                                 android:scaleType="fitXY"
-                                android:src="@drawable/circle_logo"/>
+                                android:src="@drawable/user_profile_dp"/>
 
                             <TextView
                                 android:layout_width="match_parent"
