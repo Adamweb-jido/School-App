@@ -12,43 +12,47 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal"
-        android:padding="5dp"
+        android:padding="15dp"
         android:background="#0D1F82">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
         <ImageView
             android:layout_width="40dp"
             android:layout_height="50dp"
-            android:layout_marginStart="10dp"
             android:layout_gravity="center"
             android:src="@drawable/home_icon"/>
 
         <ImageView
             android:layout_width="25dp"
             android:layout_height="30dp"
-            android:layout_marginStart="50dp"
+            android:layout_marginHorizontal="35dp"
             android:layout_gravity="center"
             android:src="@drawable/album_icon"/>
 
         <ImageView
             android:layout_width="25dp"
             android:layout_height="60dp"
-            android:layout_marginStart="50dp"
             android:layout_gravity="center"
+            android:layout_marginHorizontal="25dp"
             android:src="@drawable/message_icon"/>
 
         <ImageView
             android:layout_width="50dp"
             android:layout_height="35dp"
-            android:layout_marginStart="50dp"
             android:layout_gravity="center"
+            android:layout_marginHorizontal="25dp"
             android:src="@drawable/user_profile_icon"/>
 
         <ImageView
             android:layout_width="50dp"
             android:layout_height="43dp"
-            android:layout_marginStart="50dp"
             android:layout_gravity="center"
             android:src="@drawable/menu_icon"/>
+    </LinearLayout>
+
 
 
     </LinearLayout>
@@ -263,7 +267,7 @@
                        android:layout_marginStart="20dp"
                        app:cardBackgroundColor="@color/black"
                        app:cardCornerRadius="10dp"
-                       app:cardElevation="10dp"
+                       app:cardElevation="20dp"
                        app:cardPreventCornerOverlap="true">
 
                        <LinearLayout
@@ -299,7 +303,7 @@
                        android:layout_marginStart="20dp"
                        app:cardBackgroundColor="@color/black"
                        app:cardCornerRadius="10dp"
-                       app:cardElevation="10dp"
+                       app:cardElevation="20dp"
                        app:cardPreventCornerOverlap="true">
 
 
@@ -340,7 +344,7 @@
                         android:layout_marginStart="20dp"
                         app:cardBackgroundColor="@color/black"
                         app:cardCornerRadius="10dp"
-                        app:cardElevation="10dp"
+                        app:cardElevation="20dp"
                         app:cardPreventCornerOverlap="true">
 
 
@@ -375,7 +379,7 @@
                         android:layout_marginStart="20dp"
                         app:cardBackgroundColor="@color/black"
                         app:cardCornerRadius="10dp"
-                        app:cardElevation="10dp"
+                        app:cardElevation="20dp"
                         app:cardPreventCornerOverlap="true">
 
 
