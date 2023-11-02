@@ -1,48 +1,5 @@
-<vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="46dp"
-    android:height="46dp"
-    android:viewportWidth="46"
-    android:viewportHeight="46">
-  <path
-      android:pathData="M44,43c0,0.552 -0.448,1 -1,1H3c-0.552,0 -1,-0.448 -1,-1V3c0,-0.552 0.448,-1 1,-1h40c0.552,0 1,0.448 1,1V43z"
-      android:strokeLineJoin="round"
-      android:strokeWidth="8"
-      android:fillColor="#00000000"
-      android:strokeColor="#fff"
-      android:strokeLineCap="round"/>
-  <path
-      android:pathData="M3.909,43.5L15.193,24.409"
-      android:strokeLineJoin="round"
-      android:strokeWidth="8"
-      android:fillColor="#00000000"
-      android:strokeColor="#fff"
-      android:strokeLineCap="round"/>
-  <path
-      android:pathData="M26.818,43.5L15.534,24.409"
-      android:strokeLineJoin="round"
-      android:strokeWidth="8"
-      android:fillColor="#00000000"
-      android:strokeColor="#fff"
-      android:strokeLineCap="round"/>
-  <path
-      android:pathData="M28.727,42.545L35.31,33"
-      android:strokeLineJoin="round"
-      android:strokeWidth="8"
-      android:fillColor="#00000000"
-      android:strokeColor="#fff"
-      android:strokeLineCap="round"/>
-  <path
-      android:pathData="M42.091,42.545L35.509,33"
-      android:strokeLineJoin="round"
-      android:strokeWidth="8"
-      android:fillColor="#00000000"
-      android:strokeColor="#fff"
-      android:strokeLineCap="round"/>
-  <path
-      android:pathData="M30.636,16.773m-5.727,0a5.727,5.727 0,1 1,11.454 0a5.727,5.727 0,1 1,-11.454 0"
-      android:strokeLineJoin="round"
-      android:strokeWidth="5"
-      android:fillColor="#00000000"
-      android:strokeColor="#fff"
-      android:strokeLineCap="round"/>
+<vector android:height="24dp" android:tint="#FFFFFF"
+    android:viewportHeight="24" android:viewportWidth="24"
+    android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillColor="@android:color/white" android:pathData="M2,6L0,6v5h0.01L0,20c0,1.1 0.9,2 2,2h18v-2L2,20L2,6zM22,4h-8l-2,-2L6,2c-1.1,0 -1.99,0.9 -1.99,2L4,16c0,1.1 0.9,2 2,2h16c1.1,0 2,-0.9 2,-2L24,6c0,-1.1 -0.9,-2 -2,-2zM7,15l4.5,-6 3.5,4.51 2.5,-3.01L21,15L7,15z"/>
 </vector>

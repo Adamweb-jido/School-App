@@ -11,23 +11,73 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:background="#0D1F82"
         android:orientation="horizontal"
-        android:padding="10dp"
-        android:background="#0D1F82">
-   <androidx.constraintlayout.widget.ConstraintLayout
-       android:layout_width="match_parent"
-       android:layout_height="match_parent">
+        android:padding="10dp">
 
-       <ImageView
-           android:layout_width="40dp"
-           android:layout_height="50dp"
-           android:layout_gravity="center"
-           android:src="@drawable/home_icon"
-           app:layout_constraintBottom_toBottomOf="parent"
-           app:layout_constraintStart_toStartOf="parent"
-           app:layout_constraintTop_toTopOf="parent" />
-   </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:src="@drawable/home_icon"
+                android:layout_marginStart="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="30dp"
+                android:src="@drawable/album_icon"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+                app:layout_constraintStart_toEndOf="@+id/imageView3"
+                app:layout_constraintTop_toTopOf="@+id/imageView3"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="36dp"
+                android:src="@drawable/message_icon"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+                app:layout_constraintStart_toEndOf="@+id/imageView4"
+                app:layout_constraintTop_toTopOf="@+id/imageView4"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="48dp"
+                android:src="@drawable/user_profile_icon"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+                app:layout_constraintStart_toEndOf="@+id/imageView6"
+                app:layout_constraintTop_toTopOf="@+id/imageView6"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/menu_icon"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView7"
+                app:layout_constraintTop_toTopOf="@+id/imageView7"
+                 />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </LinearLayout>
@@ -61,6 +111,7 @@
               android:textAllCaps="true"
               android:textColor="@color/black"
               android:textSize="20sp"
+              android:alpha="0.8"
               android:textStyle="bold"
               android:fontFamily="@font/suez_one"/>
 
@@ -81,6 +132,11 @@
 
 
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="#0D1F82"/>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -122,7 +178,6 @@
                            android:fontFamily="@font/amaranth_bold"
                            android:text="@string/welcome"
                            android:textSize="20sp"
-                           android:textAlignment="center"
                            android:textColor="@color/black" />
 
                        <TextView
@@ -231,6 +286,7 @@
                 android:textStyle="bold"
                 android:fontFamily="@font/suez_one"
                 android:textSize="20sp"
+                android:alpha="0.8"
                 android:textColor="@color/black"
                 android:textAlignment="center"/>
 
@@ -438,8 +494,27 @@
                     app:cardPreventCornerOverlap="true"
                     app:cardElevation="10dp"
                     app:cardCornerRadius="10dp"
-                    app:cardBackgroundColor="@color/black">
+                    app:cardBackgroundColor="#E5D0D0">
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/user_dp"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="@string/welcome_note"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/amaranth_bold"
+                            android:textAlignment="center"/>
+                    </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
