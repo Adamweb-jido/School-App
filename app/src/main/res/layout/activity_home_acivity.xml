@@ -45,7 +45,7 @@
             <ImageView
                 android:id="@+id/imageView6"
                 android:layout_width="30dp"
-                android:layout_height="50dp"
+                android:layout_height="55dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="52dp"
                 android:src="@drawable/message_icon"
@@ -503,14 +503,14 @@
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:layout_width="wrap_content"
+                            android:layout_width="140dp"
                             android:layout_height="match_parent"
-                            android:src="@drawable/user_dp"/>
+                            android:src="@drawable/computerlib"/>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="@string/welcome_note"
+                            android:text="@string/practice"
                             android:textSize="15sp"
                             android:textStyle="bold"
                             android:fontFamily="@font/amaranth_bold"
