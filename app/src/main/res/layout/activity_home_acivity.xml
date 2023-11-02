@@ -505,12 +505,12 @@
                         <ImageView
                             android:layout_width="140dp"
                             android:layout_height="match_parent"
-                            android:src="@drawable/computerlib"/>
+                            android:src="@drawable/library"/>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="@string/practice"
+                            android:text="@string/library"
                             android:layout_marginTop="12dp"
                             android:layout_marginEnd="5dp"
                             android:textColor="#03216E"
