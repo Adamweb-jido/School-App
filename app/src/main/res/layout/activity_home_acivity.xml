@@ -283,7 +283,7 @@
 
                            <TextView
                                android:layout_width="match_parent"
-                               android:layout_height="wrap_content"
+                               android:layout_height="match_parent"
                                android:background="#03216E"
                                android:text="Provost"
                                android:textAllCaps="true"
@@ -320,7 +320,7 @@
 
                            <TextView
                                android:layout_width="match_parent"
-                               android:layout_height="wrap_content"
+                               android:layout_height="match_parent"
                                android:background="#03216E"
                                android:text="Dean"
                                android:textAllCaps="true"
@@ -361,7 +361,7 @@
 
                             <TextView
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:background="#03216E"
                                 android:text="H. O. D"
                                 android:textAllCaps="true"
@@ -396,7 +396,7 @@
 
                             <TextView
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:background="#03216E"
                                 android:text="Level CO.;;"
                                 android:textAllCaps="true"
