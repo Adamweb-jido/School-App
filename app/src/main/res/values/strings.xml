@@ -8,6 +8,10 @@
     <string name="subWelcome">No.1 School Photo Album App.</string>
     <string name="explore">-[ Explore More.. ]-</string>
     <string name="leaders">-[ Our Leaders ]-</string>
+    <string name="provost">Provost</string>
+    <string name="Dean">Dean Sci.</string>
+    <string name="hod">H. O. D</string>
+    <string name="levelC">Level Co.</string>
     <string name="register">Register</string>
     <string name="name">Adamu Ibrahim Yau</string>
     <string name="totalVisits">Your Total Visits: 233X</string>
