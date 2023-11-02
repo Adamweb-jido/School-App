@@ -12,46 +12,21 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal"
-        android:padding="15dp"
+        android:padding="10dp"
         android:background="#0D1F82">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+   <androidx.constraintlayout.widget.ConstraintLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
 
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:src="@drawable/home_icon"/>
-
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="30dp"
-            android:layout_marginHorizontal="35dp"
-            android:layout_gravity="center"
-            android:src="@drawable/album_icon"/>
-
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center"
-            android:layout_marginHorizontal="25dp"
-            android:src="@drawable/message_icon"/>
-
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="35dp"
-            android:layout_gravity="center"
-            android:layout_marginHorizontal="25dp"
-            android:src="@drawable/user_profile_icon"/>
-
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="43dp"
-            android:layout_gravity="center"
-            android:src="@drawable/menu_icon"/>
-    </LinearLayout>
+       <ImageView
+           android:layout_width="40dp"
+           android:layout_height="50dp"
+           android:layout_gravity="center"
+           android:src="@drawable/home_icon"
+           app:layout_constraintBottom_toBottomOf="parent"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toTopOf="parent" />
+   </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
@@ -123,39 +98,45 @@
                  app:cardCornerRadius="10dp"
                  app:cardElevation="10dp">
 
-
-                 <ImageView
-                     android:layout_width="151dp"
-                     android:layout_height="95dp"
-                     android:layout_gravity="start"
-                     android:src="@drawable/welcome_img"/>
-
-                 <TextView
+                 <LinearLayout
                      android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:layout_marginTop="20dp"
-                     android:layout_marginStart="0.6in"
-                     android:textStyle="bold"
-                     android:fontFamily="@font/amaranth_bold"
-                     android:text="@string/welcome"
-                     android:textSize="22sp"
-                     android:textColor="@color/black"
-                     android:textAlignment="center"
-                     tools:ignore="InOrMmUsage" />
+                     android:layout_height="match_parent"
+                     android:orientation="horizontal">
 
-                 <TextView
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:layout_marginBottom="20dp"
-                     android:layout_marginStart="0.8in"
-                     android:textStyle="bold"
-                     android:fontFamily="@font/amaranth_bold"
-                     android:text="@string/subWelcome"
-                     android:textSize="16sp"
-                     android:textColor="#020B32"
-                     android:layout_gravity="bottom"
-                     tools:ignore="InOrMmUsage" />
+                     <ImageView
+                         android:layout_width="140dp"
+                         android:layout_height="match_parent"
+                         android:src="@drawable/welcome_img"/>
 
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent"
+                       android:orientation="vertical">
+
+                       <TextView
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_marginTop="20dp"
+                           android:textStyle="bold"
+                           android:alpha="0.8"
+                           android:fontFamily="@font/amaranth_bold"
+                           android:text="@string/welcome"
+                           android:textSize="20sp"
+                           android:textAlignment="center"
+                           android:textColor="@color/black" />
+
+                       <TextView
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_marginTop="5dp"
+                           android:textStyle="bold"
+                           android:fontFamily="@font/amaranth_bold"
+                           android:text="@string/subWelcome"
+                           android:textSize="16sp"
+                           android:textColor="#020B32" />
+                   </LinearLayout>
+
+                 </LinearLayout>
              </androidx.cardview.widget.CardView>
 
             <View
