@@ -25,6 +25,7 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:src="@drawable/home_icon"
+                android:contentDescription="@string/home"
                 android:layout_marginStart="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -35,6 +36,7 @@
                 android:layout_width="30dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
+                android:contentDescription="@string/album"
                 android:layout_marginStart="60dp"
                 android:src="@drawable/album_icon"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView3"
@@ -49,6 +51,7 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="52dp"
                 android:src="@drawable/message_icon"
+                android:contentDescription="@string/message"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView4"
                 app:layout_constraintStart_toEndOf="@+id/imageView4"
                 app:layout_constraintTop_toTopOf="@+id/imageView4"
@@ -61,6 +64,7 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="44dp"
                 android:src="@drawable/user_profile_icon"
+                android:contentDescription="@string/profile"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView6"
                 app:layout_constraintStart_toEndOf="@+id/imageView6"
                 app:layout_constraintTop_toTopOf="@+id/imageView6"
@@ -72,12 +76,11 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="10dp"
                 android:src="@drawable/menu_icon"
+                android:contentDescription="@string/menu"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView7"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.542"
                 app:layout_constraintStart_toEndOf="@+id/imageView7"
-                app:layout_constraintTop_toTopOf="@+id/imageView7"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toTopOf="@+id/imageView7" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -163,6 +166,7 @@
                      <ImageView
                          android:layout_width="140dp"
                          android:layout_height="match_parent"
+                         android:contentDescription="@string/welcome"
                          android:src="@drawable/welcome_img"/>
 
                    <LinearLayout
@@ -206,7 +210,7 @@
                 android:scrollbars="horizontal">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="250dp"
                     android:orientation="horizontal"
                     android:padding="10dp">
@@ -220,6 +224,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="fitXY"
+                            android:contentDescription="@string/todo"
                             android:src="@drawable/login_logo"/>
                     </androidx.cardview.widget.CardView>
                     <androidx.cardview.widget.CardView
@@ -232,6 +237,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="fitXY"
+                            android:contentDescription="@string/todo"
                             android:src="@drawable/login_logo"/>
                     </androidx.cardview.widget.CardView>
                     <androidx.cardview.widget.CardView
@@ -244,6 +250,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="fitXY"
+                            android:contentDescription="@string/todo"
                             android:src="@drawable/login_logo"/>
                     </androidx.cardview.widget.CardView>
                     <androidx.cardview.widget.CardView
@@ -256,6 +263,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="fitXY"
+                            android:contentDescription="@string/todo"
                             android:src="@drawable/login_logo"/>
                     </androidx.cardview.widget.CardView>
                     <androidx.cardview.widget.CardView
@@ -268,6 +276,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="fitXY"
+                            android:contentDescription="@string/todo"
                             android:src="@drawable/login_logo"/>
                     </androidx.cardview.widget.CardView>
 
@@ -326,6 +335,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="120dp"
                                 android:scaleType="fitXY"
+                                android:contentDescription="@string/todo"
                                 android:src="@drawable/user_profile_dp" />
 
                             <TextView
@@ -365,6 +375,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="120dp"
                                 android:scaleType="fitXY"
+                                android:contentDescription="@string/todo"
                                 android:src="@drawable/user_profile_dp" />
 
                             <TextView
@@ -409,6 +420,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="120dp"
                                 android:scaleType="fitXY"
+                                android:contentDescription="@string/todo"
                                 android:src="@drawable/user_profile_dp" />
 
                             <TextView
@@ -446,6 +458,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="120dp"
                                 android:scaleType="fitXY"
+                                android:contentDescription="@string/todo"
                                 android:src="@drawable/user_profile_dp" />
 
                             <TextView
@@ -500,10 +513,12 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        tools:ignore="UseCompoundDrawables">
 
                         <ImageView
                             android:layout_width="140dp"
+                            android:contentDescription="@string/todo"
                             android:layout_height="match_parent"
                             android:src="@drawable/library"/>
 
@@ -534,17 +549,19 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        tools:ignore="UseCompoundDrawables">
 
                         <ImageView
                             android:layout_width="140dp"
                             android:layout_height="match_parent"
-                            android:src="@drawable/computerlib"/>
+                            android:contentDescription="@string/todo"
+                            android:src="@drawable/story"/>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="@string/practice"
+                            android:text="@string/story"
                             android:layout_marginTop="12dp"
                             android:layout_marginEnd="5dp"
                             android:textColor="#03216E"
@@ -568,17 +585,19 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        tools:ignore="UseCompoundDrawables">
 
                         <ImageView
                             android:layout_width="140dp"
                             android:layout_height="match_parent"
-                            android:src="@drawable/computerlib"/>
+                            android:contentDescription="@string/todo"
+                            android:src="@drawable/community"/>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="@string/practice"
+                            android:text="@string/community"
                             android:layout_marginTop="12dp"
                             android:layout_marginEnd="5dp"
                             android:textColor="#03216E"
@@ -602,17 +621,19 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        tools:ignore="UseCompoundDrawables">
 
                         <ImageView
                             android:layout_width="140dp"
                             android:layout_height="match_parent"
-                            android:src="@drawable/computerlib"/>
+                            android:contentDescription="@string/todo"
+                            android:src="@drawable/official"/>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="@string/practice"
+                            android:text="@string/officials"
                             android:layout_marginTop="12dp"
                             android:layout_marginEnd="5dp"
                             android:textColor="#03216E"
@@ -636,11 +657,13 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        tools:ignore="UseCompoundDrawables">
 
                         <ImageView
                             android:layout_width="140dp"
                             android:layout_height="match_parent"
+                            android:contentDescription="@string/todo"
                             android:src="@drawable/computerlib"/>
 
                         <TextView

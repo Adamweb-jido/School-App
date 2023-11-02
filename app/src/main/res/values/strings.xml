@@ -3,7 +3,13 @@
     <string name="username">Admission Number</string>
     <string name="password">Password</string>
     <string name="forgot">Forgot Password?</string>
+    <string name="todo">TODO</string>
     <string name="login">LogIn</string>
+    <string name="home">Home</string>
+    <string name="album">Album</string>
+    <string name="message">Message</string>
+    <string name="profile">Profile</string>
+    <string name="menu">Menu</string>
     <string name="welcome">Welcome To Sarco Pixel</string>
     <string name="library">Develop your Knowledge with mobile library.</string>
     <string name="community">Join the Community to get help from classmates.</string>
