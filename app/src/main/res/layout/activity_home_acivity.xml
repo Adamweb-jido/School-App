@@ -8,12 +8,6 @@
     android:background="#EBE4D0"
     tools:context=".HomeActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="#0D1F82"
-        android:orientation="horizontal"
-        android:padding="10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
