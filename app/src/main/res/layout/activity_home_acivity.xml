@@ -32,7 +32,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/imageView4"
+                android:id="@+id/albumIcon"
                 android:layout_width="30dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
@@ -52,9 +52,9 @@
                 android:layout_marginStart="52dp"
                 android:src="@drawable/message_icon"
                 android:contentDescription="@string/message"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-                app:layout_constraintStart_toEndOf="@+id/imageView4"
-                app:layout_constraintTop_toTopOf="@+id/imageView4"
+                app:layout_constraintBottom_toBottomOf="@+id/albumIcon"
+                app:layout_constraintStart_toEndOf="@+id/albumIcon"
+                app:layout_constraintTop_toTopOf="@+id/albumIcon"
                 app:layout_constraintVertical_bias="0.0" />
 
             <ImageView

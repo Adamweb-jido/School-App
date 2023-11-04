@@ -9,6 +9,7 @@
     <string name="home">Home</string>
     <string name="photoAlbum">Photo Album</string>
     <style name="search">Search your friends here</style>
+    <style name="adam">Adam</style>
     <string name="album">Album</string>
     <string name="message">Message</string>
     <string name="profile">Profile</string>
