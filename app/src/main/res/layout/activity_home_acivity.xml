@@ -107,17 +107,7 @@
           android:layout_height="match_parent"
           android:orientation="vertical">
 
-          <TextView
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_marginTop="10dp"
-              android:text="@string/name"
-              android:textAllCaps="true"
-              android:textColor="@color/black"
-              android:textSize="20sp"
-              android:alpha="0.8"
-              android:textStyle="bold"
-              android:fontFamily="@font/suez_one"/>
+
 
           <TextView
               android:layout_width="match_parent"
