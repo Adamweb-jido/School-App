@@ -22,7 +22,7 @@ public class AlbumActivity extends AppCompatActivity {
 
         //Creating the List of the album items
 
-        List<AlbumList> albumLists = new ArrayList<>();
+        List<AlbumList> albumLists = new ArrayList<AlbumList>();
         albumLists.add(new AlbumList("Adamu Ibrahim Ya'u", "csc/che", "08160807055", R.drawable.user_profile_dp));
         albumLists.add(new AlbumList("Adamu Ibrahim Ya'u", "csc/che", "08160807055", R.drawable.user_profile_dp));
         albumLists.add(new AlbumList("Adamu Ibrahim Ya'u", "csc/che", "08160807055", R.drawable.user_profile_dp));
