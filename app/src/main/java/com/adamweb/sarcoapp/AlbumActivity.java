@@ -20,14 +20,5 @@ public class AlbumActivity extends AppCompatActivity {
 
         albumRecyclerView = findViewById(R.id.albumRecycler);
 
-        //Creating the List of the album items
-
-        List<AlbumList> albumLists = new ArrayList<AlbumList>();
-        albumLists.add(new AlbumList("Adamu Ibrahim Ya'u", "csc/che", "08160807055", R.drawable.user_profile_dp));
-        albumLists.add(new AlbumList("Adamu Ibrahim Ya'u", "csc/che", "08160807055", R.drawable.user_profile_dp));
-        albumLists.add(new AlbumList("Adamu Ibrahim Ya'u", "csc/che", "08160807055", R.drawable.user_profile_dp));
-
-        albumRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        albumRecyclerView.setAdapter(new AlbumAdapter(getApplicationContext(), albumLists));
     }
 }
