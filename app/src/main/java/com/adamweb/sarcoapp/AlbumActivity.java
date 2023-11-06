@@ -20,5 +20,14 @@ public class AlbumActivity extends AppCompatActivity {
 
         albumRecyclerView = findViewById(R.id.albumRecycler);
 
+        List<Item> items = new ArrayList<>();
+        items.add(new Item("Adamweb", R.drawable.camera));
+        items.add(new Item("Adamweb", R.drawable.camera));
+        items.add(new Item("Adamweb", R.drawable.camera));
+        items.add(new Item("Adamweb", R.drawable.camera));
+
+        albumRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        albumRecyclerView.setAdapter(new myAdapter(getApplicationContext(), items));
+
     }
 }
