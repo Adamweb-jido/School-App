@@ -45,7 +45,7 @@
     <LinearLayout
         android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="@color/white"
         android:padding="15dp">
@@ -73,6 +73,17 @@
                 android:fontFamily="@font/amaranth_bold"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/classOf2023"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:textAllCaps="true"
+            android:fontFamily="@font/suez_one"
+            android:textColor="#0D1F82"
+            android:textAlignment="center"/>
     </LinearLayout>
 
 
