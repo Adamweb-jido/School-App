@@ -1,6 +1,7 @@
 package com.adamweb.sarcoapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,7 +29,7 @@ public class AlbumActivity extends AppCompatActivity {
         items.add(new Item("Adamweb Jido", "realadamweb@gmail.com", R.drawable.official));
         items.add(new Item("Adamweb Jido", "realadamweb@gmail.com", R.drawable.official));
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerView.setAdapter(new MyAdapter(getApplicationContext(), items ));
     }
 }
