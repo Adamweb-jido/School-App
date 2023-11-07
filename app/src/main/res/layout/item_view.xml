@@ -25,6 +25,7 @@
              android:scaleType="center"
              app:riv_border_color="#0D1F82"
              app:riv_border_width="3dp"
+             app:riv_corner_radius="10dp"
              android:contentDescription="@string/todo"/>
 
          <TextView
