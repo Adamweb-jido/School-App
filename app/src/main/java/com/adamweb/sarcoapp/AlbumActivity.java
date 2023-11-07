@@ -21,44 +21,13 @@ public class AlbumActivity extends AppCompatActivity {
 
 
         RecyclerView recyclerView = findViewById(R.id.albumRecycler);
-        int numberOfColumns = 2;
 
         List<Item> items = new ArrayList<>();
 
-        items.add(new Item("Adamweb Jido", "realadamweb@gmail.com", R.drawable.official));
-        items.add(new Item("Adamweb Jido", "realadamweb@gmail.com", R.drawable.official));
-        items.add(new Item("Adamweb Jido", "realadamweb@gmail.com", R.drawable.official));
-        items.add(new Item("Adamweb Jido", "realadamweb@gmail.com", R.drawable.official));
-        items.add(new Item("Adamweb Jido", "realadamweb@gmail.com", R.drawable.official));
-        items.add(new Item("Adamweb Jido", "realadamweb@gmail.com", R.drawable.official));
-        items.add(new Item("Adamweb Jido", "realadamweb@gmail.com", R.drawable.official));
-        items.add(new Item("Adamweb Jido", "realadamweb@gmail.com", R.drawable.official));
-        items.add(new Item("Adamweb Jido", "realadamweb@gmail.com", R.drawable.official));
-        items.add(new Item("Adamweb Jido", "realadamweb@gmail.com", R.drawable.official));
-        items.add(new Item("Adamweb Jido", "realadamweb@gmail.com", R.drawable.official));
-        items.add(new Item("Adamweb Jido", "realadamweb@gmail.com", R.drawable.official));
-        items.add(new Item("Adamweb Jido", "realadamweb@gmail.com", R.drawable.official));
-        items.add(new Item("Adamweb Jido", "realadamweb@gmail.com", R.drawable.official));
-        items.add(new Item("Adamweb Jido", "realadamweb@gmail.com", R.drawable.official));
-        items.add(new Item("Adamweb Jido", "realadamweb@gmail.com", R.drawable.official));
-
-        GridLayoutManager layoutManager = new GridLayoutManager(this, numberOfColumns);
-
-        layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-            @Override
-            public int getSpanSize(int position) {
-                if (position % 2 == 0) {
-                    // Every item spans two columns
-                    return 2;
-                } else {
-                    // Other items span one column
-                    return 1;
-                }
-            }
-        });
+        items.add(new Item("Adamu ibrahim ya'u", "realadamweb@gmail.com","csc/che", "08160807055",  R.drawable.adam));
 
 
-        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerView.setAdapter(new MyAdapter(getApplicationContext(), items ));
     }
 }

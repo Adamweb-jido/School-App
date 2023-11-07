@@ -31,6 +31,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
         holder.textView.setText(items.get(position).getName());
         holder.imageView.setImageResource(items.get(position).getImage());
         holder.email.setText(items.get(position).getEmail());
+        holder.combination.setText(items.get(position).getCombination());
+        holder.phoneNumber.setText(items.get(position).getPhoneNumber());
     }
 
     @Override

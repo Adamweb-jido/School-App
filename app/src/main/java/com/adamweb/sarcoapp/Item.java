@@ -3,12 +3,16 @@ package com.adamweb.sarcoapp;
 public class Item {
     String name;
     String email;
+    String combination;
+    String phoneNumber;
     int image;
 
-    public Item(String name, String email, int image) {
+    public Item(String name, String email, String combination, String phoneNumber, int image) {
         this.name = name;
         this.image = image;
         this.email = email;
+        this.combination = combination;
+        this.phoneNumber = phoneNumber;
     }
 
 
@@ -34,5 +38,22 @@ public class Item {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+
+    public String getCombination() {
+        return combination;
+    }
+
+    public void setCombination(String combination) {
+        this.combination = combination;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }
