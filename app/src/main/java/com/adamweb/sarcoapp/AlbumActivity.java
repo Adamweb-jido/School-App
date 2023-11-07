@@ -29,7 +29,7 @@ public class AlbumActivity extends AppCompatActivity {
         items.add(new Item("Adamweb Jido", "realadamweb@gmail.com", R.drawable.official));
         items.add(new Item("Adamweb Jido", "realadamweb@gmail.com", R.drawable.official));
 
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 4));
         recyclerView.setAdapter(new MyAdapter(getApplicationContext(), items ));
     }
 }
