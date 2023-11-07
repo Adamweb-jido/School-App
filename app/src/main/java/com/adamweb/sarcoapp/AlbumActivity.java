@@ -23,10 +23,10 @@ public class AlbumActivity extends AppCompatActivity {
 
         List<Item> items = new ArrayList<>();
 
-        items.add(new Item("Adamweb Jido", R.drawable.official));
-        items.add(new Item("Adamweb Jido", R.drawable.official));
-        items.add(new Item("Adamweb Jido", R.drawable.official));
-        items.add(new Item("Adamweb Jido", R.drawable.official));
+        items.add(new Item("Adamweb Jido", "realadamweb@gmail.com", R.drawable.official));
+        items.add(new Item("Adamweb Jido", "realadamweb@gmail.com", R.drawable.official));
+        items.add(new Item("Adamweb Jido", "realadamweb@gmail.com", R.drawable.official));
+        items.add(new Item("Adamweb Jido", "realadamweb@gmail.com", R.drawable.official));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new MyAdapter(getApplicationContext(), items ));

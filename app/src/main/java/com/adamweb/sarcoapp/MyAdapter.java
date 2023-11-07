@@ -30,6 +30,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
         holder.textView.setText(items.get(position).getName());
         holder.imageView.setImageResource(items.get(position).getImage());
+        holder.email.setText(items.get(position).getEmail());
     }
 
     @Override
