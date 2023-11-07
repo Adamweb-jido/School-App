@@ -11,21 +11,24 @@ import java.util.List;
 
 public class AlbumActivity extends AppCompatActivity {
 
-    RecyclerView albumRecyclerView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_album);
 
-        albumRecyclerView = findViewById(R.id.albumRecycler);
 
-        List<Item> items = new ArrayList<Item>();
-        items.add(new Item("Adam", R.drawable.user_profile_dp));
-        items.add(new Item("Adam", R.drawable.user_profile_dp));
-        items.add(new Item("Adam", R.drawable.user_profile_dp));
-        albumRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        albumRecyclerView.setAdapter(new myAdapter(getApplicationContext(), items));
+        RecyclerView recyclerView = findViewById(R.id.albumRecycler);
 
+        List<Item> items = new ArrayList<>();
+
+        items.add(new Item("Adamweb Jido", R.drawable.official));
+        items.add(new Item("Adamweb Jido", R.drawable.official));
+        items.add(new Item("Adamweb Jido", R.drawable.official));
+        items.add(new Item("Adamweb Jido", R.drawable.official));
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(new MyAdapter(getApplicationContext(), items ));
     }
 }

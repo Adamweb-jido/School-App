@@ -1,0 +1,21 @@
+package com.adamweb.sarcoapp;
+
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+public class MyViewHolder extends RecyclerView.ViewHolder {
+
+    ImageView imageView;
+    TextView textView, email;
+    public MyViewHolder(@NonNull View itemView) {
+        super(itemView);
+
+        imageView = itemView.findViewById(R.id.myImage);
+        email = itemView.findViewById(R.id.email);
+        textView = itemView.findViewById(R.id.name);
+    }
+}
