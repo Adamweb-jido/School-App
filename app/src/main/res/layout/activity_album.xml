@@ -85,8 +85,13 @@
             android:fontFamily="@font/suez_one"
             android:textColor="#0D1F82"
             android:textAlignment="center"/>
-    </LinearLayout>
 
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="#0D1F82"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/albumRecycler"

@@ -19,68 +19,74 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/imageView3"
+
+            <ImageButton
+                android:id="@+id/homeIcon"
                 android:layout_width="40dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:src="@drawable/home_icon"
+                android:background="@android:color/transparent"
                 android:contentDescription="@string/home"
-                android:layout_marginStart="10dp"
+                android:src="@drawable/home_icon"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/albumIcon"
-                android:layout_width="30dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:contentDescription="@string/album"
-                android:layout_marginStart="60dp"
-                android:src="@drawable/album_icon"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-                app:layout_constraintStart_toEndOf="@+id/imageView3"
-                app:layout_constraintTop_toTopOf="@+id/imageView3"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <ImageView
-                android:id="@+id/imageView6"
-                android:layout_width="30dp"
-                android:layout_height="55dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="52dp"
-                android:src="@drawable/message_icon"
-                android:contentDescription="@string/message"
-                app:layout_constraintBottom_toBottomOf="@+id/albumIcon"
-                app:layout_constraintStart_toEndOf="@+id/albumIcon"
-                app:layout_constraintTop_toTopOf="@+id/albumIcon"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <ImageView
-                android:id="@+id/imageView7"
-                android:layout_width="40dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="44dp"
-                android:src="@drawable/user_profile_icon"
-                android:contentDescription="@string/profile"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView6"
-                app:layout_constraintStart_toEndOf="@+id/imageView6"
-                app:layout_constraintTop_toTopOf="@+id/imageView6"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="10dp"
-                android:src="@drawable/menu_icon"
-                android:contentDescription="@string/menu"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView7"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageView7"
-                app:layout_constraintTop_toTopOf="@+id/imageView7" />
+                app:layout_constraintHorizontal_bias="0.045"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.4" />
+
+            <androidx.constraintlayout.utils.widget.ImageFilterButton
+
+                android:id="@+id/albumIcon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/album_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.115"
+                app:layout_constraintStart_toEndOf="@+id/homeIcon"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.4" />
+
+
+            <androidx.constraintlayout.utils.widget.ImageFilterButton
+                android:id="@+id/chatIcon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/message_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.157"
+                app:layout_constraintStart_toEndOf="@+id/albumIcon"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.4" />
+
+            <androidx.constraintlayout.utils.widget.ImageFilterButton
+                android:id="@+id/userProfileIcon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/user_profile_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.223"
+                app:layout_constraintStart_toEndOf="@+id/chatIcon"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.4" />
+
+
+            <androidx.constraintlayout.utils.widget.ImageFilterButton
+                android:id="@+id/menuIcon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/menu_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/userProfileIcon"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
