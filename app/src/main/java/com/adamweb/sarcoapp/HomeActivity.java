@@ -34,9 +34,9 @@ public class HomeActivity extends AppCompatActivity {
 
         List<LeadersItem> items = new ArrayList<>();
         items.add(new LeadersItem("provost", R.drawable.user_dp));
-        items.add(new LeadersItem("Dean Science", R.drawable.user_dp));
-        items.add(new LeadersItem("H. O. D", R.drawable.user_dp));
-        items.add(new LeadersItem("L, Co-ordinator", R.drawable.user_dp));
+        items.add(new LeadersItem("Dean Science", R.drawable.user_profile_dp));
+        items.add(new LeadersItem("H. O. D", R.drawable.user_profile_dp));
+        items.add(new LeadersItem("Level Co-ordinator", R.drawable.user_dp));
 
         //recyclerView
         leaderRecycler.setLayoutManager(new GridLayoutManager(this, 2));

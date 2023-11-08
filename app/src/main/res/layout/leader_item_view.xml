@@ -32,11 +32,10 @@
              android:background="#0D1F82"
              android:textAlignment="center"
              android:gravity="center"
-             android:textSize="20sp"
+             android:textSize="18sp"
              android:textStyle="bold"
              android:fontFamily="@font/suez_one"
-             android:textColor="@color/white"
-             android:textAllCaps="true"/>
+             android:textColor="@color/white" />
      </LinearLayout>
 
   </androidx.cardview.widget.CardView>
