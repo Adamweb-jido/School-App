@@ -20,6 +20,7 @@
             android:layout_width="80dp"
             android:layout_height="36dp"
             android:layout_gravity="center"
+            android:background="@drawable/icons_bg"
             android:contentDescription="@string/back"
             android:src="@drawable/back_icon"
             app:layout_constraintBottom_toBottomOf="parent"
