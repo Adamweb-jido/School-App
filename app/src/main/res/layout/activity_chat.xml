@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#EBE4D0"
     tools:context=".ChatActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -104,6 +103,15 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chatRecycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textAlignment="center"
+        android:text="@string/noChats"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/suez_one"/>
 </LinearLayout>
