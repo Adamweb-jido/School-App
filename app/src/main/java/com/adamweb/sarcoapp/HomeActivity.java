@@ -14,7 +14,7 @@ import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
 
-    ImageView photoAlbum;
+    ImageView photoAlbum, chats;
     RecyclerView leaderRecycler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,5 +41,14 @@ public class HomeActivity extends AppCompatActivity {
         //recyclerView
         leaderRecycler.setLayoutManager(new GridLayoutManager(this, 2));
         leaderRecycler.setAdapter(new LeaderAdapter(getApplicationContext(), items));
+
+        chats = findViewById(R.id.chatIcon);
+        chats.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
