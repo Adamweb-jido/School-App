@@ -44,6 +44,7 @@
 
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profileIcon"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/user_dp"
@@ -64,7 +65,7 @@
         android:padding="15dp">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/materialButton4"
+            android:id="@+id/newChatBtn"
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:backgroundTint="#0D1F82"
@@ -82,6 +83,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/albumBtn"
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:backgroundTint="#0D1F82"
@@ -92,10 +94,10 @@
             android:textSize="10sp"
             android:textStyle="bold"
             android:fontFamily="@font/suez_one"
-            app:layout_constraintBottom_toBottomOf="@+id/materialButton4"
+            app:layout_constraintBottom_toBottomOf="@+id/newChatBtn"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/materialButton4"
-            app:layout_constraintTop_toTopOf="@+id/materialButton4" />
+            app:layout_constraintStart_toEndOf="@+id/newChatBtn"
+            app:layout_constraintTop_toTopOf="@+id/newChatBtn" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
