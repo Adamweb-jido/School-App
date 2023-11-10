@@ -47,6 +47,14 @@ public class ChatActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        newChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), FriendsActivity.class);
+                startActivity(intent);
+            }
+        });
         List<ChatList> lists = new ArrayList<>();
         lists.add(new ChatList("Zahraddin Yusif", "9:35 AM", "yaushe zamu shiga", R.drawable.zdeennn));
         lists.add(new ChatList("Hashim Abdullahi", "10:46 PM", "Girmanka ne Monita", R.drawable.monita));
