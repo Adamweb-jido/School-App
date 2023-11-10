@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class AlbumViewHolder extends RecyclerView.ViewHolder {
 
     ImageView imageView;
-    TextView textView, email, combination, phoneNumber, comment;
+    TextView textView, email, combination, phoneNumber;
     public AlbumViewHolder(@NonNull View itemView) {
         super(itemView);
 
@@ -19,6 +19,6 @@ public class AlbumViewHolder extends RecyclerView.ViewHolder {
         textView = itemView.findViewById(R.id.name);
         combination = itemView.findViewById(R.id.combination);
         phoneNumber = itemView.findViewById(R.id.phoneNumber);
-        comment = itemView.findViewById(R.id.comment);
+
     }
 }

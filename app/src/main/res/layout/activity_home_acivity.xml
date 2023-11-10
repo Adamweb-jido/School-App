@@ -24,16 +24,15 @@
                 android:id="@+id/homeIcon"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="7dp"
                 android:layout_gravity="center"
                 android:background="@drawable/icons_bg"
                 android:contentDescription="@string/home"
                 android:src="@drawable/home_icon"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/albumIcon"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.045"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/albumIcon"
                 app:layout_constraintVertical_bias="0.4" />
 
 
@@ -42,27 +41,25 @@
                 android:id="@+id/albumIcon"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="3dp"
                 android:background="@drawable/icons_bg"
                 android:src="@drawable/album_icon"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/chatIcon"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.104"
                 app:layout_constraintStart_toEndOf="@+id/homeIcon"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@+id/chatIcon" />
 
             <androidx.constraintlayout.utils.widget.ImageFilterButton
                 android:id="@+id/chatIcon"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="5dp"
                 android:background="@drawable/icons_bg"
                 android:src="@drawable/message_icon"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/userProfileIcon"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.165"
                 app:layout_constraintStart_toEndOf="@+id/albumIcon"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/userProfileIcon"
                 app:layout_constraintVertical_bias="0.4" />
 
             <androidx.constraintlayout.utils.widget.ImageFilterButton
@@ -71,11 +68,11 @@
                 android:layout_height="50dp"
                 android:background="@drawable/icons_bg"
                 android:src="@drawable/user_profile_icon"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/menuIcon"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.268"
                 app:layout_constraintStart_toEndOf="@+id/chatIcon"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@+id/menuIcon" />
 
             <androidx.constraintlayout.utils.widget.ImageFilterButton
                 android:id="@+id/menuIcon"
