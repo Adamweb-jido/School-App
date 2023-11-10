@@ -14,13 +14,21 @@ import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
 
-    ImageView photoAlbum, chats;
+    ImageView photoAlbum, chats, profile;
     RecyclerView leaderRecycler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_acivity);
 
+        profile = findViewById(R.id.userProfileIcon);
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
         photoAlbum = findViewById(R.id.albumIcon);
         photoAlbum.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,5 +58,6 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 }
