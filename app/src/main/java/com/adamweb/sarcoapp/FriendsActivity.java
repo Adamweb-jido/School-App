@@ -9,12 +9,14 @@ import android.widget.ImageView;
 
 public class FriendsActivity extends AppCompatActivity {
 
-    ImageView back = findViewById(R.id.backArrow);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friends);
+
+        ImageView back = findViewById(R.id.backArrow);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override

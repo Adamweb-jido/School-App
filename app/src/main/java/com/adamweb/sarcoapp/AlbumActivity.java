@@ -28,7 +28,7 @@ public class AlbumActivity extends AppCompatActivity {
         List<Item> items = new ArrayList<>();
 
         items.add(new Item("Adamu ibrahim ya'u", "realadamweb@gmail.com","csc/che", "08160807055",  R.drawable.adamweb));
-        items.add(new Item("Zahraddin Yusif", "zahraddinyusif@gmail.com","csc/che", "08064130342", R.drawable.zdeennn));
+        items.add(new Item("Zahraddin Yusif", "zahraddinyusif@gmail.com","csc/che", "08064130342", R.drawable.zdeen));
         items.add(new Item("Khalifa muhammad", "khalifamuhammad@gmail.com","csc/che", "08131830383",  R.drawable.klipa));
         items.add(new Item("aliyu sunusi", "aliyuhaidar@gmail.com","csc/che", "09063333861",  R.drawable.aliyu));
         items.add(new Item("salisu ibrahim adam", "Salisibrahim@gmail.com","csc/che", "08160569598",  R.drawable.salis));
