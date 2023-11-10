@@ -49,13 +49,13 @@ public class ChatActivity extends AppCompatActivity {
         });
         List<ChatList> lists = new ArrayList<>();
         lists.add(new ChatList("Zahraddin Yusif", "9:35 AM", "yaushe zamu shiga", R.drawable.zdeennn));
+        lists.add(new ChatList("Hashim Abdullahi", "10:46 PM", "Girmanka ne Monita", R.drawable.monita));
         lists.add(new ChatList("Khalifa Muhammad", "11:20 AM", "ka gama aikin kuwa?", R.drawable.klipa));
-        lists.add(new ChatList("Nura Auwalu Basiru", "7:15 PM", "m nura ya kasuwa", R.drawable.user_dp));
+        lists.add(new ChatList("Nura Ahmad Sulaiman", "7:15 PM", "m nura ya kasuwa", R.drawable.user_dp));
         lists.add(new ChatList("Aliyu Sunusi", "8:45 PM", "Eh Hakane Kam", R.drawable.aliyu));
         lists.add(new ChatList("Salisu Ibrahim Adam", "8:59 PM", "Alhmdlh mlm ya kasuwa", R.drawable.salis));
         lists.add(new ChatList("Abdullahi Mustapha", "9:07 PM", "Zanzo gobe", R.drawable.user_profile_dp));
         lists.add(new ChatList("Adam Sulaiman Adam", "9:28 PM", "sai mun samu lokaci", R.drawable.user_dp));
-        lists.add(new ChatList("Hashim Abdullahi", "10:46 PM", "Girmanka ne Monita", R.drawable.monita));
         lists.add(new ChatList("Zahraddin Yusif", "9:35 AM", "yaushe zamu shiga", R.drawable.zdeennn));
         lists.add(new ChatList("Zahraddin Yusif", "9:35 AM", "yaushe zamu shiga", R.drawable.zdeennn));
         lists.add(new ChatList("Zahraddin Yusif", "9:35 AM", "yaushe zamu shiga", R.drawable.zdeennn));

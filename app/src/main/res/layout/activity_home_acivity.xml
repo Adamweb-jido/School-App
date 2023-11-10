@@ -24,6 +24,7 @@
                 android:id="@+id/homeIcon"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_marginTop="7dp"
                 android:layout_gravity="center"
                 android:background="@drawable/icons_bg"
                 android:contentDescription="@string/home"
@@ -41,6 +42,7 @@
                 android:id="@+id/albumIcon"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_marginTop="3dp"
                 android:background="@drawable/icons_bg"
                 android:src="@drawable/album_icon"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -53,6 +55,7 @@
                 android:id="@+id/chatIcon"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/icons_bg"
                 android:src="@drawable/message_icon"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -101,7 +104,7 @@
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="117dp"
             android:layout_height="80dp"
-            android:src="@drawable/user_dp"
+            android:src="@drawable/adamweb"
             app:civ_border_color="#0D1F82"
             app:civ_border_overlay="true"
             app:civ_border_width="5dp"/>
@@ -143,7 +146,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="5dp"
+        android:layout_height="1dp"
         android:background="#0D1F82"/>
 
     <androidx.core.widget.NestedScrollView
