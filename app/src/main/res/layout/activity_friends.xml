@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#EBE4D0"
     tools:context=".FriendsActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -59,9 +60,11 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
      <LinearLayout
          android:layout_width="match_parent"
-         android:layout_height="130dp"
+         android:layout_height="115dp"
          android:orientation="vertical"
-         android:padding="20dp">
+         android:paddingStart="20dp"
+         android:paddingEnd="20dp"
+         android:paddingTop="20dp">
 
          <com.google.android.material.textfield.TextInputLayout
              style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -98,5 +101,17 @@
              android:textColor="#0D1F82"
              android:textAlignment="center"/>
      </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/friendListRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"/>
+    </LinearLayout>
 
 </LinearLayout>
