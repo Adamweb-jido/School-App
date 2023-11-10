@@ -33,7 +33,6 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumViewHolder> {
         holder.email.setText(albumItems.get(position).getEmail());
         holder.combination.setText(albumItems.get(position).getCombination());
         holder.phoneNumber.setText(albumItems.get(position).getPhoneNumber());
-        holder.comment.setText(albumItems.get(position).getComments());
     }
 
     @Override
