@@ -1,18 +1,20 @@
 package com.adamweb.sarcoapp;
 
-public class Item {
+public class AlbumItem {
     String name;
     String email;
     String combination;
     String phoneNumber;
+    String comments;
     int image;
 
-    public Item(String name, String email, String combination, String phoneNumber, int image) {
+    public AlbumItem(String name, String email, String combination, String phoneNumber, String comments, int image) {
         this.name = name;
         this.image = image;
         this.email = email;
         this.combination = combination;
         this.phoneNumber = phoneNumber;
+        this.comments = comments;
     }
 
 
@@ -55,5 +57,13 @@ public class Item {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
     }
 }

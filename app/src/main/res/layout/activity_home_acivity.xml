@@ -184,7 +184,7 @@
                        <TextView
                            android:layout_width="match_parent"
                            android:layout_height="wrap_content"
-                           android:layout_marginTop="20dp"
+                           android:layout_marginTop="18dp"
                            android:textStyle="bold"
                            android:alpha="0.8"
                            android:fontFamily="@font/amaranth_bold"
@@ -199,7 +199,7 @@
                            android:textStyle="bold"
                            android:fontFamily="@font/amaranth_bold"
                            android:text="@string/subWelcome"
-                           android:textSize="16sp"
+                           android:textSize="14sp"
                            android:textColor="#020B32" />
                    </LinearLayout>
 
@@ -318,7 +318,8 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/leadersRecycler"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent"
+                    android:padding="10dp"/>
             </LinearLayout>
 
             <View

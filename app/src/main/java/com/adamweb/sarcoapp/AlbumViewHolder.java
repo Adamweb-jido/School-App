@@ -7,11 +7,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MyViewHolder extends RecyclerView.ViewHolder {
+public class AlbumViewHolder extends RecyclerView.ViewHolder {
 
     ImageView imageView;
-    TextView textView, email, combination, phoneNumber;
-    public MyViewHolder(@NonNull View itemView) {
+    TextView textView, email, combination, phoneNumber, comment;
+    public AlbumViewHolder(@NonNull View itemView) {
         super(itemView);
 
         imageView = itemView.findViewById(R.id.myImage);
@@ -19,5 +19,6 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
         textView = itemView.findViewById(R.id.name);
         combination = itemView.findViewById(R.id.combination);
         phoneNumber = itemView.findViewById(R.id.phoneNumber);
+        comment = itemView.findViewById(R.id.comment);
     }
 }
