@@ -235,42 +235,6 @@
 
 
                   </LinearLayout>
-                  <LinearLayout
-                      android:layout_width="match_parent"
-                      android:layout_height="50dp"
-                      android:background="@drawable/header_bg"
-                      android:orientation="horizontal"
-                      android:padding="10dp">
-
-
-                  </LinearLayout>
-                  <LinearLayout
-                      android:layout_width="match_parent"
-                      android:layout_height="50dp"
-                      android:background="@drawable/header_bg"
-                      android:orientation="horizontal"
-                      android:padding="10dp">
-
-
-                  </LinearLayout>
-                  <LinearLayout
-                      android:layout_width="match_parent"
-                      android:layout_height="50dp"
-                      android:background="@drawable/header_bg"
-                      android:orientation="horizontal"
-                      android:padding="10dp">
-
-
-                  </LinearLayout>
-                  <LinearLayout
-                      android:layout_width="match_parent"
-                      android:layout_height="50dp"
-                      android:background="@drawable/header_bg"
-                      android:orientation="horizontal"
-                      android:padding="10dp">
-
-
-                  </LinearLayout>
 
 
               </LinearLayout>
