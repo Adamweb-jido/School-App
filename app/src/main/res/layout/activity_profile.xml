@@ -47,14 +47,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="230dp">
+        android:layout_height="168dp">
 
         <ImageView
             android:id="@+id/imageView5"
             android:layout_width="match_parent"
-            android:layout_height="140dp"
-            android:contentDescription="@string/todo"
+            android:layout_height="100dp"
             android:background="@drawable/profile_bg"
+            android:contentDescription="@string/todo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -73,7 +73,7 @@
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/imageView5"
-            app:layout_constraintVertical_bias="0.822" />
+            app:layout_constraintVertical_bias="0.888" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
@@ -86,18 +86,19 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
+            android:padding="10dp"
             android:background="@drawable/header_bg"
             >
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="10dp">
+                android:layout_height="match_parent">
 
                 <ImageView
                     android:id="@+id/addToPhone"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:src="@drawable/add_to_contact_icon"
                     android:background="@drawable/profile_card_item_bg"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -109,6 +110,8 @@
                     android:id="@+id/chatBtn"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:paddingTop="5dp"
+                    android:src="@drawable/mssg_icon"
                     android:background="@drawable/profile_card_item_bg"
                     app:layout_constraintBottom_toBottomOf="@+id/addToPhone"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -121,6 +124,7 @@
                     android:id="@+id/callBtn"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:src="@drawable/call_icon"
                     android:background="@drawable/profile_card_item_bg"
                     app:layout_constraintBottom_toBottomOf="@+id/chatBtn"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -133,6 +137,9 @@
                     android:id="@+id/emailBtn"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="3dp"
+                    android:src="@drawable/email_icon"
                     android:background="@drawable/profile_card_item_bg"
                     app:layout_constraintBottom_toBottomOf="@+id/callBtn"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -146,4 +153,171 @@
 
 
     </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        android:overScrollMode="never">
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:padding="10dp">
+
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:background="@drawable/header_bg"
+                  android:orientation="vertical"
+                  android:padding="10dp">
+                     <LinearLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="50dp"
+                         android:background="@drawable/header_bg"
+                         android:orientation="horizontal"
+                         android:padding="10dp">
+
+
+                     </LinearLayout>
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="50dp"
+                      android:background="@drawable/header_bg"
+                      android:orientation="horizontal"
+                      android:padding="10dp">
+
+
+                  </LinearLayout>
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="50dp"
+                      android:background="@drawable/header_bg"
+                      android:orientation="horizontal"
+                      android:padding="10dp">
+
+
+                  </LinearLayout>
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="50dp"
+                      android:background="@drawable/header_bg"
+                      android:orientation="horizontal"
+                      android:padding="10dp">
+
+
+                  </LinearLayout>
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="50dp"
+                      android:background="@drawable/header_bg"
+                      android:orientation="horizontal"
+                      android:padding="10dp">
+
+
+                  </LinearLayout>
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="50dp"
+                      android:background="@drawable/header_bg"
+                      android:orientation="horizontal"
+                      android:padding="10dp">
+
+
+                  </LinearLayout>
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="50dp"
+                      android:background="@drawable/header_bg"
+                      android:orientation="horizontal"
+                      android:padding="10dp">
+
+
+                  </LinearLayout>
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="50dp"
+                      android:background="@drawable/header_bg"
+                      android:orientation="horizontal"
+                      android:padding="10dp">
+
+
+                  </LinearLayout>
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="50dp"
+                      android:background="@drawable/header_bg"
+                      android:orientation="horizontal"
+                      android:padding="10dp">
+
+
+                  </LinearLayout>
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="50dp"
+                      android:background="@drawable/header_bg"
+                      android:orientation="horizontal"
+                      android:padding="10dp">
+
+
+                  </LinearLayout>
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="50dp"
+                      android:background="@drawable/header_bg"
+                      android:orientation="horizontal"
+                      android:padding="10dp">
+
+
+                  </LinearLayout>
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="50dp"
+                      android:background="@drawable/header_bg"
+                      android:orientation="horizontal"
+                      android:padding="10dp">
+
+
+                  </LinearLayout>
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="50dp"
+                      android:background="@drawable/header_bg"
+                      android:orientation="horizontal"
+                      android:padding="10dp">
+
+
+                  </LinearLayout>
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="50dp"
+                      android:background="@drawable/header_bg"
+                      android:orientation="horizontal"
+                      android:padding="10dp">
+
+
+                  </LinearLayout>
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="50dp"
+                      android:background="@drawable/header_bg"
+                      android:orientation="horizontal"
+                      android:padding="10dp">
+
+
+                  </LinearLayout>
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="50dp"
+                      android:background="@drawable/header_bg"
+                      android:orientation="horizontal"
+                      android:padding="10dp">
+
+
+                  </LinearLayout>
+
+              </LinearLayout>
+          </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>
