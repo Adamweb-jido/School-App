@@ -197,7 +197,7 @@
                            android:fontFamily="@font/amaranth_bold"
                            android:text="@string/subWelcome"
                            android:textSize="14sp"
-                           android:textColor="#020B32" />
+                           android:textColor="#020B32"/>
                    </LinearLayout>
 
                  </LinearLayout>
