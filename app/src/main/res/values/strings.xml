@@ -10,6 +10,9 @@
     <string name="photoAlbum">Photo Album</string>
     <string name="friendsList">Friends List</string>
     <string name="profileAdm">Profile</string>
+    <string name="information">personal Information</string>
+    <string name="yourName">Name</string>
+    <string name=""
     <string name="startChat">Select your friend here to start a conversation.</string>
     <string name="chats">Chats</string>
     <string name="newChat">New Chat</string>
