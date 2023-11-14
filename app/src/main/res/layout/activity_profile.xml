@@ -8,6 +8,7 @@
     android:background="#EBE4D0"
     tools:context=".ProfileActivity">
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -154,259 +155,252 @@
 
     </LinearLayout>
 
-    <androidx.core.widget.NestedScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="vertical"
-        android:overScrollMode="never">
-
-          <LinearLayout
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              android:padding="10dp">
+        android:orientation="vertical"
+        android:padding="10dp">
 
 
-              <LinearLayout
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:background="@drawable/header_bg"
-                  android:orientation="vertical"
-                  android:padding="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/header_bg"
+            android:orientation="vertical"
+            android:padding="10dp">
 
-                  <TextView
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:text="@string/information"
-                      android:textAlignment="center"
-                      android:textAllCaps="true"
-                      android:textSize="22sp"
-                      android:textStyle="bold"
-                      android:fontFamily="@font/suez_one"
-                      android:textColor="@color/black"
-                      android:alpha="0.8"/>
-                     <LinearLayout
-                         android:layout_width="match_parent"
-                         android:layout_height="50dp"
-                         android:background="@drawable/header_bg"
-                         android:orientation="horizontal"
-                         android:padding="10dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/information"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/suez_one"
+                android:textColor="@color/black"
+                android:alpha="0.8"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/header_bg"
+                android:orientation="horizontal"
+                android:padding="10dp">
 
-                         <TextView
-                             android:layout_width="wrap_content"
-                             android:layout_height="wrap_content"
-                             android:text="@string/yourName"
-                             android:textSize="18sp"
-                             android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/yourName"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
 
-                         <TextView
-                             android:layout_width="wrap_content"
-                             android:layout_height="wrap_content"
-                             android:text="@string/name"
-                             android:textSize="18sp"
-                             android:textStyle="bold"
-                             android:layout_marginStart="10dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/name"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="10dp"/>
 
-                         <ImageView
-                             android:layout_width="match_parent"
-                             android:layout_height="match_parent"
-                             android:layout_gravity="end"
-                             android:layout_marginStart="50dp"
-                             android:src="@drawable/user_dp"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end"
+                    android:layout_marginStart="50dp"
+                    android:src="@drawable/user_dp"/>
 
 
-                     </LinearLayout>
-                  <LinearLayout
-                      android:layout_width="match_parent"
-                      android:layout_height="50dp"
-                      android:background="@drawable/header_bg"
-                      android:orientation="horizontal"
-                      android:padding="10dp">
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/header_bg"
+                android:orientation="horizontal"
+                android:padding="10dp">
 
-                      <TextView
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:text="@string/yourName"
-                          android:textSize="18sp"
-                          android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/yourName"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
 
-                      <TextView
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:text="@string/name"
-                          android:textSize="18sp"
-                          android:textStyle="bold"
-                          android:layout_marginStart="10dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/name"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="10dp"/>
 
-                      <ImageView
-                          android:layout_width="match_parent"
-                          android:layout_height="match_parent"
-                          android:layout_gravity="end"
-                          android:layout_marginStart="50dp"
-                          android:src="@drawable/user_dp"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end"
+                    android:layout_marginStart="50dp"
+                    android:src="@drawable/user_dp"/>
 
 
 
-                  </LinearLayout>
-                  <LinearLayout
-                      android:layout_width="match_parent"
-                      android:layout_height="50dp"
-                      android:background="@drawable/header_bg"
-                      android:orientation="horizontal"
-                      android:padding="10dp">
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/header_bg"
+                android:orientation="horizontal"
+                android:padding="10dp">
 
 
-                      <TextView
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:text="@string/yourName"
-                          android:textSize="18sp"
-                          android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/yourName"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
 
-                      <TextView
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:text="@string/name"
-                          android:textSize="18sp"
-                          android:textStyle="bold"
-                          android:layout_marginStart="10dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/name"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="10dp"/>
 
-                      <ImageView
-                          android:layout_width="match_parent"
-                          android:layout_height="match_parent"
-                          android:layout_gravity="end"
-                          android:layout_marginStart="50dp"
-                          android:src="@drawable/user_dp"/>
-
-
-                  </LinearLayout>
-                  <LinearLayout
-                      android:layout_width="match_parent"
-                      android:layout_height="50dp"
-                      android:background="@drawable/header_bg"
-                      android:orientation="horizontal"
-                      android:padding="10dp">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end"
+                    android:layout_marginStart="50dp"
+                    android:src="@drawable/user_dp"/>
 
 
-                      <TextView
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:text="@string/yourName"
-                          android:textSize="18sp"
-                          android:textStyle="bold"/>
-
-                      <TextView
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:text="@string/name"
-                          android:textSize="18sp"
-                          android:textStyle="bold"
-                          android:layout_marginStart="10dp"/>
-
-                      <ImageView
-                          android:layout_width="match_parent"
-                          android:layout_height="match_parent"
-                          android:layout_gravity="end"
-                          android:layout_marginStart="50dp"
-                          android:src="@drawable/user_dp"/>
-
-                  </LinearLayout>
-                  <LinearLayout
-                      android:layout_width="match_parent"
-                      android:layout_height="50dp"
-                      android:background="@drawable/header_bg"
-                      android:orientation="horizontal"
-                      android:padding="10dp">
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/header_bg"
+                android:orientation="horizontal"
+                android:padding="10dp">
 
 
-                      <TextView
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:text="@string/yourName"
-                          android:textSize="18sp"
-                          android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/yourName"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
 
-                      <TextView
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:text="@string/name"
-                          android:textSize="18sp"
-                          android:textStyle="bold"
-                          android:layout_marginStart="10dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/name"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="10dp"/>
 
-                      <ImageView
-                          android:layout_width="match_parent"
-                          android:layout_height="match_parent"
-                          android:layout_gravity="end"
-                          android:layout_marginStart="50dp"
-                          android:src="@drawable/user_dp"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end"
+                    android:layout_marginStart="50dp"
+                    android:src="@drawable/user_dp"/>
 
-                  </LinearLayout>
-                  <LinearLayout
-                      android:layout_width="match_parent"
-                      android:layout_height="50dp"
-                      android:background="@drawable/header_bg"
-                      android:orientation="horizontal"
-                      android:padding="10dp">
-
-
-                      <TextView
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:text="@string/yourName"
-                          android:textSize="18sp"
-                          android:textStyle="bold"/>
-
-                      <TextView
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:text="@string/name"
-                          android:textSize="18sp"
-                          android:textStyle="bold"
-                          android:layout_marginStart="10dp"/>
-
-                      <ImageView
-                          android:layout_width="match_parent"
-                          android:layout_height="match_parent"
-                          android:layout_gravity="end"
-                          android:layout_marginStart="50dp"
-                          android:src="@drawable/user_dp"/>
-
-                  </LinearLayout>
-                  <LinearLayout
-                      android:layout_width="match_parent"
-                      android:layout_height="50dp"
-                      android:background="@drawable/header_bg"
-                      android:orientation="horizontal"
-                      android:padding="10dp">
-
-                      <TextView
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:text="@string/yourName"
-                          android:textSize="18sp"
-                          android:textStyle="bold"/>
-
-                      <TextView
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:text="@string/name"
-                          android:textSize="18sp"
-                          android:textStyle="bold"
-                          android:layout_marginStart="10dp"/>
-
-                      <ImageView
-                          android:layout_width="match_parent"
-                          android:layout_height="match_parent"
-                          android:layout_gravity="end"
-                          android:layout_marginStart="50dp"
-                          android:src="@drawable/user_dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/header_bg"
+                android:orientation="horizontal"
+                android:padding="10dp">
 
 
-                  </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/yourName"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/name"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="10dp"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end"
+                    android:layout_marginStart="50dp"
+                    android:src="@drawable/user_dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/header_bg"
+                android:orientation="horizontal"
+                android:padding="10dp">
 
 
-              </LinearLayout>
-          </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/yourName"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/name"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="10dp"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end"
+                    android:layout_marginStart="50dp"
+                    android:src="@drawable/user_dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/header_bg"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/yourName"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/name"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="10dp"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end"
+                    android:layout_marginStart="50dp"
+                    android:src="@drawable/user_dp"/>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>
