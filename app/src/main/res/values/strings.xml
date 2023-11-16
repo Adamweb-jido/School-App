@@ -13,8 +13,12 @@
     <string name="information">personal Information</string>
     <string name="yourName">Name:</string>
     <string name="admNo">Admission Number:</string>
-    <string name="comb">Combination</string>
-    <string name=""
+    <string name="comb">Combination:</string>
+    <string name="emailAddress">Email:</string>
+    <string name="yourPhoneNumber">Phone Number:</string>
+    <string name="yourComment">Your Comment:</string>
+    <string name="profileEdit">Edit Profile</string>
+    <string name="myHome"></string>
     <string name="startChat">Select your friend here to start a conversation.</string>
     <string name="chats">Chats</string>
     <string name="newChat">New Chat</string>

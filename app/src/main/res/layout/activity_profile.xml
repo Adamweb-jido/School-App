@@ -74,7 +74,7 @@
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="150dp"
                         android:layout_height="150dp"
-                        android:src="@drawable/adamweb"
+                        android:src="@drawable/user_profile_dp"
                         app:civ_border_color="#0D1F82"
                         app:civ_border_width="5dp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -163,6 +163,25 @@
 
                 </LinearLayout>
 
+              <RelativeLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:paddingStart="15dp"
+                  android:paddingEnd="15dp">
+
+                  <com.google.android.material.button.MaterialButton
+                      android:layout_width="match_parent"
+                      android:layout_height="60dp"
+                      android:text="@string/profileEdit"
+                      app:cornerRadius="15dp"
+                      android:elevation="10dp"
+                      android:backgroundTint="#0D1F82"
+                      app:icon="@drawable/edit_profile_icon"
+                      app:iconGravity="textStart"
+                      app:iconSize="35dp"
+                      android:textStyle="bold"
+                      android:fontFamily="@font/suez_one"/>
+              </RelativeLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -220,7 +239,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/email"
+                                android:text="@string/emailAddress"
                                 android:textSize="18sp"
                                 android:textStyle="bold"/>
 
@@ -242,7 +261,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/phoneNumber"
+                                android:text="@string/yourPhoneNumber"
                                 android:textSize="18sp"
                                 android:textStyle="bold"/>
 
@@ -302,7 +321,7 @@
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="100dp"
+                            android:layout_height="90dp"
                             android:background="@drawable/header_bg"
                             android:orientation="horizontal"
                             android:padding="10dp">
@@ -311,7 +330,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/comment"
+                                android:text="@string/yourComment"
                                 android:textSize="18sp"
                                 android:textStyle="bold"/>
 
