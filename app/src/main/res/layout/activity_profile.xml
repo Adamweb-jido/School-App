@@ -209,15 +209,6 @@
                                 android:textSize="18sp"
                                 android:textStyle="bold"
                                 android:layout_marginStart="10dp"/>
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="end"
-                                android:layout_marginStart="50dp"
-                                android:src="@drawable/user_dp"/>
-
-
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -229,27 +220,16 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/yourName"
+                                android:text="@string/email"
                                 android:textSize="18sp"
                                 android:textStyle="bold"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/name"
                                 android:textSize="18sp"
                                 android:textStyle="bold"
                                 android:layout_marginStart="10dp"/>
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="end"
-                                android:layout_marginStart="50dp"
-                                android:src="@drawable/user_dp"/>
-
-
-
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -262,25 +242,16 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/yourName"
+                                android:text="@string/phoneNumber"
                                 android:textSize="18sp"
                                 android:textStyle="bold"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/name"
                                 android:textSize="18sp"
                                 android:textStyle="bold"
                                 android:layout_marginStart="10dp"/>
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="end"
-                                android:layout_marginStart="50dp"
-                                android:src="@drawable/user_dp"/>
-
 
                         </LinearLayout>
                         <LinearLayout
@@ -294,24 +265,16 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/yourName"
+                                android:text="@string/admNo"
                                 android:textSize="18sp"
                                 android:textStyle="bold"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/name"
                                 android:textSize="18sp"
                                 android:textStyle="bold"
                                 android:layout_marginStart="10dp"/>
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="end"
-                                android:layout_marginStart="50dp"
-                                android:src="@drawable/user_dp"/>
 
                         </LinearLayout>
                         <LinearLayout
@@ -325,29 +288,21 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/yourName"
+                                android:text="@string/comb"
                                 android:textSize="18sp"
                                 android:textStyle="bold"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/name"
                                 android:textSize="18sp"
                                 android:textStyle="bold"
                                 android:layout_marginStart="10dp"/>
 
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="end"
-                                android:layout_marginStart="50dp"
-                                android:src="@drawable/user_dp"/>
-
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
+                            android:layout_height="100dp"
                             android:background="@drawable/header_bg"
                             android:orientation="horizontal"
                             android:padding="10dp">
@@ -356,55 +311,16 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/yourName"
+                                android:text="@string/comment"
                                 android:textSize="18sp"
                                 android:textStyle="bold"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/name"
                                 android:textSize="18sp"
                                 android:textStyle="bold"
                                 android:layout_marginStart="10dp"/>
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="end"
-                                android:layout_marginStart="50dp"
-                                android:src="@drawable/user_dp"/>
-
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:background="@drawable/header_bg"
-                            android:orientation="horizontal"
-                            android:padding="10dp">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/yourName"
-                                android:textSize="18sp"
-                                android:textStyle="bold"/>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/name"
-                                android:textSize="18sp"
-                                android:textStyle="bold"
-                                android:layout_marginStart="10dp"/>
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="end"
-                                android:layout_marginStart="50dp"
-                                android:src="@drawable/user_dp"/>
-
 
                         </LinearLayout>
 
