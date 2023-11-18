@@ -29,14 +29,7 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        photoAlbum = findViewById(R.id.albumIcon);
-        photoAlbum.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AlbumActivity.class);
-                startActivity(intent);
-            }
-        });
+
 
         leaderRecycler = findViewById(R.id.leadersRecycler);
 

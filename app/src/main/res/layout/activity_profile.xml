@@ -130,18 +130,7 @@
                                 app:layout_constraintTop_toTopOf="@+id/addToPhone"
                                 app:layout_constraintVertical_bias="0.0" />
 
-                            <ImageView
-                                android:id="@+id/callBtn"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:src="@drawable/call_icon"
-                                android:background="@drawable/profile_card_item_bg"
-                                app:layout_constraintBottom_toBottomOf="@+id/chatBtn"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintHorizontal_bias="0.282"
-                                app:layout_constraintStart_toEndOf="@+id/chatBtn"
-                                app:layout_constraintTop_toTopOf="@+id/chatBtn"
-                                app:layout_constraintVertical_bias="0.0" />
+
 
                             <ImageView
                                 android:id="@+id/emailBtn"
