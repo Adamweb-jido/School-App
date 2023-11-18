@@ -44,7 +44,7 @@ public class HomeActivity extends AppCompatActivity {
         items.add(new LeadersItem("Provost", R.drawable.provost));
         items.add(new LeadersItem("Registerer", R.drawable.registrer));
         items.add(new LeadersItem("H. O. D", R.drawable.user_profile_dp));
-        items.add(new LeadersItem("Level Co-ordinator", R.drawable.user_dp));
+        items.add(new LeadersItem("Level Co-ordinator", R.drawable.user_profile_dp));
 
         //recyclerView
         leaderRecycler.setLayoutManager(new GridLayoutManager(this, 2));

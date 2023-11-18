@@ -72,6 +72,7 @@
                         app:layout_constraintVertical_bias="0.0" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/profile_image"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:src="@drawable/user_profile_dp"
@@ -222,6 +223,7 @@
                                 android:textStyle="bold"/>
 
                             <TextView
+                                android:id="@+id/fullName"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
 
@@ -244,6 +246,7 @@
                                 android:textStyle="bold"/>
 
                             <TextView
+                                android:id="@+id/user_email"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="18sp"
@@ -266,6 +269,7 @@
                                 android:textStyle="bold"/>
 
                             <TextView
+                                android:id="@+id/phone_number"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="18sp"
@@ -289,6 +293,7 @@
                                 android:textStyle="bold"/>
 
                             <TextView
+                                android:id="@+id/adm_no"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="18sp"
@@ -312,6 +317,7 @@
                                 android:textStyle="bold"/>
 
                             <TextView
+                                android:id="@+id/user_comb"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="18sp"
@@ -335,6 +341,7 @@
                                 android:textStyle="bold"/>
 
                             <TextView
+                                android:id="@+id/user_comment"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="18sp"
