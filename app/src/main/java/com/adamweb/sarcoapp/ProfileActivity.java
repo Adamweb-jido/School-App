@@ -34,7 +34,7 @@ public class ProfileActivity extends AppCompatActivity {
           combination.setText("Computer/chemistry");
           admissionNumber.setText("CSC/01/19/0585");
           comment.setText("Being a software engineer is a great work");
-
+        profile_image.setImageResource(R.drawable.adamweb);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
