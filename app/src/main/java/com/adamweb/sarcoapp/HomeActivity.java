@@ -15,7 +15,7 @@ import java.util.List;
 public class HomeActivity extends AppCompatActivity {
 
     ImageView photoAlbum, chats, profile;
-
+    RecyclerView leaderRecycler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
