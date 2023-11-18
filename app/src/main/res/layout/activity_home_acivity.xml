@@ -9,7 +9,6 @@
     tools:context=".HomeActivity">
 
     <LinearLayout
-        android:id="@+id/"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:background="#0D1F82"
