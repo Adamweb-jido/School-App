@@ -10,8 +10,7 @@ import android.widget.TextView;
 
 public class ProfileActivity extends AppCompatActivity {
 
-   ImageView imageView, profile_image;
-   TextView userFullName, userEmail, phoneNumber, combination, admissionNumber, comment;
+   ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
