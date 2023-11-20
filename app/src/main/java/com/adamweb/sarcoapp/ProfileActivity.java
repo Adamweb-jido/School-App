@@ -28,13 +28,6 @@ public class ProfileActivity extends AppCompatActivity {
         comment = findViewById(R.id.user_comment);
 
 
-          userFullName.setText("Adamu ibrahim Ya'u");
-          userEmail.setText("realadamweb@gmail.com");
-          phoneNumber.setText("08160807055");
-          combination.setText("Computer/chemistry");
-          admissionNumber.setText("CSC/01/19/0585");
-          comment.setText("Being a software engineer is a great work");
-        profile_image.setImageResource(R.drawable.adamweb);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
