@@ -18,15 +18,6 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        imageView  = findViewById(R.id.backArrow);
-        profile_image = findViewById(R.id.profile_image);
-        userFullName = findViewById(R.id.fullName);
-        userEmail = findViewById(R.id.user_email);
-        phoneNumber = findViewById(R.id.phone_number);
-        combination = findViewById(R.id.user_comb);
-        admissionNumber = findViewById(R.id.adm_no);
-        comment = findViewById(R.id.user_comment);
-
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
