@@ -23,46 +23,39 @@
     </menu>
 </item>
 
-    <item android:title="General">
+    <item android:title="@string/profile">
         <menu>
             <group android:checkableBehavior="single">
-                <item android:id="@+id/darkMode"
-                    android:icon="@drawable/call_icon"
-                    android:title="DarkMode"/>
+                <item android:id="@+id/myProfileId"
+                    android:icon="@drawable/user_profile_icon"
+                    android:title="My Profile"/>
 
-                <item android:id="@+id/photoAlbumId"
-                    android:icon="@drawable/album_icon"
-                    android:title="Photo Album"/>
+                <item android:id="@+id/editProfileId"
+                    android:icon="@drawable/edit_profile_icon"
+                    android:title="Edit Profile"/>
 
-                <item android:id="@+id/helpId"
+                <item android:id="@+id/logoutId"
                     android:icon="@drawable/mssg_icon"
-                    android:title="Help"/>
-
-                <item android:id="@+id/aboutAppId"
-                    android:icon="@drawable/call_icon"
-                    android:title="About App"/>
+                    android:title="Log Out"/>
             </group>
         </menu>
     </item>
 
-    <item android:title="General">
+    <item android:title="About Developer">
         <menu>
             <group android:checkableBehavior="single">
-                <item android:id="@+id/darkMode"
+                <item android:id="@+id/whatsAppIcon"
                     android:icon="@drawable/call_icon"
-                    android:title="DarkMode"/>
+                    android:title="WhatsApp"/>
 
-                <item android:id="@+id/photoAlbumId"
+                <item android:id="@+id/aboutMeId"
                     android:icon="@drawable/album_icon"
-                    android:title="Photo Album"/>
+                    android:title="About Me"/>
 
-                <item android:id="@+id/helpId"
+                <item android:id="@+id/contactMeId"
                     android:icon="@drawable/mssg_icon"
-                    android:title="Help"/>
+                    android:title="Contact Me"/>
 
-                <item android:id="@+id/aboutAppId"
-                    android:icon="@drawable/call_icon"
-                    android:title="About App"/>
             </group>
         </menu>
     </item>
