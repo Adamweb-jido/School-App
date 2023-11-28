@@ -14,13 +14,14 @@ import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
 
-    ImageView photoAlbum, chats, profile;
+    ImageView photoAlbum, chats, profile, menu;
     RecyclerView leaderRecycler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_acivity);
 
+        menu = findViewById(R.id.menuIcon);
         profile = findViewById(R.id.userProfileIcon);
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
