@@ -41,11 +41,11 @@
         <menu>
             <group android:checkableBehavior="single">
                 <item android:id="@+id/whatsAppIcon"
-                    android:icon="@drawable/about_me_icon"
+                    android:icon="@drawable/whatsapp_logo"
                     android:title="WhatsApp"/>
 
                 <item android:id="@+id/aboutMeId"
-                    android:icon="@drawable/album_icon"
+                    android:icon="@drawable/about_me_icon"
                     android:title="About Me"/>
 
                 <item android:id="@+id/contactMeId"
