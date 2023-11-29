@@ -49,7 +49,7 @@
                     android:title="About Me"/>
 
                 <item android:id="@+id/contactMeId"
-                    android:icon="@drawable/mssg_icon"
+                    android:icon="@drawable/contact_me_icon"
                     android:title="Contact Me"/>
 
             </group>
