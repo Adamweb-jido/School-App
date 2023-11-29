@@ -22,14 +22,6 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home_acivity);
 
         menu = findViewById(R.id.menuIcon);
-        menu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MenuNavActivity.class);
-                startActivity(intent);
-            }
-        });
-
 
         profile = findViewById(R.id.userProfileIcon);
         profile.setOnClickListener(new View.OnClickListener() {
