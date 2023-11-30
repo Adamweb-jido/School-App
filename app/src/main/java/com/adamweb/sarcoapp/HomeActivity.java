@@ -50,6 +50,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), AlbumActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
         //------------------Chats onclickListener-------------------------------
