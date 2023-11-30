@@ -12,7 +12,7 @@
 
     <com.google.android.material.navigation.NavigationView
         android:layout_width="340dp"
-        android:layout_height="match_parent"
+        android:layout_height="550dp"
         app:headerLayout="@layout/menu_nav_header"
         app:menu="@menu/nav_menu_items"
         android:id="@+id/menu_nav_view_id"
