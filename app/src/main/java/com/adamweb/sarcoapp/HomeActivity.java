@@ -1,5 +1,6 @@
 package com.adamweb.sarcoapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toolbar;
@@ -77,11 +79,18 @@ public class HomeActivity extends AppCompatActivity {
         leaderRecycler.setAdapter(new LeaderAdapter(getApplicationContext(), items));
 
         //------------------Navigation drawer-------------------------------
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                return false;
+            }
+        });
        menu.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               drawerLayout = findViewById(R.id.menu_drawer_layout);
+               navigationView.bringToFront();
                drawerLayout.openDrawer(GravityCompat.END);
+
            }
        });
     }
