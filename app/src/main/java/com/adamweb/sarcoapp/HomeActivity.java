@@ -93,5 +93,16 @@ public class HomeActivity extends AppCompatActivity {
 
            }
        });
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.END)){
+            drawerLayout.closeDrawer(GravityCompat.END);
+        }
+        else {
+            super.onBackPressed();
+        }
     }
 }
