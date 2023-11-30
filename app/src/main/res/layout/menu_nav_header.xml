@@ -29,10 +29,18 @@
               app:layout_constraintEnd_toEndOf="parent"
               app:layout_constraintStart_toStartOf="parent"
               app:layout_constraintTop_toTopOf="parent" />
-          
+
           <ImageView
-              android:layout_width=""
-              android:layout_height=""
+              android:layout_width="50dp"
+              android:layout_height="50dp"
+              android:background="@drawable/icons_bg"
+              android:src="@drawable/back_icon"
+              app:layout_constraintBottom_toBottomOf="@+id/nav_profile_icon"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintHorizontal_bias="1.0"
+              app:layout_constraintStart_toEndOf="@+id/nav_profile_icon"
+              app:layout_constraintTop_toTopOf="parent"
+              app:layout_constraintVertical_bias="0.0" />
       </androidx.constraintlayout.widget.ConstraintLayout>
       
       
