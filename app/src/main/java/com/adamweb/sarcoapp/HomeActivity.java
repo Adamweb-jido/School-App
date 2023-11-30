@@ -70,8 +70,8 @@ public class HomeActivity extends AppCompatActivity {
         });
     //------------------Leaders recyclerview-------------------------------
         List<LeadersItem> items = new ArrayList<>();
-        items.add(new LeadersItem("Provost", R.drawable.provost));
-        items.add(new LeadersItem("Registerer", R.drawable.registrer));
+        items.add(new LeadersItem("Provost", R.drawable.user_profile_dp));
+        items.add(new LeadersItem("Registerer", R.drawable.user_profile_dp));
         items.add(new LeadersItem("H. O. D", R.drawable.user_profile_dp));
         items.add(new LeadersItem("Level Coordinator", R.drawable.user_profile_dp));
 
