@@ -8,6 +8,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -81,12 +82,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         //------------------Navigation drawer-------------------------------
         navigationView.setNavigationItemSelectedListener(this);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                return true;
-            }
-        });
+
+        //------------------Menu OnclickListener-------------------------------
        menu.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
@@ -110,6 +107,32 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()){
+
+            case R.id.darkMode:
+                break;
+            case R.id.photoAlbumId:
+                Intent intent = new Intent(getApplicationContext(), AlbumActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.helpId:
+                Intent intent1 = new Intent(getApplicationContext(), ListActivity.class);
+                startActivity(intent1);
+                break;
+            case R.id.myProfileId:
+                Intent intent2 = new Intent(getApplicationContext(), ProfileActivity.class);
+                startActivity(intent2);
+                break;
+            case R.id.editProfileId:
+                Intent intent3 = new Intent(getApplicationContext(), ChatActivity.class);
+                startActivity(intent3);
+                break;
+            case R.id.logoutId:
+                Intent intent4 = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent4);
+                break;
+        }
         return true;
     }
 }
