@@ -21,7 +21,7 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
 
     //------------------Views declaration-------------------------
@@ -79,10 +79,11 @@ public class HomeActivity extends AppCompatActivity {
         leaderRecycler.setAdapter(new LeaderAdapter(getApplicationContext(), items));
 
         //------------------Navigation drawer-------------------------------
+        navigationView.setNavigationItemSelectedListener(this);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                return false;
+                return true;
             }
         });
        menu.setOnClickListener(new View.OnClickListener() {
@@ -104,5 +105,10 @@ public class HomeActivity extends AppCompatActivity {
         else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        return true;
     }
 }
