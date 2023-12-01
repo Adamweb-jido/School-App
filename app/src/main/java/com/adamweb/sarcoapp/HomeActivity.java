@@ -133,6 +133,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(intent4);
                 break;
         }
-
+        return true;
     }
 }
