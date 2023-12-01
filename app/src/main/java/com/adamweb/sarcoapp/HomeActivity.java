@@ -128,10 +128,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 Intent intent3 = new Intent(getApplicationContext(), ChatActivity.class);
                 startActivity(intent3);
                 break;
-            case R.id.logoutId:
-                Intent intent4 = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent4);
-                break;
+
         }
         return true;
     }
