@@ -73,4 +73,14 @@
     <string name="welcome_note">your photo Album is your school memory, the easiest way to get connected with your school mates. yeh!! We Solved it!, you can access it everywhere.</string>
     <string name="memories">Memories, Chat With Friends.</string>
     <string name="noAccount">Don\'t Have an Account?</string>
+
+    //On boarding texts
+
+    <string name="first_heading">Your Album is Now Digital</string>
+    <string name="second_heading">Chat With your Mates Easily</string>
+    <string name="third_heading">Get Connected everywhere</string>
+    <string name="first_onboard_text">Are you tired of paying your money to get copy of your manual photo Album?, yes! we have got you covered, Sarco Pixel Allows you to access your photo Album digitally on your smartphone.</string>
+    <string name="second_onboard_text">Do you know by using sarco pixel you can chat with your mates,? moreover you can change your name, picture and even your phone number, by simply clicking on edit profile, you can do more.</string>
+    <string name="third_onboard_text">"I lost my Album Copy, and am far away from my state, how can i see my classmates" -Asked by a Student. We have solved this problem, just download sarco pixel on app store to get connected with your mates everywhere you go. </string>
+
 </resources>
