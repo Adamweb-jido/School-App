@@ -53,9 +53,11 @@ public class SliderAdapter extends PagerAdapter {
 
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.slides_layout, container, false);
+
+
         ImageView imageView = view.findViewById(R.id.img_slides);
         TextView title = view.findViewById(R.id.heading_title);
-        TextView description = view.findViewById(R.id.header_description);
+        TextView description = view.findViewById(R.id.header_descriptions);
 
         imageView.setImageResource(images[position]);
         title.setText(titles[position]);
