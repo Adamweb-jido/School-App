@@ -65,7 +65,6 @@ public class OnBoardingActivity extends AppCompatActivity {
             dots[i] = new TextView(this);
             dots[i].setText(Html.fromHtml("&#8226;"));
             dots[i].setTextSize(60);
-
             dotsLayout.addView(dots[i]);
         }
 
