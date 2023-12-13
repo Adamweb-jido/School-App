@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SarcoApp"
+
         tools:targetApi="31">
         <activity
             android:name=".OnBoardingActivity"
@@ -124,5 +125,7 @@
                 android:value="" />
         </activity>
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

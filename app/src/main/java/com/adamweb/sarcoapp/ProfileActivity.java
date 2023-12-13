@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -50,10 +51,18 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void myMssBtn(View view){
-        TextView cancelArrow;
+        TextView cancelArrow, sendEmail;
         dialog.setContentView(R.layout.message_popup_layout);
 
+        sendEmail = dialog.findViewById(R.id.sendEmail);
         cancelArrow = dialog.findViewById(R.id.cancelArrow);
+
+        sendEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendEmail();
+            }
+        });
         cancelArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,4 +72,16 @@ public class ProfileActivity extends AppCompatActivity {
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
     }
+
+
+    private void sendEmail() {
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+        emailIntent.setData(Uri.parse("mailto:")); // Only email apps should handle this
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"recipient@example.com"});
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject of the email");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Body of the email");
+
+        if (emailIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(emailIntent);
+        }
 }
