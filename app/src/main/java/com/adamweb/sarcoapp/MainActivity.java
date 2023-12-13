@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView rightSideAnim, leftSideAnim;
     TextView textAnim;
 
-    Animation leftAnim, rightAnim, textAnimation;
+    Animation leftAnim, topAnim, textAnimation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,9 +29,11 @@ public class MainActivity extends AppCompatActivity {
         leftSideAnim = findViewById(R.id.imageView3);
         textAnim = findViewById(R.id.textView);
 
-        rightAnim = AnimationUtils.loadAnimation(this, R.anim.slide_anim);
+        topAnim = AnimationUtils.loadAnimation(this, R.anim.slide_anim);
+        leftAnim = AnimationUtils.loadAnimation(this, R.anim.side_anim);
+        textAnimation = AnimationUtils.loadAnimation(this, R.anim.text_anim);
 
-        rightSideAnim.setAnimation(rightAnim);
+        rightSideAnim.setAnimation(topAnim);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
