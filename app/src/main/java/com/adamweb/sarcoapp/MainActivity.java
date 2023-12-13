@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
         textAnimation = AnimationUtils.loadAnimation(this, R.anim.text_anim);
 
         rightSideAnim.setAnimation(topAnim);
+        leftSideAnim.setAnimation(leftAnim);
+        textAnim.setAnimation(textAnimation);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
