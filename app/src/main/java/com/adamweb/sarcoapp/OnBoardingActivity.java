@@ -58,20 +58,19 @@ public class OnBoardingActivity extends AppCompatActivity {
         });
     }
 
-    private void dotsFunction(int position){
+        private void dotsFunction(int position){
         dots = new TextView[3];
         dotsLayout.removeAllViews();
-        for (int i=0; i<dots.length; i++){
+
+        for (int i=0; i < dots.length; i++){
             dots[i] = new TextView(this);
             dots[i].setText(Html.fromHtml("&#8226;"));
             dots[i].setTextSize(60);
-            dotsLayout.addView(dots[i]);
-        }
 
-        if (dots.length>0){
-            dots[position].setTextColor(getResources().getColor(R.color.purple_700));
+            dotsLayout.addView(dots[i]);
+            }
+
         }
-    }
 
     ViewPager.OnPageChangeListener onPageChangeListener = new ViewPager.OnPageChangeListener() {
         @Override
