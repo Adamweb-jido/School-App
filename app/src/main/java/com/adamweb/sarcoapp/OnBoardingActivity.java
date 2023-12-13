@@ -70,6 +70,9 @@ public class OnBoardingActivity extends AppCompatActivity {
             dotsLayout.addView(dots[i]);
             }
 
+        if ( dots.length > 0){
+            dots[position].setTextColor(getResources().getColor(R.color.purple_700));
+        }
         }
 
     ViewPager.OnPageChangeListener onPageChangeListener = new ViewPager.OnPageChangeListener() {
