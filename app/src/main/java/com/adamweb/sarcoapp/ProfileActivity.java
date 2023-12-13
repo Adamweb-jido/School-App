@@ -2,7 +2,10 @@ package com.adamweb.sarcoapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -10,14 +13,15 @@ import android.widget.TextView;
 
 public class ProfileActivity extends AppCompatActivity {
 
-   ImageView imageView, profile_image;
+   ImageView imageView, profile_image, mssgBtn;
    TextView userFullName, userEmail, phoneNumber, combination, admissionNumber, comment;
-
+   Dialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        dialog = new Dialog(this);
         imageView  = findViewById(R.id.backArrow);
         profile_image = findViewById(R.id.profile_image);
         userFullName = findViewById(R.id.fullName);
@@ -42,5 +46,21 @@ public class ProfileActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+    }
+
+    public void myMssBtn(View view){
+        TextView cancelArrow;
+        dialog.setContentView(R.layout.message_popup_layout);
+
+        cancelArrow = dialog.findViewById(R.id.cancelArrow);
+        cancelArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
     }
 }
