@@ -3,6 +3,7 @@ package com.adamweb.sarcoapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     TextView textAnim;
 
     Animation leftAnim, topAnim, textAnimation;
+    SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,9 +43,23 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(getApplicationContext(), OnBoardingActivity.class));
-                finish();
-            }
+
+                sharedPreferences = getSharedPreferences("onBoard", MODE_PRIVATE);
+                boolean isFirstTime = sharedPreferences.getBoolean("firstTime", true);
+
+                if (isFirstTime){
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putBoolean("firstTime", false);
+                    editor.commit();
+
+                    startActivity(new Intent(getApplicationContext(), OnBoardingActivity.class));
+                    finish();
+                } else {
+                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                    finish();
+                }
+                }
+
         },5000);
     }
 }

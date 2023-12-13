@@ -14,6 +14,7 @@ import androidx.viewpager.widget.PagerAdapter;
 public class SliderAdapter extends PagerAdapter {
     Context context;
     LayoutInflater layoutInflater;
+    String title1;
 
     public SliderAdapter(Context context) {
         this.context = context;
@@ -66,6 +67,7 @@ public class SliderAdapter extends PagerAdapter {
         container.addView(view);
         return view;
     }
+
 
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {

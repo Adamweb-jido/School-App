@@ -24,6 +24,7 @@ public class OnBoardingActivity extends AppCompatActivity {
     TextView [] dots;
     MaterialButton done_btn;
     Button skipBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
