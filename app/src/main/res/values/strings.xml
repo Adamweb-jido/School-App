@@ -83,6 +83,6 @@
     <string name="second_onboard_text">Do you know by using sarco pixel you can chat with your mates,? moreover you can change your name, picture and even your phone number, by simply clicking on edit profile, you can do more.</string>
     <string name="third_onboard_text">"I lost my Album Copy, and am far away from my state, how can i see my classmates" -Asked by a Student. We have solved this problem, just download sarco pixel on app store to get connected with your mates everywhere you go. </string>
 
-    <string name="send_sms">Send SMS</string>
-    <string name="send_email">Send Email</string>
+    <string name="send_sms">Send SMS Message</string>
+    <string name="send_email">Send Email Message</string>
 </resources>

@@ -14,8 +14,9 @@ import android.widget.TextView;
 
 public class ProfileActivity extends AppCompatActivity {
 
-   ImageView imageView, profile_image, mssgBtn;
-   TextView userFullName, userEmail, phoneNumber, combination, admissionNumber, comment;
+   ImageView imageView;
+    ImageView profile_image;
+    TextView userFullName, userEmail, phoneNumber, combination, admissionNumber, comment;
    Dialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +52,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void myMssBtn(View view){
-        TextView cancelArrow, sendEmail;
+        TextView sendEmail, cancelArrow;
         dialog.setContentView(R.layout.message_popup_layout);
 
         sendEmail = dialog.findViewById(R.id.sendEmail);
@@ -77,11 +78,13 @@ public class ProfileActivity extends AppCompatActivity {
     private void sendEmail() {
         Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
         emailIntent.setData(Uri.parse("mailto:")); // Only email apps should handle this
-        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"recipient@example.com"});
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"realadamweb@example.com"});
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject of the email");
         emailIntent.putExtra(Intent.EXTRA_TEXT, "Body of the email");
+
 
         if (emailIntent.resolveActivity(getPackageManager()) != null) {
             startActivity(emailIntent);
         }
+    }
 }
