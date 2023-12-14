@@ -50,7 +50,13 @@ public class OnBoardingActivity extends AppCompatActivity {
             }
         });
 
-
+        skipBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                finish();
+            }
+        });
     }
 
         private void dotsFunction(int position){
