@@ -8,17 +8,7 @@
     android:layout_gravity="center">
 
 
-    <TextView
-        android:id="@+id/cancelArrow"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:text="  X"
-        android:textSize="20sp"
-        android:layout_gravity="end"
-        android:textStyle="bold"
-        android:fontFamily="@font/suez_one"
-        android:textColor="#0D1F82"
-        android:background="@drawable/cancel_bg"/>
+
 
     <LinearLayout
         android:layout_width="match_parent"
