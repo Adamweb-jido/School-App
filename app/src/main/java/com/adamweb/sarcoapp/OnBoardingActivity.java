@@ -51,6 +51,7 @@ public class OnBoardingActivity extends AppCompatActivity {
         });
 
         skipBtn.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
@@ -74,12 +75,6 @@ public class OnBoardingActivity extends AppCompatActivity {
         if ( dots.length > 0){
             dots[position].setTextColor(getResources().getColor(R.color.purple_700));
         }
-        }
-
-    ViewPager.OnPageChangeListener onPageChangeListener = new ViewPager.OnPageChangeListener() {
-        @Override
-        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
         }
 
         @Override
