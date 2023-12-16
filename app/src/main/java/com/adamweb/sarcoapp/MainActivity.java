@@ -18,7 +18,8 @@ import com.google.android.material.button.MaterialButton;
 public class MainActivity extends AppCompatActivity {
 
 
-
+    ImageView rightSideAnim, leftSideAnim;
+    TextView textAnim;
 
     Animation leftAnim, topAnim, textAnimation;
     SharedPreferences sharedPreferences;
