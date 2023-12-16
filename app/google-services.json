@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "558884596928",
+    "project_id": "school-app-da36e",
+    "storage_bucket": "school-app-da36e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:558884596928:android:82c1768983998a7a035125",
+        "android_client_info": {
+          "package_name": "com.adamweb.sarcoapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDo61_jvYCyoe08hKrIO6nGyEaJ03A9yCA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
