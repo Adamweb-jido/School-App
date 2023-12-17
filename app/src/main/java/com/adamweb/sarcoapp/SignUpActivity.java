@@ -50,10 +50,7 @@ public class SignUpActivity extends AppCompatActivity {
              password = String.valueOf(newPassword.getText());
              confirmPassword = String.valueOf(cPassword.getText());
 
-             if (TextUtils.isEmpty(firstName)){
-                 Toast.makeText(SignUpActivity.this, "First Name is empty", Toast.LENGTH_LONG).show();
-                 return;
-             }
+
              else if(TextUtils.isEmpty(lastName)){
                     Toast.makeText(SignUpActivity.this, "Last Name is empty", Toast.LENGTH_LONG).show();
                     return;
