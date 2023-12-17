@@ -66,6 +66,7 @@
                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                        <com.google.android.material.textfield.TextInputEditText
+                           android:id="@+id/firstName"
                            android:layout_width="match_parent"
                            android:layout_height="wrap_content"
                            android:inputType="text"/>
@@ -89,6 +90,7 @@
                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                        <com.google.android.material.textfield.TextInputEditText
+                           android:id="@+id/lastName"
                            android:layout_width="match_parent"
                            android:layout_height="wrap_content"
                            android:inputType="text"/>
@@ -112,6 +114,7 @@
                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                        <com.google.android.material.textfield.TextInputEditText
+                           android:id="@+id/emailAddress"
                            android:layout_width="match_parent"
                            android:layout_height="wrap_content"
                            android:inputType="textEmailAddress"/>
@@ -135,6 +138,7 @@
                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                        <com.google.android.material.textfield.TextInputEditText
+                           android:id="@+id/createPassword"
                            android:layout_width="match_parent"
                            android:layout_height="wrap_content"
                            android:inputType="textPassword"/>
@@ -158,11 +162,18 @@
                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                        <com.google.android.material.textfield.TextInputEditText
+                           android:id="@+id/confirmPassword"
                            android:layout_width="match_parent"
                            android:layout_height="wrap_content"
                            android:inputType="textPassword"/>
                    </com.google.android.material.textfield.TextInputLayout>
 
+                   <ProgressBar
+                       android:id="@+id/firstSignUpBar"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_gravity="center"
+                       android:visibility="gone"/>
                    <com.google.android.material.button.MaterialButton
                        android:id="@+id/next"
                        android:layout_width="match_parent"
