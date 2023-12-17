@@ -38,7 +38,7 @@ public class SignUpActivity extends AppCompatActivity {
         newPassword = findViewById(R.id.createPassword);
         cPassword = findViewById(R.id.confirmPassword);
         progressBar = findViewById(R.id.firstSignUpBar);
-
+        firebaseAuth = FirebaseAuth.getInstance();
 
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,12 +72,7 @@ public class SignUpActivity extends AppCompatActivity {
              }
 
              firebaseAuth.createUserWithEmailAndPassword(firstName, lastName, emailAddress, password, confirmPassword)
-                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                         @Override
-                         public void onComplete(@NonNull Task<AuthResult> task) {
 
-                         }
-                     });
             }
         });
 
