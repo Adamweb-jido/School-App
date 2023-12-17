@@ -70,14 +70,14 @@ public class SignUpActivity extends AppCompatActivity {
                  Toast.makeText(SignUpActivity.this, "Please confirm the password first", Toast.LENGTH_LONG).show();
                  return;
              }
-             firebaseAuth.createUserWithEmailAndPassword(
-                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                 @Override
-                 public void onComplete(@NonNull Task<AuthResult> task) {
 
-                 }
-             });
-             )
+             firebaseAuth.createUserWithEmailAndPassword(firstName, lastName, emailAddress, password, confirmPassword)
+                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                         @Override
+                         public void onComplete(@NonNull Task<AuthResult> task) {
+
+                         }
+                     });
             }
         });
 
