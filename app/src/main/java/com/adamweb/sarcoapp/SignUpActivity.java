@@ -58,6 +58,8 @@ public class SignUpActivity extends AppCompatActivity {
              else if(TextUtils.isEmpty(password)){
                  Toast.makeText(SignUpActivity.this, "Password is empty", Toast.LENGTH_LONG).show();
                  newPassword.setError("Please you should fill the field");
+                 newPassword.setTextInputLayoutFocusedRectEnabled(true);
+
              }
              else if(TextUtils.isEmpty(confirmPassword)){
                  Toast.makeText(SignUpActivity.this, "Please confirm the password first", Toast.LENGTH_LONG).show();
