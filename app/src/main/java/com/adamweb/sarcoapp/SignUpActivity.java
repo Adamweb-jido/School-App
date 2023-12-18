@@ -10,13 +10,8 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -25,7 +20,6 @@ public class SignUpActivity extends AppCompatActivity {
     MaterialButton nextBtn;
     TextView login;
     ProgressBar progressBar;
-    FirebaseAuth firebaseAuth;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +32,6 @@ public class SignUpActivity extends AppCompatActivity {
         newPassword = findViewById(R.id.createPassword);
         cPassword = findViewById(R.id.confirmPassword);
         progressBar = findViewById(R.id.firstSignUpBar);
-        firebaseAuth = FirebaseAuth.getInstance();
 
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,27 +45,26 @@ public class SignUpActivity extends AppCompatActivity {
 
              if (TextUtils.isEmpty(firstName)){
                  Toast.makeText(SignUpActivity.this, "First Name is empty", Toast.LENGTH_LONG).show();
-                 return;
+                 fName.setError("Please you should fill the field");
              }
              else if(TextUtils.isEmpty(lastName)){
                     Toast.makeText(SignUpActivity.this, "Last Name is empty", Toast.LENGTH_LONG).show();
-                    return;
+                    lName.setError("Please you should fill the field");
                 }
              else if(TextUtils.isEmpty(emailAddress)){
                  Toast.makeText(SignUpActivity.this, "Email Address is empty", Toast.LENGTH_LONG).show();
-                 return;
+                 email.setError("Please you should fill the field");
              }
              else if(TextUtils.isEmpty(password)){
                  Toast.makeText(SignUpActivity.this, "Password is empty", Toast.LENGTH_LONG).show();
-                 return;
+                 newPassword.setError("Please you should fill the field");
              }
              else if(TextUtils.isEmpty(confirmPassword)){
                  Toast.makeText(SignUpActivity.this, "Please confirm the password first", Toast.LENGTH_LONG).show();
-                 return;
+                cPassword.setError("Please you should fill the field");
+             } else {
+                 Toast.makeText(SignUpActivity.this, "you have successfully registered", Toast.LENGTH_LONG).show();
              }
-
-             firebaseAuth.createUserWithEmailAndPassword(firstName, lastName, emailAddress, password, confirmPassword)
-
             }
         });
 
