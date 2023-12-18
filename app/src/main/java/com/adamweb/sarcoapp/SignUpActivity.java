@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -20,6 +21,7 @@ public class SignUpActivity extends AppCompatActivity {
     MaterialButton nextBtn;
     TextView login;
     ProgressBar progressBar;
+    FirebaseAuth firebaseAuth;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,7 @@ public class SignUpActivity extends AppCompatActivity {
         newPassword = findViewById(R.id.createPassword);
         cPassword = findViewById(R.id.confirmPassword);
         progressBar = findViewById(R.id.firstSignUpBar);
+        firebaseAuth = FirebaseAuth.getInstance();
 
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
