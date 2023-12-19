@@ -74,9 +74,7 @@ public class SignUpActivity extends AppCompatActivity {
                     newPassword.setError("set required password");
                     newPassword.setTextInputLayoutFocusedRectEnabled(true);
                     newPassword.requestFocus();
-                } else if (!password.equals(confirmPassword)) {
-                    Toast.makeText(SignUpActivity.this, "Password miss match!", Toast.LENGTH_LONG).show();
-                    cPassword.setError("fill the password correctly");
+                } else if (!
                 } else {
                     //myFirebaseAuthFunction();
                 }
