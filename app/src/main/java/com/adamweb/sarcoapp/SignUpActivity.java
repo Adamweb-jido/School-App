@@ -41,61 +41,48 @@ public class SignUpActivity extends AppCompatActivity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-             String firstName, lastName, emailAddress, password, confirmPassword;
-             firstName = String.valueOf(fName.getText());
-             lastName = String.valueOf(lName.getText());
-             emailAddress = String.valueOf(email.getText());
-             password = String.valueOf(newPassword.getText());
-             confirmPassword = String.valueOf(cPassword.getText());
+                String firstName, lastName, emailAddress, password, confirmPassword;
+                firstName = String.valueOf(fName.getText());
+                lastName = String.valueOf(lName.getText());
+                emailAddress = String.valueOf(email.getText());
+                password = String.valueOf(newPassword.getText());
+                confirmPassword = String.valueOf(cPassword.getText());
 
-             if (TextUtils.isEmpty(firstName)){
-                 Toast.makeText(SignUpActivity.this, "First Name is empty", Toast.LENGTH_LONG).show();
-                 fName.setError("Please you should fill the field");
-                 fName.requestFocus();
-             }
-             else if(TextUtils.isEmpty(lastName)){
+                if (TextUtils.isEmpty(firstName)) {
+                    Toast.makeText(SignUpActivity.this, "First Name is empty", Toast.LENGTH_LONG).show();
+                    fName.setError("Please you should fill the field");
+                    fName.requestFocus();
+                } else if (TextUtils.isEmpty(lastName)) {
                     Toast.makeText(SignUpActivity.this, "Last Name is empty", Toast.LENGTH_LONG).show();
                     lName.setError("Please you should fill the field");
                     lName.requestFocus();
+                } else if (TextUtils.isEmpty(emailAddress)) {
+                    Toast.makeText(SignUpActivity.this, "Email Address is empty", Toast.LENGTH_LONG).show();
+                    email.setError("Please input email address");
+                    email.requestFocus();
+                } else if (!Patterns.EMAIL_ADDRESS.matcher(emailAddress).matches()) {
+                    Toast.makeText(SignUpActivity.this, "Invalid Email Address", Toast.LENGTH_LONG).show();
+                    email.setError("Please enter valid email");
+                    email.requestFocus();
+                } else if (TextUtils.isEmpty(password)) {
+                    Toast.makeText(SignUpActivity.this, "Password is empty", Toast.LENGTH_LONG).show();
+                    newPassword.setError("Please you should fill the field");
+                    newPassword.setTextInputLayoutFocusedRectEnabled(true);
+                    newPassword.requestFocus();
+                } else if (password.length() < 6) {
+                    Toast.makeText(SignUpActivity.this, "Password is less than 6 digit", Toast.LENGTH_LONG).show();
+                    newPassword.setError("set required password");
+                    newPassword.setTextInputLayoutFocusedRectEnabled(true);
+                    newPassword.requestFocus();
+                } else if (!password.equals(confirmPassword)) {
+                    Toast.makeText(SignUpActivity.this, "Password miss match!", Toast.LENGTH_LONG).show();
+                    cPassword.setError("fill the password correctly");
+                } else {
+                    //myFirebaseAuthFunction();
                 }
-
-             else if (TextUtils.isEmpty(emailAddress)){
-                 Toast.makeText(SignUpActivity.this, "Email Address is empty", Toast.LENGTH_LONG).show();
-                 email.setError("Please input email address");
-                 email.requestFocus();
-             }
-             else if(!Patterns.EMAIL_ADDRESS.matcher(emailAddress).matches()){
-                 Toast.makeText(SignUpActivity.this, "Invalid Email Address", Toast.LENGTH_LONG).show();
-                 email.setError("Please enter valid email");
-                 email.requestFocus();
-             }
-             else if(TextUtils.isEmpty(password)){
-                 Toast.makeText(SignUpActivity.this, "Password is empty", Toast.LENGTH_LONG).show();
-                 newPassword.setError("Please you should fill the field");
-                 newPassword.setTextInputLayoutFocusedRectEnabled(true);
-                 newPassword.requestFocus();
-             }
-             else if(password.length() < 6){
-                 Toast.makeText(SignUpActivity.this, "Password is less than 6 digit", Toast.LENGTH_LONG).show();
-                 newPassword.setError("set required password");
-                 newPassword.setTextInputLayoutFocusedRectEnabled(true);
-                 newPassword.requestFocus();
-             }
-             else if(!password.equals(confirmPassword)){
-                 Toast.makeText(SignUpActivity.this, "Password miss match!", Toast.LENGTH_LONG).show();
-                cPassword.setError("fill the password correctly");
-             } else {
-                myFirebaseAuthFunction();
-             }
             }
         });
 
 
-
-
-    private void myFirebaseAuthFunction() {
-        firebaseAuth.createUserWithEmailAndPassword(email, password){
-
-        }
     }
 }
