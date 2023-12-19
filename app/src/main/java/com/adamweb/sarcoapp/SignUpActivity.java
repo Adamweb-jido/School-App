@@ -70,7 +70,10 @@ public class SignUpActivity extends AppCompatActivity {
                     newPassword.setTextInputLayoutFocusedRectEnabled(true);
                     newPassword.requestFocus();
                 } else if (password.length() < 6) {
-
+                    Toast.makeText(SignUpActivity.this, "Password is less than 6 digit", Toast.LENGTH_LONG).show();
+                    newPassword.setError("set required password");
+                    newPassword.setTextInputLayoutFocusedRectEnabled(true);
+                    newPassword.requestFocus();
                 } else if (!password.equals(confirmPassword)) {
                     Toast.makeText(SignUpActivity.this, "Password miss match!", Toast.LENGTH_LONG).show();
                     cPassword.setError("fill the password correctly");
