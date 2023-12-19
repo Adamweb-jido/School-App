@@ -82,7 +82,7 @@ public class SignUpActivity extends AppCompatActivity {
              }
              else if(!password.equals(confirmPassword)){
                  Toast.makeText(SignUpActivity.this, "Password miss match!", Toast.LENGTH_LONG).show();
-                cPassword.setError("Please you should fill the field");
+                cPassword.setError("fill the password correctly");
              } else {
                 myFirebaseAuthFunction();
              }
@@ -90,7 +90,7 @@ public class SignUpActivity extends AppCompatActivity {
         });
 
         login = findViewById(R.id.loginLink);
-        login.setOnClickListener(new View.OnClickListener() {
+        login.setOnClickListener(new viOnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
