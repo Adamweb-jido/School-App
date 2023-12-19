@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -49,26 +50,41 @@ public class SignUpActivity extends AppCompatActivity {
              if (TextUtils.isEmpty(firstName)){
                  Toast.makeText(SignUpActivity.this, "First Name is empty", Toast.LENGTH_LONG).show();
                  fName.setError("Please you should fill the field");
+                 fName.requestFocus();
              }
              else if(TextUtils.isEmpty(lastName)){
                     Toast.makeText(SignUpActivity.this, "Last Name is empty", Toast.LENGTH_LONG).show();
                     lName.setError("Please you should fill the field");
+                    lName.requestFocus();
                 }
-             else if(TextUtils.isEmpty(emailAddress)){
+
+             else if (TextUtils.isEmpty(emailAddress)){
                  Toast.makeText(SignUpActivity.this, "Email Address is empty", Toast.LENGTH_LONG).show();
-                 email.setError("Please you should fill the field");
+                 email.setError("Please input email address");
+                 email.requestFocus();
+             }
+             else if(!Patterns.EMAIL_ADDRESS.matcher(emailAddress).matches()){
+                 Toast.makeText(SignUpActivity.this, "Invalid Email Address", Toast.LENGTH_LONG).show();
+                 email.setError("Please enter valid email");
+                 email.requestFocus();
              }
              else if(TextUtils.isEmpty(password)){
                  Toast.makeText(SignUpActivity.this, "Password is empty", Toast.LENGTH_LONG).show();
                  newPassword.setError("Please you should fill the field");
                  newPassword.setTextInputLayoutFocusedRectEnabled(true);
-
+                 newPassword.requestFocus();
              }
-             else if(TextUtils.isEmpty(confirmPassword)){
-                 Toast.makeText(SignUpActivity.this, "Please confirm the password first", Toast.LENGTH_LONG).show();
+             else if(password.length() < 6){
+                 Toast.makeText(SignUpActivity.this, "Password is less than 6 digit", Toast.LENGTH_LONG).show();
+                 newPassword.setError("set required password");
+                 newPassword.setTextInputLayoutFocusedRectEnabled(true);
+                 newPassword.requestFocus();
+             }
+             else if(!password.equals(confirmPassword)){
+                 Toast.makeText(SignUpActivity.this, "Password miss match!", Toast.LENGTH_LONG).show();
                 cPassword.setError("Please you should fill the field");
              } else {
-                 Toast.makeText(SignUpActivity.this, "you have successfully registered", Toast.LENGTH_LONG).show();
+                myFirebaseAuthFunction();
              }
             }
         });
@@ -81,5 +97,11 @@ public class SignUpActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void myFirebaseAuthFunction() {
+        firebaseAuth.createUserWithEmailAndPassword(email, password){
+
+        }
     }
 }
