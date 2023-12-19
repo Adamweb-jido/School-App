@@ -29,6 +29,7 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         nextBtn = findViewById(R.id.next);
+        login = findViewById(R.id.loginLink);
         fName = findViewById(R.id.firstName);
         lName = findViewById(R.id.lastName);
         email = findViewById(R.id.emailAddress);
@@ -89,15 +90,8 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
-        login = findViewById(R.id.loginLink);
-        login.setOnClickListener(new viOnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
+
+
 
     private void myFirebaseAuthFunction() {
         firebaseAuth.createUserWithEmailAndPassword(email, password){
