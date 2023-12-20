@@ -79,7 +79,9 @@ public class SignUpActivity extends AppCompatActivity {
                     cPassword.setError("fill the password correctly");
                 } else {
                     Toast.makeText(getApplicationContext(), "Registration is ongoing......", Toast.LENGTH_LONG).show();
-
+                    progressDialog = new ProgressDialog(SignUpActivity.this);
+                    progressDialog.setTitle("Registration");
+                    progressDialog.show();
                     //myFirebaseAuthFunction();
                 }
             }
