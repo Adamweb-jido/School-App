@@ -81,6 +81,7 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Registration is ongoing......", Toast.LENGTH_LONG).show();
                     progressDialog = new ProgressDialog(SignUpActivity.this);
                     progressDialog.setTitle("Registration");
+                    progressDialog.setMessage("Please wait while creating your account");
                     progressDialog.show();
                     //myFirebaseAuthFunction();
                 }
