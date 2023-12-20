@@ -3,6 +3,7 @@ package com.adamweb.sarcoapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -21,7 +22,7 @@ public class SignUpActivity extends AppCompatActivity {
     TextInputEditText fName, lName, email, newPassword, cPassword;
     MaterialButton nextBtn;
     TextView login;
-    ProgressBar progressBar;
+    ProgressDialog progressDialog;
     FirebaseAuth firebaseAuth;
     @Override
 
@@ -35,7 +36,6 @@ public class SignUpActivity extends AppCompatActivity {
         email = findViewById(R.id.emailAddress);
         newPassword = findViewById(R.id.createPassword);
         cPassword = findViewById(R.id.confirmPassword);
-        progressBar = findViewById(R.id.firstSignUpBar);
         //firebaseAuth = FirebaseAuth.getInstance();
 
         nextBtn.setOnClickListener(new View.OnClickListener() {
@@ -79,7 +79,7 @@ public class SignUpActivity extends AppCompatActivity {
                     cPassword.setError("fill the password correctly");
                 } else {
                     Toast.makeText(getApplicationContext(), "Registration is ongoing......", Toast.LENGTH_LONG).show();
-                    progressBar.setVisibility(View.VISIBLE);
+
                     //myFirebaseAuthFunction();
                 }
             }
