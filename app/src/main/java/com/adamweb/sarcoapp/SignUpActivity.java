@@ -36,8 +36,9 @@ public class SignUpActivity extends AppCompatActivity {
         newPassword = findViewById(R.id.createPassword);
         cPassword = findViewById(R.id.confirmPassword);
         progressBar = findViewById(R.id.firstSignUpBar);
-        firebaseAuth = FirebaseAuth.getInstance();
+        //firebaseAuth = FirebaseAuth.getInstance();
 
+        progressBar.setBackgroundColor(getResources().getColor(R.color.purple_700));
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
