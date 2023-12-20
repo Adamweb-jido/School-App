@@ -78,6 +78,8 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast.makeText(SignUpActivity.this, "Password miss match!", Toast.LENGTH_LONG).show();
                     cPassword.setError("fill the password correctly");
                 } else {
+                    Toast.makeText(getApplicationContext(), "Registration is ongoing......", Toast.LENGTH_LONG).show();
+                    progressBar.setVisibility(View.VISIBLE);
                     //myFirebaseAuthFunction();
                 }
             }
