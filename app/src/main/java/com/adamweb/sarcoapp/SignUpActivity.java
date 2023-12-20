@@ -82,6 +82,7 @@ public class SignUpActivity extends AppCompatActivity {
                     progressDialog = new ProgressDialog(SignUpActivity.this);
                     progressDialog.setTitle("Registration");
                     progressDialog.setMessage("Please wait while creating your account");
+                    progressDialog.setCanceledOnTouchOutside(true);
                     progressDialog.show();
                     //myFirebaseAuthFunction();
                 }
