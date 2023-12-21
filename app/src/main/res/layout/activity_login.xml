@@ -113,17 +113,13 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
 
 
                 <ProgressBar
                     android:id="@+id/loginProgressBar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    style="@style/CustomProgressBar"/>
+                    android:layout_gravity="center"/>
 
 
                 <com.google.android.material.button.MaterialButton
@@ -137,9 +133,6 @@
                     android:textSize="20sp"
                     app:cornerRadius="10dp" />
 
-
-
-            </RelativeLayout>
 
             <TextView
                 android:layout_width="match_parent"
