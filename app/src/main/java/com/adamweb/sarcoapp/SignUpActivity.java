@@ -12,9 +12,13 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class SignUpActivity extends AppCompatActivity {
@@ -37,8 +41,7 @@ public class SignUpActivity extends AppCompatActivity {
         email = findViewById(R.id.emailAddress);
         newPassword = findViewById(R.id.createPassword);
         cPassword = findViewById(R.id.confirmPassword);
-
-        //firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
 
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,17 +83,37 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast.makeText(SignUpActivity.this, "Password miss match!", Toast.LENGTH_LONG).show();
                     cPassword.setError("fill the password correctly");
                 } else {
-                    Toast.makeText(getApplicationContext(), "Registration is ongoing......", Toast.LENGTH_LONG).show();
                     progressDialog = new ProgressDialog(SignUpActivity.this);
                     progressDialog.setTitle("Registration");
                     progressDialog.setMessage("Please wait while creating your account");
                     progressDialog.setCanceledOnTouchOutside(true);
                     progressDialog.show();
-                    //myFirebaseAuthFunction();
+                    registerUser(firstName, lastName, emailAddress, password);
                 }
             }
         });
 
 
+    }
+
+    private void registerUser(String firstName, String lastName, String emailAddress, String password) {
+        firebaseAuth.createUserWithEmailAndPassword(emailAddress, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()){
+                        Toast.makeText(getApplicationContext(), "Registration is ongoing......", Toast.LENGTH_LONG).show();
+                            sendToHomeActivity();
+                            progressDialog.dismiss();
+                    }
+                    }
+                });
+    }
+
+    private void sendToHomeActivity() {
+        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
     }
 }
