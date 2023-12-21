@@ -47,7 +47,7 @@
             android:id="@+id/profileIcon"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/adamweb"
+            android:src="@drawable/user_profile_dp"
             app:civ_border_color="@color/white"
             app:civ_border_width="3dp"
             app:layout_constraintBottom_toBottomOf="parent"
