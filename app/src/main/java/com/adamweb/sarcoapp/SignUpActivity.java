@@ -1,5 +1,6 @@
 package com.adamweb.sarcoapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -9,8 +10,14 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
 public class SignUpActivity extends AppCompatActivity {
 
 
@@ -72,12 +79,11 @@ public class SignUpActivity extends AppCompatActivity {
                     cPassword.setError("fill the password correctly");
                 } else {
                     progressDialog = new ProgressDialog(SignUpActivity.this);
-                    //progressDialog.setTitle("Registration");
                     progressDialog.setMessage("Please wait while creating your account");
                     progressDialog.setCanceledOnTouchOutside(true);
                     progressDialog.show();
-                   // registerUser(firstName, lastName, emailAddress, password);
-                    sendToHomeActivity();
+                   registerUser(firstName, lastName, emailAddress, password);
+                    //sendToHomeActivity();
                 }
             }
         });
@@ -85,21 +91,22 @@ public class SignUpActivity extends AppCompatActivity {
 
     }
 
-   /* private void registerUser(String firstName, String lastName, String emailAddress, String password) {
-        mAuth = FirebaseAuth.getInstance();
-        mAuth.createUserWithEmailAndPassword(emailAddress, password)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()){
-                        Toast.makeText(getApplicationContext(), "Registration is ongoing......", Toast.LENGTH_LONG).show();
-                            sendToHomeActivity();
-                            progressDialog.dismiss();
-                    }
-                    }
-                });
-    }
-  */
+   private void registerUser(String firstName, String lastName, String emailAddress, String password) {
+
+       FirebaseAuth mAuth = FirebaseAuth.getInstance();
+       mAuth.createUserWithEmailAndPassword(emailAddress, password)
+               .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                   @Override
+                   public void onComplete(@NonNull Task<AuthResult> task) {
+                       if (task.isSuccessful()){
+                           Toast.makeText(getApplicationContext(), "You have successfully registered", Toast.LENGTH_LONG).show();
+                           sendToHomeActivity();
+                       }
+                   }
+               });
+
+   }
+
     private void sendToHomeActivity() {
         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
