@@ -28,7 +28,7 @@ public class SignUpActivity extends AppCompatActivity {
     MaterialButton nextBtn;
     TextView login;
     ProgressDialog progressDialog;
-    FirebaseAuth firebaseAuth;
+    FirebaseAuth mAuth;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +41,6 @@ public class SignUpActivity extends AppCompatActivity {
         email = findViewById(R.id.emailAddress);
         newPassword = findViewById(R.id.createPassword);
         cPassword = findViewById(R.id.confirmPassword);
-        firebaseAuth = FirebaseAuth.getInstance();
 
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,7 +96,8 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void registerUser(String firstName, String lastName, String emailAddress, String password) {
-        firebaseAuth.createUserWithEmailAndPassword(emailAddress, password)
+        mAuth = FirebaseAuth.getInstance();
+        mAuth.createUserWithEmailAndPassword(emailAddress, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
