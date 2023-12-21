@@ -54,7 +54,7 @@ public class SignUpActivity extends AppCompatActivity {
                 if (TextUtils.isEmpty(firstName)) {
                     Toast.makeText(SignUpActivity.this, "First Name is empty", Toast.LENGTH_LONG).show();
                     firstNameLayout.setError("Please write your name");
-                    fName.requestFocus();
+                    return;
                 } else if (TextUtils.isEmpty(lastName)) {
                     Toast.makeText(SignUpActivity.this, "Last Name is empty", Toast.LENGTH_LONG).show();
                     lName.setError("Please you should fill the field");
