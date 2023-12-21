@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "380835073398",
+    "project_id": "sarco-pixel",
+    "storage_bucket": "sarco-pixel.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:380835073398:android:28fab7dc71f66908e2be57",
+        "android_client_info": {
+          "package_name": "com.adamweb.sarcoapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvW4xVMUv3ch0Qp2Ul3y_OaWzocrywBi0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
