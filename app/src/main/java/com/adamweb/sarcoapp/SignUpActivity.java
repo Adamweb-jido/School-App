@@ -1,26 +1,16 @@
 package com.adamweb.sarcoapp;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-
 public class SignUpActivity extends AppCompatActivity {
 
 
@@ -28,7 +18,6 @@ public class SignUpActivity extends AppCompatActivity {
     MaterialButton nextBtn;
     TextView login;
     ProgressDialog progressDialog;
-    FirebaseAuth mAuth;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,11 +72,12 @@ public class SignUpActivity extends AppCompatActivity {
                     cPassword.setError("fill the password correctly");
                 } else {
                     progressDialog = new ProgressDialog(SignUpActivity.this);
-                    progressDialog.setTitle("Registration");
+                    //progressDialog.setTitle("Registration");
                     progressDialog.setMessage("Please wait while creating your account");
                     progressDialog.setCanceledOnTouchOutside(true);
                     progressDialog.show();
-                    registerUser(firstName, lastName, emailAddress, password);
+                   // registerUser(firstName, lastName, emailAddress, password);
+                    sendToHomeActivity();
                 }
             }
         });
@@ -95,7 +85,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     }
 
-    private void registerUser(String firstName, String lastName, String emailAddress, String password) {
+   /* private void registerUser(String firstName, String lastName, String emailAddress, String password) {
         mAuth = FirebaseAuth.getInstance();
         mAuth.createUserWithEmailAndPassword(emailAddress, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -109,11 +99,12 @@ public class SignUpActivity extends AppCompatActivity {
                     }
                 });
     }
-
+  */
     private void sendToHomeActivity() {
         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         finish();
+        progressDialog.dismiss();
     }
 }
