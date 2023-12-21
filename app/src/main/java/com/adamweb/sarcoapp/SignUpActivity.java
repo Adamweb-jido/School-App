@@ -14,12 +14,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class SignUpActivity extends AppCompatActivity {
 
 
     TextInputEditText fName, lName, email, newPassword, cPassword;
+    TextInputLayout firstNameLayout;
     MaterialButton nextBtn;
     TextView login;
     ProgressDialog progressDialog;
@@ -36,6 +38,7 @@ public class SignUpActivity extends AppCompatActivity {
         email = findViewById(R.id.emailAddress);
         newPassword = findViewById(R.id.createPassword);
         cPassword = findViewById(R.id.confirmPassword);
+        firstNameLayout = findViewById(R.id.fistNameLayout);
         //firebaseAuth = FirebaseAuth.getInstance();
 
         nextBtn.setOnClickListener(new View.OnClickListener() {
@@ -50,7 +53,7 @@ public class SignUpActivity extends AppCompatActivity {
 
                 if (TextUtils.isEmpty(firstName)) {
                     Toast.makeText(SignUpActivity.this, "First Name is empty", Toast.LENGTH_LONG).show();
-                    fName.setError("Please you should fill the field");
+                    firstNameLayout.setError("Please write your name");
                     fName.requestFocus();
                 } else if (TextUtils.isEmpty(lastName)) {
                     Toast.makeText(SignUpActivity.this, "Last Name is empty", Toast.LENGTH_LONG).show();
