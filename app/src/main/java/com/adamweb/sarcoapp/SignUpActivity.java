@@ -21,7 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class SignUpActivity extends AppCompatActivity {
 
 
-    TextInputEditText fName, lName, email, newPassword, cPassword;
+    TextInputEditText fName, lName, email, newPassword, cPassword, admNumber, phoneNumber;
     MaterialButton nextBtn;
     TextView login;
     ProgressDialog progressDialog;
@@ -37,16 +37,20 @@ public class SignUpActivity extends AppCompatActivity {
         email = findViewById(R.id.emailAddress);
         newPassword = findViewById(R.id.createPassword);
         cPassword = findViewById(R.id.confirmPassword);
+        admNumber = findViewById(R.id.urAdmNumber);
+        phoneNumber = findViewById(R.id.urPhoneNumber);
 
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String firstName, lastName, emailAddress, password, confirmPassword;
+                String firstName, lastName, emailAddress, password, confirmPassword, admissionNo, phoneNo;
                 firstName = String.valueOf(fName.getText());
                 lastName = String.valueOf(lName.getText());
                 emailAddress = String.valueOf(email.getText());
                 password = String.valueOf(newPassword.getText());
                 confirmPassword = String.valueOf(cPassword.getText());
+                admissionNo = String.valueOf(admNumber.getText());
+                phoneNo = String.valueOf(admNumber.getText());
 
                 if (TextUtils.isEmpty(firstName)) {
                     Toast.makeText(SignUpActivity.this, "First Name is empty", Toast.LENGTH_LONG).show();
@@ -77,12 +81,20 @@ public class SignUpActivity extends AppCompatActivity {
                 } else if (!password.equals(confirmPassword)) {
                     Toast.makeText(SignUpActivity.this, "Password miss match!", Toast.LENGTH_LONG).show();
                     cPassword.setError("fill the password correctly");
+                } else if (TextUtils.isEmpty(admissionNo)){
+                    Toast.makeText(SignUpActivity.this, "Admission Number is Empty", Toast.LENGTH_LONG).show();
+                    admNumber.setError("Please you should fill the field");
+                    admNumber.requestFocus();
+                } else if (TextUtils.isEmpty(phoneNo)){
+                    Toast.makeText(SignUpActivity.this, "Phone Number is empty", Toast.LENGTH_LONG).show();
+                    phoneNumber.setError("Please you should fill the field");
+                    phoneNumber.requestFocus();
                 } else {
                     progressDialog = new ProgressDialog(SignUpActivity.this);
                     progressDialog.setMessage("Please wait while creating your account");
                     progressDialog.setCanceledOnTouchOutside(true);
                     progressDialog.show();
-                   registerUser(firstName, lastName, emailAddress, password);
+                   registerUser(firstName, lastName, emailAddress, password, admissionNo,phoneNo);
                 }
             }
         });
@@ -90,7 +102,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     }
 
-   private void registerUser(String firstName, String lastName, String emailAddress, String password) {
+   private void registerUser(String firstName, String lastName, String emailAddress, String password, String admissionNo, String phoneNo) {
        FirebaseAuth mAuth = FirebaseAuth.getInstance();
        mAuth.createUserWithEmailAndPassword(emailAddress, password)
                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
