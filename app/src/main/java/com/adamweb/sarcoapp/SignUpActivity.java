@@ -109,6 +109,7 @@ public class SignUpActivity extends AppCompatActivity {
                    }
                });
 
+
    }
 
     private void sendToHomeActivity() {
