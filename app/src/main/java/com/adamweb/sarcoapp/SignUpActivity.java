@@ -83,7 +83,6 @@ public class SignUpActivity extends AppCompatActivity {
                     progressDialog.setCanceledOnTouchOutside(true);
                     progressDialog.show();
                    registerUser(firstName, lastName, emailAddress, password);
-                    //sendToHomeActivity();
                 }
             }
         });
@@ -92,7 +91,6 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
    private void registerUser(String firstName, String lastName, String emailAddress, String password) {
-
        FirebaseAuth mAuth = FirebaseAuth.getInstance();
        mAuth.createUserWithEmailAndPassword(emailAddress, password)
                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
