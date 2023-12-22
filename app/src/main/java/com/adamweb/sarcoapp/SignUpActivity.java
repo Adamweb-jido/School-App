@@ -40,62 +40,59 @@ public class SignUpActivity extends AppCompatActivity {
         admNumber = findViewById(R.id.urAdmNumber);
         phoneNumber = findViewById(R.id.urPhoneNumber);
 
-        nextBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String firstName, lastName, emailAddress, password, confirmPassword, admissionNo, phoneNo;
-                firstName = String.valueOf(fName.getText());
-                lastName = String.valueOf(lName.getText());
-                emailAddress = String.valueOf(email.getText());
-                password = String.valueOf(newPassword.getText());
-                confirmPassword = String.valueOf(cPassword.getText());
-                admissionNo = String.valueOf(admNumber.getText());
-                phoneNo = String.valueOf(admNumber.getText());
+        nextBtn.setOnClickListener(view -> {
+            String firstName, lastName, emailAddress, password, confirmPassword, admissionNo, phoneNo;
+            firstName = String.valueOf(fName.getText());
+            lastName = String.valueOf(lName.getText());
+            emailAddress = String.valueOf(email.getText());
+            password = String.valueOf(newPassword.getText());
+            confirmPassword = String.valueOf(cPassword.getText());
+            admissionNo = String.valueOf(admNumber.getText());
+            phoneNo = String.valueOf(admNumber.getText());
 
-                if (TextUtils.isEmpty(firstName)) {
-                    Toast.makeText(SignUpActivity.this, "First Name is empty", Toast.LENGTH_LONG).show();
-                    fName.setError("Please you should fill the field");
-                    fName.requestFocus();
-                } else if (TextUtils.isEmpty(lastName)) {
-                    Toast.makeText(SignUpActivity.this, "Last Name is empty", Toast.LENGTH_LONG).show();
-                    lName.setError("Please you should fill the field");
-                    lName.requestFocus();
-                } else if (TextUtils.isEmpty(emailAddress)) {
-                    Toast.makeText(SignUpActivity.this, "Email Address is empty", Toast.LENGTH_LONG).show();
-                    email.setError("Please input email address");
-                    email.requestFocus();
-                } else if (!Patterns.EMAIL_ADDRESS.matcher(emailAddress).matches()) {
-                    Toast.makeText(SignUpActivity.this, "Invalid Email Address", Toast.LENGTH_LONG).show();
-                    email.setError("Please enter valid email");
-                    email.requestFocus();
-                } else if (TextUtils.isEmpty(password)) {
-                    Toast.makeText(SignUpActivity.this, "Password is empty", Toast.LENGTH_LONG).show();
-                    newPassword.setError("Please you should fill the field");
-                    newPassword.setTextInputLayoutFocusedRectEnabled(true);
-                    newPassword.requestFocus();
-                } else if (password.length() < 6) {
-                    Toast.makeText(SignUpActivity.this, "Password is less than 6 digit", Toast.LENGTH_LONG).show();
-                    newPassword.setError("set required password");
-                    newPassword.setTextInputLayoutFocusedRectEnabled(true);
-                    newPassword.requestFocus();
-                } else if (!password.equals(confirmPassword)) {
-                    Toast.makeText(SignUpActivity.this, "Password miss match!", Toast.LENGTH_LONG).show();
-                    cPassword.setError("fill the password correctly");
-                } else if (TextUtils.isEmpty(admissionNo)){
-                    Toast.makeText(SignUpActivity.this, "Admission Number is Empty", Toast.LENGTH_LONG).show();
-                    admNumber.setError("Please you should fill the field");
-                    admNumber.requestFocus();
-                } else if (TextUtils.isEmpty(phoneNo)){
-                    Toast.makeText(SignUpActivity.this, "Phone Number is empty", Toast.LENGTH_LONG).show();
-                    phoneNumber.setError("Please you should fill the field");
-                    phoneNumber.requestFocus();
-                } else {
-                    progressDialog = new ProgressDialog(SignUpActivity.this);
-                    progressDialog.setMessage("Please wait while creating your account");
-                    progressDialog.setCanceledOnTouchOutside(true);
-                    progressDialog.show();
-                   registerUser(firstName, lastName, emailAddress, password, admissionNo,phoneNo);
-                }
+            if (TextUtils.isEmpty(firstName)) {
+                Toast.makeText(SignUpActivity.this, "First Name is empty", Toast.LENGTH_LONG).show();
+                fName.setError("Please you should fill the field");
+                fName.requestFocus();
+            } else if (TextUtils.isEmpty(lastName)) {
+                Toast.makeText(SignUpActivity.this, "Last Name is empty", Toast.LENGTH_LONG).show();
+                lName.setError("Please you should fill the field");
+                lName.requestFocus();
+            } else if (TextUtils.isEmpty(emailAddress)) {
+                Toast.makeText(SignUpActivity.this, "Email Address is empty", Toast.LENGTH_LONG).show();
+                email.setError("Please input email address");
+                email.requestFocus();
+            } else if (!Patterns.EMAIL_ADDRESS.matcher(emailAddress).matches()) {
+                Toast.makeText(SignUpActivity.this, "Invalid Email Address", Toast.LENGTH_LONG).show();
+                email.setError("Please enter valid email");
+                email.requestFocus();
+            } else if (TextUtils.isEmpty(password)) {
+                Toast.makeText(SignUpActivity.this, "Password is empty", Toast.LENGTH_LONG).show();
+                newPassword.setError("Please you should fill the field");
+                newPassword.setTextInputLayoutFocusedRectEnabled(true);
+                newPassword.requestFocus();
+            } else if (password.length() < 6) {
+                Toast.makeText(SignUpActivity.this, "Password is less than 6 digit", Toast.LENGTH_LONG).show();
+                newPassword.setError("set required password");
+                newPassword.setTextInputLayoutFocusedRectEnabled(true);
+                newPassword.requestFocus();
+            } else if (!password.equals(confirmPassword)) {
+                Toast.makeText(SignUpActivity.this, "Password miss match!", Toast.LENGTH_LONG).show();
+                cPassword.setError("fill the password correctly");
+            } else if (TextUtils.isEmpty(admissionNo)){
+                Toast.makeText(SignUpActivity.this, "Admission Number is Empty", Toast.LENGTH_LONG).show();
+                admNumber.setError("Please you should fill the field");
+                admNumber.requestFocus();
+            } else if (TextUtils.isEmpty(phoneNo)){
+                Toast.makeText(SignUpActivity.this, "Phone Number is empty", Toast.LENGTH_LONG).show();
+                phoneNumber.setError("Please you should fill the field");
+                phoneNumber.requestFocus();
+            } else {
+                progressDialog = new ProgressDialog(SignUpActivity.this);
+                progressDialog.setMessage("Please wait while creating your account");
+                progressDialog.setCanceledOnTouchOutside(true);
+                progressDialog.show();
+               registerUser(firstName, lastName, emailAddress, password, admissionNo,phoneNo);
             }
         });
 
@@ -105,13 +102,10 @@ public class SignUpActivity extends AppCompatActivity {
    private void registerUser(String firstName, String lastName, String emailAddress, String password, String admissionNo, String phoneNo) {
        FirebaseAuth mAuth = FirebaseAuth.getInstance();
        mAuth.createUserWithEmailAndPassword(emailAddress, password)
-               .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                   @Override
-                   public void onComplete(@NonNull Task<AuthResult> task) {
-                       if (task.isSuccessful()){
-                           Toast.makeText(getApplicationContext(), "You have successfully registered", Toast.LENGTH_LONG).show();
-                           sendToHomeActivity();
-                       }
+               .addOnCompleteListener(task -> {
+                   if (task.isSuccessful()){
+                       Toast.makeText(getApplicationContext(), "You have successfully registered", Toast.LENGTH_LONG).show();
+                       sendToHomeActivity();
                    }
                });
 
