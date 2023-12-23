@@ -26,9 +26,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FirebaseApp.initializeApp(this);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
-        FirebaseApp.initializeApp(this);
+
 
         rightSideAnim = findViewById(R.id.imageView2);
         leftSideAnim = findViewById(R.id.imageView3);
