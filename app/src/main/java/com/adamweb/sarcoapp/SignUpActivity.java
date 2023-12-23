@@ -103,7 +103,8 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
    private void registerUser(String firstName, String lastName, String emailAddress, String password, String admissionNo, String phoneNo) {
-       FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseApp.initializeApp(this);
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
        mAuth.createUserWithEmailAndPassword(emailAddress, password)
                .addOnCompleteListener(task -> {
                    if (task.isSuccessful()){

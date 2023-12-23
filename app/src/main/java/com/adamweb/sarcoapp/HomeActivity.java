@@ -10,7 +10,6 @@ import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
 import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
@@ -40,29 +39,20 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         chats = findViewById(R.id.chatIcon);
 
    //------------------Album onclickListener-------------------------------
-        photoAlbum.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AlbumActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        photoAlbum.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), AlbumActivity.class);
+            startActivity(intent);
+            finish();
         });
         //------------------Chats onclickListener-------------------------------
-        chats.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
-                startActivity(intent);
-            }
+        chats.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
+            startActivity(intent);
         });
    //------------------Profile onclickListener-------------------------------
-        profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
-                startActivity(intent);
-            }
+        profile.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+            startActivity(intent);
         });
     //------------------Leaders recyclerview-------------------------------
         List<LeadersItem> items = new ArrayList<>();
@@ -78,13 +68,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
         //------------------Menu OnclickListener-------------------------------
-       menu.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               navigationView.bringToFront();
-               drawerLayout.openDrawer(GravityCompat.END);
+       menu.setOnClickListener(v -> {
+           navigationView.bringToFront();
+           drawerLayout.openDrawer(GravityCompat.END);
 
-           }
        });
 
     }
