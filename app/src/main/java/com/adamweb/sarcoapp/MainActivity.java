@@ -12,6 +12,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.FirebaseApp;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
+        FirebaseApp.initializeApp(this);
 
         rightSideAnim = findViewById(R.id.imageView2);
         leftSideAnim = findViewById(R.id.imageView3);
@@ -38,26 +41,22 @@ public class MainActivity extends AppCompatActivity {
         rightSideAnim.setAnimation(topAnim);
         leftSideAnim.setAnimation(leftAnim);
         textAnim.setAnimation(textAnimation);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
+        new Handler().postDelayed(() -> {
 
-                sharedPreferences = getSharedPreferences("onBoard", MODE_PRIVATE);
-                boolean isFirstTime = sharedPreferences.getBoolean("firstTime", true);
+            sharedPreferences = getSharedPreferences("onBoard", MODE_PRIVATE);
+            boolean isFirstTime = sharedPreferences.getBoolean("firstTime", true);
 
-                if (isFirstTime){
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putBoolean("firstTime", false);
-                    editor.commit();
+            if (isFirstTime){
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean("firstTime", false);
+                editor.apply();
 
-                    startActivity(new Intent(getApplicationContext(), OnBoardingActivity.class));
-                    finish();
-                } else {
-                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-                    finish();
-                }
-                }
-
-        },5000);
+                startActivity(new Intent(getApplicationContext(), OnBoardingActivity.class));
+                finish();
+            } else {
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                finish();
+            }
+            },5000);
     }
 }

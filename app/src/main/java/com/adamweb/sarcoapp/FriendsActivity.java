@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
@@ -24,12 +23,9 @@ public class FriendsActivity extends AppCompatActivity {
 
         ImageView back = findViewById(R.id.backArrow);
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
-                startActivity(intent);
-            }
+        back.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
+            startActivity(intent);
         });
 
         recyclerView = findViewById(R.id.friendListRecycler);

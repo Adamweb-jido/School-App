@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 
 import com.google.android.material.button.MaterialButton;
@@ -32,28 +31,19 @@ public class ChatActivity extends AppCompatActivity {
         profilePic = findViewById(R.id.profileIcon);
 
 
-        backArrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                startActivity(intent);
-            }
+        backArrow.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+            startActivity(intent);
         });
 
-        album.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AlbumActivity.class);
-                startActivity(intent);
-            }
+        album.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), AlbumActivity.class);
+            startActivity(intent);
         });
 
-        newChat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), FriendsActivity.class);
-                startActivity(intent);
-            }
+        newChat.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), FriendsActivity.class);
+            startActivity(intent);
         });
         List<ChatList> lists = new ArrayList<>();
         chatRecycler.setLayoutManager(new LinearLayoutManager(this));

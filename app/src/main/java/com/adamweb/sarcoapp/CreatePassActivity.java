@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 
 public class CreatePassActivity extends AppCompatActivity {
@@ -16,12 +15,9 @@ public class CreatePassActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_pass);
 
         login = findViewById(R.id.loginLink);
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
-            }
+        login.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(intent);
         });
     }
 }
