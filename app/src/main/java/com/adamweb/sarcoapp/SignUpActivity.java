@@ -93,7 +93,7 @@ public class SignUpActivity extends AppCompatActivity {
             } else {
                 progressDialog = new ProgressDialog(SignUpActivity.this);
                 progressDialog.setMessage("Please wait while creating your account");
-                progressDialog.setCanceledOnTouchOutside(true);
+                progressDialog.setCanceledOnTouchOutside(false);
                 progressDialog.show();
                registerUser(firstName, lastName, emailAddress, password, admissionNo,phoneNo);
             }
