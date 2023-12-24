@@ -6,7 +6,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.TextView;
@@ -20,10 +19,7 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
-import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
-
-import java.util.Objects;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -32,7 +28,6 @@ public class SignUpActivity extends AppCompatActivity {
     MaterialButton nextBtn;
     TextView login;
     ProgressDialog progressDialog;
-    private static final String TAG = "SignUpActivity";
 
     @Override
 
@@ -116,20 +111,6 @@ public class SignUpActivity extends AppCompatActivity {
                    if (task.isSuccessful()){
                        Toast.makeText(getApplicationContext(), "You have successfully registered", Toast.LENGTH_LONG).show();
                        sendToHomeActivity();
-                   } else {
-                       try {
-                           throw Objects.requireNonNull(task.getException());
-                       } catch (FirebaseAuthInvalidCredentialsException e){
-                                email.setError("invalid email address, please enter a valid email address and try register again.");
-                                email.requestFocus();
-                       } catch (FirebaseAuthUserCollisionException e){
-                           email.setError("This email address Already registered by a user, Please enter new email Address.");
-                           email.requestFocus();
-                       } catch (Exception e){
-                           Log.e(TAG, e.getMessage());
-                               Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
-                               progressDialog.dismiss();
-                       }
                    }
                });
 
