@@ -134,7 +134,7 @@ public class SignUpActivity extends AppCompatActivity {
                                    progressDialog.dismiss();
                                }
                            }
-
+                       });
 
                    } else {
                        try {
