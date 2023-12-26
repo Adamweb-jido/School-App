@@ -129,6 +129,9 @@ public class SignUpActivity extends AppCompatActivity {
                                if (task.isSuccessful()){
                                    Toast.makeText(getApplicationContext(), "You have successfully registered", Toast.LENGTH_LONG).show();
                                    sendToHomeActivity();
+                               } else {
+                                   Toast.makeText(getApplicationContext(), "Your registration failed, please try again.", Toast.LENGTH_LONG).show();
+                                   progressDialog.dismiss();
                                }
                            }
                        });
