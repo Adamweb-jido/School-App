@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.TextView;
@@ -19,7 +20,12 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
+
+import java.util.Objects;
+
+import kotlin.io.FileTreeWalk;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -28,6 +34,7 @@ public class SignUpActivity extends AppCompatActivity {
     MaterialButton nextBtn;
     TextView login;
     ProgressDialog progressDialog;
+    private static final String TAG = "SignUpActivity";
 
     @Override
 
@@ -92,7 +99,7 @@ public class SignUpActivity extends AppCompatActivity {
                 Toast.makeText(SignUpActivity.this, "Phone Number is empty", Toast.LENGTH_LONG).show();
                 phoneNumber.setError("Please you should fill the field");
                 phoneNumber.requestFocus();
-            }else if (phoneNo.length() != 11){
+            }else if (phoneNo.length() < 11){
                 Toast.makeText(this, "Invalid phone number ", Toast.LENGTH_LONG).show();
                 phoneNumber.setError("Insert correct mobile number");
                 phoneNumber.requestFocus();
@@ -115,6 +122,19 @@ public class SignUpActivity extends AppCompatActivity {
                    if (task.isSuccessful()){
                        Toast.makeText(getApplicationContext(), "You have successfully registered", Toast.LENGTH_LONG).show();
                        sendToHomeActivity();
+                   } else {
+                       try {
+                           throw Objects.requireNonNull(task.getException());
+                       } catch (FirebaseAuthInvalidCredentialsException e){
+                           newPassword.setError("invalid email address or Already in use");
+                           newPassword.requestFocus();
+                       } catch (FirebaseAuthUserCollisionException e){
+                           email.setError("User Already registered with this email address.");
+                           email.requestFocus();
+                       } catch (Exception e){
+                           Log.e(TAG, e.getMessage());
+                           Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                       }
                    }
                });
 
