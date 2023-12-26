@@ -92,6 +92,10 @@ public class SignUpActivity extends AppCompatActivity {
                 Toast.makeText(SignUpActivity.this, "Phone Number is empty", Toast.LENGTH_LONG).show();
                 phoneNumber.setError("Please you should fill the field");
                 phoneNumber.requestFocus();
+            }else if (phoneNo.length() != 11){
+                Toast.makeText(this, "Invalid phone number ", Toast.LENGTH_LONG).show();
+                phoneNumber.setError("Insert correct mobile number");
+                phoneNumber.requestFocus();
             } else {
                 progressDialog = new ProgressDialog(SignUpActivity.this);
                 progressDialog.setMessage("Please wait while creating your account");
