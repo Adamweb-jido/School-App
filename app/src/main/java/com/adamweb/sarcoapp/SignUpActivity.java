@@ -23,6 +23,8 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Objects;
 
@@ -117,12 +119,20 @@ public class SignUpActivity extends AppCompatActivity {
        userAuth.createUserWithEmailAndPassword(emailAddress, password)
                .addOnCompleteListener(task -> {
                    if (task.isSuccessful()){
-                       Toast.makeText(getApplicationContext(), "You have successfully registered", Toast.LENGTH_LONG).show();
                        FirebaseUser cUser = userAuth.getCurrentUser();
-
                        UserReadWriteData userReadWriteData = new UserReadWriteData(firstName, lastName, admissionNo,phoneNo);
+                       DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Registered users");
+                       assert cUser != null;
+                       databaseReference.child(cUser.getUid()).setValue(userReadWriteData).addOnCompleteListener(new OnCompleteListener<Void>() {
+                           @Override
+                           public void onComplete(@NonNull Task<Void> task) {
+                               if (task.isSuccessful()){
+                                   Toast.makeText(getApplicationContext(), "You have successfully registered", Toast.LENGTH_LONG).show();
+                                   sendToHomeActivity();
+                               }
+                           }
+                       });
 
-                       sendToHomeActivity();
                    } else {
                        try {
                            throw Objects.requireNonNull(task.getException());
