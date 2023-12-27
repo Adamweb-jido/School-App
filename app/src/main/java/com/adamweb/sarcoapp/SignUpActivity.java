@@ -145,7 +145,6 @@ public class SignUpActivity extends AppCompatActivity {
                        } catch (FirebaseAuthUserCollisionException e){
                            email.setError("User Already registered with this email address.");
                            email.requestFocus();
-
                            admNumber.setError("User with this Admission Number Already registered, enter a valid admission number");
                            admNumber.requestFocus();
                        } catch (Exception e){
