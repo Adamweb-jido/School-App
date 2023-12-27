@@ -122,7 +122,6 @@ public class SignUpActivity extends AppCompatActivity {
                        FirebaseUser cUser = userAuth.getCurrentUser();
                        UserReadWriteData userReadWriteData = new UserReadWriteData(firstName, lastName, admissionNo,phoneNo);
                        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Registered users");
-                       assert cUser != null;
                        databaseReference.child(cUser.getUid()).setValue(userReadWriteData).addOnCompleteListener(new OnCompleteListener<Void>() {
                            @Override
                            public void onComplete(@NonNull Task<Void> task) {
@@ -147,6 +146,7 @@ public class SignUpActivity extends AppCompatActivity {
                            email.requestFocus();
                            admNumber.setError("User with this Admission Number Already registered, enter a valid admission number");
                            admNumber.requestFocus();
+                           progressDialog.show();
                        } catch (Exception e){
                            Log.e(TAG, e.getMessage());
                            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -154,7 +154,6 @@ public class SignUpActivity extends AppCompatActivity {
                        }
                    }
                });
-
    }
 
     private void sendToHomeActivity() {
