@@ -3,8 +3,8 @@ package com.adamweb.sarcoapp;
 public class UserReadWriteData {
     String userFirstName;
     String userLastName;
-    String userPhoneNo;
     String userAdmissionNo;
+    String userPhoneNo;
 
     public UserReadWriteData(String firstName, String lastName, String phoneNo, String admissionNo) {
         this.userFirstName = firstName;
