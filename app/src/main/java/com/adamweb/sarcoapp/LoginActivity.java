@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -18,7 +19,10 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 
@@ -29,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     TextInputEditText loginEmail, loginPassword;
     ProgressBar progressBar;
     FirebaseAuth userLogin;
+    private static final String TAG = "LoginActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,14 +48,11 @@ public class LoginActivity extends AppCompatActivity {
         userLogin = FirebaseAuth.getInstance();
 
 
-        registerBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
-                startActivity(intent);
-                finish();
+        registerBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+            startActivity(intent);
+            finish();
 
-            }
         });
 
         forgetPass.setOnClickListener(new View.OnClickListener() {
@@ -101,7 +103,18 @@ public class LoginActivity extends AppCompatActivity {
                    startActivity(intent);
                    finish();
                } else {
-                   Toast.makeText(LoginActivity.this, "Login failed! try Again.", Toast.LENGTH_LONG).show();
+                   try {
+                       throw Objects.requireNonNull(task.getException());
+                   } catch (FirebaseAuthInvalidUserException e){
+                       loginEmail.setError("Invalid email or user does not exit, check and enter valid credentials");
+                       loginEmail.requestFocus();
+                   } catch (FirebaseAuthUserCollisionException e){
+                       loginPassword.setError("Incorrect email or password,please check it and try again");
+                       loginPassword.requestFocus();
+                   } catch (Exception e){
+                       Log.e(TAG, e.getMessage());
+                       Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                   }
                }
                progressBar.setVisibility(View.GONE);
             }
