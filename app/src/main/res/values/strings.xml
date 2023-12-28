@@ -14,7 +14,7 @@
     <string name="profileAdm">Profile</string>
     <string name="information">personal Information</string>
     <string name="yourName">Name:</string>
-    <string name="admNo">Admission Number:</string>
+    <string name="admNo">Adm. Number:</string>
     <string name="comb">Combination:</string>
     <string name="emailAddress">Email:</string>
     <string name="yourPhoneNumber">Phone Number:</string>
@@ -85,4 +85,5 @@
 
     <string name="send_sms">Send SMS Message</string>
     <string name="send_email">Send Email Message</string>
+    <string name="loading">Loading.......</string>
 </resources>

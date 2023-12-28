@@ -227,7 +227,7 @@
                                 android:id="@+id/fullName"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-
+                                android:hint="@string/loading"
                                 android:textSize="18sp"
                                 android:textStyle="bold"
                                 android:layout_marginStart="10dp"/>
@@ -252,6 +252,7 @@
                                 android:layout_height="wrap_content"
                                 android:textSize="18sp"
                                 android:textStyle="bold"
+                                android:hint="@string/loading"
                                 android:layout_marginStart="10dp"/>
                         </LinearLayout>
                         <LinearLayout
@@ -274,6 +275,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="18sp"
+                                android:hint="@string/loading"
                                 android:textStyle="bold"
                                 android:layout_marginStart="10dp"/>
 
@@ -298,6 +300,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="18sp"
+                                android:hint="@string/loading"
                                 android:textStyle="bold"
                                 android:layout_marginStart="10dp"/>
 
@@ -323,6 +326,7 @@
                                 android:layout_height="wrap_content"
                                 android:textSize="18sp"
                                 android:textStyle="bold"
+                                android:hint="@string/loading"
                                 android:layout_marginStart="10dp"/>
 
                         </LinearLayout>
@@ -346,6 +350,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="18sp"
+                                android:hint="@string/loading"
                                 android:textStyle="bold"
                                 android:layout_marginStart="10dp"/>
 
