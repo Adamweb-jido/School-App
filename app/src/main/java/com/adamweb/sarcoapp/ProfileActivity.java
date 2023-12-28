@@ -3,6 +3,7 @@ package com.adamweb.sarcoapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -30,7 +31,7 @@ public class ProfileActivity extends AppCompatActivity {
     String firstName, lastName, email, phoneNumber, combination, admissionNumber, comment;
     Dialog dialog;
    FirebaseAuth firebaseAuth;
-   FirebaseUser userProfileDetails;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,12 +48,12 @@ public class ProfileActivity extends AppCompatActivity {
         userComment = findViewById(R.id.user_comment);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        userProfileDetails = firebaseAuth.getCurrentUser();
+        FirebaseUser userProfileDetails = firebaseAuth.getCurrentUser();
 
         if (userProfileDetails == null){
             Toast.makeText(this, "Refresh this page", Toast.LENGTH_SHORT).show();
         } else {
-            fetchUserDetails();
+            fetchUserDetails(userProfileDetails);
         }
 
 
@@ -68,10 +69,11 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
-    private void fetchUserDetails() {
+    private void fetchUserDetails(FirebaseUser userProfileDetails) {
         String userId = userProfileDetails.getUid();
         DatabaseReference userReference = FirebaseDatabase.getInstance().getReference("Registered users");
         userReference.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 UserReadWriteData readUserDetails = snapshot.getValue(UserReadWriteData.class);

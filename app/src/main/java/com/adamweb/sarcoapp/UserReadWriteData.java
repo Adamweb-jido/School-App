@@ -11,6 +11,10 @@ public class UserReadWriteData {
         this.userAdmissionNo = admissionNo;
     }
 
+    public UserReadWriteData(){
+
+    }
+
 
 
     public String getUserLastName() {
