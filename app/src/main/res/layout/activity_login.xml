@@ -63,7 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:hint="@string/username"
+                android:hint="@string/email"
                 android:textColorHint="#0D1F82"
                 app:boxCornerRadiusBottomEnd="10dp"
                 app:boxCornerRadiusBottomStart="10dp"
@@ -76,8 +76,10 @@
                 app:hintTextColor="#0D1F82">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/loginEmail"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -98,6 +100,7 @@
                 app:hintTextColor="#0D1F82">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/loginPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColorHint="#757575" />
