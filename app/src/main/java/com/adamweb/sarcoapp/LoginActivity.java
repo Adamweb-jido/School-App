@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -17,6 +18,8 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.regex.Pattern;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -69,7 +72,11 @@ public class LoginActivity extends AppCompatActivity {
                   Toast.makeText(LoginActivity.this, "Email Address is Empty", Toast.LENGTH_LONG).show();
                   loginEmail.setError("Please fill the email");
                   loginEmail.requestFocus();
-              }  else if (TextUtils.isEmpty(password)){
+              } else if (Patterns.EMAIL_ADDRESS.matcher(emailAddress).matches()){
+                  Toast.makeText(LoginActivity.this, "Email Address is Invalid", Toast.LENGTH_LONG).show();
+                  loginEmail.setError("Please enter valid email");
+                  loginEmail.requestFocus();
+              } else if (TextUtils.isEmpty(password)){
                   Toast.makeText(LoginActivity.this, "Password is Empty", Toast.LENGTH_LONG).show();
                   loginPassword.setError("Please fill the password");
                   loginPassword.requestFocus();
