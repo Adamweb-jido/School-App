@@ -1,5 +1,6 @@
 package com.adamweb.sarcoapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
@@ -11,13 +12,25 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class ProfileActivity extends AppCompatActivity {
 
    ImageView imageView;
     ImageView profile_image;
-    TextView userFullName, userEmail, phoneNumber, combination, admissionNumber, comment;
-   Dialog dialog;
+    TextView userFullName, userEmail, userPhoneNumber, userCombination, userAdmissionNumber, userComment;
+    String firstName, lastName, email, phoneNumber, combination, admissionNumber, comment;
+    Dialog dialog;
+   FirebaseAuth firebaseAuth;
+   FirebaseUser userProfileDetails;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,26 +41,60 @@ public class ProfileActivity extends AppCompatActivity {
         profile_image = findViewById(R.id.profile_image);
         userFullName = findViewById(R.id.fullName);
         userEmail = findViewById(R.id.user_email);
-        phoneNumber = findViewById(R.id.phone_number);
-        combination = findViewById(R.id.user_comb);
-        admissionNumber = findViewById(R.id.adm_no);
-        comment = findViewById(R.id.user_comment);
+        userPhoneNumber = findViewById(R.id.phone_number);
+        userCombination = findViewById(R.id.user_comb);
+        userAdmissionNumber = findViewById(R.id.adm_no);
+        userComment = findViewById(R.id.user_comment);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        userProfileDetails = firebaseAuth.getCurrentUser();
+
+        if (userProfileDetails != null){
+            fetchUserDetails();
+        } else {
+            Toast.makeText(this, "Refresh this page", Toast.LENGTH_SHORT).show();
+        }
 
 
-          userFullName.setText("Adamu ibrahim Ya'u");
-          userEmail.setText("realadamweb@gmail.com");
-          phoneNumber.setText("08160807055");
-          combination.setText("Computer/chemistry");
-          admissionNumber.setText("CSC/01/19/0585");
-          comment.setText("Being a software engineer is a great work");
+
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
+    }
+
+    private void fetchUserDetails() {
+        String userId = userProfileDetails.getUid();
+        DatabaseReference userReference = FirebaseDatabase.getInstance().getReference("Registered users");
+        userReference.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                UserReadWriteData readUserDetails = snapshot.getValue(UserReadWriteData.class);
+                if (readUserDetails != null){
+                    firstName = userProfileDetails.getDisplayName();
+                    email = userProfileDetails.getEmail();
+                    lastName = readUserDetails.userLastName;
+                    phoneNumber = readUserDetails.userAdmissionNo;
+                    admissionNumber = readUserDetails.userPhoneNo;
+
+                    userFullName.setText(firstName + " " + lastName);
+                    userEmail.setText(email);
+                    userPhoneNumber.setText(phoneNumber);
+                    userAdmissionNumber.setText(admissionNumber);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(ProfileActivity.this, "Failed to load user data, refresh the page.", Toast.LENGTH_SHORT).show();
+
+            }
+        });
     }
 
     public void myMssBtn(View view){
