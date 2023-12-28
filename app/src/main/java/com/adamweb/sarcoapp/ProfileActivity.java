@@ -49,10 +49,10 @@ public class ProfileActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         userProfileDetails = firebaseAuth.getCurrentUser();
 
-        if (userProfileDetails != null){
-            fetchUserDetails();
-        } else {
+        if (userProfileDetails == null){
             Toast.makeText(this, "Refresh this page", Toast.LENGTH_SHORT).show();
+        } else {
+            fetchUserDetails();
         }
 
 
