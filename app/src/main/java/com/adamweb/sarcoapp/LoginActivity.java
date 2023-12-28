@@ -120,4 +120,15 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (userLogin.getCurrentUser() != null){
+            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+            finish();
+        } else {
+            Toast.makeText(this, "Please Log in", Toast.LENGTH_SHORT).show();
+        }
+    }
 }
