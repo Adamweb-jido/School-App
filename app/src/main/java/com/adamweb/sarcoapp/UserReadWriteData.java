@@ -1,26 +1,17 @@
 package com.adamweb.sarcoapp;
 
 public class UserReadWriteData {
-    String userFirstName;
     String userLastName;
     String userAdmissionNo;
     String userPhoneNo;
 
-    public UserReadWriteData(String firstName, String lastName, String phoneNo, String admissionNo) {
-        this.userFirstName = firstName;
+    public UserReadWriteData(String lastName, String phoneNo, String admissionNo) {
         this.userLastName = lastName;
         this.userPhoneNo = phoneNo;
         this.userAdmissionNo = admissionNo;
     }
 
 
-    public String getUserFirstName() {
-        return userFirstName;
-    }
-
-    public void setUserFirstName(String userFirstName) {
-        this.userFirstName = userFirstName;
-    }
 
     public String getUserLastName() {
         return userLastName;
