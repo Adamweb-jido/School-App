@@ -113,6 +113,11 @@ public class SignUpActivity extends AppCompatActivity {
         });
 
 
+        login.setOnClickListener(v ->{
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(intent);
+            finish();
+        });
     }
 
    private void registerUser(String firstName, String lastName, String emailAddress, String password, String admissionNo, String phoneNo) {
@@ -158,6 +163,8 @@ public class SignUpActivity extends AppCompatActivity {
                        }
                    }
                });
+
+
    }
 
     private void sendToHomeActivity() {

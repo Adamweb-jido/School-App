@@ -48,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
                 startActivity(intent);
+                finish();
 
             }
         });
@@ -57,6 +58,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), ForgotPassActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -72,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
                   Toast.makeText(LoginActivity.this, "Email Address is Empty", Toast.LENGTH_LONG).show();
                   loginEmail.setError("Please fill the email");
                   loginEmail.requestFocus();
-              } else if (Patterns.EMAIL_ADDRESS.matcher(emailAddress).matches()){
+              } else if (!Patterns.EMAIL_ADDRESS.matcher(emailAddress).matches()){
                   Toast.makeText(LoginActivity.this, "Email Address is Invalid", Toast.LENGTH_LONG).show();
                   loginEmail.setError("Please enter valid email");
                   loginEmail.requestFocus();
