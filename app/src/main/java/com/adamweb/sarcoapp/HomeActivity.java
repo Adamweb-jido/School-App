@@ -11,7 +11,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,9 +31,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     //------------------Views declaration-------------------------
     ImageView photoAlbum, chats, profile, menu;
+    TextView userName, visitCount;
     RecyclerView leaderRecycler;
     NavigationView navigationView;
     DrawerLayout drawerLayout;
+    FirebaseAuth firebaseAuth;
+    FirebaseUser currentUserName;
+    String firstName, lastName, counter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +52,16 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout = findViewById(R.id.menu_drawer_layout);
         profile = findViewById(R.id.userProfileIcon);
         chats = findViewById(R.id.chatIcon);
+        userName = findViewById(R.id.homeUserName);
+        visitCount = findViewById(R.id.visitCounter);
+        firebaseAuth = FirebaseAuth.getInstance();
+        currentUserName = firebaseAuth.getCurrentUser();
+
+        if (currentUserName == null){
+            Toast.makeText(this, "Please refresh the page", Toast.LENGTH_SHORT).show();
+        } else {
+            userDetails();
+        }
 
    //------------------Album onclickListener-------------------------------
         photoAlbum.setOnClickListener(view -> {
@@ -74,6 +99,28 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
        });
 
+    }
+
+    private void userDetails() {
+        String userId = currentUserName.getUid();
+
+        DatabaseReference homeUser = FirebaseDatabase.getInstance().getReference("Registered Users");
+        homeUser.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                UserReadWriteData userReadWriteData = snapshot.getValue(UserReadWriteData.class);
+                if (userReadWriteData != null){
+                    firstName = userReadWriteData.userFirstName;
+                    lastName = userReadWriteData.userLastName;
+                    userName.setText(firstName + " " +lastName);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(HomeActivity.this, "refresh", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

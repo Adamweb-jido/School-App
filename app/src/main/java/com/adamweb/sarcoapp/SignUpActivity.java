@@ -127,9 +127,7 @@ public class SignUpActivity extends AppCompatActivity {
                    if (task.isSuccessful()){
                        FirebaseUser cUser = userAuth.getCurrentUser();
                        assert cUser != null;
-                       UserProfileChangeRequest userProfileChangeRequest = new UserProfileChangeRequest.Builder().setDisplayName(firstName).build();
-                       cUser.updateProfile(userProfileChangeRequest);
-                       UserReadWriteData userReadWriteData = new UserReadWriteData(lastName, admissionNo,phoneNo);
+                       UserReadWriteData userReadWriteData = new UserReadWriteData(firstName, lastName, admissionNo,phoneNo);
                        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Registered users");
                        databaseReference.child(cUser.getUid()).setValue(userReadWriteData).addOnCompleteListener(new OnCompleteListener<Void>() {
                            @Override

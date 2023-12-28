@@ -78,7 +78,7 @@ public class ProfileActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 UserReadWriteData readUserDetails = snapshot.getValue(UserReadWriteData.class);
                 if (readUserDetails != null){
-                    firstName = userProfileDetails.getDisplayName();
+                    firstName = readUserDetails.userFirstName;
                     email = userProfileDetails.getEmail();
                     lastName = readUserDetails.userLastName;
                     phoneNumber = readUserDetails.userAdmissionNo;
