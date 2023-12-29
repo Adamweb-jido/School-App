@@ -58,13 +58,10 @@ public class ProfileActivity extends AppCompatActivity {
 
 
 
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        imageView.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+            startActivity(intent);
+            finish();
         });
 
     }
@@ -78,8 +75,8 @@ public class ProfileActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 UserReadWriteData readUserDetails = snapshot.getValue(UserReadWriteData.class);
                 if (readUserDetails != null){
-                    firstName = readUserDetails.userFirstName;
                     email = userProfileDetails.getEmail();
+                    firstName = readUserDetails.userFirstName;
                     lastName = readUserDetails.userLastName;
                     phoneNumber = readUserDetails.userAdmissionNo;
                     admissionNumber = readUserDetails.userPhoneNo;
@@ -106,18 +103,8 @@ public class ProfileActivity extends AppCompatActivity {
         sendEmail = dialog.findViewById(R.id.sendEmail);
         cancelArrow = dialog.findViewById(R.id.cancelArrow);
 
-        sendEmail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sendEmail();
-            }
-        });
-        cancelArrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
+        sendEmail.setOnClickListener(v -> sendEmail());
+        cancelArrow.setOnClickListener(v -> dialog.dismiss());
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
     }

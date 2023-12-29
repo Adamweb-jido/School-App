@@ -61,7 +61,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         firebaseAuth = FirebaseAuth.getInstance();
         currentUserName = firebaseAuth.getCurrentUser();
  //-------------------------------set Counter----------------------
-        CounterUtil.incrementVisitCount(HomeActivity.this);
+
         counter = CounterUtil.getVisitCount(this);
         visitCount.setText("Total visits: "+counter);
 

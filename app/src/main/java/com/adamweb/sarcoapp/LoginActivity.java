@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.loginProgressBar);
         userLogin = FirebaseAuth.getInstance();
 
-
+        CounterUtil.incrementVisitCount(LoginActivity.this);
         registerBtn.setOnClickListener(view -> {
             Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
             startActivity(intent);
