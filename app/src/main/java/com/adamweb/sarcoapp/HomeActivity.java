@@ -6,6 +6,8 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.annotation.SuppressLint;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -55,6 +57,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         chats = findViewById(R.id.chatIcon);
         userName = findViewById(R.id.homeUserName);
         visitCount = findViewById(R.id.visitCounter);
+
         firebaseAuth = FirebaseAuth.getInstance();
         currentUserName = firebaseAuth.getCurrentUser();
  //-------------------------------set Counter----------------------
@@ -65,7 +68,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         if (currentUserName == null){
             Toast.makeText(this, "Please refresh the page", Toast.LENGTH_SHORT).show();
         } else {
-            userDetails();
+           fetchUserDetails(currentUserName);
         }
 
    //------------------Album onclickListener-------------------------------
@@ -107,24 +110,26 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-    private void userDetails() {
+    private void fetchUserDetails(FirebaseUser currentUserName) {
         String userId = currentUserName.getUid();
-
-        DatabaseReference homeUser = FirebaseDatabase.getInstance().getReference("Registered Users");
-        homeUser.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+        DatabaseReference userReference = FirebaseDatabase.getInstance().getReference("Registered users");
+        userReference.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                UserReadWriteData userReadWriteData = snapshot.getValue(UserReadWriteData.class);
-                if (userReadWriteData != null){
-                    firstName = userReadWriteData.userFirstName;
-                    lastName = userReadWriteData.userLastName;
-                    userName.setText(firstName + " " +lastName);
+                UserReadWriteData readUserDetails = snapshot.getValue(UserReadWriteData.class);
+                if (readUserDetails != null){
+                    firstName = readUserDetails.userFirstName;
+                    lastName = readUserDetails.userLastName;
+
+                    userName.setText(firstName + " " + lastName);
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(HomeActivity.this, "refresh", Toast.LENGTH_SHORT).show();
+                Toast.makeText(HomeActivity.this, "Failed to load user data, refresh the page.", Toast.LENGTH_SHORT).show();
+
             }
         });
     }
