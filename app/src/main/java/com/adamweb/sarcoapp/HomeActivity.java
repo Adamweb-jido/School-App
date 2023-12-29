@@ -37,7 +37,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     DrawerLayout drawerLayout;
     FirebaseAuth firebaseAuth;
     FirebaseUser currentUserName;
-    String firstName, lastName, counter;
+    String firstName, lastName;
+    int counter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +57,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         visitCount = findViewById(R.id.visitCounter);
         firebaseAuth = FirebaseAuth.getInstance();
         currentUserName = firebaseAuth.getCurrentUser();
+ //-------------------------------set Counter----------------------
+        CounterUtil.incrementVisitCount(HomeActivity.this);
+        counter = CounterUtil.getVisitCount(this);
+        visitCount.setText("Total visits: "+counter);
 
         if (currentUserName == null){
             Toast.makeText(this, "Please refresh the page", Toast.LENGTH_SHORT).show();
@@ -101,6 +106,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
+
     private void userDetails() {
         String userId = currentUserName.getUid();
 
@@ -143,22 +149,27 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             case R.id.photoAlbumId:
                 Intent intent = new Intent(getApplicationContext(), AlbumActivity.class);
                 startActivity(intent);
+                finish();
                 break;
             case R.id.helpId:
                 Intent intent1 = new Intent(getApplicationContext(), ListActivity.class);
                 startActivity(intent1);
+                finish();
                 break;
             case R.id.myProfileId:
                 Intent intent2 = new Intent(getApplicationContext(), ProfileActivity.class);
                 startActivity(intent2);
+                finish();
                 break;
             case R.id.editProfileId:
                 Intent intent3 = new Intent(getApplicationContext(), ChatActivity.class);
                 startActivity(intent3);
+                finish();
                 break;
             case R.id.logoutId:
                 Intent intent4 = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent4);
+                finish();
                 break;
         }
         return true;

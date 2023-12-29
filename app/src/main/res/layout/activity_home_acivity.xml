@@ -134,7 +134,6 @@
                   android:layout_height="wrap_content"
                   android:layout_marginTop="10dp"
                   android:hint="@string/loading"
-                  android:textAllCaps="true"
                   android:textColor="@color/black"
                   android:textSize="20sp"
                   android:alpha="0.8"
