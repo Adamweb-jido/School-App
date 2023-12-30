@@ -4,8 +4,8 @@
     android:layout_height="wrap_content"
     android:padding="20dp"
     android:maxLines="1"
-    android:textColor="@color/white"
     android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1">
+
 
 
 

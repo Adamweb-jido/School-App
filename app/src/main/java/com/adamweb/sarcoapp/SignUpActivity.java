@@ -53,7 +53,6 @@ public class SignUpActivity extends AppCompatActivity {
         email = findViewById(R.id.emailAddress);
         newPassword = findViewById(R.id.createPassword);
         cPassword = findViewById(R.id.confirmPassword);
-        admNumber = findViewById(R.id.urAdmNumber);
         phoneNumber = findViewById(R.id.urPhoneNumber);
 
         nextBtn.setOnClickListener(view -> {
