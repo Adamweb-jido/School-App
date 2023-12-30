@@ -71,6 +71,114 @@
                     app:srcCompat="@drawable/camera_icon"
                     android:focusable="true" />
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxStrokeWidth="3dp"
+                android:layout_marginTop="15dp"
+                app:boxStrokeWidthFocused="3dp"
+                app:endIconMode="clear_text"
+                android:hint="@string/username"
+                android:background="@drawable/input_bg"
+                app:hintTextColor="#0D1F82"
+                android:textColorHint="@color/white"
+                app:boxStrokeColor="@color/white"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/urAdmNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxStrokeWidth="3dp"
+                android:layout_marginTop="15dp"
+                app:boxStrokeWidthFocused="3dp"
+                app:endIconMode="clear_text"
+                android:hint="@string/username"
+                android:background="@drawable/input_bg"
+                app:hintTextColor="#0D1F82"
+                android:textColorHint="@color/white"
+                app:boxStrokeColor="@color/white"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/AdmNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxStrokeWidth="3dp"
+                android:layout_marginTop="15dp"
+                app:boxStrokeWidthFocused="3dp"
+                app:endIconMode="clear_text"
+                android:hint="@string/username"
+                android:background="@drawable/input_bg"
+                app:hintTextColor="#0D1F82"
+                android:textColorHint="@color/white"
+                app:boxStrokeColor="@color/white"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/urAdNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxStrokeWidth="3dp"
+                android:layout_marginTop="15dp"
+                app:boxStrokeWidthFocused="3dp"
+                app:endIconMode="clear_text"
+                android:hint="@string/username"
+                android:background="@drawable/input_bg"
+                app:hintTextColor="#0D1F82"
+                android:textColorHint="@color/white"
+                app:boxStrokeColor="@color/white"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/urAdmNber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/next"
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                app:cornerRadius="10dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/suez_one"
+                android:text="@string/next"
+                android:textSize="20sp"
+                android:backgroundTint="#0D1F82"/>
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

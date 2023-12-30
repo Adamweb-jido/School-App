@@ -167,7 +167,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 finish();
                 break;
             case R.id.editProfileId:
-                Intent intent3 = new Intent(getApplicationContext(), ChatActivity.class);
+                Intent intent3 = new Intent(getApplicationContext(), CompleteProfile.class);
                 startActivity(intent3);
                 finish();
                 break;
