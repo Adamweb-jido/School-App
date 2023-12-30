@@ -29,14 +29,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/complete_text_bg"
-                android:fontFamily="@font/suez_one"
+                android:fontFamily="@font/sarpanch_extrabold"
                 android:gravity="center"
                 android:text="@string/complete_profile"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="#0D1F82"
-                android:textSize="22sp"
-                android:textStyle="bold" />
+                android:textSize="22sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -92,13 +91,16 @@
                     app:boxStrokeWidth="3dp"
                     app:boxStrokeWidthFocused="3dp"
                     app:endIconMode="clear_text"
+                    app:endIconTint="@color/white"
                     app:hintTextColor="@color/white">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/urAdmNumber"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text" />
+                        android:fontFamily="@font/sarpanch_bold"
+                        android:inputType="text"
+                        android:textColor="@color/white" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -123,6 +125,7 @@
                         android:id="@+id/AdmNumber"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+
                         android:inputType="text" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -183,10 +186,10 @@
                     android:layout_marginTop="30dp"
                     android:layout_marginBottom="5dp"
                     android:backgroundTint="#0D1F82"
-                    android:fontFamily="@font/suez_one"
-                    android:text="@string/next"
+                    android:fontFamily="@font/sarpanch_extrabold"
+                    android:text="@string/register"
                     android:textSize="20sp"
-                    app:cornerRadius="10dp" />
+                    app:cornerRadius="3dp" />
             </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
