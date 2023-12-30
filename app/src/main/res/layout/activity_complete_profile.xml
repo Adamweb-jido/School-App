@@ -167,8 +167,8 @@
                     android:layout_marginBottom="5dp"
                     android:backgroundTint="@color/white"
                     android:textColor="#0D1F82"
-                    android:fontFamily="@font/sarpanch_extrabold"
-                    android:text="@string/register"
+                    android:fontFamily="@font/suez_one"
+                    android:text="@string/done"
                     android:textSize="20sp"
                     app:cornerRadius="3dp" />
             </LinearLayout>
