@@ -20,9 +20,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class CompleteProfile extends AppCompatActivity {
 
     String [] combs = {"Computer/Biology", "Computer/Chemistry", "Computer/Physics", "Computer/Maths"};
-    MaterialAutoCompleteTextView materialAutoCompleteTextView;
-    CircleImageView imageView;
-    FloatingActionButton floatingActionButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
