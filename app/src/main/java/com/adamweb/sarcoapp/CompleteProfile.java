@@ -24,7 +24,7 @@ public class CompleteProfile extends AppCompatActivity {
     CircleImageView imageView;
     FloatingActionButton floatingActionButton;
     @Override
-
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_complete_profile);
 
