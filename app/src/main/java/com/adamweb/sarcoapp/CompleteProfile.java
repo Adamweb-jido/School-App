@@ -43,8 +43,8 @@ public class CompleteProfile extends AppCompatActivity {
         progressBar = findViewById(R.id.userProfileProgressBar);
 
         completeBtn.setOnClickListener(v ->{
-            String admissionNumber, combination, comment, cc;
-                    cc = "Computer/Chemistry";
+            String admissionNumber, combination, comment, cc, CC, Cc, cC;
+                    cc = "Computer/Chemistry"; CC = "COMPUTER/CHEMISTRY"; Cc = "Computer/chemistry"; cC = "computer/Chemistry";
             admissionNumber = String.valueOf(urAdmNo.getText());
             combination = String.valueOf(urCombination.getText());
             comment = String.valueOf(urComment.getText());
@@ -56,7 +56,7 @@ public class CompleteProfile extends AppCompatActivity {
             } else if (TextUtils.isEmpty(admissionNumber)){
                 urAdmNo.setError("Fill this Field");
                 urAdmNo.requestFocus();
-            } else if (!combination.equals(cc)){
+            } else if (!combination.equals(cc) && !combination.equals(CC) && !combination.equals(cC) && !combination.equals(Cc)){
                 Toast.makeText(this, "Hint: Only one comb is allowed", Toast.LENGTH_SHORT).show();
                 urCombination.setError("your comb is not allowed yet!");
                 urCombination.requestFocus();
