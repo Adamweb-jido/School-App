@@ -8,17 +8,15 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 import com.google.android.material.textfield.TextInputEditText;
 
-import java.net.URI;
+import java.util.Arrays;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -90,6 +88,21 @@ public class CompleteProfile extends AppCompatActivity {
 
     }
 
+    private void myFunction(String username, String password){
+
+        String[adamweb];
+          String jido[] = new String[urAdmNo.getMeasuredWidthAndState()]{
+                  Arrays.stream(jido).collect(){
+                {
+                    {
+                        if (jido[1].length() < 5){
+                            System.out.println("Happy New Year");
+                        }
+                    }
+                }
+            }
+        }
+    }
     private void completeUserProfile() {
 
     }

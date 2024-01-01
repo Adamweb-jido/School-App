@@ -10,6 +10,7 @@
     <string name="back">Back</string>
     <string name="login">LogIn</string>
     <string name="home">Home</string>
+    <string name="csc_che">Computer/Chemistry</string>
     <string name="done">Complete</string>
     <string name="fillAdm">csc/01/19/</string>
     <string name="signUpDesc">Kindly register to have full access.</string>

@@ -137,6 +137,8 @@
                         android:id="@+id/user_combination"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:editable="false"
+                        android:text="@string/csc_che"
                         android:inputType="text"
                         android:fontFamily="@font/sarpanch_bold"
                         android:textColor="@color/white" />
