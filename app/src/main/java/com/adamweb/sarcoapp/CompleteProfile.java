@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.github.dhaval2404.imagepicker.ImagePicker;
@@ -23,12 +24,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class CompleteProfile extends AppCompatActivity {
 
-    String [] combs = {"Computer/Biology", "Computer/Chemistry", "Computer/Physics", "Computer/Maths"};
-    MaterialAutoCompleteTextView materialAutoCompleteTextView;
     CircleImageView imageView;
     FloatingActionButton floatingActionButton;
     TextInputEditText urAdmNo, urComment, urCombination;
     MaterialButton completeBtn;
+    ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +40,7 @@ public class CompleteProfile extends AppCompatActivity {
         urCombination = findViewById(R.id.user_combination);
         urComment = findViewById(R.id.comment);
         completeBtn = findViewById(R.id.completeBtn);
+        progressBar = findViewById(R.id.userProfileProgressBar);
 
         completeBtn.setOnClickListener(v ->{
             String admissionNumber, combination, comment, cc;
@@ -71,16 +72,12 @@ public class CompleteProfile extends AppCompatActivity {
                 urComment.setError("Fill this Field");
                 urComment.requestFocus();
             } else {
-
+                progressBar.setVisibility(View.VISIBLE);
                 completeUserProfile();
             }
 
         });
 
-
-
-
-        materialAutoCompleteTextView.setAdapter(new ArrayAdapter<String>(this, R.layout.comb_layout, combs));
 
 
         floatingActionButton.setOnClickListener(v ->
@@ -89,6 +86,10 @@ public class CompleteProfile extends AppCompatActivity {
                 .compress(1024)			//Final image size will be less than 1 MB(Optional)
                 .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
                 .start());
+
+    }
+
+    private void completeUserProfile() {
 
     }
 
