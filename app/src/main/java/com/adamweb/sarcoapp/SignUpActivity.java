@@ -94,15 +94,11 @@ public class SignUpActivity extends AppCompatActivity {
             } else if (!password.equals(confirmPassword)) {
                 Toast.makeText(SignUpActivity.this, "Password miss match!", Toast.LENGTH_LONG).show();
                 cPassword.setError("fill the password correctly");
-            } else if (TextUtils.isEmpty(admissionNo)){
-                Toast.makeText(SignUpActivity.this, "Admission Number is Empty", Toast.LENGTH_LONG).show();
-                admNumber.setError("Please you should fill the field");
-                admNumber.requestFocus();
             } else if (TextUtils.isEmpty(phoneNo)){
                 Toast.makeText(SignUpActivity.this, "Phone Number is empty", Toast.LENGTH_LONG).show();
                 phoneNumber.setError("Please you should fill the field");
                 phoneNumber.requestFocus();
-            }else {
+            } else {
                 progressDialog = new ProgressDialog(SignUpActivity.this);
                 progressDialog.setMessage("Please wait while creating your account");
                 progressDialog.setCanceledOnTouchOutside(false);
