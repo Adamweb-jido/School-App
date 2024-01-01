@@ -88,9 +88,7 @@ public class CompleteProfile extends AppCompatActivity {
 
     }
 
-    private void completeUserProfile() {
 
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
