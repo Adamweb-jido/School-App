@@ -43,8 +43,8 @@ public class CompleteProfile extends AppCompatActivity {
         progressBar = findViewById(R.id.userProfileProgressBar);
 
         completeBtn.setOnClickListener(v ->{
-            String admissionNumber, combination, comment, cc, CC, Cc, cC;
-                    cc = "Computer/Chemistry"; CC = "COMPUTER/CHEMISTRY"; Cc = "Computer/chemistry"; cC = "computer/Chemistry";
+            String admissionNumber, combination, comment;
+                  String [] combChoice = {"Computer/Chemistry", "COMPUTER/CHEMISTRY", "Computer/chemistry", "computer/Chemistry"};
             admissionNumber = String.valueOf(urAdmNo.getText());
             combination = String.valueOf(urCombination.getText());
             comment = String.valueOf(urComment.getText());
@@ -56,11 +56,24 @@ public class CompleteProfile extends AppCompatActivity {
             } else if (TextUtils.isEmpty(admissionNumber)){
                 urAdmNo.setError("Fill this Field");
                 urAdmNo.requestFocus();
-            } else if (!combination.equals(cc) && !combination.equals(CC) && !combination.equals(cC) && !combination.equals(Cc)){
+            } else if (!combination.equals(combChoice[0])){
                 Toast.makeText(this, "Hint: Only one comb is allowed", Toast.LENGTH_SHORT).show();
                 urCombination.setError("your comb is not allowed yet!");
                 urCombination.requestFocus();
-            } else if (TextUtils.isEmpty(combination)){
+            } else if (!combination.equals(combChoice[1])){
+                Toast.makeText(this, "Hint: Only one comb is allowed", Toast.LENGTH_SHORT).show();
+                urCombination.setError("your comb is not allowed yet!");
+                urCombination.requestFocus();
+            } else if (!combination.equals(combChoice[2])){
+                Toast.makeText(this, "Hint: Only one comb is allowed", Toast.LENGTH_SHORT).show();
+                urCombination.setError("your comb is not allowed yet!");
+                urCombination.requestFocus();
+            } else if (!combination.equals(combChoice[3])){
+                Toast.makeText(this, "Hint: Only one comb is allowed", Toast.LENGTH_SHORT).show();
+                urCombination.setError("your comb is not allowed yet!");
+                urCombination.requestFocus();
+            }
+            else if (TextUtils.isEmpty(combination)){
                 urCombination.setError("Fill this Field");
                 urCombination.requestFocus();
             } else if (comment.equals(admissionNumber) || comment.equals(combination)){
