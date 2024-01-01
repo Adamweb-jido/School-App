@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
@@ -41,13 +42,37 @@ public class CompleteProfile extends AppCompatActivity {
         completeBtn = findViewById(R.id.completeBtn);
 
         completeBtn.setOnClickListener(v ->{
-            String admissionNumber, combination, comment;
+            String admissionNumber, combination, comment, cc;
+                    cc = "Computer/Chemistry";
             admissionNumber = String.valueOf(urAdmNo.getText());
             combination = String.valueOf(urCombination.getText());
             comment = String.valueOf(urComment.getText());
 
             if (admissionNumber.length() != 14){
                 Toast.makeText(this, "You have entered invalid Adm. No", Toast.LENGTH_SHORT).show();
+                urAdmNo.setError("Invalid Admission Number");
+                urAdmNo.requestFocus();
+            } else if (TextUtils.isEmpty(admissionNumber)){
+                urAdmNo.setError("Fill this Field");
+                urAdmNo.requestFocus();
+            } else if (!combination.equals(cc)){
+                Toast.makeText(this, "Hint: Only one comb is allowed", Toast.LENGTH_SHORT).show();
+                urCombination.setError("your comb is not allowed yet!");
+                urCombination.requestFocus();
+            } else if (TextUtils.isEmpty(combination)){
+                urCombination.setError("Fill this Field");
+                urCombination.requestFocus();
+            } else if (comment.equals(admissionNumber) || comment.equals(combination)){
+                Toast.makeText(this, "Your Admission Number or comment can not be your comment",
+                        Toast.LENGTH_SHORT).show();
+                urComment.setError("Please write a valid comment");
+                urComment.requestFocus();
+            } else if (TextUtils.isEmpty(comment)){
+                urComment.setError("Fill this Field");
+                urComment.requestFocus();
+            } else {
+
+                completeUserProfile();
             }
 
         });
