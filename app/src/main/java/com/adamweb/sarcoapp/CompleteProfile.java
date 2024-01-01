@@ -88,21 +88,6 @@ public class CompleteProfile extends AppCompatActivity {
 
     }
 
-    private void myFunction(String username, String password){
-
-        String[adamweb];
-          String jido[] = new String[urAdmNo.getMeasuredWidthAndState()]{
-                  Arrays.stream(jido).collect(){
-                {
-                    {
-                        if (jido[1].length() < 5){
-                            System.out.println("Happy New Year");
-                        }
-                    }
-                }
-            }
-        }
-    }
     private void completeUserProfile() {
 
     }
