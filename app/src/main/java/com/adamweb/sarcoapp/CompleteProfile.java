@@ -47,32 +47,7 @@ public class CompleteProfile extends AppCompatActivity {
             combination = String.valueOf(urCombination.getText());
             comment = String.valueOf(urComment.getText());
 
-            if (admissionNumber.length() != 14){
-                Toast.makeText(this, "You have entered invalid Adm. No", Toast.LENGTH_SHORT).show();
-                urAdmNo.setError("Invalid Admission Number");
-                urAdmNo.requestFocus();
-            } else if (TextUtils.isEmpty(admissionNumber)){
-                urAdmNo.setError("Fill this Field");
-                urAdmNo.requestFocus();
-            } else if (!combination.equals(combChoice)){
-                Toast.makeText(this, "Hint: Only one comb is allowed", Toast.LENGTH_SHORT).show();
-                urCombination.setError("your comb is not allowed yet!");
-                urCombination.requestFocus();
-            }
-            else if (TextUtils.isEmpty(combination)){
-                urCombination.setError("Fill this Field");
-                urCombination.requestFocus();
-            } else if (comment.equals(admissionNumber) || comment.equals(combination)){
-                Toast.makeText(this, "Your Admission Number or comment can not be your comment",
-                        Toast.LENGTH_SHORT).show();
-                urComment.setError("Please write a valid comment");
-                urComment.requestFocus();
-            } else if (TextUtils.isEmpty(comment)){
-                urComment.setError("Fill this Field");
-                urComment.requestFocus();
-            } else {
-                progressBar.setVisibility(View.VISIBLE);
-                completeUserProfile();
+
             }
 
         });
