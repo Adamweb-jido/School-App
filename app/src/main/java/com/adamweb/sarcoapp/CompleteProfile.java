@@ -1,5 +1,6 @@
 package com.adamweb.sarcoapp;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,9 +13,15 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.github.dhaval2404.imagepicker.ImagePicker;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Arrays;
 
@@ -27,6 +34,7 @@ public class CompleteProfile extends AppCompatActivity {
     TextInputEditText urAdmNo, urComment, urCombination;
     MaterialButton completeBtn;
     ProgressBar progressBar;
+    FirebaseAuth firebaseAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,19 +47,21 @@ public class CompleteProfile extends AppCompatActivity {
         urComment = findViewById(R.id.comment);
         completeBtn = findViewById(R.id.completeBtn);
         progressBar = findViewById(R.id.userProfileProgressBar);
+        firebaseAuth = FirebaseAuth.getInstance();
+
 
         completeBtn.setOnClickListener(v ->{
-            String admissionNumber, combination, comment;
+            String admissionNo, combination, comment;
                   String combChoice = "Computer/Chemistry";
-            admissionNumber = String.valueOf(urAdmNo.getText());
+            admissionNo = String.valueOf(urAdmNo.getText());
             combination = String.valueOf(urCombination.getText());
             comment = String.valueOf(urComment.getText());
 
-            if (admissionNumber.length() != 14){
+            if (admissionNo.length() != 14){
                 Toast.makeText(this, "You have entered invalid Adm. No", Toast.LENGTH_SHORT).show();
                 urAdmNo.setError("Invalid Admission Number");
                 urAdmNo.requestFocus();
-            } else if (TextUtils.isEmpty(admissionNumber)){
+            } else if (TextUtils.isEmpty(admissionNo)){
                 urAdmNo.setError("Fill this Field");
                 urAdmNo.requestFocus();
             } else if (!combination.equals(combChoice)){
@@ -62,7 +72,7 @@ public class CompleteProfile extends AppCompatActivity {
             else if (TextUtils.isEmpty(combination)){
                 urCombination.setError("Fill this Field");
                 urCombination.requestFocus();
-            } else if (comment.equals(admissionNumber) || comment.equals(combination)){
+            } else if (comment.equals(admissionNo) || comment.equals(combination)){
                 Toast.makeText(this, "Your Admission Number or comment can not be your comment",
                         Toast.LENGTH_SHORT).show();
                 urComment.setError("Please write a valid comment");
@@ -72,7 +82,7 @@ public class CompleteProfile extends AppCompatActivity {
                 urComment.requestFocus();
             } else {
                 progressBar.setVisibility(View.VISIBLE);
-                completeUserProfile();
+                completeProfile(admissionNo, combination, comment);
             }
 
         });
@@ -88,9 +98,31 @@ public class CompleteProfile extends AppCompatActivity {
 
     }
 
-    private void completeUserProfile() {
+    private void completeProfile(String admissionNo, String combination, String comment) {
 
+        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Registered Users");
+        UserReadWriteData userReadWriteData = new UserReadWriteData(admissionNo, combination, comment);
+        assert currentUser != null;
+        String addUser = currentUser.getUid();
+
+        databaseReference.child(addUser).setValue(userReadWriteData).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+            }
+        }) .addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                progressBar.setVisibility(View.GONE);
+                Toast.makeText(CompleteProfile.this, "Unsuccessfully try again.", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {

@@ -5,16 +5,26 @@ public class UserReadWriteData {
     String userLastName;
     String userAdmissionNo;
     String userPhoneNo;
+    String userAdmissionNumber;
+    String userCombination;
+    String userComment;
+    int userProfileImage;
 
-    public UserReadWriteData(String firstName, String lastName, String phoneNo, String admissionNo) {
+    public UserReadWriteData(String firstName, String lastName, String phoneNo) {
         this.userFirstName = firstName;
         this.userLastName = lastName;
         this.userPhoneNo = phoneNo;
-        this.userAdmissionNo = admissionNo;
     }
 
     public UserReadWriteData(){
 
+    }
+
+    public UserReadWriteData(String admissionNo, String combination, String comment, int profileImage) {
+        this.userAdmissionNumber = admissionNo;
+        this.userCombination = combination;
+        this.userComment = comment;
+        this.userProfileImage = profileImage;
     }
 
     public String getUserFirstName() {
@@ -41,13 +51,36 @@ public class UserReadWriteData {
         this.userPhoneNo = userPhoneNo;
     }
 
-    public String getUserAdmissionNo() {
-        return userAdmissionNo;
+    public String getUserAdmissionNumber() {
+        return userAdmissionNumber;
     }
 
-    public void setUserAdmissionNo(String userAdmissionNo) {
-        this.userAdmissionNo = userAdmissionNo;
+    public void setUserAdmissionNumber(String userAdmissionNumber) {
+        this.userAdmissionNumber = userAdmissionNumber;
     }
 
+    public String getUserCombination() {
+        return userCombination;
+    }
+
+    public void setUserCombination(String userCombination) {
+        this.userCombination = userCombination;
+    }
+
+    public String getUserComment() {
+        return userComment;
+    }
+
+    public void setUserComment(String userComment) {
+        this.userComment = userComment;
+    }
+
+    public int getUserProfileImage() {
+        return userProfileImage;
+    }
+
+    public void setUserProfileImage(int userProfileImage) {
+        this.userProfileImage = userProfileImage;
+    }
 
 }

@@ -34,7 +34,7 @@ import kotlin.io.FileTreeWalk;
 public class SignUpActivity extends AppCompatActivity {
 
 
-    TextInputEditText fName, lName, email, newPassword, cPassword, admNumber, phoneNumber;
+    TextInputEditText fName, lName, email, newPassword, cPassword, phoneNumber;
     MaterialButton nextBtn;
     TextView login;
     ProgressDialog progressDialog;
@@ -62,7 +62,6 @@ public class SignUpActivity extends AppCompatActivity {
             emailAddress = String.valueOf(email.getText());
             password = String.valueOf(newPassword.getText());
             confirmPassword = String.valueOf(cPassword.getText());
-            admissionNo = String.valueOf(admNumber.getText());
             phoneNo = String.valueOf(phoneNumber.getText());
 
             if (TextUtils.isEmpty(firstName)) {
@@ -103,7 +102,7 @@ public class SignUpActivity extends AppCompatActivity {
                 progressDialog.setMessage("Please wait while creating your account");
                 progressDialog.setCanceledOnTouchOutside(false);
                 progressDialog.show();
-               registerUser(firstName, lastName, emailAddress, password, admissionNo,phoneNo);
+               registerUser(firstName, lastName, emailAddress, password ,phoneNo);
             }
         });
 
@@ -115,14 +114,14 @@ public class SignUpActivity extends AppCompatActivity {
         });
     }
 
-   private void registerUser(String firstName, String lastName, String emailAddress, String password, String admissionNo, String phoneNo) {
+   private void registerUser(String firstName, String lastName, String emailAddress, String password, String phoneNo) {
         FirebaseAuth userAuth = FirebaseAuth.getInstance();
        userAuth.createUserWithEmailAndPassword(emailAddress, password)
                .addOnCompleteListener(task -> {
                    if (task.isSuccessful()){
                        FirebaseUser cUser = userAuth.getCurrentUser();
                        assert cUser != null;
-                       UserReadWriteData userReadWriteData = new UserReadWriteData(firstName, lastName, admissionNo,phoneNo);
+                       UserReadWriteData userReadWriteData = new UserReadWriteData(firstName, lastName,phoneNo);
                        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Registered users");
                        databaseReference.child(cUser.getUid()).setValue(userReadWriteData).addOnCompleteListener(new OnCompleteListener<Void>() {
                            @Override
@@ -146,8 +145,8 @@ public class SignUpActivity extends AppCompatActivity {
                        } catch (FirebaseAuthUserCollisionException e){
                            email.setError("User Already registered with this email address.");
                            email.requestFocus();
-                           admNumber.setError("User with this Admission Number Already registered, enter a valid admission number");
-                           admNumber.requestFocus();
+                           phoneNumber.setError("User with this Phone Number Already registered, enter a valid admission number");
+                           phoneNumber.requestFocus();
                            progressDialog.show();
                        } catch (Exception e){
                            Log.e(TAG, e.getMessage());
@@ -161,7 +160,7 @@ public class SignUpActivity extends AppCompatActivity {
    }
 
     private void sendToHomeActivity() {
-        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+        Intent intent = new Intent(getApplicationContext(), CompleteProfile.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         finish();
