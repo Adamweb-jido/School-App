@@ -16,15 +16,15 @@ public class UserReadWriteData {
         this.userPhoneNo = phoneNo;
     }
 
-    public UserReadWriteData(){
-
-    }
-
     public UserReadWriteData(String admissionNo, String combination, String comment, int profileImage) {
         this.userAdmissionNumber = admissionNo;
         this.userCombination = combination;
         this.userComment = comment;
         this.userProfileImage = profileImage;
+    }
+
+    public UserReadWriteData(){
+
     }
 
     public String getUserFirstName() {

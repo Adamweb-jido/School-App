@@ -120,7 +120,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
+/*
     @Override
     protected void onStart() {
         super.onStart();
@@ -130,5 +130,5 @@ public class LoginActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Please Log in", Toast.LENGTH_SHORT).show();
         }
-    }
+    } */
 }

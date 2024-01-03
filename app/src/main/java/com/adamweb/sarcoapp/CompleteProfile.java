@@ -24,6 +24,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -101,11 +104,13 @@ public class CompleteProfile extends AppCompatActivity {
     private void completeProfile(String admissionNo, String combination, String comment) {
 
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Registered Users");
-        UserReadWriteData userReadWriteData = new UserReadWriteData(admissionNo, combination, comment);
         assert currentUser != null;
         String addUser = currentUser.getUid();
-
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Registered Users").child(addUser);
+        UserReadWriteData userReadWriteData = new UserReadWriteData(admissionNo, combination, comment);
+             userReadWriteData.setUserAdmissionNumber(admissionNo);
+             userReadWriteData.setUserCombination(combination);
+             userReadWriteData.setUserComment(comment);
         databaseReference.child(addUser).setValue(userReadWriteData).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {

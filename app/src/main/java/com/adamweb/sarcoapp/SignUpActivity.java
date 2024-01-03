@@ -122,7 +122,7 @@ public class SignUpActivity extends AppCompatActivity {
                        FirebaseUser cUser = userAuth.getCurrentUser();
                        assert cUser != null;
                        UserReadWriteData userReadWriteData = new UserReadWriteData(firstName, lastName,phoneNo);
-                       DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Registered users");
+                       DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Registered Users");
                        databaseReference.child(cUser.getUid()).setValue(userReadWriteData).addOnCompleteListener(new OnCompleteListener<Void>() {
                            @Override
                            public void onComplete(@NonNull Task<Void> task) {
