@@ -51,10 +51,8 @@ public class CompleteProfile extends AppCompatActivity {
 
 
         completeBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-            finish();
+            progressBar.setVisibility(View.VISIBLE);
+
 
         });
 
@@ -75,5 +73,13 @@ public class CompleteProfile extends AppCompatActivity {
         assert data != null;
         uri = data.getData();
         imageView.setImageURI(uri);
+    }
+
+
+    private void homeActivity (){
+        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
     }
 }
