@@ -1,5 +1,8 @@
 package com.adamweb.sarcoapp;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class UserReadWriteData {
     String userFirstName;
     String userLastName;
@@ -10,18 +13,16 @@ public class UserReadWriteData {
     String userComment;
     int userProfileImage;
 
-    public UserReadWriteData(String firstName, String lastName, String phoneNo) {
+    public UserReadWriteData(String firstName, String lastName, String phoneNo, String admissionNo, String combination, String comment, int profileImage) {
         this.userFirstName = firstName;
         this.userLastName = lastName;
         this.userPhoneNo = phoneNo;
-    }
-
-    public UserReadWriteData(String admissionNo, String combination, String comment, int profileImage) {
         this.userAdmissionNumber = admissionNo;
         this.userCombination = combination;
         this.userComment = comment;
         this.userProfileImage = profileImage;
     }
+
 
     public UserReadWriteData(){
 
@@ -83,4 +84,18 @@ public class UserReadWriteData {
         this.userProfileImage = userProfileImage;
     }
 
+    public Map<String, Object> toMap() {
+        Map<String, Object> map = new HashMap<>();
+
+        map.put("userFirstName", userFirstName);
+        map.put("userLastName", userLastName);
+        map.put("userAdmissionNo", userAdmissionNo);
+        map.put("userPhoneNo", userPhoneNo);
+        map.put("userAdmissionNumber", userAdmissionNumber);
+        map.put("userCombination", userCombination);
+        map.put("userComment", userComment);
+        map.put("userProfileImage", userProfileImage);
+
+        return map;
+    }
 }

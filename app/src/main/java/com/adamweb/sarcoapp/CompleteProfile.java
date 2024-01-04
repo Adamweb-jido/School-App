@@ -106,12 +106,13 @@ public class CompleteProfile extends AppCompatActivity {
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
         assert currentUser != null;
         String addUser = currentUser.getUid();
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Registered Users").child(addUser);
-        UserReadWriteData userReadWriteData = new UserReadWriteData(admissionNo, combination, comment);
-             userReadWriteData.setUserAdmissionNumber(admissionNo);
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Registered Users");
+        UserReadWriteData userReadWriteData = new UserReadWriteData();
+        Map<String, Object> userDataMap = userReadWriteData.toMap();
+        userReadWriteData.setUserAdmissionNumber(admissionNo);
              userReadWriteData.setUserCombination(combination);
              userReadWriteData.setUserComment(comment);
-        databaseReference.child(addUser).setValue(userReadWriteData).addOnSuccessListener(new OnSuccessListener<Void>() {
+        databaseReference.child(addUser).updateChildren(userDataMap).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
