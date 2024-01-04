@@ -26,6 +26,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -77,6 +78,12 @@ public class CompleteProfile extends AppCompatActivity {
     private void userProfilePic() {
         if (profileImage != null){
             StorageReference imageFile = storageReference.child(firebaseAuth.getCurrentUser().getUid() + "." + getFileExtension(profileImage));
+            imageFile.putFile(profileImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                }
+            })
         }
     }
 
