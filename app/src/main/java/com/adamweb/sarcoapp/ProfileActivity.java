@@ -78,13 +78,17 @@ public class ProfileActivity extends AppCompatActivity {
                     email = userProfileDetails.getEmail();
                     firstName = readUserDetails.userFirstName;
                     lastName = readUserDetails.userLastName;
-                    phoneNumber = readUserDetails.userAdmissionNo;
-                    admissionNumber = readUserDetails.userPhoneNo;
+                    phoneNumber = readUserDetails.userPhoneNo;
+                    admissionNumber = readUserDetails.userAdmissionNo;
+                    combination = readUserDetails.userCombination;
+                    comment = readUserDetails.userComment;
 
                     userFullName.setText(firstName + " " + lastName);
                     userEmail.setText(email);
                     userPhoneNumber.setText(phoneNumber);
                     userAdmissionNumber.setText(admissionNumber);
+                    userCombination.setText(combination);
+                    userComment.setText(comment);
                 }
             }
 

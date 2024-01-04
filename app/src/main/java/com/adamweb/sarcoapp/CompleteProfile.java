@@ -49,7 +49,13 @@ public class CompleteProfile extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
 
 
+        completeBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
 
+        });
 
         floatingActionButton.setOnClickListener(v ->
                 ImagePicker.with(CompleteProfile.this)
