@@ -80,9 +80,7 @@ public class CompleteProfile extends AppCompatActivity {
             StorageReference imageFile = storageReference.child(firebaseAuth.getCurrentUser().getUid() + "." + getFileExtension(profileImage));
             imageFile.putFile(profileImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                }
             })
         }
     }
