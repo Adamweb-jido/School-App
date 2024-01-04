@@ -37,6 +37,7 @@ public class CompleteProfile extends AppCompatActivity {
     MaterialButton completeBtn;
     ProgressBar progressBar;
     FirebaseAuth firebaseAuth;
+    Uri uri;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,7 +73,7 @@ public class CompleteProfile extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         assert data != null;
-        Uri uri = data.getData();
+        uri = data.getData();
         imageView.setImageURI(uri);
     }
 }
