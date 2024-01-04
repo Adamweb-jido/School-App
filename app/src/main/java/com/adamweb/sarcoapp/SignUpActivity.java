@@ -56,7 +56,7 @@ public class SignUpActivity extends AppCompatActivity {
         phoneNumber = findViewById(R.id.urPhoneNumber);
 
         nextBtn.setOnClickListener(view -> {
-            String firstName, lastName, emailAddress, password, confirmPassword, admissionNo, phoneNo;
+            String firstName, lastName, emailAddress, password, confirmPassword, phoneNo, admissionNo, combination, comment;
             firstName = String.valueOf(fName.getText());
             lastName = String.valueOf(lName.getText());
             emailAddress = String.valueOf(email.getText());
@@ -121,10 +121,7 @@ public class SignUpActivity extends AppCompatActivity {
                    if (task.isSuccessful()){
                        FirebaseUser cUser = userAuth.getCurrentUser();
                        assert cUser != null;
-                       UserReadWriteData userReadWriteData = new UserReadWriteData();
-                       userReadWriteData.setUserFirstName(firstName);
-                       userReadWriteData.setUserLastName(lastName);
-                       userReadWriteData.setUserPhoneNo(phoneNo);
+                       UserReadWriteData userReadWriteData = new UserReadWriteData(firstName, lastName, phoneNo,);
                        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Registered Users");
                        databaseReference.child(cUser.getUid()).setValue(userReadWriteData).addOnCompleteListener(new OnCompleteListener<Void>() {
                            @Override
