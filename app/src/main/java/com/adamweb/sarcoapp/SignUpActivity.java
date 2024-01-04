@@ -66,7 +66,7 @@ public class SignUpActivity extends AppCompatActivity {
             password = String.valueOf(newPassword.getText());
             confirmPassword = String.valueOf(cPassword.getText());
             phoneNo = String.valueOf(phoneNumber.getText());
-            admissionNo = String.valueOf(phoneNumber.getText());
+            admissionNo = String.valueOf(admissionNumber.getText());
             combination = String.valueOf(urCombination.getText());
             comment = String.valueOf(urComment.getText());
 

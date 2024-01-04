@@ -112,7 +112,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     private void fetchUserDetails(FirebaseUser currentUserName) {
         String userId = currentUserName.getUid();
-        DatabaseReference userReference = FirebaseDatabase.getInstance().getReference("Registered users");
+        DatabaseReference userReference = FirebaseDatabase.getInstance().getReference("Registered Users");
         userReference.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
             @SuppressLint("SetTextI18n")
             @Override

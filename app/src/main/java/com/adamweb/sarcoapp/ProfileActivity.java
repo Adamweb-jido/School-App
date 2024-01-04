@@ -48,13 +48,13 @@ public class ProfileActivity extends AppCompatActivity {
         userComment = findViewById(R.id.user_comment);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        FirebaseUser userProfileDetails = firebaseAuth.getCurrentUser();
-
-        if (userProfileDetails == null){
-            Toast.makeText(this, "Refresh this page", Toast.LENGTH_SHORT).show();
-        } else {
-            fetchUserDetails(userProfileDetails);
+        FirebaseUser userDetails = firebaseAuth.getCurrentUser();
+        if (userDetails == null){
+            Toast.makeText(this, "Failed! please refresh the page", Toast.LENGTH_LONG).show();
+        }else {
+            getUserDetails(userDetails);
         }
+
 
 
 
@@ -66,39 +66,37 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
-    private void fetchUserDetails(FirebaseUser userProfileDetails) {
-        String userId = userProfileDetails.getUid();
-        DatabaseReference userReference = FirebaseDatabase.getInstance().getReference("Registered users");
-        userReference.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                UserReadWriteData readUserDetails = snapshot.getValue(UserReadWriteData.class);
-                if (readUserDetails != null){
-                    email = userProfileDetails.getEmail();
-                    firstName = readUserDetails.userFirstName;
-                    lastName = readUserDetails.userLastName;
-                    phoneNumber = readUserDetails.userPhoneNo;
-                    admissionNumber = readUserDetails.userAdmissionNo;
-                    combination = readUserDetails.userCombination;
-                    comment = readUserDetails.userComment;
+    private void getUserDetails(FirebaseUser userDetails) {
+         String userId = userDetails.getUid();
+         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Registered Users");
+         databaseReference.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+             @Override
+             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                 UserReadWriteData userReadWriteData = snapshot.getValue(UserReadWriteData.class);
+                 if (userReadWriteData != null){
+                     email = userDetails.getEmail();
+                     firstName = userReadWriteData.userFirstName;
+                     lastName = userReadWriteData.userLastName;
+                     phoneNumber = userReadWriteData.userPhoneNo;
+                     admissionNumber = userReadWriteData.userAdmissionNo;
+                     combination = userReadWriteData.userCombination;
+                     comment = userReadWriteData.userComment;
 
-                    userFullName.setText(firstName + " " + lastName);
-                    userEmail.setText(email);
-                    userPhoneNumber.setText(phoneNumber);
-                    userAdmissionNumber.setText(admissionNumber);
-                    userCombination.setText(combination);
-                    userComment.setText(comment);
-                }
-            }
+                     userFullName.setText(firstName + lastName);
+                     userEmail.setText(email);
+                     userAdmissionNumber.setText(admissionNumber);
+                     userCombination.setText(combination);
+                     userComment.setText(comment);
+                 }
+             }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(ProfileActivity.this, "Failed to load user data, refresh the page.", Toast.LENGTH_SHORT).show();
-
-            }
-        });
+             @Override
+             public void onCancelled(@NonNull DatabaseError error) {
+                 Toast.makeText(ProfileActivity.this, "Failed to load your data", Toast.LENGTH_SHORT).show();
+             }
+         });
     }
+
 
     public void myMssBtn(View view){
         TextView sendEmail, cancelArrow;
