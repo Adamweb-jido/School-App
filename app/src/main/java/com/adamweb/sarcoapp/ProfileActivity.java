@@ -82,8 +82,9 @@ public class ProfileActivity extends AppCompatActivity {
                      combination = userReadWriteData.userCombination;
                      comment = userReadWriteData.userComment;
 
-                     userFullName.setText(firstName + lastName);
+                     userFullName.setText(firstName + " " + lastName);
                      userEmail.setText(email);
+                     userPhoneNumber.setText(phoneNumber);
                      userAdmissionNumber.setText(admissionNumber);
                      userCombination.setText(combination);
                      userComment.setText(comment);
