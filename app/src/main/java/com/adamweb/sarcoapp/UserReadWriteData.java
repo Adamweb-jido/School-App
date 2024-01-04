@@ -9,7 +9,10 @@ public class UserReadWriteData {
     String userCombination;
     String userComment;
 
-    public UserReadWriteData(String firstName, String lastName, String phoneNo, String admissionNo, String combination, String comment, int profileImage) {
+    public UserReadWriteData(){
+
+    }
+    public UserReadWriteData(String firstName, String lastName, String phoneNo, String admissionNo, String combination, String comment) {
         this.userFirstName = firstName;
         this.userLastName = lastName;
         this.userPhoneNo = phoneNo;
@@ -18,10 +21,6 @@ public class UserReadWriteData {
         this.userComment = comment;
     }
 
-
-    public UserReadWriteData(){
-
-    }
 
     public String getUserFirstName() {
         return userFirstName;
@@ -37,6 +36,14 @@ public class UserReadWriteData {
 
     public void setUserLastName(String userLastName) {
         this.userLastName = userLastName;
+    }
+
+    public String getUserAdmissionNo() {
+        return userAdmissionNo;
+    }
+
+    public void setUserAdmissionNo(String userAdmissionNo) {
+        this.userAdmissionNo = userAdmissionNo;
     }
 
     public String getUserPhoneNo() {

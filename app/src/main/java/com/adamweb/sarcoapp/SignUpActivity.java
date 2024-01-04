@@ -34,7 +34,7 @@ import kotlin.io.FileTreeWalk;
 public class SignUpActivity extends AppCompatActivity {
 
 
-    TextInputEditText fName, lName, email, newPassword, cPassword, phoneNumber;
+    TextInputEditText fName, lName, email, newPassword, cPassword, phoneNumber, admissionNumber, urCombination, urComment;
     MaterialButton nextBtn;
     TextView login;
     ProgressDialog progressDialog;
@@ -54,6 +54,9 @@ public class SignUpActivity extends AppCompatActivity {
         newPassword = findViewById(R.id.createPassword);
         cPassword = findViewById(R.id.confirmPassword);
         phoneNumber = findViewById(R.id.urPhoneNumber);
+        admissionNumber = findViewById(R.id.admissionNumber);
+        urCombination = findViewById(R.id.combination);
+        urComment = findViewById(R.id.comment);
 
         nextBtn.setOnClickListener(view -> {
             String firstName, lastName, emailAddress, password, confirmPassword, phoneNo, admissionNo, combination, comment;
@@ -63,6 +66,9 @@ public class SignUpActivity extends AppCompatActivity {
             password = String.valueOf(newPassword.getText());
             confirmPassword = String.valueOf(cPassword.getText());
             phoneNo = String.valueOf(phoneNumber.getText());
+            admissionNo = String.valueOf(phoneNumber.getText());
+            combination = String.valueOf(urCombination.getText());
+            comment = String.valueOf(urComment.getText());
 
             if (TextUtils.isEmpty(firstName)) {
                 Toast.makeText(SignUpActivity.this, "First Name is empty", Toast.LENGTH_LONG).show();
@@ -97,12 +103,24 @@ public class SignUpActivity extends AppCompatActivity {
                 Toast.makeText(SignUpActivity.this, "Phone Number is empty", Toast.LENGTH_LONG).show();
                 phoneNumber.setError("Please you should fill the field");
                 phoneNumber.requestFocus();
+            } if (TextUtils.isEmpty(admissionNo)) {
+                Toast.makeText(SignUpActivity.this, "First Name is empty", Toast.LENGTH_LONG).show();
+                fName.setError("Please you should fill the field");
+                fName.requestFocus();
+            } if (TextUtils.isEmpty(combination)) {
+                Toast.makeText(SignUpActivity.this, "First Name is empty", Toast.LENGTH_LONG).show();
+                fName.setError("Please you should fill the field");
+                fName.requestFocus();
+            } if (TextUtils.isEmpty(comment)) {
+                Toast.makeText(SignUpActivity.this, "First Name is empty", Toast.LENGTH_LONG).show();
+                fName.setError("Please you should fill the field");
+                fName.requestFocus();
             } else {
                 progressDialog = new ProgressDialog(SignUpActivity.this);
                 progressDialog.setMessage("Please wait while creating your account");
                 progressDialog.setCanceledOnTouchOutside(false);
                 progressDialog.show();
-               registerUser(firstName, lastName, emailAddress, password ,phoneNo);
+               registerUser(firstName, lastName, emailAddress, password, phoneNo, admissionNo, combination, comment);
             }
         });
 
@@ -114,14 +132,14 @@ public class SignUpActivity extends AppCompatActivity {
         });
     }
 
-   private void registerUser(String firstName, String lastName, String emailAddress, String password, String phoneNo) {
+   private void registerUser(String firstName, String lastName, String emailAddress, String password, String phoneNo, String admissionNo, String combination, String comment) {
         FirebaseAuth userAuth = FirebaseAuth.getInstance();
        userAuth.createUserWithEmailAndPassword(emailAddress, password)
                .addOnCompleteListener(task -> {
                    if (task.isSuccessful()){
                        FirebaseUser cUser = userAuth.getCurrentUser();
                        assert cUser != null;
-                       UserReadWriteData userReadWriteData = new UserReadWriteData(firstName, lastName, phoneNo,);
+                       UserReadWriteData userReadWriteData = new UserReadWriteData(firstName, lastName, phoneNo, admissionNo, combination, comment);
                        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Registered Users");
                        databaseReference.child(cUser.getUid()).setValue(userReadWriteData).addOnCompleteListener(new OnCompleteListener<Void>() {
                            @Override
