@@ -22,6 +22,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -81,9 +82,28 @@ public class CompleteProfile extends AppCompatActivity {
             imageFile.putFile(profileImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    imageFile.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            firebaseUser = firebaseAuth.getCurrentUser();
+                            UserProfileChangeRequest userProfileChangeRequest = new UserProfileChangeRequest.Builder().setPhotoUri(uri).build();
+                            firebaseUser.updateProfile(userProfileChangeRequest);
+                        }
+                    });
 
+                    progressBar.setVisibility(View.GONE);
+                    Toast.makeText(CompleteProfile.this, "Wow You have Completed Your Profile", Toast.LENGTH_SHORT).show();
+                    homeActivity();
                 }
-            })
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(CompleteProfile.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else {
+            progressBar.setVisibility(View.GONE);
+            Toast.makeText(this, "Please select your photo first!", Toast.LENGTH_SHORT).show();
         }
     }
 

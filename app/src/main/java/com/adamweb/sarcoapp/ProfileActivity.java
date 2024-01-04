@@ -81,6 +81,7 @@ public class ProfileActivity extends AppCompatActivity {
                      admissionNumber = userReadWriteData.userAdmissionNo;
                      combination = userReadWriteData.userCombination;
                      comment = userReadWriteData.userComment;
+                     Uri profilePic = userDetails.getPhotoUrl();
 
                      userFullName.setText(firstName + " " + lastName);
                      userEmail.setText(email);
@@ -88,6 +89,9 @@ public class ProfileActivity extends AppCompatActivity {
                      userAdmissionNumber.setText(admissionNumber);
                      userCombination.setText(combination);
                      userComment.setText(comment);
+
+
+
                  }
              }
 
