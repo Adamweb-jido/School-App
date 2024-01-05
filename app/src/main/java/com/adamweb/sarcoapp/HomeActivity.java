@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.app.ListActivity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -24,15 +25,19 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
 
     //------------------Views declaration-------------------------
     ImageView photoAlbum, chats, profile, menu;
+    CircleImageView profileDp;
     TextView userName, visitCount;
     RecyclerView leaderRecycler;
     NavigationView navigationView;
@@ -57,7 +62,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         chats = findViewById(R.id.chatIcon);
         userName = findViewById(R.id.homeUserName);
         visitCount = findViewById(R.id.visitCounter);
-
+        profileDp = findViewById(R.id.profileDp);
         firebaseAuth = FirebaseAuth.getInstance();
         currentUserName = firebaseAuth.getCurrentUser();
  //-------------------------------set Counter----------------------
@@ -121,8 +126,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 if (readUserDetails != null){
                     firstName = readUserDetails.userFirstName;
                     lastName = readUserDetails.userLastName;
+                    Uri profileImage = currentUserName.getPhotoUrl();
 
                     userName.setText(firstName + " " + lastName);
+                    Picasso.get().load(profileImage).into(profileDp);
                 }
             }
 
