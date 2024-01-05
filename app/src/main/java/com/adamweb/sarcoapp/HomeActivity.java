@@ -53,19 +53,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
 
    //------------------Accessing views. Hooks---------------------
-        menu = findViewById(R.id.navMenuIcon);
-        navigationView = findViewById(R.id.menu_nav_view_id);
-        photoAlbum = findViewById(R.id.albumIcon);
-        leaderRecycler = findViewById(R.id.leadersRecycler);
-        drawerLayout = findViewById(R.id.menu_drawer_layout);
-        profile = findViewById(R.id.userProfileIcon);
-        chats = findViewById(R.id.chatIcon);
-        userName = findViewById(R.id.homeUserName);
-        visitCount = findViewById(R.id.visitCounter);
-        profileDp = findViewById(R.id.profileDp);
-        firebaseAuth = FirebaseAuth.getInstance();
-        currentUserName = firebaseAuth.getCurrentUser();
- //-------------------------------set Counter----------------------
+      ----------------
 
         counter = CounterUtil.getVisitCount(this);
         visitCount.setText("Total visits: "+counter);
