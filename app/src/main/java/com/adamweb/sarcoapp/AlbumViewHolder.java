@@ -7,14 +7,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.makeramen.roundedimageview.RoundedImageView;
+
 public class AlbumViewHolder extends RecyclerView.ViewHolder {
 
-    ImageView imageView;
+    RoundedImageView userAlbumCover;
     TextView textView, email, combination, phoneNumber;
     public AlbumViewHolder(@NonNull View itemView) {
         super(itemView);
 
-        imageView = itemView.findViewById(R.id.myImage);
+        userAlbumCover = itemView.findViewById(R.id.myImage);
         email = itemView.findViewById(R.id.email);
         textView = itemView.findViewById(R.id.name);
         combination = itemView.findViewById(R.id.combination);

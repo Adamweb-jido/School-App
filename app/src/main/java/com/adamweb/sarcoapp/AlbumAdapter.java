@@ -2,10 +2,13 @@ package com.adamweb.sarcoapp;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -22,14 +25,14 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumViewHolder> {
     @NonNull
     @Override
     public AlbumViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new AlbumViewHolder(LayoutInflater.from(context).inflate(R.layout.item_view, parent, false));
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_view, parent, false);
+        return new AlbumViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull AlbumViewHolder holder, int position) {
-
+        Picasso.get().load(albumItems.get(position).getImage()).into(holder.userAlbumCover);
         holder.textView.setText(albumItems.get(position).getName());
-        holder.imageView.setImageResource(albumItems.get(position).getImage());
         holder.email.setText(albumItems.get(position).getEmail());
         holder.combination.setText(albumItems.get(position).getCombination());
         holder.phoneNumber.setText(albumItems.get(position).getPhoneNumber());
@@ -39,4 +42,5 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumViewHolder> {
     public int getItemCount() {
         return albumItems.size();
     }
+
 }

@@ -7,6 +7,9 @@ public class AlbumItem {
     String phoneNumber;
     int image;
 
+    public AlbumItem(){
+
+    };
     public AlbumItem(String name, String email, String combination, String phoneNumber, int image) {
         this.name = name;
         this.image = image;
