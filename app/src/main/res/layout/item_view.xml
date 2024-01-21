@@ -6,7 +6,7 @@
     android:padding="10dp">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/bgbbnbbb "
+        android:id="@+id/b"
         android:layout_width="wrap_content"
         android:layout_height="350dp"
         app:cardBackgroundColor="#0D1F82"
