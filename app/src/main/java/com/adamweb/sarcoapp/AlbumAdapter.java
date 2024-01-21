@@ -33,6 +33,18 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumViewHolder> {
     }
 
     @Override
+    public void onBindViewHolder(@NonNull AlbumViewHolder holder, int position) {
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        Uri profileImage = firebaseUser.getPhotoUrl();
+        Picasso.get().load(profileImage).into(holder.userAlbumCover);
+        holder.textView.setText(albumItems.get(position).getName());
+        holder.email.setText(albumItems.get(position).getEmail());
+        holder.combination.setText(albumItems.get(position).getCombination());
+        holder.phoneNumber.setText(albumItems.get(position).getPhoneNumber());
+    }
+
+    @Override
     public int getItemCount() {
         return albumItems.size();
     }
