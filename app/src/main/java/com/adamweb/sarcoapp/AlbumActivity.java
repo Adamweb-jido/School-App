@@ -30,7 +30,7 @@ public class AlbumActivity extends AppCompatActivity {
 
         backArrow = findViewById(R.id.backArrow);
         RecyclerView recyclerView = findViewById(R.id.albumRecycler);
-        List<AlbumItem> albumItems = new ArrayList<>();
+        List<UserReadWriteData> albumItems = new ArrayList<>();
         AlbumAdapter albumAdapter = new AlbumAdapter(getApplicationContext(), albumItems);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerView.setAdapter(albumAdapter);
@@ -40,7 +40,7 @@ public class AlbumActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    AlbumItem albumItem = dataSnapshot.getValue(AlbumItem.class);
+                    UserReadWriteData albumItem = dataSnapshot.getValue(UserReadWriteData.class);
                     albumItems.add(albumItem);
                 }
                 recyclerView.setAdapter(albumAdapter);

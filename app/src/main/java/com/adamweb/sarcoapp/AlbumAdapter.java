@@ -18,9 +18,9 @@ import java.util.List;
 public class AlbumAdapter extends RecyclerView.Adapter<AlbumViewHolder> {
 
     Context context;
-    List<AlbumItem> albumItems;
+    List<UserReadWriteData> albumItems;
 
-    public AlbumAdapter(Context context, List<AlbumItem> albumItems) {
+    public AlbumAdapter(Context context, List<UserReadWriteData> albumItems) {
         this.context = context;
         this.albumItems = albumItems;
     }
@@ -38,11 +38,12 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumViewHolder> {
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         Uri profileImage = firebaseUser.getPhotoUrl();
         Picasso.get().load(profileImage).into(holder.userAlbumCover);
-        holder.textView.setText(albumItems.get(position).getName());
-        holder.email.setText(albumItems.get(position).getEmail());
-        holder.combination.setText(albumItems.get(position).getCombination());
-        holder.phoneNumber.setText(albumItems.get(position).getPhoneNumber());
+        holder.albumName.setText(albumItems.get(position).getUserFirstName());
+        holder.email.setText(firebaseUser.getEmail());
+        holder.combination.setText(albumItems.get(position).getUserCombination());
+        holder.phoneNumber.setText(albumItems.get(position).getUserPhoneNo());
     }
+
 
     @Override
     public int getItemCount() {
