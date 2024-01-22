@@ -14,7 +14,7 @@ public class AlbumViewHolder extends RecyclerView.ViewHolder {
     TextView albumName, email, combination, phoneNumber;
     public AlbumViewHolder(@NonNull View itemView) {
         super(itemView);
-String adam;
+
         userAlbumCover = itemView.findViewById(R.id.myImage);
         email = itemView.findViewById(R.id.email);
         albumName = itemView.findViewById(R.id.name);
