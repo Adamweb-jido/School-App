@@ -10,7 +10,10 @@ import com.makeramen.roundedimageview.RoundedImageView;
 
 public class AlbumViewHolder extends RecyclerView.ViewHolder {
 
-
+    RoundedImageView userAlbumCover;
+    TextView albumName, email, combination, phoneNumber;
+    public AlbumViewHolder(@NonNull View itemView) {
+        super(itemView);
 
         userAlbumCover = itemView.findViewById(R.id.myImage);
         email = itemView.findViewById(R.id.email);
