@@ -2,15 +2,32 @@ package com.adamweb.sarcoapp;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class FriendsAdapter extends RecyclerView.Adapter<FriendListViewHolder> {
+public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.FriendListViewHolder> {
 
+
+    public static class FriendListViewHolder extends RecyclerView.ViewHolder {
+
+        TextView fName, comment;
+        ImageView imageCover;
+
+        public FriendListViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            fName = itemView.findViewById(R.id.friendName);
+            comment = itemView.findViewById(R.id.friendComment);
+            imageCover = itemView.findViewById(R.id.friendsImage);
+        }
+    }
     Context context;
     List<FriendsListItem> items;
 
