@@ -2,15 +2,32 @@ package com.adamweb.sarcoapp;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class LeaderAdapter extends RecyclerView.Adapter<LeaderViewHolder> {
+public class LeaderAdapter extends RecyclerView.Adapter<LeaderAdapter.LeaderViewHolder> {
 
+
+    public static class LeaderViewHolder extends RecyclerView.ViewHolder {
+
+        //accessing the views
+        TextView leaderName;
+        ImageView leaderImage;
+
+        public LeaderViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            leaderImage = itemView.findViewById(R.id.leaderImg);
+            leaderName = itemView.findViewById(R.id.leaderName);
+        }
+    }
     Context context;
     List<LeadersItem> items;
 
