@@ -5,18 +5,36 @@ import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class AlbumAdapter extends RecyclerView.Adapter<AlbumViewHolder> {
+public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder> {
 
+
+     public static class AlbumViewHolder extends RecyclerView.ViewHolder {
+
+        RoundedImageView userAlbumCover;
+        TextView albumName, email, combination, phoneNumber;
+        public AlbumViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            userAlbumCover = itemView.findViewById(R.id.myImage);
+            email = itemView.findViewById(R.id.email);
+            albumName = itemView.findViewById(R.id.name);
+            combination = itemView.findViewById(R.id.combination);
+            phoneNumber = itemView.findViewById(R.id.phoneNumber);
+
+        }
+    }
     Context context;
     List<UserReadWriteData> albumItems;
 
