@@ -33,9 +33,9 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
 
 
     Context context;
-    List<ChatList> lists;
+    List<UserReadWriteData> lists;
 
-    public ChatAdapter(Context context, List<ChatList> lists) {
+    public ChatAdapter(Context context, List<UserReadWriteData> lists) {
         this.context = context;
         this.lists = lists;
     }
@@ -48,11 +48,6 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ChatViewHolder holder, int position) {
-
-        holder.chatName.setText(lists.get(position).getName());
-        holder.lastMsg.setText(lists.get(position).getLastMessage());
-        holder.time.setText(lists.get(position).getTime());
-        holder.chatImage.setImageResource(lists.get(position).getImage());
     }
 
     @Override

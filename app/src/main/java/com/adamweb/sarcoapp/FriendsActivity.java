@@ -30,7 +30,7 @@ public class FriendsActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.friendListRecycler);
 
-        List<FriendsListItem> items = new ArrayList<>();
+        List<UserReadWriteData> items = new ArrayList<>();
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new FriendsAdapter(getApplicationContext(), items));

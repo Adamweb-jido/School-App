@@ -29,9 +29,9 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.FriendLi
         }
     }
     Context context;
-    List<FriendsListItem> items;
+    List<UserReadWriteData> items;
 
-    public FriendsAdapter(Context context, List<FriendsListItem> items) {
+    public FriendsAdapter(Context context, List<UserReadWriteData> items) {
         this.context = context;
         this.items = items;
     }
@@ -45,9 +45,6 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.FriendLi
     @Override
     public void onBindViewHolder(@NonNull FriendListViewHolder holder, int position) {
 
-        holder.fName.setText(items.get(position).getfName());
-        holder.comment.setText(items.get(position).getComment());
-        holder.imageCover.setImageResource(items.get(position).getImageCover());
     }
 
     @Override

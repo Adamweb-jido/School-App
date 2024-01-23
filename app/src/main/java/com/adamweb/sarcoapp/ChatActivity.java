@@ -45,7 +45,7 @@ public class ChatActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), FriendsActivity.class);
             startActivity(intent);
         });
-        List<ChatList> lists = new ArrayList<>();
+        List<UserReadWriteData> lists = new ArrayList<>();
         chatRecycler.setLayoutManager(new LinearLayoutManager(this));
         chatRecycler.setAdapter(new ChatAdapter(getApplicationContext(), lists));
     }

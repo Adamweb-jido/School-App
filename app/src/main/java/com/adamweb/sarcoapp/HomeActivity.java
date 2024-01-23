@@ -93,15 +93,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
         });
     //------------------Leaders recyclerview-------------------------------
-        List<LeadersItem> items = new ArrayList<>();
-        items.add(new LeadersItem("Provost", R.drawable.user_profile_dp));
-        items.add(new LeadersItem("Registerer", R.drawable.user_profile_dp));
-        items.add(new LeadersItem("H. O. D", R.drawable.user_profile_dp));
-        items.add(new LeadersItem("Level Coordinator", R.drawable.user_profile_dp));
-
-        leaderRecycler.setLayoutManager(new GridLayoutManager(this, 2));
-        leaderRecycler.setAdapter(new LeaderAdapter(getApplicationContext(), items));
-
         //------------------Navigation drawer-------------------------------
         navigationView.setNavigationItemSelectedListener(this);
 
