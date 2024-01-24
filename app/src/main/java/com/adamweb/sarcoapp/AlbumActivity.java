@@ -25,8 +25,7 @@ public class AlbumActivity extends AppCompatActivity {
         ImageView backArrow;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_album);
+
 
         backArrow = findViewById(R.id.backArrow);
         RecyclerView recyclerView = findViewById(R.id.albumRecycler);
