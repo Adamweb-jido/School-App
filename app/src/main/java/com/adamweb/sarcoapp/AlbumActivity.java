@@ -28,7 +28,7 @@ public class AlbumActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_album);
 
-        backArrow = findViewById(R.id.backArrow);
+
         RecyclerView recyclerView = findViewById(R.id.albumRecycler);
         List<UserReadWriteData> albumItems = new ArrayList<>();
         AlbumAdapter albumAdapter = new AlbumAdapter(getApplicationContext(), albumItems);
