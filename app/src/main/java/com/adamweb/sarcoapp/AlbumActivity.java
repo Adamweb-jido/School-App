@@ -43,6 +43,7 @@ public class AlbumActivity extends AppCompatActivity {
                     UserReadWriteData albumItem = dataSnapshot.getValue(UserReadWriteData.class);
                     albumItems.add(albumItem);
                 }
+                recyclerView.setAdapter(albumAdapter);
 
             }
 
