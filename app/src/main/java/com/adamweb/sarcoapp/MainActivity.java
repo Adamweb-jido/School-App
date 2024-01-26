@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                 editor.putBoolean("firstTime", false);
                 editor.apply();
 
-                startActivity(new Intent(getApplicationContext(), OnBoardingActivity.class));
+                startActivity(new Intent(getApplicationContext(), OnBoardingScreen.class));
                 finish();
             } else {
                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));

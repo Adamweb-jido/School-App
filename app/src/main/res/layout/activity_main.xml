@@ -17,6 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.41"
+        android:contentDescription="@string/todo"
         app:srcCompat="@drawable/splash_icon" />
 
     <ImageView
@@ -27,14 +28,15 @@
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:srcCompat="@drawable/splashlogo" />
+        app:srcCompat="@drawable/splashlogo"
+        android:contentDescription="@string/todo"/>
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/suez_one"
-        android:text="ARCO PIXEL"
+        android:text="@string/sarcoName"
         android:textColor="@color/black"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -46,13 +48,13 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Developed by: Adamweb"
+        android:text="@string/developBy"
         android:textSize="20sp"
-        android:fontFamily="@font/allerta_stencil"
+        android:fontFamily="@font/alata"
         android:textStyle="bold"
         android:textAlignment="center"
-        android:alpha="0.8"
-        android:textColor="@color/purple_500"
+        android:alpha="0.7"
+        android:textColor="#C1010725"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="30dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
