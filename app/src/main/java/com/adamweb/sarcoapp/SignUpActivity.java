@@ -178,7 +178,7 @@ public class SignUpActivity extends AppCompatActivity {
    }
 
     private void sendToHomeActivity() {
-        Intent intent = new Intent(getApplicationContext(), CompleteProfile.class);
+        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         finish();
