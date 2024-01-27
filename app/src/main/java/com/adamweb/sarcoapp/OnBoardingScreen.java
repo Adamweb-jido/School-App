@@ -79,9 +79,5 @@ public class OnBoardingScreen extends AppCompatActivity {
         }
    }
 
-   private void skipBtn(){
-       Intent intent = new Intent(getApplicationContext(),LandingPage.class);
-       startActivity(intent);
-       finish();
-   }
+
 }
