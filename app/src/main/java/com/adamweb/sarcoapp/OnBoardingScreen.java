@@ -1,9 +1,13 @@
 package com.adamweb.sarcoapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,11 +15,14 @@ import java.util.List;
 public class OnBoardingScreen extends AppCompatActivity {
 
     ViewPager2 onboardPager;
+    LinearLayout indicator;
+    OnBoardingAdapter onBoardingAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_on_boarding_screen);
         onboardPager = findViewById(R.id.onBoardingViewPager);
+        indicator = findViewById(R.id.dotIndicators);
 
         List<OnBoardingItem> items = new ArrayList<>();
         items.add(new OnBoardingItem("Your Album is Now Digital",
@@ -28,7 +35,42 @@ public class OnBoardingScreen extends AppCompatActivity {
                 "I lost my Album Copy, and am far away from my state, how can i see my classmates\" -Asked by a Student. We have solved this problem, just download sarco pixel on app store to get connected with your mates everywhere you go.",
                 R.drawable.connet_onboard
                 ));
-        OnBoardingAdapter onBoardingAdapter = new OnBoardingAdapter(items);
+        onBoardingAdapter = new OnBoardingAdapter(items);
         onboardPager.setAdapter(onBoardingAdapter);
+
+        onBoardIndicator();
+        onboardCurrentIndicator(0);
+        onboardPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                onboardCurrentIndicator(0);
+            }
+        });
+
     }
+
+   public void onBoardIndicator(){
+       ImageView [] indicators = new ImageView[onBoardingAdapter.getItemCount()];
+       LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+       layoutParams.setMargins(10, 0, 10, 0);
+       for (int i = 0; i < indicators.length; i++){
+           indicators[i] = new ImageView(getApplicationContext());
+           indicators[i].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.indicator_inactive));
+           indicators[i].setLayoutParams(layoutParams);
+           indicator.addView(indicators[i]);
+       }
+   }
+
+   public void onboardCurrentIndicator(int index){
+        int indicatorCount = indicator.getChildCount();
+        for (int i = 0; i < indicatorCount; i++){
+            ImageView imageView = (ImageView)indicator.getChildAt(i);
+            if (i == index){
+                imageView.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.indicator_active));
+            } else {
+                imageView.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.indicator_inactive));
+            }
+        }
+   }
 }
