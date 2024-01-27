@@ -8,19 +8,17 @@ public class UserReadWriteData {
     String userAdmissionNumber;
     String userCombination;
     String userComment;
-    String imageUri;
 
     public UserReadWriteData(){
 
     }
-    public UserReadWriteData(String firstName, String lastName, String phoneNo, String admissionNo, String combination, String comment, String imageUri) {
+    public UserReadWriteData(String firstName, String lastName, String phoneNo, String admissionNo, String combination, String comment) {
         this.userFirstName = firstName;
         this.userLastName = lastName;
         this.userPhoneNo = phoneNo;
         this.userAdmissionNumber = admissionNo;
         this.userCombination = combination;
         this.userComment = comment;
-        this.imageUri = imageUri;
     }
 
 
@@ -80,11 +78,4 @@ public class UserReadWriteData {
         this.userComment = userComment;
     }
 
-    public String getImageUri() {
-        return imageUri;
-    }
-
-    public void setImageUri(String imageUri) {
-        this.imageUri = imageUri;
-    }
 }
