@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
+import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,13 +20,15 @@ public class OnBoardingScreen extends AppCompatActivity {
     ViewPager2 onboardPager;
     LinearLayout indicator;
     OnBoardingAdapter onBoardingAdapter;
+    MaterialButton skipBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_on_boarding_screen);
         onboardPager = findViewById(R.id.onBoardingViewPager);
         indicator = findViewById(R.id.dotIndicators);
-
+        skipBtn = findViewById(R.id.skipBtn);
+        skipBtn();
         List<OnBoardingItem> items = new ArrayList<>();
         items.add(new OnBoardingItem("Your Album is Now Digital",
                 "Are you tired of paying your money to get copy of your manual photo Album?, yes! we have got you covered, Sarco Pixel Allows you to access your photo Album digitally on your smartphone.",
@@ -44,7 +49,7 @@ public class OnBoardingScreen extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
-                onboardCurrentIndicator(0);
+                onboardCurrentIndicator(position);
             }
         });
 
@@ -72,5 +77,11 @@ public class OnBoardingScreen extends AppCompatActivity {
                 imageView.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.indicator_inactive));
             }
         }
+   }
+
+   private void skipBtn(){
+       Intent intent = new Intent(getApplicationContext(),LandingPage.class);
+       startActivity(intent);
+       finish();
    }
 }
