@@ -86,7 +86,15 @@ public class SignUpActivity extends AppCompatActivity {
                 Toast.makeText(SignUpActivity.this, "Invalid Email Address", Toast.LENGTH_LONG).show();
                 email.setError("Please enter valid email");
                 email.requestFocus();
-            } else if (TextUtils.isEmpty(password)) {
+            } else if (TextUtils.isEmpty(phoneNo)){
+                Toast.makeText(SignUpActivity.this, "Phone Number is empty", Toast.LENGTH_LONG).show();
+                phoneNumber.setError("Please you should fill the field");
+                phoneNumber.requestFocus();
+            } else if(phoneNo.length() != 11){
+                Toast.makeText(this, "Phone Number must be 11 digits", Toast.LENGTH_SHORT).show();
+            }
+
+            else if (TextUtils.isEmpty(password)) {
                 Toast.makeText(SignUpActivity.this, "Password is empty", Toast.LENGTH_LONG).show();
                 newPassword.setError("Please you should fill the field");
                 newPassword.setTextInputLayoutFocusedRectEnabled(true);
@@ -99,19 +107,15 @@ public class SignUpActivity extends AppCompatActivity {
             } else if (!password.equals(confirmPassword)) {
                 Toast.makeText(SignUpActivity.this, "Password miss match!", Toast.LENGTH_LONG).show();
                 cPassword.setError("fill the password correctly");
-            } else if (TextUtils.isEmpty(phoneNo)){
-                Toast.makeText(SignUpActivity.this, "Phone Number is empty", Toast.LENGTH_LONG).show();
-                phoneNumber.setError("Please you should fill the field");
-                phoneNumber.requestFocus();
-            } if (TextUtils.isEmpty(admissionNo)) {
+            } else if (TextUtils.isEmpty(admissionNo)) {
                 Toast.makeText(SignUpActivity.this, "First Name is empty", Toast.LENGTH_LONG).show();
                 fName.setError("Please you should fill the field");
                 fName.requestFocus();
-            } if (TextUtils.isEmpty(combination)) {
+            } else if (TextUtils.isEmpty(combination)) {
                 Toast.makeText(SignUpActivity.this, "First Name is empty", Toast.LENGTH_LONG).show();
                 fName.setError("Please you should fill the field");
                 fName.requestFocus();
-            } if (TextUtils.isEmpty(comment)) {
+            } else if (TextUtils.isEmpty(comment)) {
                 Toast.makeText(SignUpActivity.this, "First Name is empty", Toast.LENGTH_LONG).show();
                 fName.setError("Please you should fill the field");
                 fName.requestFocus();
