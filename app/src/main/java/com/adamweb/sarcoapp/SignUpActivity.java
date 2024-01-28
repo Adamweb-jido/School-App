@@ -89,7 +89,7 @@ public class SignUpActivity extends AppCompatActivity {
             } else if (TextUtils.isEmpty(phoneNo)){
                 Toast.makeText(SignUpActivity.this, "Phone Number is empty", Toast.LENGTH_LONG).show();
                 phoneNumber.setError("Please you should fill the field");
-
+                phoneNumber.requestFocus();
             } else if(phoneNo.length() != 11){
                 Toast.makeText(this, "Phone Number must be 11 digits", Toast.LENGTH_SHORT).show();
             }
