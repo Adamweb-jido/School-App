@@ -6,6 +6,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -20,7 +21,7 @@ public class OnBoardingScreen extends AppCompatActivity {
     ViewPager2 onboardPager;
     LinearLayout indicator;
     OnBoardingAdapter onBoardingAdapter;
-    MaterialButton skipBtn;
+    MaterialButton skipBtn, doneBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +29,17 @@ public class OnBoardingScreen extends AppCompatActivity {
         onboardPager = findViewById(R.id.onBoardingViewPager);
         indicator = findViewById(R.id.dotIndicators);
         skipBtn = findViewById(R.id.skipBtn);
+        doneBtn = findViewById(R.id.doneBtn);
         skipBtn();
+
+        doneBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),LandingPage.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         List<OnBoardingItem> items = new ArrayList<>();
         items.add(new OnBoardingItem("Your Album is Now Digital",
                 "Are you tired of paying your money to get copy of your manual photo Album?, yes! we have got you covered, Sarco Pixel Allows you to access your photo Album digitally on your smartphone.",
@@ -77,6 +88,7 @@ public class OnBoardingScreen extends AppCompatActivity {
                 imageView.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.indicator_inactive));
             }
         }
+
    }
 
    private void skipBtn(){

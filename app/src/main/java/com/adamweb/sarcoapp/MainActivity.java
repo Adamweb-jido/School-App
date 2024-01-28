@@ -42,8 +42,7 @@ public class MainActivity extends AppCompatActivity {
         leftSideAnim.setAnimation(leftAnim);
         textAnim.setAnimation(textAnimation);
         new Handler().postDelayed(() -> {
-
-            sharedPreferences = getSharedPreferences("onBoard", MODE_PRIVATE);
+          sharedPreferences = getSharedPreferences("onBoard", MODE_PRIVATE);
             boolean isFirstTime = sharedPreferences.getBoolean("firstTime", true);
 
             if (isFirstTime){
