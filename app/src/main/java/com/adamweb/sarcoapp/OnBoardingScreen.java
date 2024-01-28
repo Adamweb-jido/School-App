@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -30,6 +31,8 @@ public class OnBoardingScreen extends AppCompatActivity {
         indicator = findViewById(R.id.dotIndicators);
         skipBtn = findViewById(R.id.skipBtn);
         doneBtn = findViewById(R.id.doneBtn);
+
+       getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         skipBtn.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(),LandingPage.class);
