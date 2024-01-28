@@ -27,6 +27,7 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/todo"
                 app:layout_constraintVertical_bias="0.0" />
 
             <de.hdodenhof.circleimageview.CircleImageView
@@ -124,6 +125,7 @@
                     android:id="@+id/loginProgressBar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:indeterminateTint="#0D1F82"
                     android:visibility="gone"
                     android:layout_gravity="center"/>
 
