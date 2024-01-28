@@ -31,15 +31,17 @@ public class OnBoardingScreen extends AppCompatActivity {
         skipBtn = findViewById(R.id.skipBtn);
         doneBtn = findViewById(R.id.doneBtn);
 
-        skipBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),LandingPage.class);
-                startActivity(intent);
-                finish();
-            }
+        skipBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(),LandingPage.class);
+            startActivity(intent);
+            finish();
         });
 
+        doneBtn.setOnClickListener( v ->{
+            Intent intent = new Intent(getApplicationContext(),LandingPage.class);
+            startActivity(intent);
+            finish();
+        });
         List<OnBoardingItem> items = new ArrayList<>();
         items.add(new OnBoardingItem("Your Album is Now Digital",
                 "Are you tired of paying your money to get copy of your manual photo Album?, yes! we have got you covered, Sarco Pixel Allows you to access your photo Album digitally on your smartphone.",
@@ -93,11 +95,10 @@ public class OnBoardingScreen extends AppCompatActivity {
             doneBtn.setVisibility(View.VISIBLE);
             doneBtn.setText("Done");
             doneBtn.setAllCaps(false);
+        } else {
+            doneBtn.setVisibility(View.INVISIBLE);
         }
 
    }
 
-   private void skipBtn(){
-
-   }
 }
