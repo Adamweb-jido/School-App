@@ -42,7 +42,11 @@ public class MainActivity extends AppCompatActivity {
         leftSideAnim.setAnimation(leftAnim);
         textAnim.setAnimation(textAnimation);
         new Handler().postDelayed(() -> {
-          sharedPreferences = getSharedPreferences("onBoard", MODE_PRIVATE);
+
+            Intent intent = new Intent(getApplicationContext(),OnBoardingScreen.class);
+            startActivity(intent);
+            finish();
+         /* sharedPreferences = getSharedPreferences("onBoard", MODE_PRIVATE);
             boolean isFirstTime = sharedPreferences.getBoolean("firstTime", true);
 
             if (isFirstTime){
@@ -55,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                 finish();
-            }
+            }*/
             },5000);
     }
 }
