@@ -12,8 +12,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.firebase.FirebaseApp;
-
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(),OnBoardingScreen.class);
             startActivity(intent);
             finish();
-         /* sharedPreferences = getSharedPreferences("onBoard", MODE_PRIVATE);
+         sharedPreferences = getSharedPreferences("onBoard", MODE_PRIVATE);
             boolean isFirstTime = sharedPreferences.getBoolean("firstTime", true);
 
             if (isFirstTime){
@@ -59,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                 finish();
-            }*/
+            }
             },5000);
     }
 }

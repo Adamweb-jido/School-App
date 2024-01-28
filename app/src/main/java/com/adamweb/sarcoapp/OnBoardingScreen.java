@@ -26,13 +26,13 @@ public class OnBoardingScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_on_boarding_screen);
         onboardPager = findViewById(R.id.onBoardingViewPager);
         indicator = findViewById(R.id.dotIndicators);
         skipBtn = findViewById(R.id.skipBtn);
         doneBtn = findViewById(R.id.doneBtn);
 
-       getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         skipBtn.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(),LandingPage.class);
