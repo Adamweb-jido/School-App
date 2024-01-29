@@ -92,6 +92,10 @@ public class SignUpActivity extends AppCompatActivity {
                 phoneNumber.requestFocus();
             } else if(phoneNo.length() != 11){
                 Toast.makeText(this, "Phone Number must be 11 digits", Toast.LENGTH_SHORT).show();
+            } else if (!phoneNo.startsWith("0")){
+                Toast.makeText(this, "Invalid Phone Number", Toast.LENGTH_SHORT).show();
+                phoneNumber.setError("Number must start with 0");
+                phoneNumber.requestFocus();
             }
 
             else if (TextUtils.isEmpty(password)) {
