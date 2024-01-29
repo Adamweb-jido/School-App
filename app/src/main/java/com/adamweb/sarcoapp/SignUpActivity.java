@@ -96,17 +96,13 @@ public class SignUpActivity extends AppCompatActivity {
                 Toast.makeText(this, "Invalid Phone Number", Toast.LENGTH_SHORT).show();
                 phoneNumber.setError("Number must start with 0");
                 phoneNumber.requestFocus();
-            }
-
-            else if (TextUtils.isEmpty(password)) {
+            } else if (TextUtils.isEmpty(password)) {
                 Toast.makeText(SignUpActivity.this, "Password is empty", Toast.LENGTH_LONG).show();
                 newPassword.setError("Please you should fill the field");
-                newPassword.setTextInputLayoutFocusedRectEnabled(true);
                 newPassword.requestFocus();
             } else if (password.length() < 6) {
                 Toast.makeText(SignUpActivity.this, "Password is less than 6 digit", Toast.LENGTH_LONG).show();
                 newPassword.setError("set required password");
-                newPassword.setTextInputLayoutFocusedRectEnabled(true);
                 newPassword.requestFocus();
             } else if (!password.equals(confirmPassword)) {
                 Toast.makeText(SignUpActivity.this, "Password miss match!", Toast.LENGTH_LONG).show();
