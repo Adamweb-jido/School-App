@@ -170,7 +170,7 @@ public class SignUpActivity extends AppCompatActivity {
 
                        } catch (FirebaseAuthUserCollisionException e){
                            email.setError("User Already registered with this email address.");
-                           email.requestFocus();
+
                        } catch (Exception e){
                            Log.e(TAG, e.getMessage());
                            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
