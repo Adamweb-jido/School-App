@@ -174,7 +174,7 @@ public class SignUpActivity extends AppCompatActivity {
                        } catch (Exception e){
                            Log.e(TAG, e.getMessage());
                            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
-
+                           progressDialog.dismiss();
                        }
                    }
                });
