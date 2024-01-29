@@ -167,15 +167,10 @@ public class SignUpActivity extends AppCompatActivity {
                        try {
                            throw Objects.requireNonNull(task.getException());
                        } catch (FirebaseAuthInvalidCredentialsException e){
-                           email.setError("invalid email address or Already in use");
-                           email.requestFocus();
-                           progressDialog.dismiss();
+
                        } catch (FirebaseAuthUserCollisionException e){
                            email.setError("User Already registered with this email address.");
                            email.requestFocus();
-                           phoneNumber.setError("User with this Phone Number Already registered, enter a valid admission number");
-                           phoneNumber.requestFocus();
-                           progressDialog.dismiss();
                        } catch (Exception e){
                            Log.e(TAG, e.getMessage());
                            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
