@@ -108,17 +108,22 @@ public class SignUpActivity extends AppCompatActivity {
                 Toast.makeText(SignUpActivity.this, "Password miss match!", Toast.LENGTH_LONG).show();
                 cPassword.setError("fill the password correctly");
             } else if (TextUtils.isEmpty(admissionNo)) {
-                Toast.makeText(SignUpActivity.this, "First Name is empty", Toast.LENGTH_LONG).show();
-                fName.setError("Please you should fill the field");
-                fName.requestFocus();
-            } else if (TextUtils.isEmpty(combination)) {
-                Toast.makeText(SignUpActivity.this, "First Name is empty", Toast.LENGTH_LONG).show();
-                fName.setError("Please you should fill the field");
-                fName.requestFocus();
+                Toast.makeText(SignUpActivity.this, "Please complete your Adm. No:", Toast.LENGTH_LONG).show();
+                admissionNumber.setError("Please you should fill the field");
+                admissionNumber.requestFocus();
+            } else if (admissionNo.length() != 14){
+                Toast.makeText(this, "Complete your Adm. No:", Toast.LENGTH_SHORT).show();
+                admissionNumber.setError("Complete your Adm. No");
+                admissionNumber.requestFocus();
+            }
+            else if (TextUtils.isEmpty(combination)) {
+                Toast.makeText(SignUpActivity.this, "Combination can't change", Toast.LENGTH_LONG).show();
+                urCombination.setError("Please you should fill the field");
+                urCombination.requestFocus();
             } else if (TextUtils.isEmpty(comment)) {
-                Toast.makeText(SignUpActivity.this, "First Name is empty", Toast.LENGTH_LONG).show();
-                fName.setError("Please you should fill the field");
-                fName.requestFocus();
+                Toast.makeText(SignUpActivity.this, "Please Write Your Comment", Toast.LENGTH_LONG).show();
+                urComment.setError("Please add your comment");
+                urComment.requestFocus();
             } else {
                 progressDialog = new ProgressDialog(SignUpActivity.this);
                 progressDialog.setMessage("Please wait while creating your account");
@@ -162,14 +167,15 @@ public class SignUpActivity extends AppCompatActivity {
                        try {
                            throw Objects.requireNonNull(task.getException());
                        } catch (FirebaseAuthInvalidCredentialsException e){
-                           newPassword.setError("invalid email address or Already in use");
-                           newPassword.requestFocus();
+                           email.setError("invalid email address or Already in use");
+                           email.requestFocus();
+                           progressDialog.dismiss();
                        } catch (FirebaseAuthUserCollisionException e){
                            email.setError("User Already registered with this email address.");
                            email.requestFocus();
                            phoneNumber.setError("User with this Phone Number Already registered, enter a valid admission number");
                            phoneNumber.requestFocus();
-                           progressDialog.show();
+                           progressDialog.dismiss();
                        } catch (Exception e){
                            Log.e(TAG, e.getMessage());
                            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
