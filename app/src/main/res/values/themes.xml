@@ -12,10 +12,11 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">#0D1F82</item>
         <!-- Customize your theme here. -->
+        <item name="android:windowAnimationStyle">@style/animation</item>
     </style>
 
-    <style name="CustomProgressBar" parent="Widget.AppCompat.ProgressBar.Horizontal">
-        <item name="android:progressDrawable">@drawable/custome_progress</item>
-        <!-- Add other style attributes as needed -->
+    <style name="animation">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
     </style>
 </resources>
