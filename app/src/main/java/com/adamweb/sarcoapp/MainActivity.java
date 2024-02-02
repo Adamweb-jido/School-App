@@ -52,14 +52,14 @@ public class MainActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putBoolean("firstTime", false);
                 editor.apply();
-                startActivity(new Intent(getApplicationContext(), OnBoardingScreen.class));
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                finish();
+               intent = new Intent(getApplicationContext(),OnBoardingScreen.class);
+               startActivity(intent);
+               finish();
+
             } else {
-                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                finish();
+                intent = new Intent(getApplicationContext(),LoginActivity.class);
+                startActivity(intent);
             }
-            },5000);
+        },3500);
     }
 }
