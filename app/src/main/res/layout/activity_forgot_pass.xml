@@ -91,6 +91,7 @@
             android:orientation="vertical"
             android:padding="10dp">
 
+
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
@@ -109,6 +110,7 @@
                 app:hintTextColor="#0D1F82">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/forgotField"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress" />
@@ -126,8 +128,13 @@
                 android:textSize="20sp"
                 app:cornerRadius="10dp" />
         </LinearLayout>
-
-
+        <ProgressBar
+            android:id="@+id/forgotProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:indeterminateTint="#0D1F82"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
