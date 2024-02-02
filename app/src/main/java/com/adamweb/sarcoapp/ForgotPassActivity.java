@@ -44,17 +44,15 @@ public class ForgotPassActivity extends AppCompatActivity {
         submit = findViewById(R.id.submit);
         forgotField = findViewById(R.id.forgotField);
         progressBar = findViewById(R.id.forgotProgressBar);
-        gotoEmailBtn = dialog.findViewById(R.id.emailBtn);
-        exitAppBtn = dialog.findViewById(R.id.exitBtn);
-
 
         dialog = new Dialog(ForgotPassActivity.this);
         dialog.setContentView(R.layout.code_sent_dialog);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        dialog.getWindow().getAttributes().windowAnimations = R.style.animation;
         dialog.setCancelable(false);
-
+        dialog.getWindow().getAttributes().windowAnimations = R.style.animation;
+        gotoEmailBtn = dialog.findViewById(R.id.emailBtn);
+        exitAppBtn = dialog.findViewById(R.id.exitBtn);
 
         gotoEmailBtn.setOnClickListener(v -> {
             Intent intent = getPackageManager().getLaunchIntentForPackage("com.google.android.gm");
@@ -62,6 +60,7 @@ public class ForgotPassActivity extends AppCompatActivity {
                 startActivity(intent);
             } else {
                 Toast.makeText(ForgotPassActivity.this, "App not Installed On your Phone", Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
             }
         });
 
@@ -82,8 +81,8 @@ public class ForgotPassActivity extends AppCompatActivity {
                 forgotField.requestFocus();
             } else if (!Patterns.EMAIL_ADDRESS.matcher(emailAddress).matches()){
                 Toast.makeText(this, "Invalid Email Address", Toast.LENGTH_SHORT).show();
-                submit.setError("Invalid EMail Address");
-                submit.requestFocus();
+                forgotField.setError("Invalid EMail Address");
+                forgotField.requestFocus();
             } else {
                 progressBar.setVisibility(View.VISIBLE);
                 sendCodeToEmail(emailAddress);
