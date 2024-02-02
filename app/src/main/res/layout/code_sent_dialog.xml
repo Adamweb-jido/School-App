@@ -3,74 +3,81 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:padding="20dp"
-    android:gravity="center">
+    android:layout_margin="10dp">
 
-    <ImageView
-        android:id="@+id/okayAnimation"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:src="@drawable/okay_icon"
-        android:layout_gravity="center"
-        android:contentDescription="@string/todo"/>
-
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Successfully Sent"
-        android:textSize="25sp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:fontFamily="@font/suez_one"
-        android:textAlignment="center"/>
+        android:background="@drawable/dialog_background"
+        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/okayAnimation"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/okay_icon"
+            android:layout_gravity="center"
+            android:contentDescription="@string/todo"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/dialogText"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:fontFamily="@font/alata"
-        android:alpha="0.7"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Successfully Sent"
+            android:textSize="25sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:fontFamily="@font/suez_one"
+            android:textAlignment="center"/>
 
-     <LinearLayout
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:orientation="horizontal"
-         android:layout_marginTop="25dp">
-             <com.google.android.material.button.MaterialButton
-                 android:id="@+id/emailBtn"
-                 android:layout_width="wrap_content"
-                 android:layout_height="70dp"
-                 android:layout_marginStart="10dp"
-                 android:textSize="20sp"
-                 android:text="Email"
-                 android:textAllCaps="false"
-                 app:icon="@drawable/ic_baseline_email_24"
-                 android:textStyle="bold"
-                 app:cornerRadius="25dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dialogText"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:fontFamily="@font/alata"
+            android:alpha="0.7"/>
 
-         <androidx.appcompat.widget.LinearLayoutCompat
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             android:orientation="horizontal"
-             android:gravity="end">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="25dp">
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/emailBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_marginStart="10dp"
+                android:textSize="20sp"
+                android:text="Email"
+                android:textAllCaps="false"
+                app:icon="@drawable/ic_baseline_email_24"
+                android:textStyle="bold"
+                app:cornerRadius="25dp"/>
 
-             <com.google.android.material.button.MaterialButton
-                 android:id="@+id/exitBtn"
-                 android:layout_width="wrap_content"
-                 android:layout_height="70dp"
-                 android:layout_marginEnd="10dp"
-                 android:textSize="20sp"
-                 app:icon="@drawable/ic_baseline_cancel_24"
-                 android:text="Exit"
-                 android:textStyle="bold"
-                 app:cornerRadius="25dp"/>
-         </androidx.appcompat.widget.LinearLayoutCompat>
-     </LinearLayout>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="end">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/exitBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_marginEnd="10dp"
+                    android:textSize="20sp"
+                    app:icon="@drawable/ic_baseline_cancel_24"
+                    android:text="Exit"
+                    android:textStyle="bold"
+                    app:cornerRadius="25dp"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </LinearLayout>
+    </LinearLayout>
 
 
 </LinearLayout>

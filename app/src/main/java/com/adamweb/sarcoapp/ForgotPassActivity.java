@@ -3,12 +3,20 @@ package com.adamweb.sarcoapp;
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,10 +29,13 @@ import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 public class ForgotPassActivity extends AppCompatActivity {
 
     TextView login;
-    MaterialButton submit;
+    MaterialButton submit, gotoEmailBtn, exitAppBtn;
     TextInputEditText forgotField;
     FirebaseAuth firebaseAuth;
     ProgressBar progressBar;
+    Dialog dialog;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +44,32 @@ public class ForgotPassActivity extends AppCompatActivity {
         submit = findViewById(R.id.submit);
         forgotField = findViewById(R.id.forgotField);
         progressBar = findViewById(R.id.forgotProgressBar);
+        gotoEmailBtn = dialog.findViewById(R.id.emailBtn);
+        exitAppBtn = dialog.findViewById(R.id.exitBtn);
 
+
+        dialog = new Dialog(ForgotPassActivity.this);
+        dialog.setContentView(R.layout.code_sent_dialog);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().getAttributes().windowAnimations = R.style.animation;
+        dialog.setCancelable(false);
+
+
+        gotoEmailBtn.setOnClickListener(v -> {
+            Intent intent = getPackageManager().getLaunchIntentForPackage("com.google.android.gm");
+            if (intent != null){
+                startActivity(intent);
+            } else {
+                Toast.makeText(ForgotPassActivity.this, "App not Installed On your Phone", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    exitAppBtn.setOnClickListener(v ->{
+        moveTaskToBack(true);
+        android.os.Process.killProcess(android.os.Process.myPid());
+        System.exit(1);
+    });
 
         submit.setOnClickListener(view -> {
 
@@ -65,7 +101,7 @@ public class ForgotPassActivity extends AppCompatActivity {
         firebaseAuth.sendPasswordResetEmail(emailAddress).addOnCompleteListener(task -> {
             if (task.isSuccessful()){
                 Toast.makeText(ForgotPassActivity.this, "Code Is Successfully sent.", Toast.LENGTH_SHORT).show();
-                gotoNextPage();
+                dialog.show();
             } else {
                 try {
                     throw task.getException();
@@ -76,13 +112,8 @@ public class ForgotPassActivity extends AppCompatActivity {
                     Log.e(TAG, e.getMessage());
                     Toast.makeText(ForgotPassActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-                progressBar.setVisibility(View.INVISIBLE);
             }
+            progressBar.setVisibility(View.INVISIBLE);
         });
-    }
-
-    private void gotoNextPage() {
-        startActivity(new Intent(getApplicationContext(), NextForgotPassActivity.class));
-        finish();
     }
 }
