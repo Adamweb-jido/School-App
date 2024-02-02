@@ -50,45 +50,40 @@ public class LoginActivity extends AppCompatActivity {
         CounterUtil.incrementVisitCount(LoginActivity.this);
         registerBtn.setOnClickListener(view -> {
             Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             finish();
-
         });
 
-        forgetPass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ForgotPassActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        forgetPass.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), ForgotPassActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
         });
 
 
-        loginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-              String emailAddress, password;
-              emailAddress = String.valueOf(loginEmail.getText());
-              password = String.valueOf(loginPassword.getText());
+        loginBtn.setOnClickListener(view -> {
+          String emailAddress, password;
+          emailAddress = String.valueOf(loginEmail.getText());
+          password = String.valueOf(loginPassword.getText());
 
-              if (TextUtils.isEmpty(emailAddress)){
-                  Toast.makeText(LoginActivity.this, "Email Address is Empty", Toast.LENGTH_LONG).show();
-                  loginEmail.setError("Please fill the email");
-                  loginEmail.requestFocus();
-              } else if (!Patterns.EMAIL_ADDRESS.matcher(emailAddress).matches()){
-                  Toast.makeText(LoginActivity.this, "Email Address is Invalid", Toast.LENGTH_LONG).show();
-                  loginEmail.setError("Please enter valid email");
-                  loginEmail.requestFocus();
-              } else if (TextUtils.isEmpty(password)){
-                  Toast.makeText(LoginActivity.this, "Password is Empty", Toast.LENGTH_LONG).show();
-                  loginPassword.setError("Please fill the password");
-                  loginPassword.requestFocus();
-              } else {
-                  progressBar.setVisibility(View.VISIBLE);
-                  userLogin(emailAddress, password);
-              }
-            }
+          if (TextUtils.isEmpty(emailAddress)){
+              Toast.makeText(LoginActivity.this, "Email Address is Empty", Toast.LENGTH_LONG).show();
+              loginEmail.setError("Please fill the email");
+              loginEmail.requestFocus();
+          } else if (!Patterns.EMAIL_ADDRESS.matcher(emailAddress).matches()){
+              Toast.makeText(LoginActivity.this, "Email Address is Invalid", Toast.LENGTH_LONG).show();
+              loginEmail.setError("Please enter valid email");
+              loginEmail.requestFocus();
+          } else if (TextUtils.isEmpty(password)){
+              Toast.makeText(LoginActivity.this, "Password is Empty", Toast.LENGTH_LONG).show();
+              loginPassword.setError("Please fill the password");
+              loginPassword.requestFocus();
+          } else {
+              progressBar.setVisibility(View.VISIBLE);
+              userLogin(emailAddress, password);
+          }
         });
     }
 

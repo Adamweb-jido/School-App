@@ -125,6 +125,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         login.setOnClickListener(v ->{
             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             finish();
         });
@@ -142,7 +143,7 @@ public class SignUpActivity extends AppCompatActivity {
                        databaseReference.child(cUser.getUid()).setValue(userReadWriteData).addOnCompleteListener(task1 -> {
                            if (task1.isSuccessful()){
                                Toast.makeText(getApplicationContext(), "You have successfully registered", Toast.LENGTH_LONG).show();
-                               sendToHomeActivity();
+                               sendToEditProfileActivity();
                            } else {
                                Toast.makeText(getApplicationContext(), "Your registration failed, please try again.", Toast.LENGTH_LONG).show();
                                progressDialog.dismiss();
@@ -168,8 +169,8 @@ public class SignUpActivity extends AppCompatActivity {
 
    }
 
-    private void sendToHomeActivity() {
-        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+    private void sendToEditProfileActivity() {
+        Intent intent = new Intent(getApplicationContext(), EditProfile.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         finish();
