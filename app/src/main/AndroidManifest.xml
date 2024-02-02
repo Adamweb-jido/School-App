@@ -64,20 +64,6 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".CreatePassActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".NextForgotPassActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".ForgotPassActivity"
             android:exported="false">
             <meta-data
