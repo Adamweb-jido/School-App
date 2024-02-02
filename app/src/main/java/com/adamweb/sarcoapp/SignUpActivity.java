@@ -173,7 +173,7 @@ public class SignUpActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), EditProfile.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
-
+        finish();
         progressDialog.dismiss();
     }
 }
