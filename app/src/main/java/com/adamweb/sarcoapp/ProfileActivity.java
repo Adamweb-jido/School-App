@@ -12,9 +12,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -24,10 +26,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class ProfileActivity extends AppCompatActivity {
 
-   ImageView imageView;
-    ImageView profile_image;
+   ImageView saveUserToContact, messageUser, callUser, sendSmsToUser, backArrow;
+   CircleImageView profile_image;
+   LinearLayout contactUserLayout;
+   MaterialButton editProfileBtn;
     TextView userFullName, userEmail, userPhoneNumber, userCombination, userAdmissionNumber, userComment;
     String firstName, lastName, email, phoneNumber, combination, admissionNumber, comment;
     Dialog dialog;
@@ -39,14 +45,16 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         dialog = new Dialog(this);
-        imageView  = findViewById(R.id.backArrow);
+        backArrow  = findViewById(R.id.backArrow);
         profile_image = findViewById(R.id.profile_image);
         userFullName = findViewById(R.id.fullName);
         userEmail = findViewById(R.id.user_email);
         userPhoneNumber = findViewById(R.id.phone_number);
         userCombination = findViewById(R.id.user_comb);
-        userAdmissionNumber = findViewById(R.id.adm_no);
         userComment = findViewById(R.id.user_comment);
+        userAdmissionNumber = findViewById(R.id.admissionNo);
+        saveUserToContact = findViewById(R.id.addUserToContact);
+        messageUser = findViewById(R.id.m )
 
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser userDetails = firebaseAuth.getCurrentUser();
@@ -59,7 +67,7 @@ public class ProfileActivity extends AppCompatActivity {
 
 
 
-        imageView.setOnClickListener(v -> {
+        backArrow.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(intent);
             finish();
@@ -92,7 +100,6 @@ public class ProfileActivity extends AppCompatActivity {
                      userComment.setText(comment);
                      Picasso.get().load(profilePic).into(profile_image);
 
-
                  }
              }
 
@@ -101,20 +108,6 @@ public class ProfileActivity extends AppCompatActivity {
                  Toast.makeText(ProfileActivity.this, "Failed to load your data", Toast.LENGTH_SHORT).show();
              }
          });
-    }
-
-
-    public void myMssBtn(View view){
-        TextView sendEmail, cancelArrow;
-        dialog.setContentView(R.layout.message_popup_layout);
-
-        sendEmail = dialog.findViewById(R.id.sendEmail);
-        cancelArrow = dialog.findViewById(R.id.cancelArrow);
-
-        sendEmail.setOnClickListener(v -> sendEmail());
-        cancelArrow.setOnClickListener(v -> dialog.dismiss());
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.show();
     }
 
 
