@@ -63,6 +63,7 @@
                   app:cardPreventCornerOverlap="true"
                   app:cardElevation="10dp">
                   <TextView
+                      android:id="@+id/slideTwo"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:text="You can edit your profile, Make sure you made all necessery changes before closing this page."
