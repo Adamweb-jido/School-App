@@ -131,14 +131,14 @@ public class SignUpActivity extends AppCompatActivity {
         });
     }
 
-   private void registerUser(String userFirstName, String userLastName, String emailAddress, String password, String userPhoneNo, String userAdmissionNo, String userCombination, String userComment, String userUid, String userImageUri) {
+   private void registerUser(String userFirstName, String userLastName, String emailAddress, String password, String userPhoneNo, String userAdmissionNo, String userCombination, String userComment, final String userUid, String userImageUri) {
         FirebaseAuth userAuth = FirebaseAuth.getInstance();
        userAuth.createUserWithEmailAndPassword(emailAddress, password)
                .addOnCompleteListener(task -> {
                    if (task.isSuccessful()){
                        FirebaseUser cUser = userAuth.getCurrentUser();
                        assert cUser != null;
-                       UserModel userReadWriteData = new UserModel(userFirstName, userLastName, userPhoneNo, userAdmissionNo, userCombination, userComment, userUid, userImageUri);
+                       UserModel userReadWriteData = new UserModel(userFirstName, userLastName, userPhoneNo, userAdmissionNo, userCombination, userComment, userImageUri, userUid);
                        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Registered Users");
                        databaseReference.child(cUser.getUid()).setValue(userReadWriteData).addOnCompleteListener(task1 -> {
                            if (task1.isSuccessful()){

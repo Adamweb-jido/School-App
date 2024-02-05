@@ -1,27 +1,19 @@
 package com.adamweb.sarcoapp;
 
 public class UserModel {
-    String userUid, userFirstName, userLastName, userAdmissionNo, userPhoneNo, userCombination, userComment, userImageUri;
+    String userFirstName, userLastName, userPhoneNo, userAdmissionNo, userCombination, userComment, userImageUri, userUid;
 
     public UserModel(){
 
     }
-    public UserModel(String userUid, String userFirstName, String userLastName, String userAdmissionNo, String userPhoneNo, String userCombination, String userComment, String userImageUri) {
-        this.userUid = userUid;
+    public UserModel(String userFirstName, String userLastName, String userPhoneNo, String userAdmissionNo, String userCombination, String userComment, String userImageUri, String userUid) {
         this.userFirstName = userFirstName;
         this.userLastName = userLastName;
-        this.userAdmissionNo = userAdmissionNo;
         this.userPhoneNo = userPhoneNo;
+        this.userAdmissionNo = userAdmissionNo;
         this.userCombination = userCombination;
         this.userComment = userComment;
         this.userImageUri = userImageUri;
-    }
-
-    public String getUserUid() {
-        return userUid;
-    }
-
-    public void setUserUid(String userUid) {
         this.userUid = userUid;
     }
 
@@ -41,20 +33,20 @@ public class UserModel {
         this.userLastName = userLastName;
     }
 
-    public String getUserAdmissionNo() {
-        return userAdmissionNo;
-    }
-
-    public void setUserAdmissionNo(String userAdmissionNo) {
-        this.userAdmissionNo = userAdmissionNo;
-    }
-
     public String getUserPhoneNo() {
         return userPhoneNo;
     }
 
     public void setUserPhoneNo(String userPhoneNo) {
         this.userPhoneNo = userPhoneNo;
+    }
+
+    public String getUserAdmissionNo() {
+        return userAdmissionNo;
+    }
+
+    public void setUserAdmissionNo(String userAdmissionNo) {
+        this.userAdmissionNo = userAdmissionNo;
     }
 
     public String getUserCombination() {
@@ -79,5 +71,13 @@ public class UserModel {
 
     public void setUserImageUri(String userImageUri) {
         this.userImageUri = userImageUri;
+    }
+
+    public String getUserUid() {
+        return userUid;
+    }
+
+    public void setUserUid(String userUid) {
+        this.userUid = userUid;
     }
 }
