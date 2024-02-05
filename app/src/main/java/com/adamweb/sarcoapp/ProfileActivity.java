@@ -56,6 +56,9 @@ public class ProfileActivity extends AppCompatActivity {
         saveUserToContact = findViewById(R.id.addUserToContact);
         messageUser = findViewById(R.id.sendMsgToUser);
         editProfileBtn = findViewById(R.id.editProfileBtn);
+        callUser = findViewById(R.id.callUser);
+        sendSmsToUser = findViewById(R.id.sendSmsOrEmail);
+        contactUserLayout = findViewById(R.id.contactUser);
 
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser userDetails = firebaseAuth.getCurrentUser();
