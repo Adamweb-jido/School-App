@@ -32,7 +32,7 @@ public class ProfileActivity extends AppCompatActivity {
 
    ImageView saveUserToContact, messageUser, callUser, sendSmsToUser, backArrow;
    CircleImageView profile_image;
-
+   LinearLayout contactUserLayout;
    MaterialButton editProfileBtn;
     TextView userFullName, userEmail, userPhoneNumber, userCombination, userAdmissionNumber, userComment;
     String firstName, lastName, email, phoneNumber, combination, admissionNumber, comment;
