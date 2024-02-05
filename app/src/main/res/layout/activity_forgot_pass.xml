@@ -99,13 +99,13 @@
                 android:layout_marginTop="15dp"
                 android:hint="@string/email"
                 android:textColorHint="#0D1F82"
-                app:boxCornerRadiusBottomEnd="10dp"
-                app:boxCornerRadiusBottomStart="10dp"
-                app:boxCornerRadiusTopEnd="10dp"
-                app:boxCornerRadiusTopStart="10dp"
-                app:boxStrokeWidth="3dp"
+                app:boxCornerRadiusBottomEnd="4dp"
+                app:boxCornerRadiusBottomStart="4dp"
+                app:boxCornerRadiusTopEnd="4dp"
+                app:boxCornerRadiusTopStart="4dp"
+                app:boxStrokeWidth="2dp"
                 app:boxStrokeColor="#0D1F82"
-                app:boxStrokeWidthFocused="3dp"
+                app:boxStrokeWidthFocused="2dp"
                 app:endIconMode="clear_text"
                 app:hintTextColor="#0D1F82">
 
@@ -113,6 +113,7 @@
                     android:id="@+id/forgotField"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/suez_one"
                     android:inputType="textEmailAddress" />
             </com.google.android.material.textfield.TextInputLayout>
 

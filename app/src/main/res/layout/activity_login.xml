@@ -71,8 +71,8 @@
                 app:boxCornerRadiusTopEnd="5dp"
                 app:boxCornerRadiusTopStart="5dp"
                 app:boxStrokeColor="#0D1F82"
-                app:boxStrokeWidth="3dp"
-                app:boxStrokeWidthFocused="3dp"
+                app:boxStrokeWidth="2dp"
+                app:boxStrokeWidthFocused="2dp"
                 app:endIconMode="clear_text"
                 app:hintTextColor="#0D1F82">
 
@@ -97,8 +97,8 @@
                 app:boxCornerRadiusTopEnd="5dp"
                 app:boxCornerRadiusTopStart="5dp"
                 app:boxStrokeColor="#0D1F82"
-                app:boxStrokeWidth="3dp"
-                app:boxStrokeWidthFocused="3dp"
+                app:boxStrokeWidth="2dp"
+                app:boxStrokeWidthFocused="2dp"
                 app:endIconMode="password_toggle"
                 app:hintTextColor="#0D1F82">
 
