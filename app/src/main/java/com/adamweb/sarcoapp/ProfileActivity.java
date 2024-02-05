@@ -55,6 +55,7 @@ public class ProfileActivity extends AppCompatActivity {
         userAdmissionNumber = findViewById(R.id.admissionNo);
         saveUserToContact = findViewById(R.id.addUserToContact);
         messageUser = findViewById(R.id.sendMsgToUser);
+        editProfileBtn = findViewById(R.id.editProfileBtn);
 
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser userDetails = firebaseAuth.getCurrentUser();
@@ -65,6 +66,12 @@ public class ProfileActivity extends AppCompatActivity {
             getUserDetails(userDetails);
         }
 
+
+
+        editProfileBtn.setOnClickListener(v ->{
+            startActivity(new Intent(getApplicationContext(), EditProfile.class));
+            finish();
+        });
 
 
         backArrow.setOnClickListener(v -> {
