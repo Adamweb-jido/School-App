@@ -54,16 +54,16 @@ public class ProfileActivity extends AppCompatActivity {
         userComment = findViewById(R.id.user_comment);
         userAdmissionNumber = findViewById(R.id.admissionNo);
         saveUserToContact = findViewById(R.id.addUserToContact);
-        messageUser = findViewById(R.id.m )
+        messageUser = findViewById(R.id.sendMsgToUser);
 
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser userDetails = firebaseAuth.getCurrentUser();
+        DatabaseReference otherUsers = FirebaseDatabase.getInstance().getReference().child("Registered Users");
         if (userDetails == null){
             Toast.makeText(this, "Failed! please refresh the page", Toast.LENGTH_LONG).show();
         }else {
             getUserDetails(userDetails);
         }
-
 
 
 
@@ -81,15 +81,15 @@ public class ProfileActivity extends AppCompatActivity {
          databaseReference.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
              @Override
              public void onDataChange(@NonNull DataSnapshot snapshot) {
-                 UserReadWriteData userReadWriteData = snapshot.getValue(UserReadWriteData.class);
-                 if (userReadWriteData != null){
+                 UserModel userData = snapshot.getValue(UserModel.class);
+                 if (userData != null){
                      email = userDetails.getEmail();
-                     firstName = userReadWriteData.userFirstName;
-                     lastName = userReadWriteData.userLastName;
-                     phoneNumber = userReadWriteData.userPhoneNo;
-                     admissionNumber = userReadWriteData.userAdmissionNo;
-                     combination = userReadWriteData.userCombination;
-                     comment = userReadWriteData.userComment;
+                     firstName = userData.userFirstName;
+                     lastName = userData.userLastName;
+                     phoneNumber = userData.userPhoneNo;
+                     admissionNumber = userData.userAdmissionNo;
+                     combination = userData.userCombination;
+                     comment = userData.userComment;
                      Uri profilePic = userDetails.getPhotoUrl();
 
                      userFullName.setText(firstName + " " + lastName);
@@ -108,19 +108,5 @@ public class ProfileActivity extends AppCompatActivity {
                  Toast.makeText(ProfileActivity.this, "Failed to load your data", Toast.LENGTH_SHORT).show();
              }
          });
-    }
-
-
-    private void sendEmail() {
-        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
-        emailIntent.setData(Uri.parse("mailto:")); // Only email apps should handle this
-        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"realadamweb@example.com"});
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject of the email");
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "Body of the email");
-
-
-        if (emailIntent.resolveActivity(getPackageManager()) != null) {
-            startActivity(emailIntent);
-        }
     }
 }

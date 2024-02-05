@@ -33,9 +33,9 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
 
 
     Context context;
-    List<UserReadWriteData> lists;
+    List<UserModel> lists;
 
-    public ChatAdapter(Context context, List<UserReadWriteData> lists) {
+    public ChatAdapter(Context context, List<UserModel> lists) {
         this.context = context;
         this.lists = lists;
     }

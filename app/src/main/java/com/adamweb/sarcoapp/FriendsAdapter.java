@@ -29,9 +29,9 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.FriendLi
         }
     }
     Context context;
-    List<UserReadWriteData> items;
+    List<UserModel> items;
 
-    public FriendsAdapter(Context context, List<UserReadWriteData> items) {
+    public FriendsAdapter(Context context, List<UserModel> items) {
         this.context = context;
         this.items = items;
     }

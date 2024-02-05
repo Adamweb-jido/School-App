@@ -113,7 +113,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             @SuppressLint("SetTextI18n")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                UserReadWriteData readUserDetails = snapshot.getValue(UserReadWriteData.class);
+                UserModel readUserDetails = snapshot.getValue(UserModel.class);
                 if (readUserDetails != null){
                     firstName = readUserDetails.userFirstName;
                     lastName = readUserDetails.userLastName;

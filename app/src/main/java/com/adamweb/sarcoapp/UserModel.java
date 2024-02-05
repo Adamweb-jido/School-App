@@ -1,26 +1,29 @@
 package com.adamweb.sarcoapp;
 
-public class UserReadWriteData {
-    String userFirstName;
-    String userLastName;
-    String userAdmissionNo;
-    String userPhoneNo;
-    String userAdmissionNumber;
-    String userCombination;
-    String userComment;
+public class UserModel {
+    String userUid, userFirstName, userLastName, userAdmissionNo, userPhoneNo, userCombination, userComment, userImageUri;
 
-    public UserReadWriteData(){
+    public UserModel(){
 
     }
-    public UserReadWriteData(String firstName, String lastName, String phoneNo, String admissionNo, String combination, String comment) {
-        this.userFirstName = firstName;
-        this.userLastName = lastName;
-        this.userPhoneNo = phoneNo;
-        this.userAdmissionNumber = admissionNo;
-        this.userCombination = combination;
-        this.userComment = comment;
+    public UserModel(String userUid, String userFirstName, String userLastName, String userAdmissionNo, String userPhoneNo, String userCombination, String userComment, String userImageUri) {
+        this.userUid = userUid;
+        this.userFirstName = userFirstName;
+        this.userLastName = userLastName;
+        this.userAdmissionNo = userAdmissionNo;
+        this.userPhoneNo = userPhoneNo;
+        this.userCombination = userCombination;
+        this.userComment = userComment;
+        this.userImageUri = userImageUri;
     }
 
+    public String getUserUid() {
+        return userUid;
+    }
+
+    public void setUserUid(String userUid) {
+        this.userUid = userUid;
+    }
 
     public String getUserFirstName() {
         return userFirstName;
@@ -54,14 +57,6 @@ public class UserReadWriteData {
         this.userPhoneNo = userPhoneNo;
     }
 
-    public String getUserAdmissionNumber() {
-        return userAdmissionNumber;
-    }
-
-    public void setUserAdmissionNumber(String userAdmissionNumber) {
-        this.userAdmissionNumber = userAdmissionNumber;
-    }
-
     public String getUserCombination() {
         return userCombination;
     }
@@ -78,4 +73,11 @@ public class UserReadWriteData {
         this.userComment = userComment;
     }
 
+    public String getUserImageUri() {
+        return userImageUri;
+    }
+
+    public void setUserImageUri(String userImageUri) {
+        this.userImageUri = userImageUri;
+    }
 }

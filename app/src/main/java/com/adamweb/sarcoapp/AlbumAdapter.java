@@ -36,9 +36,9 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
         }
     }
     Context context;
-    List<UserReadWriteData> albumItems;
+    List<UserModel> albumItems;
 
-    public AlbumAdapter(Context context, List<UserReadWriteData> albumItems) {
+    public AlbumAdapter(Context context, List<UserModel> albumItems) {
         this.context = context;
         this.albumItems = albumItems;
     }

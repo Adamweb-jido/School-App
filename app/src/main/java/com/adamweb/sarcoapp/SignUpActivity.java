@@ -48,7 +48,7 @@ public class SignUpActivity extends AppCompatActivity {
         urComment = findViewById(R.id.comment);
 
         nextBtn.setOnClickListener(view -> {
-            String firstName, lastName, emailAddress, password, confirmPassword, phoneNo, admissionNo, combination, comment;
+            String firstName, lastName, emailAddress, password, confirmPassword, phoneNo, admissionNo, combination, comment, userUid = "", userImgUri = "";
             firstName = String.valueOf(fName.getText());
             lastName = String.valueOf(lName.getText());
             emailAddress = String.valueOf(email.getText());
@@ -118,7 +118,7 @@ public class SignUpActivity extends AppCompatActivity {
                 progressDialog.setMessage("Please wait while creating your account");
                 progressDialog.setCanceledOnTouchOutside(false);
                 progressDialog.show();
-               registerUser(firstName, lastName, emailAddress, password, phoneNo, admissionNo, combination, comment);
+               registerUser(firstName, lastName, emailAddress, password, phoneNo, admissionNo, combination, comment, userUid, userImgUri);
             }
         });
 
@@ -131,14 +131,14 @@ public class SignUpActivity extends AppCompatActivity {
         });
     }
 
-   private void registerUser(String firstName, String lastName, String emailAddress, String password, String phoneNo, String admissionNo, String combination, String comment) {
+   private void registerUser(String userFirstName, String userLastName, String emailAddress, String password, String userPhoneNo, String userAdmissionNo, String userCombination, String userComment, String userUid, String userImageUri) {
         FirebaseAuth userAuth = FirebaseAuth.getInstance();
        userAuth.createUserWithEmailAndPassword(emailAddress, password)
                .addOnCompleteListener(task -> {
                    if (task.isSuccessful()){
                        FirebaseUser cUser = userAuth.getCurrentUser();
                        assert cUser != null;
-                       UserReadWriteData userReadWriteData = new UserReadWriteData(firstName, lastName, phoneNo, admissionNo, combination, comment);
+                       UserModel userReadWriteData = new UserModel(userFirstName, userLastName, userPhoneNo, userAdmissionNo, userCombination, userComment, userUid, userImageUri);
                        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Registered Users");
                        databaseReference.child(cUser.getUid()).setValue(userReadWriteData).addOnCompleteListener(task1 -> {
                            if (task1.isSuccessful()){
