@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.dhaval2404.imagepicker.ImagePicker;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -45,7 +46,8 @@ public class EditProfile extends AppCompatActivity {
     FloatingActionButton floatingActionButton;
     ProgressBar progressBar;
     FirebaseAuth firebaseAuth;
-Animation topAnimation, sideAnimation;
+   Animation topAnimation, sideAnimation;
+   DatabaseReference databaseReference;
     FirebaseUser currentUser;
     Uri imageUri;
 
@@ -69,6 +71,7 @@ Animation topAnimation, sideAnimation;
         progressBar = findViewById(R.id.editProgressBar);
         firebaseAuth = FirebaseAuth.getInstance();
         currentUser = firebaseAuth.getCurrentUser();
+        databaseReference = FirebaseDatabase.getInstance().getReference("Registered Users");
 
         topAnimation = AnimationUtils.loadAnimation(this, R.anim.side_anim);
         sideAnimation = AnimationUtils.loadAnimation(this, R.anim.text_anim);
@@ -196,9 +199,17 @@ Animation topAnimation, sideAnimation;
                      public void onSuccess(Uri imageUri) {
                          UserModel userModel = new UserModel();
                          userModel.setUserImageUri(imageUri.toString());
-
+                         String key = databaseReference.push().getKey();
+                         databaseReference.child(key).setValue(userModel);
+                         startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                         finish();
                      }
-                 });
+                 }).addOnFailureListener(new OnFailureListener() {
+                     @Override
+                     public void onFailure(@NonNull Exception e) {
+                         Toast.makeText(EditProfile.this, "wrong", Toast.LENGTH_SHORT).show();
+                     }
+                 })
              }
          });
     }
