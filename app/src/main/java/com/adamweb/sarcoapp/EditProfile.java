@@ -2,7 +2,10 @@ package com.adamweb.sarcoapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -21,7 +24,7 @@ public class EditProfile extends AppCompatActivity {
     FloatingActionButton floatingActionButton;
     ProgressBar progressBar;
     FirebaseAuth firebaseAuth;
-
+Animation topAnimation, sideAnimation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,5 +44,18 @@ public class EditProfile extends AppCompatActivity {
         floatingActionButton = findViewById(R.id.floatingActionButton);
         progressBar = findViewById(R.id.editProgressBar);
         firebaseAuth = FirebaseAuth.getInstance();
+
+        topAnimation = AnimationUtils.loadAnimation(this, R.anim.side_anim);
+        sideAnimation = AnimationUtils.loadAnimation(this, R.anim.text_anim);
+
+        slideOne.setAnimation(topAnimation);
+        slideTwo.setAnimation(sideAnimation);
+
+        backArrow.setOnClickListener(v ->{
+            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+            finish();
+        });
+
+
     }
 }
