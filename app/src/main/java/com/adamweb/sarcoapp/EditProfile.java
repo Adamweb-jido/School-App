@@ -1,8 +1,10 @@
 package com.adamweb.sarcoapp;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,6 +13,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.webkit.MimeTypeMap;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -18,22 +21,33 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.dhaval2404.imagepicker.ImagePicker;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 public class EditProfile extends AppCompatActivity {
 
     TextView slideOne, slideTwo;
     EditText editFirstName, editLastName, editPhoneNumber, editEmailAddress, editComment;
     MaterialButton saveChangesBtn, cancelChangesBtn;
+    String firstName, lastName, phoneNumber, emailAddress, comment;
     ImageView backArrow, profilePic;
     FloatingActionButton floatingActionButton;
     ProgressBar progressBar;
     FirebaseAuth firebaseAuth;
 Animation topAnimation, sideAnimation;
     FirebaseUser currentUser;
+    Uri imageUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,7 +131,10 @@ Animation topAnimation, sideAnimation;
                 Toast.makeText(this, "Comment is Empty", Toast.LENGTH_SHORT).show();
                 editComment.setError("This field can't be empty");
                 editComment.requestFocus();
-            } else {
+            } else if (imageUri == null){
+                Toast.makeText(this, "Upload your pic First!", Toast.LENGTH_SHORT).show();
+            }
+            else {
                 editProfile();
                 progressBar.setVisibility(View.VISIBLE);
             }
@@ -130,16 +147,65 @@ Animation topAnimation, sideAnimation;
     }
 
     private void fetchUserData() {
+        String userId = currentUser.getUid();
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Registered Users");
+        databaseReference.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                UserModel userModel = snapshot.getValue(UserModel.class);
+                if (userModel != null){
+                    firstName = userModel.getUserFirstName();
+                    lastName = userModel.getUserLastName();
+                    phoneNumber = userModel.getUserPhoneNo();
+                    emailAddress = currentUser.getEmail();
+                    comment = userModel.getUserComment();
+
+                    editFirstName.setText(firstName);
+                    editLastName.setText(lastName);
+                    editPhoneNumber.setText(phoneNumber);
+                    editEmailAddress.setText(emailAddress);
+                    editComment.setText(comment);
+
+                } else {
+                    Toast.makeText(EditProfile.this, "Unable to fetch the user data", Toast.LENGTH_SHORT).show();
+                }
+                progressBar.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Uri uri = data.getData();
-        profilePic.setImageURI(uri);
+        imageUri = data.getData();
+        profilePic.setImageURI(imageUri);
     }
 
     private void editProfile() {
-        
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference("Registered Users").child(System.currentTimeMillis() + getFileExtension(imageUri));
+         storageReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+             @Override
+             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                 storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                     @Override
+                     public void onSuccess(Uri imageUri) {
+                         UserModel userModel = new UserModel();
+                         userModel.setUserImageUri(imageUri.toString());
+
+                     }
+                 });
+             }
+         });
+    }
+
+    private String getFileExtension(Uri uploadFile){
+        ContentResolver contentResolver = getContentResolver();
+        MimeTypeMap typeMap = MimeTypeMap.getSingleton();
+        return typeMap.getExtensionFromMimeType(contentResolver.getType(uploadFile));
     }
 }

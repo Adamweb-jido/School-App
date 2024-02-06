@@ -1,5 +1,7 @@
 package com.adamweb.sarcoapp;
 
+import android.net.Uri;
+
 public class UserModel {
     String userFirstName, userLastName, userPhoneNo, userAdmissionNo, userCombination, userComment, userImageUri, userUid;
 
