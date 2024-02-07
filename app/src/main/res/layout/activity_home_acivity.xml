@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="#EBE4D0"
     android:id="@+id/menu_drawer_layout"
     android:fitsSystemWindows="true"
@@ -27,82 +28,99 @@
 
       <LinearLayout
           android:layout_width="match_parent"
-          android:layout_height="80dp"
+          android:layout_height="65dp"
           android:background="#0D1F82"
           android:orientation="horizontal"
-          android:padding="5dp">
+          android:layout_gravity="center"
+          android:gravity="center"
+          android:padding="10dp">
 
-          <androidx.constraintlayout.widget.ConstraintLayout
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+          <androidx.cardview.widget.CardView
+              android:layout_width="40dp"
+              android:layout_height="40dp"
+              android:layout_marginStart="40dp"
+              app:cardCornerRadius="5dp"
+              app:cardElevation="5dp"
+              android:layout_gravity="center">
 
-
-              <ImageButton
+              <ImageView
                   android:id="@+id/homeIcon"
-                  android:layout_width="50dp"
-                  android:layout_height="50dp"
-                  android:layout_gravity="center"
-                  android:background="@drawable/icons_bg"
-                  android:contentDescription="@string/home"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
                   android:src="@drawable/home_icon"
-                  app:layout_constraintBottom_toBottomOf="@+id/albumIcon"
-                  app:layout_constraintEnd_toEndOf="parent"
-                  app:layout_constraintHorizontal_bias="0.045"
-                  app:layout_constraintStart_toStartOf="parent"
-                  app:layout_constraintTop_toTopOf="@+id/albumIcon"
-                  app:layout_constraintVertical_bias="0.4" />
+                  android:layout_gravity="center"
+                  android:contentDescription="@string/todo"/>
 
+          </androidx.cardview.widget.CardView>
+          <androidx.cardview.widget.CardView
+              android:layout_width="40dp"
+              android:layout_height="40dp"
+              android:layout_marginStart="40dp"
+              app:cardElevation="5dp"
+              app:cardCornerRadius="5dp"
+              android:layout_gravity="center">
 
-              <androidx.constraintlayout.utils.widget.ImageFilterButton
-
+              <ImageView
                   android:id="@+id/albumIcon"
-                  android:layout_width="50dp"
-                  android:layout_height="50dp"
-                  android:background="@drawable/icons_bg"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
                   android:src="@drawable/album_icon"
-                  app:layout_constraintBottom_toBottomOf="@+id/chatIcon"
-                  app:layout_constraintEnd_toEndOf="parent"
-                  app:layout_constraintHorizontal_bias="0.104"
-                  app:layout_constraintStart_toEndOf="@+id/homeIcon"
-                  app:layout_constraintTop_toTopOf="@+id/chatIcon" />
+                  android:layout_gravity="center"
+                  android:contentDescription="@string/todo"/>
+          </androidx.cardview.widget.CardView>
+          <androidx.cardview.widget.CardView
+              android:layout_width="40dp"
+              android:layout_height="40dp"
+              app:cardCornerRadius="5dp"
+              app:cardElevation="5dp"
+              android:layout_marginStart="40dp"
+              android:layout_gravity="center">
 
-              <androidx.constraintlayout.utils.widget.ImageFilterButton
+              <ImageView
                   android:id="@+id/chatIcon"
-                  android:layout_width="50dp"
-                  android:layout_height="50dp"
-                  android:background="@drawable/icons_bg"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
                   android:src="@drawable/message_icon"
-                  app:layout_constraintBottom_toBottomOf="@+id/userProfileIcon"
-                  app:layout_constraintEnd_toEndOf="parent"
-                  app:layout_constraintHorizontal_bias="0.165"
-                  app:layout_constraintStart_toEndOf="@+id/albumIcon"
-                  app:layout_constraintTop_toTopOf="@+id/userProfileIcon"
-                  app:layout_constraintVertical_bias="0.4" />
+                  android:layout_gravity="center"
+                  android:contentDescription="@string/todo"/>
+          </androidx.cardview.widget.CardView>
+          <androidx.cardview.widget.CardView
+              android:layout_width="40dp"
+              android:layout_height="40dp"
+              app:cardCornerRadius="5dp"
+              app:cardElevation="5dp"
+              android:layout_marginStart="40dp"
+              android:layout_gravity="center">
 
-              <androidx.constraintlayout.utils.widget.ImageFilterButton
-                  android:id="@+id/userProfileIcon"
-                  android:layout_width="50dp"
-                  android:layout_height="50dp"
-                  android:background="@drawable/icons_bg"
+              <ImageView
+                  android:id="@+id/profileIcon"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
                   android:src="@drawable/user_profile_icon"
-                  app:layout_constraintBottom_toBottomOf="@+id/navMenuIcon"
-                  app:layout_constraintEnd_toEndOf="parent"
-                  app:layout_constraintHorizontal_bias="0.268"
-                  app:layout_constraintStart_toEndOf="@+id/chatIcon"
-                  app:layout_constraintTop_toTopOf="@+id/navMenuIcon" />
+                  android:layout_gravity="center"
+                  android:contentDescription="@string/todo"/>
+          </androidx.cardview.widget.CardView>
+          <androidx.cardview.widget.CardView
+              android:layout_width="40dp"
+              android:layout_height="40dp"
+              app:cardCornerRadius="5dp"
+              app:cardElevation="5dp"
+              android:layout_marginStart="40dp"
+              android:layout_marginEnd="38dp"
+              android:layout_gravity="center">
 
-              <androidx.constraintlayout.utils.widget.ImageFilterButton
-                  android:id="@+id/navMenuIcon"
-                  android:layout_width="50dp"
-                  android:layout_height="50dp"
-                  android:background="@drawable/icons_bg"
+              <ImageView
+                  android:id="@+id/menuIcon"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
                   android:src="@drawable/menu_icon"
-                  app:layout_constraintBottom_toBottomOf="parent"
-                  app:layout_constraintEnd_toEndOf="parent"
-                  app:layout_constraintHorizontal_bias="0.709"
-                  app:layout_constraintStart_toEndOf="@+id/userProfileIcon"
-                  app:layout_constraintTop_toTopOf="parent" />
-          </androidx.constraintlayout.widget.ConstraintLayout>
+                  android:layout_gravity="center"
+                  android:contentDescription="@string/todo"/>
+
+          </androidx.cardview.widget.CardView>
+
+
+
 
 
       </LinearLayout>
@@ -115,44 +133,59 @@
           android:elevation="10dp"
           android:padding="10dp">
 
-          <de.hdodenhof.circleimageview.CircleImageView
-              android:id="@+id/profileDp"
-              android:layout_width="117dp"
+          <com.makeramen.roundedimageview.RoundedImageView
+              android:layout_width="80dp"
               android:layout_height="80dp"
+              android:id="@+id/profileDp"
               android:src="@drawable/user_profile_dp"
-              app:civ_border_color="#0D1F82"
-              app:civ_border_overlay="true"
-              app:civ_border_width="5dp"/>
+              app:riv_corner_radius="5dp"
+              app:riv_border_color="#0D1F82"
+              app:riv_border_overlay="true"
+              android:scaleType="fitXY"
+              app:riv_border_width="3dp"/>
 
           <LinearLayout
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              android:layout_marginStart="5dp"
+              android:padding="5dp"
               android:orientation="vertical">
 
               <TextView
                   android:id="@+id/homeUserName"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
-                  android:layout_marginTop="10dp"
+                  android:layout_marginTop="3dp"
+                  android:layout_marginBottom="5dp"
                   android:hint="@string/loading"
                   android:textColor="@color/black"
                   android:textSize="20sp"
                   android:alpha="0.8"
                   android:textStyle="bold"
-                  android:fontFamily="@font/suez_one"/>
+                  android:fontFamily="@font/alata"/>
 
-              <TextView
-                  android:id="@+id/visitCounter"
+              <androidx.cardview.widget.CardView
                   android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:layout_marginTop="10dp"
-                  android:hint="@string/loading"
-                  android:textColor="#580505"
-                  android:textSize="18sp"
-                  android:alpha="0.7"
-                  android:textStyle="bold"
-                  android:fontFamily="@font/suez_one"
-                  android:gravity=""/>
+                  android:layout_height="match_parent"
+                  app:cardBackgroundColor="#0D1F82"
+                  app:cardCornerRadius="10dp"
+                  app:cardElevation="25dp"
+                  app:cardPreventCornerOverlap="true">
+
+                  <TextView
+                      android:id="@+id/visitCounter"
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:textAlignment="center"
+                      android:text="Your Total Visit: 50x"
+                      android:hint="@string/loading"
+                      android:textColor="#EFDADA"
+                      android:textSize="16sp"
+                      android:textStyle="bold"
+                      android:fontFamily="@font/aldrich"
+                      android:gravity="center"/>
+              </androidx.cardview.widget.CardView>
+
 
 
           </LinearLayout>
@@ -187,25 +220,30 @@
                       android:orientation="horizontal">
 
                       <ImageView
-                          android:layout_width="140dp"
+                          android:id="@+id/welcomeImg"
+                          android:layout_width="120dp"
                           android:layout_height="match_parent"
+                          android:scaleType="fitXY"
                           android:contentDescription="@string/welcome"
                           android:src="@drawable/welcome_img"/>
 
                       <LinearLayout
                           android:layout_width="match_parent"
                           android:layout_height="match_parent"
-                          android:orientation="vertical">
+                          android:orientation="vertical"
+                          android:padding="5dp">
 
                           <TextView
+                              android:id="@+id/hiUserId"
                               android:layout_width="match_parent"
                               android:layout_height="wrap_content"
-                              android:layout_marginTop="18dp"
+                              android:layout_marginTop="10dp"
                               android:textStyle="bold"
-                              android:alpha="0.8"
+                              android:alpha="0.9"
+                              android:textAlignment="center"
                               android:fontFamily="@font/amaranth_bold"
-                              android:text="@string/welcome"
-                              android:textSize="20sp"
+                              android:hint="Hi, <User>"
+                              android:textSize="30sp"
                               android:textColor="@color/black" />
 
                           <TextView
@@ -213,10 +251,14 @@
                               android:layout_height="wrap_content"
                               android:layout_marginTop="5dp"
                               android:textStyle="bold"
+                              android:paddingStart="10dp"
+                              android:paddingEnd="10dp"
+                              android:textAlignment="center"
+                              android:alpha="0.5"
                               android:fontFamily="@font/amaranth_bold"
                               android:text="@string/subWelcome"
                               android:textSize="14sp"
-                              android:textColor="#020B32"/>
+                              android:textColor="#000"/>
                       </LinearLayout>
 
                   </LinearLayout>
@@ -226,6 +268,62 @@
                   android:layout_width="match_parent"
                   android:layout_height="3dp"
                   android:background="#0D1F82"/>
+
+              <RelativeLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="220dp"
+                  android:layout_marginTop="15dp"
+                  android:padding="15dp"
+                  android:background="@drawable/quote_texts_bg">
+                  <TextView
+                      android:id="@+id/quoteTextContainerId"
+                      android:layout_width="match_parent"
+                      android:layout_height="120dp"
+                      android:padding="5dp"
+                      android:hint="@string/quotes"
+                      android:textSize="22sp"
+                      android:textColor="@color/black"
+                      android:fontFamily="@font/alata"
+                      android:alpha="0.7"
+                      android:text="@string/quotes"
+                      android:textStyle="italic|bold"/>
+
+                  <de.hdodenhof.circleimageview.CircleImageView
+                      android:id="@+id/quoteImageId"
+                      android:layout_width="50dp"
+                      android:layout_height="50dp"
+                      android:layout_marginStart="60dp"
+                      android:layout_marginTop="15dp"
+                      app:civ_border_color="#0D1F82"
+                      app:civ_border_width="3dp"
+                      app:civ_border_overlay="true"
+                      android:src="@drawable/user_profile_dp"
+                      android:layout_below="@id/quoteTextContainerId"/>
+
+
+                  <androidx.cardview.widget.CardView
+                      android:layout_width="180dp"
+                      android:layout_height="30dp"
+                      android:layout_marginTop="28dp"
+                      android:layout_marginStart="10dp"
+                      app:cardElevation="20dp"
+                      app:cardCornerRadius="20dp"
+                      app:cardBackgroundColor="#0D1F82"
+                      android:layout_below="@id/quoteTextContainerId"
+                      android:layout_toEndOf="@id/quoteImageId">
+
+                      <TextView
+                          android:layout_width="match_parent"
+                          android:layout_height="match_parent"
+                          android:textAlignment="center"
+                          android:gravity="center"
+                          android:textStyle="normal|bold"
+                          android:fontFamily="@font/aldrich"
+                          android:text="@string/name"
+                          android:textColor="@color/white"/>
+
+                  </androidx.cardview.widget.CardView>
+              </RelativeLayout>
 
               <HorizontalScrollView
                   android:layout_width="match_parent"
