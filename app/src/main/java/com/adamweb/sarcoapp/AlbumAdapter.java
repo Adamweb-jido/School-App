@@ -37,6 +37,7 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
     }
     Context context;
     List<UserModel> albumItems;
+    Uri profileImage;
 
     public AlbumAdapter(Context context, List<UserModel> albumItems) {
         this.context = context;
