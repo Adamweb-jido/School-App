@@ -27,6 +27,7 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -50,6 +51,7 @@ public class EditProfile extends AppCompatActivity {
    DatabaseReference databaseReference;
     FirebaseUser currentUser;
     Uri imageUri;
+    StorageReference storageReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +74,7 @@ public class EditProfile extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         currentUser = firebaseAuth.getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("Registered Users");
+        storageReference = FirebaseStorage.getInstance().getReference("Users Pics");
 
         topAnimation = AnimationUtils.loadAnimation(this, R.anim.side_anim);
         sideAnimation = AnimationUtils.loadAnimation(this, R.anim.text_anim);
@@ -151,7 +154,6 @@ public class EditProfile extends AppCompatActivity {
 
     private void fetchUserData() {
         String userId = currentUser.getUid();
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Registered Users");
         databaseReference.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -177,7 +179,7 @@ public class EditProfile extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Toast.makeText(EditProfile.this, "Something Went Wrong!, try again!", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -185,22 +187,22 @@ public class EditProfile extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        assert data != null;
         imageUri = data.getData();
         profilePic.setImageURI(imageUri);
     }
 
     private void editProfile() {
-        StorageReference storageReference = FirebaseStorage.getInstance().getReference("Registered Users").child(System.currentTimeMillis() + getFileExtension(imageUri));
-         storageReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+        StorageReference fileReference = storageReference.child(System.currentTimeMillis() + getFileExtension(imageUri));
+         fileReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
              @Override
              public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                 storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                 fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                      @Override
                      public void onSuccess(Uri imageUri) {
-                         UserModel userModel = new UserModel();
-                         userModel.setUserImageUri(imageUri.toString());
-                         String key = databaseReference.push().getKey();
-                         databaseReference.child(key).setValue(userModel);
+                       UserModel userModel = new UserModel();
+                       userModel.setUserImageUri(imageUri.toString());
+                       databaseReference.child(currentUser.getUid()).setValue(userModel);
                          startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                          finish();
                      }
@@ -209,7 +211,7 @@ public class EditProfile extends AppCompatActivity {
                      public void onFailure(@NonNull Exception e) {
                          Toast.makeText(EditProfile.this, "wrong", Toast.LENGTH_SHORT).show();
                      }
-                 })
+                 });
              }
          });
     }

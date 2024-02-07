@@ -54,8 +54,7 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
     public void onBindViewHolder(@NonNull AlbumViewHolder holder, int position) {
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-        Uri profileImage = firebaseUser.getPhotoUrl();
-        Picasso.get().load(profileImage).into(holder.userAlbumCover);
+        Picasso.get().load(albumItems.get(position).getUserImageUri()).into(holder.userAlbumCover);
         holder.albumName.setText(albumItems.get(position).getUserFirstName());
         holder.email.setText(firebaseUser.getEmail());
         holder.combination.setText(albumItems.get(position).getUserCombination());
