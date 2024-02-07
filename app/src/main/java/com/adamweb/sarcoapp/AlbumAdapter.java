@@ -52,13 +52,11 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
 
     @Override
     public void onBindViewHolder(@NonNull AlbumViewHolder holder, int position) {
-        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-        Picasso.get().load(albumItems.get(position).getUserImageUri()).into(holder.userAlbumCover);
-        holder.albumName.setText(albumItems.get(position).getUserFirstName());
-        holder.email.setText(firebaseUser.getEmail());
-        holder.combination.setText(albumItems.get(position).getUserCombination());
-        holder.phoneNumber.setText(albumItems.get(position).getUserPhoneNo());
+        UserModel userModel = albumItems.get(position);
+        Picasso.get().load(userModel.getUserImageUri()).into(holder.userAlbumCover);
+        holder.albumName.setText(userModel.getUserFirstName());
+        holder.combination.setText(userModel.getUserCombination());
+        holder.phoneNumber.setText(userModel.getUserPhoneNo());
     }
 
 
