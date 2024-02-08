@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#EBE4D0"
     android:id="@+id/menu_drawer_layout"
     android:fitsSystemWindows="true"
@@ -137,12 +136,12 @@
               android:layout_width="80dp"
               android:layout_height="80dp"
               android:id="@+id/profileDp"
-              android:src="@drawable/user_profile_dp"
               app:riv_corner_radius="5dp"
               app:riv_border_color="#0D1F82"
-              app:riv_border_overlay="true"
+              app:riv_border_width="3dp"
               android:scaleType="fitXY"
-              app:riv_border_width="3dp"/>
+              android:src="@drawable/user_profile_dp"/>
+
 
           <LinearLayout
               android:layout_width="match_parent"
@@ -177,7 +176,6 @@
                       android:layout_width="match_parent"
                       android:layout_height="match_parent"
                       android:textAlignment="center"
-                      android:text="Your Total Visit: 50x"
                       android:hint="@string/loading"
                       android:textColor="#EFDADA"
                       android:textSize="16sp"
@@ -242,7 +240,7 @@
                               android:alpha="0.9"
                               android:textAlignment="center"
                               android:fontFamily="@font/amaranth_bold"
-                              android:hint="Hi, <User>"
+                              android:hint="@string/loading"
                               android:textSize="30sp"
                               android:textColor="@color/black" />
 
