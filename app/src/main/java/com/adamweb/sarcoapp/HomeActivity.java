@@ -40,7 +40,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     //------------------Views declaration-------------------------
     ImageView photoAlbum, chats, profile, menu;
     RoundedImageView profileDp;
-    TextView userName, visitCount;
+    TextView userName, visitCount, hiUser;
     RecyclerView leaderRecycler, allUsersRecycler;
     NavigationView navigationView;
     DrawerLayout drawerLayout;
@@ -61,6 +61,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         leaderRecycler = findViewById(R.id.leadersRecycler);
         drawerLayout = findViewById(R.id.menu_drawer_layout);
         profile = findViewById(R.id.profileIcon);
+        hiUser = findViewById(R.id.hiUserId);
         chats = findViewById(R.id.chatIcon);
         userName = findViewById(R.id.homeUserName);
         visitCount = findViewById(R.id.visitCounter);
@@ -154,6 +155,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     Uri profileImage = currentUserName.getPhotoUrl();
 
                     userName.setText(firstName + " " + lastName);
+                    hiUser.setText("Hi, " +firstName);
                     Picasso.get().load(profileImage).into(profileDp);
                 }
             }
