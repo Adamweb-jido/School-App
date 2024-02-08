@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
@@ -40,7 +41,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     ImageView photoAlbum, chats, profile, menu;
     RoundedImageView profileDp;
     TextView userName, visitCount;
-    RecyclerView leaderRecycler;
+    RecyclerView leaderRecycler, allUsersRecycler;
     NavigationView navigationView;
     DrawerLayout drawerLayout;
     FirebaseAuth firebaseAuth;
@@ -64,10 +65,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         userName = findViewById(R.id.homeUserName);
         visitCount = findViewById(R.id.visitCounter);
         profileDp = findViewById(R.id.profileDp);
+        allUsersRecycler = findViewById(R.id.allUsersRecycler);
         firebaseAuth = FirebaseAuth.getInstance();
         currentUserName = firebaseAuth.getCurrentUser();
  //-------------------------------set Counter----------------------
-
+       displayAllUsers();
         counter = CounterUtil.getVisitCount(this);
         visitCount.setText("Your Total visit: "+counter);
 
@@ -104,6 +106,37 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
        });
 
+    }
+
+    private void displayAllUsers() {
+
+        List<AllUsersImg> items = new ArrayList<>();
+        items.add(new AllUsersImg(R.drawable.user_profile_dp));
+        items.add(new AllUsersImg(R.drawable.user_profile_dp));
+        items.add(new AllUsersImg(R.drawable.user_profile_dp));
+        items.add(new AllUsersImg(R.drawable.user_profile_dp));
+        items.add(new AllUsersImg(R.drawable.user_profile_dp));
+        items.add(new AllUsersImg(R.drawable.user_profile_dp));
+        items.add(new AllUsersImg(R.drawable.user_profile_dp));
+        items.add(new AllUsersImg(R.drawable.user_profile_dp));
+        items.add(new AllUsersImg(R.drawable.user_profile_dp));
+        items.add(new AllUsersImg(R.drawable.user_profile_dp));
+        items.add(new AllUsersImg(R.drawable.user_profile_dp));
+        items.add(new AllUsersImg(R.drawable.user_profile_dp));
+        items.add(new AllUsersImg(R.drawable.user_profile_dp));
+        items.add(new AllUsersImg(R.drawable.user_profile_dp));
+        items.add(new AllUsersImg(R.drawable.user_profile_dp));
+        items.add(new AllUsersImg(R.drawable.user_profile_dp));
+        items.add(new AllUsersImg(R.drawable.user_profile_dp));
+        items.add(new AllUsersImg(R.drawable.user_profile_dp));
+        items.add(new AllUsersImg(R.drawable.user_profile_dp));
+        items.add(new AllUsersImg(R.drawable.user_profile_dp));
+        items.add(new AllUsersImg(R.drawable.user_profile_dp));
+        items.add(new AllUsersImg(R.drawable.user_profile_dp));
+        items.add(new AllUsersImg(R.drawable.user_profile_dp));
+
+        allUsersRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        allUsersRecycler.setAdapter(new AllUsersAdapter(items));
     }
 
 
