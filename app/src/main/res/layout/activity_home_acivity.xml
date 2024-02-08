@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#EBE4D0"
+    android:orientation="vertical"
     android:id="@+id/menu_drawer_layout"
     android:fitsSystemWindows="true"
     tools:openDrawer="end"
     tools:context=".HomeActivity">
 
 
-
+   <!--
         <com.google.android.material.navigation.NavigationView
             android:layout_width="320dp"
             android:layout_height="match_parent"
@@ -19,7 +20,7 @@
             app:menu="@menu/nav_menu_items"
             android:id="@+id/menu_nav_view_id"
             android:layout_gravity="end"/>
-
+   -->
     <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
@@ -322,6 +323,30 @@
 
                   </androidx.cardview.widget.CardView>
               </RelativeLayout>
+
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="15dp"
+                  android:background="@drawable/header_bg"
+                  android:orientation="vertical">
+                  <TextView
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:background="#09196F"
+                      android:text="All Registered Members"
+                      android:textAlignment="center"
+                      android:textColor="@color/white"
+                      android:textSize="18sp"
+                      android:fontFamily="@font/alata"/>
+
+                  <androidx.recyclerview.widget.RecyclerView
+                      android:id="@+id/allUsersRecycler"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal"
+                      android:padding="5dp"/>
+              </LinearLayout>
 
               <HorizontalScrollView
                   android:layout_width="match_parent"
@@ -645,4 +670,4 @@
 
   </LinearLayout>
 
-</androidx.drawerlayout.widget.DrawerLayout>
+</LinearLayout>
