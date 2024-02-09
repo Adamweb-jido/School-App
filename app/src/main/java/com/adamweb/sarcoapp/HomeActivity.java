@@ -46,6 +46,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     DrawerLayout drawerLayout;
     FirebaseAuth firebaseAuth;
     FirebaseUser currentUserName;
+    DatabaseReference userReference;
     String firstName, lastName, profilePic;
     int counter;
     @Override
@@ -69,7 +70,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         allUsersRecycler = findViewById(R.id.allUsersRecycler);
         firebaseAuth = FirebaseAuth.getInstance();
         currentUserName = firebaseAuth.getCurrentUser();
- //-------------------------------set Counter----------------------
+
+        userReference = FirebaseDatabase.getInstance().getReference("Registered Users");
+
+        //-------------------------------set Counter----------------------
        displayAllUsers();
         counter = CounterUtil.getVisitCount(this);
         visitCount.setText("Your Total visit: "+counter);
@@ -111,39 +115,32 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     private void displayAllUsers() {
 
-        List<AllUsersImg> items = new ArrayList<>();
-        items.add(new AllUsersImg(R.drawable.user_profile_dp));
-        items.add(new AllUsersImg(R.drawable.user_profile_dp));
-        items.add(new AllUsersImg(R.drawable.user_profile_dp));
-        items.add(new AllUsersImg(R.drawable.user_profile_dp));
-        items.add(new AllUsersImg(R.drawable.user_profile_dp));
-        items.add(new AllUsersImg(R.drawable.user_profile_dp));
-        items.add(new AllUsersImg(R.drawable.user_profile_dp));
-        items.add(new AllUsersImg(R.drawable.user_profile_dp));
-        items.add(new AllUsersImg(R.drawable.user_profile_dp));
-        items.add(new AllUsersImg(R.drawable.user_profile_dp));
-        items.add(new AllUsersImg(R.drawable.user_profile_dp));
-        items.add(new AllUsersImg(R.drawable.user_profile_dp));
-        items.add(new AllUsersImg(R.drawable.user_profile_dp));
-        items.add(new AllUsersImg(R.drawable.user_profile_dp));
-        items.add(new AllUsersImg(R.drawable.user_profile_dp));
-        items.add(new AllUsersImg(R.drawable.user_profile_dp));
-        items.add(new AllUsersImg(R.drawable.user_profile_dp));
-        items.add(new AllUsersImg(R.drawable.user_profile_dp));
-        items.add(new AllUsersImg(R.drawable.user_profile_dp));
-        items.add(new AllUsersImg(R.drawable.user_profile_dp));
-        items.add(new AllUsersImg(R.drawable.user_profile_dp));
-        items.add(new AllUsersImg(R.drawable.user_profile_dp));
-        items.add(new AllUsersImg(R.drawable.user_profile_dp));
-
+        List<UserModel> items = new ArrayList<>();
         allUsersRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         allUsersRecycler.setAdapter(new AllUsersAdapter(items));
+
+        userReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    UserModel userModel = dataSnapshot.getValue(UserModel.class);
+                    items.add(userModel);
+                }
+
+                allUsersRecycler.setAdapter(new AllUsersAdapter(items));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(HomeActivity.this, "Error, Please try again later", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
 
     private void fetchUserDetails(FirebaseUser currentUserName) {
         String userId = currentUserName.getUid();
-        DatabaseReference userReference = FirebaseDatabase.getInstance().getReference("Registered Users");
         userReference.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
             @SuppressLint("SetTextI18n")
             @Override

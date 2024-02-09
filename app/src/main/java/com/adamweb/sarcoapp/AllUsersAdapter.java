@@ -16,9 +16,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.AllUsersViewHolder> {
 
 
-    List<AllUsersImg> items;
+    List<UserModel> items;
 
-    public AllUsersAdapter(List<AllUsersImg> items) {
+    public AllUsersAdapter(List<UserModel> items) {
         this.items = items;
     }
 

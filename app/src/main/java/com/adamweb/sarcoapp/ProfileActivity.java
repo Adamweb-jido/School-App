@@ -100,8 +100,7 @@ public class ProfileActivity extends AppCompatActivity {
                      admissionNumber = userData.userAdmissionNo;
                      combination = userData.userCombination;
                      comment = userData.userComment;
-                     Uri profilePic = userDetails.getPhotoUrl();
-
+                     String profilePic = userData.getUserImageUri();
                      userFullName.setText(firstName + " " + lastName);
                      userEmail.setText(email);
                      userPhoneNumber.setText(phoneNumber);

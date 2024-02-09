@@ -36,13 +36,14 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 public class EditProfile extends AppCompatActivity {
 
     TextView slideOne, slideTwo;
     EditText editFirstName, editLastName, editPhoneNumber, editEmailAddress, editComment;
     MaterialButton saveChangesBtn, cancelChangesBtn;
-    String firstName, lastName, phoneNumber, emailAddress, comment;
+    String firstName, lastName, phoneNumber, emailAddress, comment, profileDp;
     ImageView backArrow, profilePic;
     FloatingActionButton floatingActionButton;
     ProgressBar progressBar;
@@ -164,12 +165,14 @@ public class EditProfile extends AppCompatActivity {
                     phoneNumber = userModel.getUserPhoneNo();
                     emailAddress = currentUser.getEmail();
                     comment = userModel.getUserComment();
+                    profileDp = userModel.getUserImageUri();
 
                     editFirstName.setText(firstName);
                     editLastName.setText(lastName);
                     editPhoneNumber.setText(phoneNumber);
                     editEmailAddress.setText(emailAddress);
                     editComment.setText(comment);
+                    Picasso.get().load(profileDp).into(profilePic);
 
                 } else {
                     Toast.makeText(EditProfile.this, "Unable to fetch the user data", Toast.LENGTH_SHORT).show();
