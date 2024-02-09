@@ -1,5 +1,6 @@
 package com.adamweb.sarcoapp;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -51,11 +52,12 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
         return new AlbumViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull AlbumViewHolder holder, int position) {
         UserModel userModel = albumItems.get(position);
         Picasso.get().load(userModel.getUserImageUri()).into(holder.userAlbumCover);
-        holder.albumName.setText(userModel.getUserFirstName());
+        holder.albumName.setText(userModel.getUserFirstName() +"  "+ userModel.getUserLastName());
         holder.combination.setText(userModel.getUserCombination());
         holder.phoneNumber.setText(userModel.getUserPhoneNo());
     }
