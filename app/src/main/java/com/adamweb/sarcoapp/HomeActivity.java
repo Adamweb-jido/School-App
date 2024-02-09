@@ -4,14 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.ListActivity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,24 +32,24 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
 
     //------------------Views declaration-------------------------
-    ImageView photoAlbum, chats, profile, menu, home;
+    ImageView photoAlbum, chats, profile, menu, home, navProfilePic;
     RoundedImageView profileDp;
-    TextView userName, visitCount, hiUser;
+    TextView userName, visitCount, hiUser, navName, navEmail;
     RecyclerView leaderRecycler, allUsersRecycler;
     NavigationView navigationView;
     DrawerLayout drawerLayout;
     FirebaseAuth firebaseAuth;
     FirebaseUser currentUserName;
     DatabaseReference userReference;
-    String firstName, lastName, profilePic;
+    String firstName, lastName;
     ProgressBar progressBar;
     int counter;
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +62,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         photoAlbum = findViewById(R.id.albumIcon);
         leaderRecycler = findViewById(R.id.leadersRecycler);
         drawerLayout = findViewById(R.id.menu_drawer_layout);
+        navProfilePic = navigationView.findViewById(R.id.nav_profile_icon);
+        navName = navigationView.findViewById(R.id.nav_Profile_name);
+        navEmail = navigationView.findViewById(R.id.nav_Profile_email);
+
         profile = findViewById(R.id.profileIcon);
         home = findViewById(R.id.homeIcon);
         hiUser = findViewById(R.id.hiUserId);
@@ -105,11 +107,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         chats.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
             startActivity(intent);
+            finish();
         });
    //------------------Profile onclickListener-------------------------------
         profile.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
             startActivity(intent);
+            finish();
         });
     //------------------Leaders recyclerview-------------------------------
         //------------------Navigation drawer-------------------------------
@@ -120,6 +124,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
            navigationView.bringToFront();
            drawerLayout.openDrawer(GravityCompat.END);
 
+       });
+
+
+       profileDp.setOnClickListener(v ->{
+           Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+           startActivity(intent);
+           finish();
        });
 
     }
@@ -165,7 +176,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                   Picasso.get().load(readUserDetails.getUserImageUri()).into(profileDp);
                     userName.setText(firstName + " " + lastName);
                     hiUser.setText("Hi, " +firstName);
-
                 }
             }
 
@@ -189,6 +199,26 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        userReference.child(currentUserName.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                UserModel userModel = snapshot.getValue(UserModel.class);
+                if (userModel != null){
+                    navEmail.setText(currentUserName.getEmail());
+                    navName.setText(userModel.getUserFirstName() + " " + userModel.getUserLastName());
+                    Picasso.get().load(userModel.getUserImageUri()).into(navProfilePic);
+                } else{
+                    Toast.makeText(HomeActivity.this, "Wrong! try Again", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(HomeActivity.this, "Wrong! try Again", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         switch (item.getItemId()){
 
