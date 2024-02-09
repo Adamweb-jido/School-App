@@ -38,7 +38,7 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
     }
     Context context;
     List<UserModel> albumItems;
-    Uri profileImage;
+
 
     public AlbumAdapter(Context context, List<UserModel> albumItems) {
         this.context = context;
@@ -60,6 +60,7 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
         holder.albumName.setText(userModel.getUserFirstName() +"  "+ userModel.getUserLastName());
         holder.combination.setText(userModel.getUserCombination());
         holder.phoneNumber.setText(userModel.getUserPhoneNo());
+        holder.email.setText(userModel.getUserComment());
     }
 
 
