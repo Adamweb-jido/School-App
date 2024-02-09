@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="#EBE4D0"
     android:id="@+id/menu_drawer_layout"
     android:fitsSystemWindows="true"
     tools:openDrawer="end"
     tools:context=".HomeActivity">
-
+<!--
         <com.google.android.material.navigation.NavigationView
             android:layout_width="320dp"
             android:layout_height="match_parent"
@@ -17,7 +18,7 @@
             app:menu="@menu/nav_menu_items"
             android:id="@+id/menu_nav_view_id"
             android:layout_gravity="end"/>
-
+-->
 
     <LinearLayout
       android:layout_width="match_parent"
@@ -42,93 +43,123 @@
           android:layout_height="65dp"
           android:background="#0D1F82"
           android:orientation="horizontal"
-          android:layout_gravity="center"
-          android:gravity="center"
           android:padding="10dp">
 
-          <androidx.cardview.widget.CardView
-              android:layout_width="40dp"
-              android:layout_height="40dp"
-              android:layout_marginStart="40dp"
-              app:cardCornerRadius="5dp"
-              app:cardElevation="5dp"
-              android:layout_gravity="center">
+          <androidx.constraintlayout.widget.ConstraintLayout
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:paddingStart="10dp"
+              android:paddingEnd="10dp">
 
-              <ImageView
-                  android:id="@+id/homeIcon"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:src="@drawable/home_icon"
+              <androidx.cardview.widget.CardView
+                  android:id="@+id/cardView"
+                  android:layout_width="40dp"
+                  android:layout_height="40dp"
+                  android:layout_marginEnd="25dp"
                   android:layout_gravity="center"
-                  android:contentDescription="@string/todo"/>
+                  app:cardCornerRadius="5dp"
+                  app:cardElevation="5dp"
 
-          </androidx.cardview.widget.CardView>
-          <androidx.cardview.widget.CardView
-              android:layout_width="40dp"
-              android:layout_height="40dp"
-              android:layout_marginStart="40dp"
-              app:cardElevation="5dp"
-              app:cardCornerRadius="5dp"
-              android:layout_gravity="center">
+                  app:layout_constraintBottom_toBottomOf="@+id/cardView6"
+                  app:layout_constraintEnd_toStartOf="@+id/cardView6"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toTopOf="@+id/cardView6">
 
-              <ImageView
-                  android:id="@+id/albumIcon"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:src="@drawable/album_icon"
+                  <ImageView
+                      android:id="@+id/homeIcon"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_gravity="center"
+                      android:contentDescription="@string/todo"
+                      android:src="@drawable/home_icon" />
+
+              </androidx.cardview.widget.CardView>
+
+              <androidx.cardview.widget.CardView
+                  android:id="@+id/cardView6"
+                  android:layout_width="40dp"
+                  android:layout_height="40dp"
                   android:layout_gravity="center"
-                  android:contentDescription="@string/todo"/>
-          </androidx.cardview.widget.CardView>
-          <androidx.cardview.widget.CardView
-              android:layout_width="40dp"
-              android:layout_height="40dp"
-              app:cardCornerRadius="5dp"
-              app:cardElevation="5dp"
-              android:layout_marginStart="40dp"
-              android:layout_gravity="center">
+                  android:layout_marginEnd="40dp"
+                  app:cardCornerRadius="5dp"
+                  app:cardElevation="5dp"
+                  app:layout_constraintBottom_toBottomOf="@+id/cardView5"
+                  app:layout_constraintEnd_toStartOf="@+id/cardView5"
+                  app:layout_constraintTop_toTopOf="@+id/cardView5">
 
-              <ImageView
-                  android:id="@+id/chatIcon"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:src="@drawable/message_icon"
+                  <ImageView
+                      android:id="@+id/albumIcon"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_gravity="center"
+                      android:contentDescription="@string/todo"
+                      android:src="@drawable/album_icon" />
+              </androidx.cardview.widget.CardView>
+
+              <androidx.cardview.widget.CardView
+                  android:id="@+id/cardView5"
+                  android:layout_width="40dp"
+                  android:layout_height="40dp"
                   android:layout_gravity="center"
-                  android:contentDescription="@string/todo"/>
-          </androidx.cardview.widget.CardView>
-          <androidx.cardview.widget.CardView
-              android:layout_width="40dp"
-              android:layout_height="40dp"
-              app:cardCornerRadius="5dp"
-              app:cardElevation="5dp"
-              android:layout_marginStart="40dp"
-              android:layout_gravity="center">
+                  android:layout_marginEnd="40dp"
+                  app:cardCornerRadius="5dp"
+                  app:cardElevation="5dp"
+                  app:layout_constraintBottom_toBottomOf="@+id/cardView4"
+                  app:layout_constraintEnd_toStartOf="@+id/cardView4"
+                  app:layout_constraintTop_toTopOf="@id/cardView4">
 
-              <ImageView
-                  android:id="@+id/profileIcon"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:src="@drawable/user_profile_icon"
+                  <ImageView
+                      android:id="@+id/chatIcon"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_gravity="center"
+                      android:contentDescription="@string/todo"
+                      android:src="@drawable/message_icon" />
+              </androidx.cardview.widget.CardView>
+
+              <androidx.cardview.widget.CardView
+                  android:id="@+id/cardView4"
+                  android:layout_width="40dp"
+                  android:layout_height="40dp"
                   android:layout_gravity="center"
-                  android:contentDescription="@string/todo"/>
-          </androidx.cardview.widget.CardView>
-          <androidx.cardview.widget.CardView
-              android:layout_width="40dp"
-              android:layout_height="40dp"
-              app:cardCornerRadius="5dp"
-              app:cardElevation="5dp"
-              android:layout_marginStart="40dp"
-              android:layout_marginEnd="38dp"
-              android:layout_gravity="center">
+                  android:layout_marginEnd="40dp"
+                  app:cardCornerRadius="5dp"
+                  app:cardElevation="5dp"
+                  app:layout_constraintBottom_toBottomOf="@+id/cardView3"
+                  app:layout_constraintEnd_toStartOf="@+id/cardView3"
+                  app:layout_constraintTop_toTopOf="@+id/cardView3">
 
-              <ImageView
-                  android:id="@+id/menuIcon"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:src="@drawable/menu_icon"
+                  <ImageView
+                      android:id="@+id/profileIcon"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_gravity="center"
+                      android:contentDescription="@string/todo"
+                      android:src="@drawable/user_profile_icon" />
+              </androidx.cardview.widget.CardView>
+
+              <androidx.cardview.widget.CardView
+                  android:id="@+id/cardView3"
+                  android:layout_width="40dp"
+                  android:layout_height="40dp"
                   android:layout_gravity="center"
-                  android:contentDescription="@string/todo"/>
+                  app:cardCornerRadius="5dp"
+                  app:cardElevation="5dp"
+                  android:layout_marginEnd="10dp"
+                  app:layout_constraintBottom_toBottomOf="parent"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintTop_toTopOf="parent">
 
-          </androidx.cardview.widget.CardView>
+                  <ImageView
+                      android:id="@+id/menuIcon"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_gravity="center"
+                      android:contentDescription="@string/todo"
+                      android:src="@drawable/menu_icon" />
+
+              </androidx.cardview.widget.CardView>
+          </androidx.constraintlayout.widget.ConstraintLayout>
 
 
       </LinearLayout>
@@ -733,4 +764,4 @@
 
   </LinearLayout>
 
-</androidx.drawerlayout.widget.DrawerLayout>
+</LinearLayout>
