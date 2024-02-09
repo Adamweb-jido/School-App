@@ -38,13 +38,16 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class EditProfile extends AppCompatActivity {
 
     TextView slideOne, slideTwo;
     EditText editFirstName, editLastName, editPhoneNumber, editEmailAddress, editComment;
     MaterialButton saveChangesBtn, cancelChangesBtn;
     String firstName, lastName, phoneNumber, emailAddress, comment, profileDp;
-    ImageView backArrow, profilePic;
+    ImageView backArrow;
+    CircleImageView profilePic;
     FloatingActionButton floatingActionButton;
     ProgressBar progressBar;
     FirebaseAuth firebaseAuth;
@@ -171,6 +174,7 @@ public class EditProfile extends AppCompatActivity {
                     editPhoneNumber.setText(phoneNumber);
                     editEmailAddress.setText(emailAddress);
                     editComment.setText(comment);
+                  //  Picasso.get().load(userModel.getUserImageUri()).into(profilePic);
 
 
                 } else {
