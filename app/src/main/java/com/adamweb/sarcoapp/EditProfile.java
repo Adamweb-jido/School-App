@@ -202,7 +202,7 @@ public class EditProfile extends AppCompatActivity {
                      public void onSuccess(Uri imageUri) {
                        UserModel userModel = new UserModel();
                        userModel.setUserImageUri(imageUri.toString());
-                       databaseReference.child(currentUser.getUid()).push().setValue(imageUri);
+                       databaseReference.child(currentUser.getUid()).updateChildren(userModel.toMap());
                          startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                          finish();
                      }

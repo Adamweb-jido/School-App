@@ -2,6 +2,11 @@ package com.adamweb.sarcoapp;
 
 import android.net.Uri;
 
+import com.google.firebase.database.Exclude;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class UserModel {
     String userFirstName, userLastName, userPhoneNo, userAdmissionNo, userCombination, userComment, userImageUri, userUid;
 
@@ -19,6 +24,13 @@ public class UserModel {
         this.userUid = userUid;
     }
 
+
+    @Exclude
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("imageUri", userImageUri);
+        return result;
+    }
     public String getUserFirstName() {
         return userFirstName;
     }
