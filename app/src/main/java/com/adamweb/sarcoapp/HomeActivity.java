@@ -162,7 +162,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     firstName = readUserDetails.userFirstName;
                     lastName = readUserDetails.userLastName;
 
-                    Picasso.get().load(readUserDetails.getUserImageUri()).into(profileDp);
+                  //  Picasso.get().load(readUserDetails.getUserImageUri()).into(profileDp);
                     userName.setText(firstName + " " + lastName);
                     hiUser.setText("Hi, " +firstName);
 
