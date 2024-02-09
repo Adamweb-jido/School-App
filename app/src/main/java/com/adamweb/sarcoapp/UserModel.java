@@ -8,12 +8,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UserModel {
-    String userFirstName, userLastName, userPhoneNo, userAdmissionNo, userCombination, userComment, userImageUri, userUid;
+    String userFirstName, userLastName, userPhoneNo, userAdmissionNo, userCombination, userComment, userImageUri;
 
     public UserModel(){
 
     }
-    public UserModel(String userFirstName, String userLastName, String userPhoneNo, String userAdmissionNo, String userCombination, String userComment, String userImageUri, String userUid) {
+    public UserModel(String userFirstName, String userLastName, String userPhoneNo, String userAdmissionNo, String userCombination, String userComment, String userImageUri) {
         this.userFirstName = userFirstName;
         this.userLastName = userLastName;
         this.userPhoneNo = userPhoneNo;
@@ -21,14 +21,13 @@ public class UserModel {
         this.userCombination = userCombination;
         this.userComment = userComment;
         this.userImageUri = userImageUri;
-        this.userUid = userUid;
     }
 
 
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
-        result.put("imageUri", userImageUri);
+        result.put("userImageUri", userImageUri);
         return result;
     }
     public String getUserFirstName() {
@@ -87,11 +86,4 @@ public class UserModel {
         this.userImageUri = userImageUri;
     }
 
-    public String getUserUid() {
-        return userUid;
-    }
-
-    public void setUserUid(String userUid) {
-        this.userUid = userUid;
-    }
 }

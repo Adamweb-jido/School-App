@@ -46,7 +46,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     DrawerLayout drawerLayout;
     FirebaseAuth firebaseAuth;
     FirebaseUser currentUserName;
-    String firstName, lastName;
+    String firstName, lastName, profilePic;
     int counter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -152,11 +152,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 if (readUserDetails != null){
                     firstName = readUserDetails.userFirstName;
                     lastName = readUserDetails.userLastName;
-                    Uri profileImage = currentUserName.getPhotoUrl();
+                    profilePic = readUserDetails.getUserImageUri();
+
 
                     userName.setText(firstName + " " + lastName);
                     hiUser.setText("Hi, " +firstName);
-                    Picasso.get().load(profileImage).into(profileDp);
+                    Picasso.get().load(profilePic).into(profileDp);
                 }
             }
 

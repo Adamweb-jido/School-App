@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -29,7 +31,7 @@ public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.AllUse
 
     @Override
     public void onBindViewHolder(@NonNull AllUsersViewHolder holder, int position) {
-            holder.userImage.setImageResource(items.get(position).getUserImage());
+        Picasso.get().load(new UserModel().getUserImageUri()).into(holder.userImage);
     }
 
     @Override
