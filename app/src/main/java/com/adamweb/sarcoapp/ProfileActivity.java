@@ -107,7 +107,7 @@ public class ProfileActivity extends AppCompatActivity {
                      userAdmissionNumber.setText(admissionNumber);
                      userCombination.setText(combination);
                      userComment.setText(comment);
-                    // Picasso.get().load(userData.getUserImageUri()).into(profile_image);
+                     Picasso.get().load(userData.getUserImageUri()).into(profile_image);
 
 
                  }
