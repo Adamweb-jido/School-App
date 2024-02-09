@@ -1,7 +1,6 @@
 package com.adamweb.sarcoapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
 public class CompleteProfile extends AppCompatActivity {

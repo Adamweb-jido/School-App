@@ -50,7 +50,6 @@ public class ForgotPassActivity extends AppCompatActivity {
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.setCancelable(false);
-        dialog.getWindow().getAttributes().windowAnimations = R.style.animation;
         gotoEmailBtn = dialog.findViewById(R.id.emailBtn);
         exitAppBtn = dialog.findViewById(R.id.exitBtn);
 
