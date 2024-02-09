@@ -165,14 +165,13 @@ public class EditProfile extends AppCompatActivity {
                     phoneNumber = userModel.getUserPhoneNo();
                     emailAddress = currentUser.getEmail();
                     comment = userModel.getUserComment();
-                    profileDp = userModel.getUserImageUri();
 
                     editFirstName.setText(firstName);
                     editLastName.setText(lastName);
                     editPhoneNumber.setText(phoneNumber);
                     editEmailAddress.setText(emailAddress);
                     editComment.setText(comment);
-                    Picasso.get().load(profileDp).into(profilePic);
+
 
                 } else {
                     Toast.makeText(EditProfile.this, "Unable to fetch the user data", Toast.LENGTH_SHORT).show();
@@ -196,7 +195,7 @@ public class EditProfile extends AppCompatActivity {
     }
 
     private void editProfile() {
-        StorageReference fileReference = storageReference.child(System.currentTimeMillis() + getFileExtension(imageUri));
+        StorageReference fileReference = storageReference.child(currentUser.getUid() + getFileExtension(imageUri));
          fileReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
              @Override
              public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {

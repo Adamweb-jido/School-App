@@ -100,14 +100,14 @@ public class ProfileActivity extends AppCompatActivity {
                      admissionNumber = userData.userAdmissionNo;
                      combination = userData.userCombination;
                      comment = userData.userComment;
-                     String profilePic = userData.getUserImageUri();
+
                      userFullName.setText(firstName + " " + lastName);
                      userEmail.setText(email);
                      userPhoneNumber.setText(phoneNumber);
                      userAdmissionNumber.setText(admissionNumber);
                      userCombination.setText(combination);
                      userComment.setText(comment);
-                     Picasso.get().load(profilePic).into(profile_image);
+
 
                  }
              }

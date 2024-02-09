@@ -31,7 +31,8 @@ public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.AllUse
 
     @Override
     public void onBindViewHolder(@NonNull AllUsersViewHolder holder, int position) {
-        Picasso.get().load(new UserModel().getUserImageUri()).into(holder.userImage);
+        UserModel userModel = items.get(position);
+        Picasso.get().load(userModel.getUserImageUri()).into(holder.userImage);
     }
 
     @Override

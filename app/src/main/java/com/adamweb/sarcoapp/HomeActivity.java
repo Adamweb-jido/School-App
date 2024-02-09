@@ -14,7 +14,9 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,7 +40,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
 
     //------------------Views declaration-------------------------
-    ImageView photoAlbum, chats, profile, menu;
+    ImageView photoAlbum, chats, profile, menu, home;
     RoundedImageView profileDp;
     TextView userName, visitCount, hiUser;
     RecyclerView leaderRecycler, allUsersRecycler;
@@ -48,6 +50,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     FirebaseUser currentUserName;
     DatabaseReference userReference;
     String firstName, lastName, profilePic;
+    ProgressBar progressBar;
     int counter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,16 +65,24 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         leaderRecycler = findViewById(R.id.leadersRecycler);
         drawerLayout = findViewById(R.id.menu_drawer_layout);
         profile = findViewById(R.id.profileIcon);
+        home = findViewById(R.id.homeIcon);
         hiUser = findViewById(R.id.hiUserId);
         chats = findViewById(R.id.chatIcon);
+        progressBar = findViewById(R.id.home_progress_bar);
         userName = findViewById(R.id.homeUserName);
         visitCount = findViewById(R.id.visitCounter);
         profileDp = findViewById(R.id.profileDp);
         allUsersRecycler = findViewById(R.id.allUsersRecycler);
         firebaseAuth = FirebaseAuth.getInstance();
         currentUserName = firebaseAuth.getCurrentUser();
-
         userReference = FirebaseDatabase.getInstance().getReference("Registered Users");
+
+
+        home.setOnClickListener(v ->{
+            progressBar.setVisibility(View.VISIBLE);
+            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+            finish();
+        });
 
         //-------------------------------set Counter----------------------
        displayAllUsers();
@@ -116,8 +127,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private void displayAllUsers() {
 
         List<UserModel> items = new ArrayList<>();
+        AllUsersAdapter usersAdapter = new AllUsersAdapter(items);
         allUsersRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        allUsersRecycler.setAdapter(new AllUsersAdapter(items));
+        allUsersRecycler.setAdapter(usersAdapter);
 
         userReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -127,7 +139,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     items.add(userModel);
                 }
 
-                allUsersRecycler.setAdapter(new AllUsersAdapter(items));
+                allUsersRecycler.setAdapter(usersAdapter);
             }
 
             @Override
@@ -149,12 +161,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 if (readUserDetails != null){
                     firstName = readUserDetails.userFirstName;
                     lastName = readUserDetails.userLastName;
-                    profilePic = readUserDetails.getUserImageUri();
 
 
                     userName.setText(firstName + " " + lastName);
                     hiUser.setText("Hi, " +firstName);
-                    Picasso.get().load(profilePic).into(profileDp);
+
                 }
             }
 
