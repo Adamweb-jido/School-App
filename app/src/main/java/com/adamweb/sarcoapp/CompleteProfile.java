@@ -15,8 +15,10 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.github.dhaval2404.imagepicker.ImagePicker;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
@@ -77,7 +79,7 @@ public class CompleteProfile extends AppCompatActivity {
             combination = String.valueOf(urCombination.getText());
             comment = String.valueOf(urComment.getText());
 
-            if (imageUri == null){
+            if (comment.length() < 1){
                 Toast.makeText(this, "You Must Upload Your Pic", Toast.LENGTH_LONG).show();
             } else if (TextUtils.isEmpty(phoneNumber)){
                 Toast.makeText(this, "Phone Number is Empty", Toast.LENGTH_SHORT).show();
@@ -112,8 +114,8 @@ public class CompleteProfile extends AppCompatActivity {
                 urComment.requestFocus();
             } else {
                 progressBar.setVisibility(View.VISIBLE);
-                addDetailsToUser(phoneNumber, admissionNumber, combination, comment);
-                uploadPicToDatabase();
+                //uploadPicToDatabase();
+                addToUserData(phoneNumber, admissionNumber, combination, comment);
             }
         });
 
@@ -122,30 +124,29 @@ public class CompleteProfile extends AppCompatActivity {
 
     }
 
-    private void addDetailsToUser(String phoneNumber, String admissionNumber, String combination, String comment) {
-
+    private void addToUserData(String phoneNumber, String admissionNumber, String combination, String comment) {
         UserModel userModel = new UserModel();
         userModel.setUserPhoneNo(phoneNumber);
         userModel.setUserAdmissionNo(admissionNumber);
         userModel.setUserCombination(combination);
         userModel.setUserComment(comment);
 
-        databaseReference.child(firebaseUser.getUid()).updateChildren(userModel.toMap()).addOnSuccessListener(new OnSuccessListener<Void>() {
+        databaseReference.child(firebaseUser.getUid()).updateChildren(userModel.toMap()).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
-            public void onSuccess(Void unused) {
-                Toast.makeText(CompleteProfile.this, "You have Completed Your Profile", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(CompleteProfile.this, "Failed to Complete, Please try again", Toast.LENGTH_SHORT).show();
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()){
+                    Toast.makeText(CompleteProfile.this, "Your Profile is Completed", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                    finish();
+                } else {
+                    Toast.makeText(CompleteProfile.this, "Unable to complete please try again", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
 
-    private void uploadPicToDatabase() {
+
+    /* private void uploadPicToDatabase() {
 
         StorageReference fileReference = storageReference.child(firebaseUser.getUid() + getFileExtension(imageUri));
         fileReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -155,7 +156,6 @@ public class CompleteProfile extends AppCompatActivity {
                     @Override
                     public void onSuccess(Uri imageUri) {
                         UserModel userModel = new UserModel();
-                        String userId = firebaseUser.getUid();
                         userModel.setUserImageUri(imageUri.toString());
                         databaseReference.child(firebaseUser.getUid()).updateChildren(userModel.toMap());
                     }
@@ -167,7 +167,7 @@ public class CompleteProfile extends AppCompatActivity {
                 });
             }
         });
-    }
+    } */
 
 
     @Override

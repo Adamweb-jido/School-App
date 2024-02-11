@@ -53,10 +53,6 @@ public class SignUpActivity extends AppCompatActivity {
             emailAddress = String.valueOf(email.getText());
             password = String.valueOf(newPassword.getText());
             confirmPassword = String.valueOf(cPassword.getText());
-            phoneNo = String.valueOf(phoneNumber.getText());
-            admissionNo = String.valueOf(admissionNumber.getText());
-            combination = String.valueOf(urCombination.getText());
-            comment = String.valueOf(urComment.getText());
 
             if (TextUtils.isEmpty(firstName)) {
                 Toast.makeText(SignUpActivity.this, "First Name is empty", Toast.LENGTH_LONG).show();
