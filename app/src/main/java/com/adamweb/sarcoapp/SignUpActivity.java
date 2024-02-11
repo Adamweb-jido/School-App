@@ -85,7 +85,6 @@ public class SignUpActivity extends AppCompatActivity {
                 progressDialog = new ProgressDialog(SignUpActivity.this);
                 progressDialog.setMessage("Please wait while creating your account");
                 progressDialog.setCanceledOnTouchOutside(false);
-                progressDialog.setIndeterminateDrawable(new ColorDrawable(Color.BLUE));
                 progressDialog.show();
                registerUser(firstName, lastName, emailAddress, password, phoneNo, admissionNo, combination, comment, userImgUri);
             }
