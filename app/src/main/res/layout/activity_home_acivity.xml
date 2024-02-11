@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#EBE4D0"
-    android:orientation="vertical"
     android:id="@+id/menu_drawer_layout"
     android:fitsSystemWindows="true"
     tools:openDrawer="end"
     tools:context=".HomeActivity">
 
-<!--
         <com.google.android.material.navigation.NavigationView
             android:layout_width="320dp"
             android:layout_height="match_parent"
@@ -20,7 +18,7 @@
             android:id="@+id/menu_nav_view_id"
             android:layout_gravity="end"/>
 
--->
+
     <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
@@ -249,7 +247,6 @@
               android:padding="15dp">
 
 
-              <!--
 
               <androidx.cardview.widget.CardView
                   android:layout_width="match_parent"
@@ -473,7 +470,7 @@
                       </LinearLayout>
 
               </LinearLayout>
-   -->
+
 
               <androidx.cardview.widget.CardView
                   android:layout_width="match_parent"
@@ -483,12 +480,14 @@
                   app:cardElevation="15dp">
 
                     <com.afdhal_fa.imageslider.ImageSlider
-                        android:id="@+id/HomeAutoSlider"
+                        android:id="@+id/homeAutoSlider"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         app:iss_image_scaleType="fitXY"
                         app:iss_auto_cycle="true"
-                        app:iss_indicator_gravity="bottom"
+                        app:iss_delay="0"
+                        app:iss_period="1500"
+                        app:iss_indicator_gravity="bottom|center"
                         app:iss_selected_dot="@color/purple_500"
                         app:iss_unselected_dot="@color/black"/>
 
@@ -738,4 +737,4 @@
 
   </LinearLayout>
 
-</LinearLayout>
+</androidx.drawerlayout.widget.DrawerLayout>
