@@ -155,6 +155,7 @@ public class CompleteProfile extends AppCompatActivity {
                     @Override
                     public void onSuccess(Uri imageUri) {
                         UserModel userModel = new UserModel();
+                        String userId = firebaseUser.getUid();
                         userModel.setUserImageUri(imageUri.toString());
                         databaseReference.child(firebaseUser.getUid()).updateChildren(userModel.toMap());
                     }

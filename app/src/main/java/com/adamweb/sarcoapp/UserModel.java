@@ -27,6 +27,8 @@ public class UserModel {
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
+        result.put("userFirstName", userFirstName);
+        result.put("userLastName", userLastName);
         result.put("userImageUri", userImageUri);
         result.put("userPhoneNo", userPhoneNo);
         result.put("userAdmissionNo", userAdmissionNo);
