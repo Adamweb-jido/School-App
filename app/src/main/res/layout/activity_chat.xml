@@ -61,6 +61,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
+        android:layout_gravity="center"
         android:padding="15dp">
 
         <com.google.android.material.button.MaterialButton
@@ -68,16 +69,17 @@
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:backgroundTint="#0D1F82"
-            android:textColor="@color/white"
-            app:cornerRadius="10dp"
-            app:icon="@drawable/add_icon"
+            android:fontFamily="@font/suez_one"
             android:text="@string/newChat"
+            android:textColor="@color/white"
             android:textSize="12sp"
             android:textStyle="bold"
-            android:fontFamily="@font/suez_one"
+            app:cornerRadius="10dp"
+            app:icon="@drawable/add_icon"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.111"
+
+            app:layout_constraintEnd_toStartOf="@+id/albumBtn"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -95,7 +97,6 @@
             android:fontFamily="@font/suez_one"
             app:layout_constraintBottom_toBottomOf="@+id/newChatBtn"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/newChatBtn"
             app:layout_constraintTop_toTopOf="@+id/newChatBtn" />
 
 

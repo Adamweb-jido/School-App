@@ -174,7 +174,7 @@ public class EditProfile extends AppCompatActivity {
                     editPhoneNumber.setText(phoneNumber);
                     editEmailAddress.setText(emailAddress);
                     editComment.setText(comment);
-                    Picasso.get().load(userModel.getUserImageUri()).into(profilePic);
+                     Picasso.get().load(userModel.getUserImageUri()).into(profilePic);
 
 
                 } else {

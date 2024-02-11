@@ -28,6 +28,10 @@ public class UserModel {
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
         result.put("userImageUri", userImageUri);
+        result.put("userPhoneNo", userPhoneNo);
+        result.put("userAdmissionNo", userAdmissionNo);
+        result.put("userCombination", userCombination);
+        result.put("userComment", userComment);
         return result;
     }
     public String getUserFirstName() {
