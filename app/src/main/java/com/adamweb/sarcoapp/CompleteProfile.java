@@ -114,7 +114,7 @@ public class CompleteProfile extends AppCompatActivity {
                 urComment.requestFocus();
             } else {
                 progressBar.setVisibility(View.VISIBLE);
-                //uploadPicToDatabase();
+                uploadPicToDatabase();
                 addToUserData(phoneNumber, admissionNumber, combination, comment);
             }
         });
@@ -131,7 +131,7 @@ public class CompleteProfile extends AppCompatActivity {
         userModel.setUserCombination(combination);
         userModel.setUserComment(comment);
 
-        databaseReference.child(firebaseUser.getUid()).updateChildren(userModel.toMap()).addOnCompleteListener(new OnCompleteListener<Void>() {
+        databaseReference.child(firebaseUser.getUid()).setValue(userModel).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()){
@@ -146,7 +146,7 @@ public class CompleteProfile extends AppCompatActivity {
     }
 
 
-    /* private void uploadPicToDatabase() {
+     private void uploadPicToDatabase() {
 
         StorageReference fileReference = storageReference.child(firebaseUser.getUid() + getFileExtension(imageUri));
         fileReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -167,7 +167,7 @@ public class CompleteProfile extends AppCompatActivity {
                 });
             }
         });
-    } */
+    }
 
 
     @Override
