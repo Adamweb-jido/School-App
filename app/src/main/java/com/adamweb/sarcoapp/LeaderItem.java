@@ -1,21 +1,19 @@
 package com.adamweb.sarcoapp;
 
-import android.net.Uri;
-
 public class LeaderItem {
-    Uri imageUri;
+    String imageUri;
     String name;
 
-    public LeaderItem(Uri imageUri, String name) {
+    public LeaderItem(String imageUri, String name) {
         this.imageUri = imageUri;
         this.name = name;
     }
 
-    public Uri getImageUri() {
+    public String getImageUri() {
         return imageUri;
     }
 
-    public void setImageUri(Uri imageUri) {
+    public void setImageUri(String imageUri) {
         this.imageUri = imageUri;
     }
 

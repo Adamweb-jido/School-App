@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -139,7 +140,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     private void setLeadersItems() {
         List<LeaderItem> items = new ArrayList<>();
-        items.add(new LeaderItem("", "Provost"));
+        items.add(new LeaderItem("https://firebasestorage.googleapis.com/v0/b/sarco-pixel.appspot.com/o/Leaders%2Fprovost.jpg?alt=media&token=59946c96-ba1c-4b87-87c9-e0fddcb780eb", "Provost"));
+        items.add(new LeaderItem("", "Register"));
+
+        leaderRecycler.setLayoutManager(new GridLayoutManager(this, 2));
+        leaderRecycler.setAdapter(new LeaderAdapter(this, items));
 
     }
 

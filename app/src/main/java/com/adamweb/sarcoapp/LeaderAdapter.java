@@ -44,7 +44,7 @@ public class LeaderAdapter extends RecyclerView.Adapter<LeaderAdapter.LeaderView
 
     @Override
     public void onBindViewHolder(@NonNull LeaderViewHolder holder, int position) {
-        holder.leaderImage.setImageURI(items.get(position).getImageUri());
+        holder.leaderImage.setImageResource(items.get(position).getImageUri().i);
         holder.leaderName.setText(items.get(position).getName());
 
     }
