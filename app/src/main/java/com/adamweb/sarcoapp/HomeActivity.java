@@ -145,14 +145,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         imageList.add(new SlideUIModel("https://firebasestorage.googleapis.com/v0/b/sarco-pixel.appspot.com/o/ImageSliders%2FIMG_0649.jpeg?alt=media&token=0894f2c6-8a33-47b4-822d-e105f8c13291", ""));
         imageList.add(new SlideUIModel("https://firebasestorage.googleapis.com/v0/b/sarco-pixel.appspot.com/o/ImageSliders%2FIMG_0624.jpeg?alt=media&token=a573e3a3-406c-42f2-adb2-22ba16481a10", ""));
         imageList.add(new SlideUIModel("https://firebasestorage.googleapis.com/v0/b/sarco-pixel.appspot.com/o/ImageSliders%2FIMG_0606.jpeg?alt=media&token=094b1150-2593-48ef-bb46-2764d1c10c53", ""));
-        imageList.add(new SlideUIModel("https://firebasestorage.googleapis.com/v0/b/sarco-pixel.appspot.com/o/ImageSliders%2FIMG_0603.jpeg?alt=media&token=4c44ef0e-8f41-4bbc-8929-c0f5f5a1d051", ""));
-        imageList.add(new SlideUIModel("https://firebasestorage.googleapis.com/v0/b/sarco-pixel.appspot.com/o/ImageSliders%2FIMG_0596.jpeg?alt=media&token=a9fe974e-b9d9-40cd-821e-6a304020062b", ""));
-        imageList.add(new SlideUIModel("https://firebasestorage.googleapis.com/v0/b/sarco-pixel.appspot.com/o/ImageSliders%2FIMG_0588.jpeg?alt=media&token=ac43e15a-06c2-4812-984f-c7fd4abd7495", ""));
         imageList.add(new SlideUIModel("https://firebasestorage.googleapis.com/v0/b/sarco-pixel.appspot.com/o/ImageSliders%2FIMG_0586.jpeg?alt=media&token=a4ab2efb-d1c9-477c-8b7d-03616cd89685", ""));
-        imageList.add(new SlideUIModel("https://firebasestorage.googleapis.com/v0/b/sarco-pixel.appspot.com/o/ImageSliders%2FIMG_0559.jpeg?alt=media&token=642dbca2-3e5b-4134-9b32-d0883ffe2fa0", ""));
-        imageList.add(new SlideUIModel("https://firebasestorage.googleapis.com/v0/b/sarco-pixel.appspot.com/o/ImageSliders%2FIMG_0554.jpeg?alt=media&token=4c9e71a8-78b9-4093-90e5-41506fed9144", ""));
-        imageList.add(new SlideUIModel("https://firebasestorage.googleapis.com/v0/b/sarco-pixel.appspot.com/o/ImageSliders%2FIMG_0549.jpeg?alt=media&token=e9f4f33a-9c23-4ad3-be50-723a0fc6b429", ""));
-        imageList.add(new SlideUIModel("https://firebasestorage.googleapis.com/v0/b/sarco-pixel.appspot.com/o/ImageSliders%2FIMG_0543.jpeg?alt=media&token=8b50d687-6014-4c33-87f2-5d055d7dc405", ""));
         imageList.add(new SlideUIModel("https://firebasestorage.googleapis.com/v0/b/sarco-pixel.appspot.com/o/ImageSliders%2Fcollege_new.png?alt=media&token=936fe511-fd94-4da3-bda5-89b6921f501b", ""));
         imageList.add(new SlideUIModel("https://firebasestorage.googleapis.com/v0/b/sarco-pixel.appspot.com/o/ImageSliders%2F3.jpg?alt=media&token=2d80c0c2-a618-42c0-b18b-26075afea737", ""));
 
@@ -195,10 +188,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 UserModel readUserDetails = snapshot.getValue(UserModel.class);
                 if (readUserDetails != null){
-                    firstName = readUserDetails.userFirstName;
-                    lastName = readUserDetails.userLastName;
+                    firstName = readUserDetails.getFirstName();
+                    lastName = readUserDetails.getLastName();
 
-                  Picasso.get().load(readUserDetails.getUserImageUri()).into(profileDp);
+                  Picasso.get().load(readUserDetails.getImageUri()).into(profileDp);
                     userName.setText(firstName + " " + lastName);
                     hiUser.setText("Hi, " +firstName);
                 }

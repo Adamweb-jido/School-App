@@ -56,11 +56,11 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
     @Override
     public void onBindViewHolder(@NonNull AlbumViewHolder holder, int position) {
         UserModel userModel = albumItems.get(position);
-        Picasso.get().load(userModel.getUserImageUri()).into(holder.userAlbumCover);
-        holder.albumName.setText(userModel.getUserFirstName() +"  "+ userModel.getUserLastName());
-        holder.combination.setText(userModel.getUserCombination());
-        holder.phoneNumber.setText(userModel.getUserPhoneNo());
-        holder.email.setText(userModel.getUserComment());
+        Picasso.get().load(userModel.getImageUri()).into(holder.userAlbumCover);
+        holder.albumName.setText(userModel.getFirstName() +"  "+ userModel.getLastName());
+        holder.combination.setText(userModel.getCombination());
+        holder.phoneNumber.setText(userModel.getPhoneNumber());
+        holder.email.setText(userModel.getComment());
     }
 
 

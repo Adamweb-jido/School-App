@@ -70,7 +70,7 @@ public class AlbumActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 UserModel userModel = snapshot.getValue(UserModel.class);
                 if (userModel != null){
-                    Picasso.get().load(userModel.getUserImageUri()).into(profileIcon);
+                    Picasso.get().load(userModel.getImageUri()).into(profileIcon);
                 }
             }
 

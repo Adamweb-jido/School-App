@@ -93,13 +93,13 @@ public class ProfileActivity extends AppCompatActivity {
              public void onDataChange(@NonNull DataSnapshot snapshot) {
                  UserModel userData = snapshot.getValue(UserModel.class);
                  if (userData != null){
-                     email = userDetails.getEmail();
-                     firstName = userData.userFirstName;
-                     lastName = userData.userLastName;
-                     phoneNumber = userData.userPhoneNo;
-                     admissionNumber = userData.userAdmissionNo;
-                     combination = userData.userCombination;
-                     comment = userData.userComment;
+                     email =userData.getEmail();
+                     firstName = userData.getFirstName();
+                     lastName = userData.getLastName();
+                     phoneNumber = userData.getPhoneNumber();
+                     admissionNumber = userData.getAdmissionNumber();
+                     combination = userData.getCombination();
+                     comment = userData.getComment();
 
                      userFullName.setText(firstName + " " + lastName);
                      userEmail.setText(email);
@@ -107,7 +107,7 @@ public class ProfileActivity extends AppCompatActivity {
                      userAdmissionNumber.setText(admissionNumber);
                      userCombination.setText(combination);
                      userComment.setText(comment);
-                     Picasso.get().load(userData.getUserImageUri()).into(profile_image);
+                     Picasso.get().load(userData.getImageUri()).into(profile_image);
 
 
                  }

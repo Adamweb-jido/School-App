@@ -59,7 +59,7 @@ public class ChatActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 UserModel userModel = snapshot.getValue(UserModel.class);
                 if (userModel != null){
-                    Picasso.get().load(userModel.getUserImageUri()).into(profilePic);
+                    Picasso.get().load(userModel.getImageUri()).into(profilePic);
                 }
             }
 

@@ -29,13 +29,7 @@ public class LeaderAdapter extends RecyclerView.Adapter<LeaderAdapter.LeaderView
         }
     }
     Context context;
-    List<LeadersItem> items;
 
-
-    public LeaderAdapter(Context context, List<LeadersItem> items) {
-        this.context = context;
-        this.items = items;
-    }
 
     @NonNull
     @Override
@@ -50,6 +44,6 @@ public class LeaderAdapter extends RecyclerView.Adapter<LeaderAdapter.LeaderView
 
     @Override
     public int getItemCount() {
-        return items.size();
+        return 0;
     }
 }
