@@ -45,7 +45,7 @@ public class EditProfile extends AppCompatActivity {
     TextView slideOne, slideTwo;
     EditText editFirstName, editLastName, editPhoneNumber, editEmailAddress, editComment;
     MaterialButton saveChangesBtn, cancelChangesBtn;
-    String firstName, lastName, phoneNumber, emailAddress, comment, profileDp;
+    String firstName, lastName, phoneNumber, emailAddress, comment;
     ImageView backArrow;
     CircleImageView profilePic;
     FloatingActionButton floatingActionButton;
@@ -163,18 +163,18 @@ public class EditProfile extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 UserModel userModel = snapshot.getValue(UserModel.class);
                 if (userModel != null){
-                    firstName = userModel.getUserFirstName();
-                    lastName = userModel.getUserLastName();
-                    phoneNumber = userModel.getUserPhoneNo();
+                    firstName = userModel.getFirstName();
+                    lastName = userModel.getLastName();
+                    phoneNumber = userModel.getPhoneNumber();
                     emailAddress = currentUser.getEmail();
-                    comment = userModel.getUserComment();
+                    comment = userModel.getComment();
 
                     editFirstName.setText(firstName);
                     editLastName.setText(lastName);
                     editPhoneNumber.setText(phoneNumber);
                     editEmailAddress.setText(emailAddress);
                     editComment.setText(comment);
-                     Picasso.get().load(userModel.getUserImageUri()).into(profilePic);
+                     Picasso.get().load(userModel.getImageUri()).into(profilePic);
 
 
                 } else {
@@ -207,7 +207,7 @@ public class EditProfile extends AppCompatActivity {
                      @Override
                      public void onSuccess(Uri imageUri) {
                        UserModel userModel = new UserModel();
-                       userModel.setUserImageUri(imageUri.toString());
+                       userModel.setImageUri(imageUri.toString());
                        databaseReference.child(currentUser.getUid()).updateChildren(userModel.toMap());
                          startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                          finish();

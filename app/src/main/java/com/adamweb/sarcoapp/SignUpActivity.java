@@ -44,10 +44,14 @@ public class SignUpActivity extends AppCompatActivity {
         email = findViewById(R.id.emailAddress);
         newPassword = findViewById(R.id.createPassword);
         cPassword = findViewById(R.id.confirmPassword);
+        urPhoneNumber = findViewById(R.id.urPhoneNumber);
+        urAdmissionNumber = findViewById(R.id.admissionNumber);
+        urCombination = findViewById(R.id.combination);
+        urComment = findViewById(R.id.comment);
 
 
         nextBtn.setOnClickListener(view -> {
-            String firstName, lastName, emailAddress, password, confirmPassword, phoneNumber, admissionNumber, combination, comment;
+            String firstName, lastName, emailAddress, password, confirmPassword, phoneNumber, admissionNumber, combination, comment, imageUri = "";
             firstName = String.valueOf(fName.getText());
             lastName = String.valueOf(lName.getText());
             emailAddress = String.valueOf(email.getText());
@@ -86,8 +90,6 @@ public class SignUpActivity extends AppCompatActivity {
             } else if (!password.equals(confirmPassword)) {
                 Toast.makeText(SignUpActivity.this, "Password miss match!", Toast.LENGTH_LONG).show();
                 cPassword.setError("fill the password correctly");
-            } else if (comment.length() < 1){
-                Toast.makeText(this, "You Must Upload Your Pic", Toast.LENGTH_LONG).show();
             } else if (TextUtils.isEmpty(phoneNumber)){
                 Toast.makeText(this, "Phone Number is Empty", Toast.LENGTH_SHORT).show();
                 urPhoneNumber.setError("Please Enter Your Phone Number");
@@ -124,7 +126,7 @@ public class SignUpActivity extends AppCompatActivity {
                 progressDialog.setMessage("Please wait while creating your account");
                 progressDialog.setCanceledOnTouchOutside(false);
                 progressDialog.show();
-               registerUser(firstName, lastName, emailAddress, password);
+               registerUser(firstName, lastName, emailAddress, password, phoneNumber, admissionNumber, combination, comment, imageUri);
             }
         });
 
@@ -137,45 +139,44 @@ public class SignUpActivity extends AppCompatActivity {
         });
     }
 
-   private void registerUser(String userFirstName, String userLastName, String emailAddress, String password) {
+    private void registerUser(String firstName, String lastName, String emailAddress, String password, String phoneNumber, String admissionNumber, String combination, String comment, String imageUri) {
+
         FirebaseAuth userAuth = FirebaseAuth.getInstance();
-       userAuth.createUserWithEmailAndPassword(emailAddress, password)
-               .addOnCompleteListener(task -> {
-                   if (task.isSuccessful()){
-                       FirebaseUser cUser = userAuth.getCurrentUser();
-                       assert cUser != null;
-                       UserModel userModel = new UserModel();
-                       userModel.setUserFirstName(userFirstName);
-                       userModel.setUserLastName(userLastName);
-                       DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Registered Users");
-                       databaseReference.child(cUser.getUid()).setValue(userModel).addOnCompleteListener(task1 -> {
-                           if (task1.isSuccessful()){
-                               Toast.makeText(getApplicationContext(), "You have successfully registered", Toast.LENGTH_LONG).show();
-                               sendToCompleteProfileActivity();
-                           } else {
-                               Toast.makeText(getApplicationContext(), "Your registration failed, please try again.", Toast.LENGTH_LONG).show();
-                               progressDialog.dismiss();
-                           }
-                       });
+        userAuth.createUserWithEmailAndPassword(emailAddress, password)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()){
+                        FirebaseUser cUser = userAuth.getCurrentUser();
+                        assert cUser != null;
+                        UserModel userModel = new UserModel(firstName, lastName, phoneNumber, admissionNumber, combination, comment, imageUri, emailAddress);
+                        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Registered Users");
+                        databaseReference.child(cUser.getUid()).setValue(userModel).addOnCompleteListener(task1 -> {
+                            if (task1.isSuccessful()){
+                                Toast.makeText(getApplicationContext(), "You have successfully registered", Toast.LENGTH_LONG).show();
+                                sendToCompleteProfileActivity();
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Your registration failed, please try again.", Toast.LENGTH_LONG).show();
+                                progressDialog.dismiss();
+                            }
+                        });
 
-                   } else {
-                       try {
-                           throw Objects.requireNonNull(task.getException());
-                       } catch (FirebaseAuthInvalidCredentialsException e){
-                           Toast.makeText(this, "Email already registered", Toast.LENGTH_SHORT).show();
-                       } catch (FirebaseAuthUserCollisionException e){
-                           email.setError("User Already registered with this email address.");
-                           email.requestFocus();
-                       } catch (Exception e){
-                           Log.e(TAG, e.getMessage());
-                           Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                           progressDialog.dismiss();
-                       }
-                   }
-               });
+                    } else {
+                        try {
+                            throw Objects.requireNonNull(task.getException());
+                        } catch (FirebaseAuthInvalidCredentialsException e){
+                            Toast.makeText(this, "Email already registered", Toast.LENGTH_SHORT).show();
+                        } catch (FirebaseAuthUserCollisionException e){
+                            email.setError("User Already registered with this email address.");
+                            email.requestFocus();
+                        } catch (Exception e){
+                            Log.e(TAG, e.getMessage());
+                            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                            progressDialog.dismiss();
+                        }
+                    }
+                });
 
+    }
 
-   }
 
     private void sendToCompleteProfileActivity() {
         Intent intent = new Intent(getApplicationContext(), CompleteProfile.class);

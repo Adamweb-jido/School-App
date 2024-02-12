@@ -6,84 +6,91 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UserModel {
-    String userFirstName, userLastName, userPhoneNo, userAdmissionNo, userCombination, userComment, userImageUri;
+    String firstName, lastName, phoneNumber, admissionNumber, combination, comment, imageUri, email;
 
     public UserModel(){
 
     }
 
-    public UserModel(String userFirstName, String userLastName, String userPhoneNo, String userAdmissionNo, String userCombination, String userComment, String userImageUri) {
-        this.userFirstName = userFirstName;
-        this.userLastName = userLastName;
-        this.userPhoneNo = userPhoneNo;
-        this.userAdmissionNo = userAdmissionNo;
-        this.userCombination = userCombination;
-        this.userComment = userComment;
-        this.userImageUri = userImageUri;
+    public UserModel(String firstName, String lastName, String phoneNumber, String admissionNumber, String combination, String comment, String imageUri, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.admissionNumber = admissionNumber;
+        this.combination = combination;
+        this.comment = comment;
+        this.imageUri = imageUri;
+        this.email = email;
     }
 
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
-         result.put("userImageUri", userImageUri);
+         result.put("userImageUri", imageUri);
         return result;
     }
 
-
-    public String getUserFirstName() {
-        return userFirstName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setUserFirstName(String userFirstName) {
-        this.userFirstName = userFirstName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getUserLastName() {
-        return userLastName;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setUserLastName(String userLastName) {
-        this.userLastName = userLastName;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getUserPhoneNo() {
-        return userPhoneNo;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setUserPhoneNo(String userPhoneNo) {
-        this.userPhoneNo = userPhoneNo;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public String getUserAdmissionNo() {
-        return userAdmissionNo;
+    public String getAdmissionNumber() {
+        return admissionNumber;
     }
 
-    public void setUserAdmissionNo(String userAdmissionNo) {
-        this.userAdmissionNo = userAdmissionNo;
+    public void setAdmissionNumber(String admissionNumber) {
+        this.admissionNumber = admissionNumber;
     }
 
-    public String getUserCombination() {
-        return userCombination;
+    public String getCombination() {
+        return combination;
     }
 
-    public void setUserCombination(String userCombination) {
-        this.userCombination = userCombination;
+    public void setCombination(String combination) {
+        this.combination = combination;
     }
 
-    public String getUserComment() {
-        return userComment;
+    public String getComment() {
+        return comment;
     }
 
-    public void setUserComment(String userComment) {
-        this.userComment = userComment;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
-    public String getUserImageUri() {
-        return userImageUri;
+    public String getImageUri() {
+        return imageUri;
     }
 
-    public void setUserImageUri(String userImageUri) {
-        this.userImageUri = userImageUri;
+    public void setImageUri(String imageUri) {
+        this.imageUri = imageUri;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }
