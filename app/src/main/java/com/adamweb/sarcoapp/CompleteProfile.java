@@ -73,46 +73,9 @@ public class CompleteProfile extends AppCompatActivity {
         });
 
         completeBtn.setOnClickListener(v ->{
-            String phoneNumber, admissionNumber, combination, comment;
-            phoneNumber = String.valueOf(urPhoneNumber.getText());
-            admissionNumber = String.valueOf(urAdmissionNumber.getText());
-            combination = String.valueOf(urCombination.getText());
-            comment = String.valueOf(urComment.getText());
+            String ;
 
-            if (comment.length() < 1){
-                Toast.makeText(this, "You Must Upload Your Pic", Toast.LENGTH_LONG).show();
-            } else if (TextUtils.isEmpty(phoneNumber)){
-                Toast.makeText(this, "Phone Number is Empty", Toast.LENGTH_SHORT).show();
-                urPhoneNumber.setError("Please Enter Your Phone Number");
-                urPhoneNumber.requestFocus();
-            } else if (phoneNumber.length() != 11){
-                Toast.makeText(this, "Phone Number is not 11 digits", Toast.LENGTH_SHORT).show();
-                urPhoneNumber.setError("Invalid Enter 11 digits");
-                urPhoneNumber.requestFocus();
-            } else if (!phoneNumber.startsWith("0")){
-                Toast.makeText(this, "Phone Number Must start with 0", Toast.LENGTH_SHORT).show();
-                urPhoneNumber.setError("first digit must be 0");
-                urPhoneNumber.requestFocus();
-            } else if (TextUtils.isEmpty(admissionNumber)){
-                Toast.makeText(this, "Admission Number is Empty", Toast.LENGTH_SHORT).show();
-                urAdmissionNumber.setError("Admission Number is required");
-                urAdmissionNumber.requestFocus();
-            } else if (admissionNumber.length() != 14){
-                Toast.makeText(this, "Enter Valid Admission Number", Toast.LENGTH_SHORT).show();
-                urAdmissionNumber.setError("Invalid Admission Number");
-            } else if (TextUtils.isEmpty(combination)){
-                Toast.makeText(this, "can't leave empty", Toast.LENGTH_LONG).show();
-            } else if (comment.equals(combination)){
-                Toast.makeText(this, "Your Combination can't be your comment", Toast.LENGTH_SHORT).show();
-            }  else if (comment.equals(phoneNumber)){
-                Toast.makeText(this, "Your Phone Number can't be your comment", Toast.LENGTH_SHORT).show();
-            }  else if (comment.equals(admissionNumber)){
-                Toast.makeText(this, "Your Admission Number can't be your comment", Toast.LENGTH_SHORT).show();
-            } else if (TextUtils.isEmpty(comment)){
-                Toast.makeText(this, "Comment is Empty", Toast.LENGTH_SHORT).show();
-                urComment.setError("Please enter your comment");
-                urComment.requestFocus();
-            } else {
+            else {
                 progressBar.setVisibility(View.VISIBLE);
                 uploadPicToDatabase();
                 addToUserData(phoneNumber, admissionNumber, combination, comment);
@@ -131,7 +94,7 @@ public class CompleteProfile extends AppCompatActivity {
         userModel.setUserCombination(combination);
         userModel.setUserComment(comment);
 
-        databaseReference.child(firebaseUser.getUid()).setValue(userModel).addOnCompleteListener(new OnCompleteListener<Void>() {
+        databaseReference.child(firebaseUser.getUid()).setValue(userModel.toMap()).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()){

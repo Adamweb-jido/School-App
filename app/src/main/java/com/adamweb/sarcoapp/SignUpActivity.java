@@ -25,7 +25,7 @@ import java.util.Objects;
 public class SignUpActivity extends AppCompatActivity {
 
 
-    TextInputEditText fName, lName, email, newPassword, cPassword, phoneNumber, admissionNumber, urCombination, urComment;
+    TextInputEditText fName, lName, email, newPassword, cPassword, urPhoneNumber, urAdmissionNumber, urCombination, urComment;
     MaterialButton nextBtn;
     TextView login;
     ProgressDialog progressDialog;
@@ -47,12 +47,17 @@ public class SignUpActivity extends AppCompatActivity {
 
 
         nextBtn.setOnClickListener(view -> {
-            String firstName, lastName, emailAddress, password, confirmPassword, phoneNo = "", admissionNo = "", combination = "", comment = "", userImgUri = "";
+            String firstName, lastName, emailAddress, password, confirmPassword, phoneNumber, admissionNumber, combination, comment;
             firstName = String.valueOf(fName.getText());
             lastName = String.valueOf(lName.getText());
             emailAddress = String.valueOf(email.getText());
             password = String.valueOf(newPassword.getText());
             confirmPassword = String.valueOf(cPassword.getText());
+            phoneNumber = String.valueOf(urPhoneNumber.getText());
+            admissionNumber = String.valueOf(urAdmissionNumber.getText());
+            combination = String.valueOf(urCombination.getText());
+            comment = String.valueOf(urComment.getText());
+
 
             if (TextUtils.isEmpty(firstName)) {
                 Toast.makeText(SignUpActivity.this, "First Name is empty", Toast.LENGTH_LONG).show();
@@ -81,12 +86,45 @@ public class SignUpActivity extends AppCompatActivity {
             } else if (!password.equals(confirmPassword)) {
                 Toast.makeText(SignUpActivity.this, "Password miss match!", Toast.LENGTH_LONG).show();
                 cPassword.setError("fill the password correctly");
-            }  else {
+            } else if (comment.length() < 1){
+                Toast.makeText(this, "You Must Upload Your Pic", Toast.LENGTH_LONG).show();
+            } else if (TextUtils.isEmpty(phoneNumber)){
+                Toast.makeText(this, "Phone Number is Empty", Toast.LENGTH_SHORT).show();
+                urPhoneNumber.setError("Please Enter Your Phone Number");
+                urPhoneNumber.requestFocus();
+            } else if (phoneNumber.length() != 11){
+                Toast.makeText(this, "Phone Number is not 11 digits", Toast.LENGTH_SHORT).show();
+                urPhoneNumber.setError("Invalid Enter 11 digits");
+                urPhoneNumber.requestFocus();
+            } else if (!phoneNumber.startsWith("0")){
+                Toast.makeText(this, "Phone Number Must start with 0", Toast.LENGTH_SHORT).show();
+                urPhoneNumber.setError("first digit must be 0");
+                urPhoneNumber.requestFocus();
+            } else if (TextUtils.isEmpty(admissionNumber)){
+                Toast.makeText(this, "Admission Number is Empty", Toast.LENGTH_SHORT).show();
+                urAdmissionNumber.setError("Admission Number is required");
+                urAdmissionNumber.requestFocus();
+            } else if (admissionNumber.length() != 14){
+                Toast.makeText(this, "Enter Valid Admission Number", Toast.LENGTH_SHORT).show();
+                urAdmissionNumber.setError("Invalid Admission Number");
+            } else if (TextUtils.isEmpty(combination)){
+                Toast.makeText(this, "can't leave empty", Toast.LENGTH_LONG).show();
+            } else if (comment.equals(combination)){
+                Toast.makeText(this, "Your Combination can't be your comment", Toast.LENGTH_SHORT).show();
+            }  else if (comment.equals(phoneNumber)){
+                Toast.makeText(this, "Your Phone Number can't be your comment", Toast.LENGTH_SHORT).show();
+            }  else if (comment.equals(admissionNumber)){
+                Toast.makeText(this, "Your Admission Number can't be your comment", Toast.LENGTH_SHORT).show();
+            } else if (TextUtils.isEmpty(comment)){
+                Toast.makeText(this, "Comment is Empty", Toast.LENGTH_SHORT).show();
+                urComment.setError("Please enter your comment");
+                urComment.requestFocus();
+            } else {
                 progressDialog = new ProgressDialog(SignUpActivity.this);
                 progressDialog.setMessage("Please wait while creating your account");
                 progressDialog.setCanceledOnTouchOutside(false);
                 progressDialog.show();
-               registerUser(firstName, lastName, emailAddress, password, phoneNo, admissionNo, combination, comment, userImgUri);
+               registerUser(firstName, lastName, emailAddress, password);
             }
         });
 
@@ -99,16 +137,18 @@ public class SignUpActivity extends AppCompatActivity {
         });
     }
 
-   private void registerUser(String userFirstName, String userLastName, String emailAddress, String password, String userPhoneNo, String userAdmissionNo, String userCombination, String userComment, String userImageUri) {
+   private void registerUser(String userFirstName, String userLastName, String emailAddress, String password) {
         FirebaseAuth userAuth = FirebaseAuth.getInstance();
        userAuth.createUserWithEmailAndPassword(emailAddress, password)
                .addOnCompleteListener(task -> {
                    if (task.isSuccessful()){
                        FirebaseUser cUser = userAuth.getCurrentUser();
                        assert cUser != null;
-                       UserModel userReadWriteData = new UserModel(userFirstName, userLastName, userPhoneNo, userAdmissionNo, userCombination, userComment, userImageUri);
+                       UserModel userModel = new UserModel();
+                       userModel.setUserFirstName(userFirstName);
+                       userModel.setUserLastName(userLastName);
                        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Registered Users");
-                       databaseReference.child(cUser.getUid()).setValue(userReadWriteData).addOnCompleteListener(task1 -> {
+                       databaseReference.child(cUser.getUid()).setValue(userModel).addOnCompleteListener(task1 -> {
                            if (task1.isSuccessful()){
                                Toast.makeText(getApplicationContext(), "You have successfully registered", Toast.LENGTH_LONG).show();
                                sendToCompleteProfileActivity();
