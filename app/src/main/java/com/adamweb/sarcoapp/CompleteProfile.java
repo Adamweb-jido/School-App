@@ -94,32 +94,13 @@ public class CompleteProfile extends AppCompatActivity {
             } else {
                 progressBar.setVisibility(View.VISIBLE);
                 uploadPicToDatabase();
-           //     addMoreInfo(department, bestFriend, bestCourse, skills);
+                addMoreInfo(department, bestFriend, bestCourse, skills);
             }
 
         });
 
-
-
-
     }
 
-  /*  private void addMoreInfo(String department, String bestFriend, String bestCourse, String skills) {
-        MoreInfo moreInfo = new MoreInfo(department, bestFriend, bestCourse, skills);
-        DatabaseReference moreUsersInfo = FirebaseDatabase.getInstance().getReference("Users More Info");
-        moreUsersInfo.child(firebaseUser.getUid()).setValue(moreInfo).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()){
-                    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-                    finish();
-                }  else {
-                    Toast.makeText(CompleteProfile.this, "Unable to process your request", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-    }
- */
     private void uploadPicToDatabase() {
         StorageReference fileReference = storageReference.child(firebaseUser.getUid() + getFileExtension(imageUri));
         fileReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -143,6 +124,23 @@ public class CompleteProfile extends AppCompatActivity {
             }
         });
     }
+
+    private void addMoreInfo(String department, String bestFriend, String bestCourse, String skills) {
+        MoreInfo moreInfo = new MoreInfo(department, bestFriend, bestCourse, skills);
+        DatabaseReference moreUsersInfo = FirebaseDatabase.getInstance().getReference("Users More Info");
+        moreUsersInfo.child(firebaseUser.getUid()).setValue(moreInfo).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()){
+                    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                    finish();
+                }  else {
+                    Toast.makeText(CompleteProfile.this, "Unable to process your request", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
 
 
     @Override
