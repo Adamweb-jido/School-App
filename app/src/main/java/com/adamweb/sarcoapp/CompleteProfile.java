@@ -80,7 +80,7 @@ public class CompleteProfile extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        imageUri = data.getData();
+        imageUri = data. getData();
         uploadPicture.setImageURI(imageUri);
     }
 
