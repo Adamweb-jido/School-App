@@ -1,12 +1,14 @@
 package com.adamweb.sarcoapp;
 
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.EditText;
@@ -14,6 +16,10 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.github.dhaval2404.imagepicker.ImagePicker;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,12 +28,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class CompleteProfile extends AppCompatActivity {
 
     MaterialButton completeBtn;
-    EditText department, bestFriend, bestCourse, skills;
+    EditText urDepartment, urBestFriend, urBestCourse, urSkills;
     CircleImageView uploadPicture;
     FloatingActionButton uploadBtn;
     FirebaseAuth firebaseAuth;
@@ -46,10 +54,10 @@ public class CompleteProfile extends AppCompatActivity {
         uploadPicture = findViewById(R.id.profile_image);
         uploadBtn = findViewById(R.id.uploadBtn);
         progressBar = findViewById(R.id.completeProgressBar);
-        department = findViewById(R.id.yourDept);
-        bestFriend = findViewById(R.id.bestFriend);
-        bestCourse = findViewById(R.id.bestCourse);
-        skills = findViewById(R.id.yourSkill);
+        urDepartment = findViewById(R.id.yourDept);
+        urBestFriend = findViewById(R.id.bestFriend);
+        urBestCourse = findViewById(R.id.bestCourse);
+        urSkills = findViewById(R.id.yourSkill);
 
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -62,59 +70,32 @@ public class CompleteProfile extends AppCompatActivity {
             ImagePicker.with(this).crop().compress(1024).maxResultSize(1080, 1080).start();
         });
 
-        if (imageUri != null){
-            department.setEnabled(false);
-            bestFriend.setEnabled(false);
-            bestCourse.setEnabled(false);
-            skills.setEnabled(false);
-            completeBtn.setEnabled(false);
-        } else {
-            department.setEnabled(true);
-            bestFriend.setEnabled(false);
-            bestCourse.setEnabled(false);
-            skills.setEnabled(false);
-            completeBtn.setEnabled(false);
-        }
-         if (department == null){
-            bestFriend.setEnabled(false);
-            bestCourse.setEnabled(false);
-            skills.setEnabled(false);
-            completeBtn.setEnabled(false);
-        } else {
-             bestFriend.setEnabled(true);
-             bestCourse.setEnabled(false);
-             skills.setEnabled(false);
-             completeBtn.setEnabled(false);
-         }
-
-          if (bestFriend == null){
-            bestCourse.setEnabled(false);
-            skills.setEnabled(false);
-            completeBtn.setEnabled(false);
-        } else {
-              bestCourse.setEnabled(true);
-              skills.setEnabled(false);
-              completeBtn.setEnabled(false);
-          }
-
-          if (bestCourse == null){
-            skills.setEnabled(false);
-            completeBtn.setEnabled(false);
-        } else {
-              skills.setEnabled(true);
-              completeBtn.setEnabled(false);
-          }
-
-          if (skills == null){
-              completeBtn.setEnabled(false);
-          } else {
-              completeBtn.setEnabled(true);
-          }
-
 
         completeBtn.setOnClickListener(v ->{
+
+            String department, bestFriend, bestCourse, skills;
+            department = String.valueOf(urDepartment.getText());
+            bestFriend = String.valueOf(urBestFriend.getText());
+            bestCourse = String.valueOf(urBestCourse.getText());
+            skills = String.valueOf(urSkills.getText());
+
+            if (TextUtils.isEmpty(department)){
+                urDepartment.setError("Please Enter your Department");
+                urDepartment.requestFocus();
+            } else if (TextUtils.isEmpty(bestFriend)){
+                urBestFriend.setError("Enter your friend name");
+                urBestFriend.requestFocus();
+            } else if (TextUtils.isEmpty(bestCourse)){
+                urBestCourse.setError("Please write your best course");
+                urBestCourse.requestFocus();
+            } else if (TextUtils.isEmpty(skills)){
+                urSkills.setError("Please Write your skill(s)");
+                urSkills.requestFocus();
+            } else {
                 progressBar.setVisibility(View.VISIBLE);
                 uploadPicToDatabase();
+           //     addMoreInfo(department, bestFriend, bestCourse, skills);
+            }
 
         });
 
@@ -123,14 +104,44 @@ public class CompleteProfile extends AppCompatActivity {
 
     }
 
-     private void uploadPicToDatabase() {
-
+  /*  private void addMoreInfo(String department, String bestFriend, String bestCourse, String skills) {
+        MoreInfo moreInfo = new MoreInfo(department, bestFriend, bestCourse, skills);
+        DatabaseReference moreUsersInfo = FirebaseDatabase.getInstance().getReference("Users More Info");
+        moreUsersInfo.child(firebaseUser.getUid()).setValue(moreInfo).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()){
+                    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                    finish();
+                }  else {
+                    Toast.makeText(CompleteProfile.this, "Unable to process your request", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+ */
+    private void uploadPicToDatabase() {
         StorageReference fileReference = storageReference.child(firebaseUser.getUid() + getFileExtension(imageUri));
-        fileReference.putFile(imageUri).addOnSuccessListener(taskSnapshot -> fileReference.getDownloadUrl().addOnSuccessListener(imageUri -> {
-            UserModel userModel = new UserModel();
-            userModel.setImageUri(imageUri.toString());
-            databaseReference.child(firebaseUser.getUid()).updateChildren(userModel.toMap());
-        }).addOnFailureListener(e -> Toast.makeText(CompleteProfile.this, "wrong", Toast.LENGTH_SHORT).show()));
+        fileReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri imageUri) {
+                        UserModel userModel = new UserModel();
+                        userModel.setImageUri(imageUri.toString());
+                        databaseReference.child(firebaseUser.getUid()).updateChildren(userModel.toMap());
+                        Toast.makeText(CompleteProfile.this, "Your Image is Successfully uploaded", Toast.LENGTH_SHORT).show();
+
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(CompleteProfile.this, "wrong", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
     }
 
 
