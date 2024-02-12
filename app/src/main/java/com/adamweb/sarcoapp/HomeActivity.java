@@ -81,6 +81,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
 
         setImageSlider();
+        setLeadersItems();
         home.setOnClickListener(v ->{
             progressBar.setVisibility(View.VISIBLE);
             startActivity(new Intent(getApplicationContext(), HomeActivity.class));
@@ -133,6 +134,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
            startActivity(intent);
            finish();
        });
+
+    }
+
+    private void setLeadersItems() {
+        List<LeaderItem> items = new ArrayList<>();
+        items.add(new LeaderItem("", "Provost"));
 
     }
 
