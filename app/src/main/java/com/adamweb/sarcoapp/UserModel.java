@@ -26,7 +26,7 @@ public class UserModel {
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
-         result.put("userImageUri", imageUri);
+         result.put("imageUri", imageUri);
         return result;
     }
 

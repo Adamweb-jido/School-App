@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.MimeTypeMap;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -26,6 +27,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class CompleteProfile extends AppCompatActivity {
 
     MaterialButton completeBtn;
+    EditText department, bestFriend, bestCourse, skills;
     CircleImageView uploadPicture;
     FloatingActionButton uploadBtn;
     FirebaseAuth firebaseAuth;
@@ -44,6 +46,11 @@ public class CompleteProfile extends AppCompatActivity {
         uploadPicture = findViewById(R.id.profile_image);
         uploadBtn = findViewById(R.id.uploadBtn);
         progressBar = findViewById(R.id.completeProgressBar);
+        department = findViewById(R.id.yourDept);
+        bestFriend = findViewById(R.id.bestFriend);
+        bestCourse = findViewById(R.id.bestCourse);
+        skills = findViewById(R.id.yourSkill);
+
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
@@ -54,6 +61,56 @@ public class CompleteProfile extends AppCompatActivity {
         uploadBtn.setOnClickListener( v ->{
             ImagePicker.with(this).crop().compress(1024).maxResultSize(1080, 1080).start();
         });
+
+        if (imageUri != null){
+            department.setEnabled(false);
+            bestFriend.setEnabled(false);
+            bestCourse.setEnabled(false);
+            skills.setEnabled(false);
+            completeBtn.setEnabled(false);
+        } else {
+            department.setEnabled(true);
+            bestFriend.setEnabled(false);
+            bestCourse.setEnabled(false);
+            skills.setEnabled(false);
+            completeBtn.setEnabled(false);
+        }
+         if (department == null){
+            bestFriend.setEnabled(false);
+            bestCourse.setEnabled(false);
+            skills.setEnabled(false);
+            completeBtn.setEnabled(false);
+        } else {
+             bestFriend.setEnabled(true);
+             bestCourse.setEnabled(false);
+             skills.setEnabled(false);
+             completeBtn.setEnabled(false);
+         }
+
+          if (bestFriend == null){
+            bestCourse.setEnabled(false);
+            skills.setEnabled(false);
+            completeBtn.setEnabled(false);
+        } else {
+              bestCourse.setEnabled(true);
+              skills.setEnabled(false);
+              completeBtn.setEnabled(false);
+          }
+
+          if (bestCourse == null){
+            skills.setEnabled(false);
+            completeBtn.setEnabled(false);
+        } else {
+              skills.setEnabled(true);
+              completeBtn.setEnabled(false);
+          }
+
+          if (skills == null){
+              completeBtn.setEnabled(false);
+          } else {
+              completeBtn.setEnabled(true);
+          }
+
 
         completeBtn.setOnClickListener(v ->{
                 progressBar.setVisibility(View.VISIBLE);

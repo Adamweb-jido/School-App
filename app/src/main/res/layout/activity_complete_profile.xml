@@ -109,6 +109,71 @@
             android:background="@drawable/header_bg">
 
 
+          <EditText
+              android:id="@+id/yourDept"
+              android:layout_width="match_parent"
+              android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="10dp"
+            android:hint="Your Department"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/alata"
+            android:textColor="@color/black"
+            android:inputType="text"
+              android:background="@drawable/header_bg"
+              android:autofillHints="username"/>
+
+          <EditText
+              android:id="@+id/bestFriend"
+              android:layout_width="match_parent"
+              android:layout_height="50dp"
+              android:layout_marginTop="15dp"
+              android:paddingStart="15dp"
+              android:paddingEnd="10dp"
+              android:hint="Best Friend Name"
+              android:textSize="20sp"
+              android:textStyle="bold"
+              android:fontFamily="@font/alata"
+              android:textColor="@color/black"
+              android:inputType="text"
+              android:background="@drawable/header_bg"
+              android:autofillHints="username" />
+
+          <EditText
+              android:id="@+id/bestCourse"
+              android:layout_width="match_parent"
+              android:layout_height="50dp"
+              android:layout_marginTop="15dp"
+              android:paddingStart="15dp"
+              android:paddingEnd="10dp"
+              android:hint="Your Best Course"
+              android:textSize="20sp"
+              android:textStyle="bold"
+              android:fontFamily="@font/alata"
+              android:textColor="@color/black"
+              android:inputType="text"
+              android:background="@drawable/header_bg"
+              android:autofillHints="username" />
+
+          <EditText
+              android:id="@+id/yourSkill"
+              android:layout_width="match_parent"
+              android:layout_height="50dp"
+              android:layout_marginTop="15dp"
+              android:paddingStart="15dp"
+              android:paddingEnd="10dp"
+              android:hint="Skill(s) you have learned at school"
+              android:textSize="20sp"
+              android:textStyle="bold"
+              android:fontFamily="@font/alata"
+              android:textColor="@color/black"
+              android:inputType="text"
+              android:background="@drawable/header_bg"
+              android:autofillHints="username" />
+
+
           <TextView
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
@@ -126,7 +191,7 @@
               android:layout_width="match_parent"
               android:layout_height="65dp"
               app:cornerRadius="5dp"
-              android:layout_marginTop="10dp"
+              android:layout_marginTop="25dp"
               android:fontFamily="@font/suez_one"
               android:text="complete"
               android:textSize="20sp"

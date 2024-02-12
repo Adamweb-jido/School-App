@@ -62,7 +62,6 @@ public class ProfileActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser userDetails = firebaseAuth.getCurrentUser();
-        DatabaseReference otherUsers = FirebaseDatabase.getInstance().getReference().child("Registered Users");
         if (userDetails == null){
             Toast.makeText(this, "Failed! please refresh the page", Toast.LENGTH_LONG).show();
         }else {
