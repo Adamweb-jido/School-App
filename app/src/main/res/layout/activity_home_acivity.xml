@@ -476,13 +476,17 @@
                   android:layout_width="match_parent"
                   android:layout_height="250dp"
                   android:layout_marginTop="25dp"
-                  app:cardCornerRadius="20dp"
+                  app:cardCornerRadius="10dp"
+                  android:layout_gravity="center"
                   app:cardElevation="15dp">
 
                     <com.afdhal_fa.imageslider.ImageSlider
                         android:id="@+id/homeAutoSlider"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:gravity="center"
+
+                        android:layout_gravity="center"
                         app:iss_image_scaleType="fitXY"
                         app:iss_auto_cycle="true"
                         app:iss_delay="1"
