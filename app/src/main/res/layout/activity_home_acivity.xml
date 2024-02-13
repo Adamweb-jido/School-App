@@ -318,14 +318,13 @@
                   <TextView
                       android:id="@+id/quoteTextContainerId"
                       android:layout_width="match_parent"
-                      android:layout_height="120dp"
+                      android:layout_height="130dp"
                       android:padding="5dp"
                       android:hint="@string/quotes"
-                      android:textSize="22sp"
+                      android:textSize="17sp"
                       android:textColor="@color/black"
                       android:fontFamily="@font/alata"
                       android:alpha="0.7"
-                      android:text="@string/quotes"
                       android:textStyle="italic|bold"/>
 
                   <de.hdodenhof.circleimageview.CircleImageView
