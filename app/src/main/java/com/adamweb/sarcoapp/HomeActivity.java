@@ -12,6 +12,7 @@ import android.annotation.SuppressLint;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -42,7 +43,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     //------------------Views declaration-------------------------
     ImageView photoAlbum, chats, profile, menu, home;
     RoundedImageView profileDp;
-    TextView userName, visitCount, hiUser;
+    TextView userName, visitCount, hiUser, quoteText;
     RecyclerView leaderRecycler, allUsersRecycler;
     NavigationView navigationView;
     DrawerLayout drawerLayout;
@@ -52,7 +53,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     String firstName, lastName;
     ProgressBar progressBar;
     ImageSlider imageSlider;
-    int counter;
+     String[] texts = {"Text 1", "Text 2", "Text 3"}; // Example texts
+     int counter, currentIndex = 0;
+    private Handler handler;
+
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +88,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         setImageSlider();
         setLeadersItems();
         displayAllUsers();
+        quotesTexts();
 
         home.setOnClickListener(v ->{
             progressBar.setVisibility(View.VISIBLE);
@@ -137,6 +142,35 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
            finish();
        });
 
+    }
+
+    private void quotesTexts() {
+
+        TextView textView;
+        String[] texts = {"Text 1", "Text 2", "Text 3"}; // Example texts
+        int currentIndex = 0;
+        Handler handler;
+
+        handler = new Handler();
+        private Runnable textSliderRunnable;
+        handler.postDelayed(textSliderRunnable, 5000); // Start sliding after 5 seconds
+
+
+        textSliderRunnable = new Runnable() {
+            @Override
+            public void run() {
+                // Update text and increment index
+                textView.setText(texts[currentIndex]);
+                currentIndex = (currentIndex + 1) % texts.length; // Wrap around to beginning if end is reached
+                handler.postDelayed(this, 5000); // Repeat after 5 seconds
+            }
+        };
+
+        protected void onDestroy () {
+            super.onDestroy();
+            // Remove the Runnable to prevent memory leaks
+            handler.removeCallbacks(textSliderRunnable);
+        }
     }
 
     private void setLeadersItems() {

@@ -404,6 +404,7 @@
                       android:layout_height="wrap_content"
                       android:background="#0A1A6E"
                       android:text="Do you Know?"
+                      android:fontFamily="@font/alata"
                       android:textColor="@color/white"
                       android:textAlignment="center"
                       android:textSize="20sp"
@@ -454,14 +455,14 @@
                                   <TextView
                                       android:layout_width="150dp"
                                       android:layout_height="150dp"
-                                      android:padding="10dp"
+                                      android:padding="5dp"
                                       android:layout_gravity="center"
                                       android:gravity="center"
                                       android:background="@drawable/header_bg"
                                       android:textColor="@color/black"
-                                      android:textSize="15sp"
+                                      android:textSize="12sp"
                                       android:fontFamily="@font/alata"
-                                      android:text="@string/quotes"
+                                      android:text="The first provost of Saadatu Rimi College of Education, Kumbotso, Kano State, Nigeria, was Professor Hafizu Abubakar. He was appointed in 2007 and served until 2011."
                                       android:hint="@string/quotes"/>
                               </androidx.cardview.widget.CardView>
 
