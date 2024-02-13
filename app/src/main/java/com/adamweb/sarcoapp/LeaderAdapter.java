@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class LeaderAdapter extends RecyclerView.Adapter<LeaderAdapter.LeaderViewHolder> {
@@ -44,7 +46,8 @@ public class LeaderAdapter extends RecyclerView.Adapter<LeaderAdapter.LeaderView
 
     @Override
     public void onBindViewHolder(@NonNull LeaderViewHolder holder, int position) {
-        holder.leaderImage.setImageResource(items.get(position).getImageUri().i);
+        LeaderItem leaderItem = items.get(position);
+        Picasso.get().load(leaderItem.getImageUri()).into(holder.leaderImage);
         holder.leaderName.setText(items.get(position).getName());
 
     }

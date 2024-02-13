@@ -141,7 +141,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private void setLeadersItems() {
         List<LeaderItem> items = new ArrayList<>();
         items.add(new LeaderItem("https://firebasestorage.googleapis.com/v0/b/sarco-pixel.appspot.com/o/Leaders%2Fprovost.jpg?alt=media&token=59946c96-ba1c-4b87-87c9-e0fddcb780eb", "Provost"));
-        items.add(new LeaderItem("", "Register"));
+        items.add(new LeaderItem("https://firebasestorage.googleapis.com/v0/b/sarco-pixel.appspot.com/o/Leaders%2Fregistrer.png?alt=media&token=45266c8c-77e6-4e45-826d-2d09cf672b20", "Registerer"));
 
         leaderRecycler.setLayoutManager(new GridLayoutManager(this, 2));
         leaderRecycler.setAdapter(new LeaderAdapter(this, items));
