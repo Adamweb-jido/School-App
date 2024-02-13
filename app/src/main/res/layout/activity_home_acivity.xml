@@ -415,7 +415,7 @@
                       android:orientation="horizontal">
 
                           <androidx.cardview.widget.CardView
-                              android:layout_width="165dp"
+                              android:layout_width="160dp"
                               android:layout_height="170dp"
                               app:cardElevation="20dp"
                               app:cardBackgroundColor="#0C185F"
@@ -424,15 +424,14 @@
                               <TextView
                                   android:layout_width="150dp"
                                   android:layout_height="150dp"
-                                  android:padding="10dp"
+                                  android:padding="2dp"
                                   android:layout_gravity="center"
                                   android:gravity="center"
                                   android:background="@drawable/header_bg"
                                   android:textColor="@color/black"
-                                  android:textSize="15sp"
+                                  android:textSize="10sp"
                                   android:fontFamily="@font/alata"
-                                  android:text="@string/quotes"
-                                  android:hint="@string/quotes"/>
+                                  android:text="@string/sRimi_one"/>
 
 
 
@@ -445,7 +444,7 @@
                               android:gravity="end">
 
                               <androidx.cardview.widget.CardView
-                                  android:layout_width="165dp"
+                                  android:layout_width="160dp"
                                   android:layout_height="170dp"
                                   app:cardElevation="20dp"
                                   android:layout_gravity="end"
@@ -682,7 +681,7 @@
                               android:layout_width="140dp"
                               android:layout_height="match_parent"
                               android:contentDescription="@string/todo"
-                              android:src="@drawable/official"/>
+                              android:src="@drawable/official_icon"/>
 
                           <TextView
                               android:layout_width="match_parent"
@@ -718,7 +717,7 @@
                               android:layout_width="140dp"
                               android:layout_height="match_parent"
                               android:contentDescription="@string/todo"
-                              android:src="@drawable/computerlib"/>
+                              android:src="@drawable/coding_space_iconn"/>
 
                           <TextView
                               android:layout_width="match_parent"
