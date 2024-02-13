@@ -574,8 +574,7 @@
                               android:layout_width="140dp"
                               android:contentDescription="@string/todo"
                               android:layout_height="match_parent"
-                              android:src="@drawable/search_icon"/>
-                          <!-- android:src="@drawable/library" -->
+                              android:src="@drawable/library_icon"/>
 
                           <TextView
                               android:layout_width="match_parent"
@@ -610,8 +609,8 @@
                           <ImageView
                               android:layout_width="140dp"
                               android:layout_height="match_parent"
-                              android:contentDescription="@string/todo"/>
-                             <!-- android:src="@drawable/story" -->
+                              android:contentDescription="@string/todo"
+                             android:src="@drawable/story_icon" />
 
                           <TextView
                               android:layout_width="match_parent"
@@ -646,8 +645,8 @@
                           <ImageView
                               android:layout_width="140dp"
                               android:layout_height="match_parent"
-                              android:contentDescription="@string/todo"/>
-                             <!-- android:src="@drawable/community" -->
+                              android:contentDescription="@string/todo"
+                              android:src="@drawable/community"/>
 
                           <TextView
                               android:layout_width="match_parent"
@@ -682,8 +681,8 @@
                           <ImageView
                               android:layout_width="140dp"
                               android:layout_height="match_parent"
-                              android:contentDescription="@string/todo"/>
-                              <!--android:src="@drawable/official" -->
+                              android:contentDescription="@string/todo"
+                              android:src="@drawable/official"/>
 
                           <TextView
                               android:layout_width="match_parent"
@@ -718,8 +717,8 @@
                           <ImageView
                               android:layout_width="140dp"
                               android:layout_height="match_parent"
-                              android:contentDescription="@string/todo"/>
-                              <!-- android:src="@drawable/computerlib" -->
+                              android:contentDescription="@string/todo"
+                              android:src="@drawable/computerlib"/>
 
                           <TextView
                               android:layout_width="match_parent"
