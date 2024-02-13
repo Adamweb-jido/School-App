@@ -83,6 +83,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         setImageSlider();
         setLeadersItems();
+        displayAllUsers();
+
         home.setOnClickListener(v ->{
             progressBar.setVisibility(View.VISIBLE);
             startActivity(new Intent(getApplicationContext(), HomeActivity.class));
@@ -90,7 +92,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         });
 
         //-------------------------------set Counter----------------------
-       displayAllUsers();
         counter = CounterUtil.getVisitCount(this);
         visitCount.setText("Your Total visit: "+counter);
 
@@ -142,7 +143,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         List<LeaderItem> items = new ArrayList<>();
         items.add(new LeaderItem("https://firebasestorage.googleapis.com/v0/b/sarco-pixel.appspot.com/o/Leaders%2Fprovost.jpg?alt=media&token=59946c96-ba1c-4b87-87c9-e0fddcb780eb", "Provost"));
         items.add(new LeaderItem("https://firebasestorage.googleapis.com/v0/b/sarco-pixel.appspot.com/o/Leaders%2Fregistrer.png?alt=media&token=45266c8c-77e6-4e45-826d-2d09cf672b20", "Registerer"));
-
+        items.add(new LeaderItem("https://firebasestorage.googleapis.com/v0/b/sarco-pixel.appspot.com/o/Leaders%2Fuser_profile_dp.jpeg?alt=media&token=da7be77e-8be0-4a4e-a5f1-297abf3927d8", "H.O.D"));
+        items.add(new LeaderItem("https://firebasestorage.googleapis.com/v0/b/sarco-pixel.appspot.com/o/Leaders%2Fuser_profile_dp.jpeg?alt=media&token=da7be77e-8be0-4a4e-a5f1-297abf3927d8", "Level Coordinator"));
         leaderRecycler.setLayoutManager(new GridLayoutManager(this, 2));
         leaderRecycler.setAdapter(new LeaderAdapter(this, items));
 

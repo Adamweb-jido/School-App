@@ -485,8 +485,8 @@
                         android:layout_height="match_parent"
                         app:iss_image_scaleType="fitXY"
                         app:iss_auto_cycle="true"
-                        app:iss_delay="0"
-                        app:iss_period="1500"
+                        app:iss_delay="1"
+                        app:iss_period="2500"
                         app:iss_indicator_gravity="bottom|center"
                         app:iss_selected_dot="@color/purple_500"
                         app:iss_unselected_dot="@color/black"/>
@@ -523,7 +523,7 @@
                       android:id="@+id/leadersRecycler"
                       android:layout_width="match_parent"
                       android:layout_height="match_parent"
-                      android:padding="5dp"/>
+                      android:padding="1dp"/>
               </LinearLayout>
 
               <View
