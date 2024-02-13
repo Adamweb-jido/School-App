@@ -79,7 +79,9 @@ public class CompleteProfile extends AppCompatActivity {
             bestCourse = String.valueOf(urBestCourse.getText());
             skills = String.valueOf(urSkills.getText());
 
-            if (TextUtils.isEmpty(department)){
+            if(imageUri == null){
+                Toast.makeText(this, "You Must Upload Your picture first", Toast.LENGTH_SHORT).show();
+            } else if (TextUtils.isEmpty(department)){
                 urDepartment.setError("Please Enter your Department");
                 urDepartment.requestFocus();
             } else if (TextUtils.isEmpty(bestFriend)){
@@ -93,7 +95,7 @@ public class CompleteProfile extends AppCompatActivity {
                 urSkills.requestFocus();
             } else {
                 progressBar.setVisibility(View.VISIBLE);
-                uploadPicToDatabase();
+                uploadPicToDatabase(imageUri);
                 addMoreInfo(department, bestFriend, bestCourse, skills);
             }
 
@@ -101,7 +103,7 @@ public class CompleteProfile extends AppCompatActivity {
 
     }
 
-    private void uploadPicToDatabase() {
+    private void uploadPicToDatabase(Uri imageUri) {
         StorageReference fileReference = storageReference.child(firebaseUser.getUid() + getFileExtension(imageUri));
         fileReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
