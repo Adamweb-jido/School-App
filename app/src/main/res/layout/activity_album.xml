@@ -69,18 +69,18 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp">
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:gravity="center">
          <EditText
              android:id="@+id/search_your_friends_field"
-             android:layout_width="260dp"
-             android:layout_height="49dp"
+             android:layout_width="250dp"
+             android:layout_height="40dp"
              android:hint="@string/search"
              android:background="@drawable/search_friends_bg"
              android:paddingStart="10dp"
              android:paddingEnd="10dp"
+             android:layout_marginTop="1dp"
              android:fontFamily="@font/alata"
              android:textColor="@color/purple_500"
              android:drawableStart="@drawable/user_profile_icon"
@@ -88,17 +88,15 @@
              android:inputType="text"
              android:autofillHints="username" />
 
-        <ImageButton
-            android:id="@+id/search_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:paddingStart="15dp"
-            android:paddingEnd="15dp"
-            android:src="@drawable/search"
+        <ImageView
+            android:id="@+id/searchBtn"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:padding="5dp"
             android:layout_toEndOf="@id/search_your_friends_field"
+            android:src="@drawable/search_icon"
             android:background="@drawable/search_button_bg"
-            android:contentDescription="@string/todo"
-            app:tint="@color/white" />
+            android:contentDescription="@string/todo"/>
     </RelativeLayout>
 
         <TextView
