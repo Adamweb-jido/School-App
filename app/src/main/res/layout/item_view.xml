@@ -2,13 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:gravity="center"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="10dp">
+    android:padding="7dp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/b"
-        android:layout_width="wrap_content"
-        android:layout_height="350dp"
+        android:layout_width="185dp"
+        android:layout_height="360dp"
         app:cardBackgroundColor="#0D1F82"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp">
@@ -16,12 +17,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:orientation="vertical">
 
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/myImage"
-                android:layout_width="170dp"
+                android:layout_width="150dp"
                 android:layout_height="230dp"
+                android:layout_marginTop="4dp"
                 android:layout_gravity="center"
                 android:contentDescription="@string/todo"
                 android:scaleType="fitXY"
@@ -33,11 +37,12 @@
 
             <TextView
                 android:id="@+id/name"
-                android:layout_width="wrap_content"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
+                android:gravity="center"
                 android:fontFamily="@font/alata"
                 android:textAlignment="center"
                 android:textAllCaps="true"
@@ -51,11 +56,12 @@
                 android:background="@color/white"/>
             <TextView
                 android:id="@+id/combination"
-                android:layout_width="wrap_content"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
+                android:gravity="center"
                 android:fontFamily="@font/alata"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
@@ -69,11 +75,12 @@
 
             <TextView
                 android:id="@+id/phoneNumber"
-                android:layout_width="wrap_content"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
+                android:gravity="center"
                 android:fontFamily="@font/alata"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
@@ -86,12 +93,13 @@
                 android:background="@color/white"/>
             <TextView
                 android:id="@+id/email"
-                android:layout_width="wrap_content"
+                android:layout_width="160dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:fontFamily="@font/alata"
+                android:gravity="center"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="10sp"
