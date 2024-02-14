@@ -12,6 +12,8 @@ import android.util.Log;
 import android.util.Patterns;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
@@ -67,6 +69,15 @@ public class SignUpActivity extends AppCompatActivity {
                 Toast.makeText(SignUpActivity.this, "First Name is empty", Toast.LENGTH_LONG).show();
                 fName.setError("Please you should fill the field");
                 fName.requestFocus();
+            } else if(firstName.length() < 3){
+                fName.setError("First Name is too short");
+                fName.requestFocus();
+            } else if (lastName.length() < 3){
+                lName.setError("Last Name is too short");
+                lName.requestFocus();
+            } else if(lastName.equals(firstName)){
+                lName.setError("Your last name must be different with first name");
+                lName.requestFocus();
             } else if (TextUtils.isEmpty(lastName)) {
                 Toast.makeText(SignUpActivity.this, "Last Name is empty", Toast.LENGTH_LONG).show();
                 lName.setError("Please you should fill the field");
@@ -112,17 +123,24 @@ public class SignUpActivity extends AppCompatActivity {
             } else if (TextUtils.isEmpty(combination)){
                 Toast.makeText(this, "can't leave empty", Toast.LENGTH_LONG).show();
             } else if (comment.equals(combination)){
-                Toast.makeText(this, "Your Combination can't be your comment", Toast.LENGTH_SHORT).show();
+                urComment.setError("your Combination can't be your comment");
+                urComment.requestFocus();
             }  else if (comment.equals(phoneNumber)){
-                Toast.makeText(this, "Your Phone Number can't be your comment", Toast.LENGTH_SHORT).show();
+                urComment.setError("your Phone Number can't be your comment");
+                urComment.requestFocus();
             }  else if (comment.equals(admissionNumber)){
-                Toast.makeText(this, "Your Admission Number can't be your comment", Toast.LENGTH_SHORT).show();
+                urComment.setError("your Admission Number can't be your comment");
+                urComment.requestFocus();
             } else if (TextUtils.isEmpty(comment)){
                 Toast.makeText(this, "Comment is Empty", Toast.LENGTH_SHORT).show();
                 urComment.setError("Please enter your comment");
                 urComment.requestFocus();
+            } else if (comment.length() < 15){
+                urComment.setError("your comment is too short");
+                urComment.requestFocus();
             } else {
                 progressDialog = new ProgressDialog(SignUpActivity.this);
+                progressDialog.setTitle("Registration.....");
                 progressDialog.setMessage("Please wait while creating your account");
                 progressDialog.setCanceledOnTouchOutside(false);
                 progressDialog.show();
@@ -133,9 +151,10 @@ public class SignUpActivity extends AppCompatActivity {
 
         login.setOnClickListener(v ->{
             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             finish();
+            Animatoo.INSTANCE.animateSwipeLeft(this);
+
         });
     }
 
@@ -161,17 +180,22 @@ public class SignUpActivity extends AppCompatActivity {
 
                     } else {
                         try {
-                            throw Objects.requireNonNull(task.getException());
+                            throw task.getException();
                         } catch (FirebaseAuthInvalidCredentialsException e){
+                            email.setError("Invalid Email Address or does't exist");
+                            email.requestFocus();
                             Toast.makeText(this, "Email already registered", Toast.LENGTH_SHORT).show();
                         } catch (FirebaseAuthUserCollisionException e){
                             email.setError("User Already registered with this email address.");
                             email.requestFocus();
+                            urPhoneNumber.setError("User with the same Number already registered");
+                            urPhoneNumber.requestFocus();
+                            urAdmissionNumber.setError("Admission Number Already taken by another user");
                         } catch (Exception e){
                             Log.e(TAG, e.getMessage());
                             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                            progressDialog.dismiss();
                         }
+                        progressDialog.dismiss();
                     }
                 });
 
@@ -180,9 +204,9 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void sendToCompleteProfileActivity() {
         Intent intent = new Intent(getApplicationContext(), CompleteProfile.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         finish();
+        Animatoo.INSTANCE.animateSlideUp(SignUpActivity.this);
         progressDialog.dismiss();
     }
 }

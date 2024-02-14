@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 intent = new Intent(getApplicationContext(),LoginActivity.class);
                 startActivity(intent);
-                Animatoo.INSTANCE.animateShrink(this);
+                Animatoo.INSTANCE.animateFade(this);
             }
         },3500);
     }

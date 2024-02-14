@@ -54,7 +54,9 @@
     <string name="Dean">Dean Sci.</string>
     <string name="hod">H. O. D</string>
     <string name="levelC">Level Co.</string>
-    <string name="register">Register</string>
+    <string name="register">Register here</string>
+    <string name="signUp">Hi there, SignUp</string>
+    <string name="registerBtn">Register</string>
     <string name="name">Adamu Ibrahim Yau</string>
     <string name="sarcoPixel">Sarco Pixel</string>
     <string name="getStarted">Get Started ></string>
