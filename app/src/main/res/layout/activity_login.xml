@@ -81,7 +81,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="#0D1F82"
-                    android:fontFamily="@font/sarpanch_extrabold"
+                    android:fontFamily="@font/alata"
+                    android:textStyle="bold"
                     android:inputType="textEmailAddress"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -107,7 +108,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="#0D1F82"
-                    android:fontFamily="@font/sarpanch_extrabold"/>
+                    android:textStyle="bold"
+                    android:fontFamily="@font/alata"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView

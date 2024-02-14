@@ -93,6 +93,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                if (task.isSuccessful()){
+                   Animatoo.INSTANCE.animateCard(LoginActivity.this);
                    Toast.makeText(LoginActivity.this, "You have successfully logged in", Toast.LENGTH_LONG).show();
                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -100,7 +101,7 @@ public class LoginActivity extends AppCompatActivity {
                    finish();
                } else {
                    try {
-                       throw Objects.requireNonNull(task.getException());
+                       throw task.getException();
                    } catch (FirebaseAuthInvalidUserException e){
                        loginEmail.setError("Invalid email or user does not exit, check and enter valid credentials");
                        loginEmail.requestFocus();
@@ -111,12 +112,23 @@ public class LoginActivity extends AppCompatActivity {
                        Log.e(TAG, e.getMessage());
                        Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                    }
+
+                   progressBar.setVisibility(View.GONE);
                }
                progressBar.setVisibility(View.GONE);
             }
         });
     }
-/*
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+        Animatoo.INSTANCE.animateSwipeLeft(this);
+    }
+
+
+    /*
     @Override
     protected void onStart() {
         super.onStart();
