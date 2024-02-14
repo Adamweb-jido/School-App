@@ -69,7 +69,7 @@ public class SignUpActivity extends AppCompatActivity {
                 Toast.makeText(SignUpActivity.this, "First Name is empty", Toast.LENGTH_LONG).show();
                 fName.setError("Please you should fill the field");
                 fName.requestFocus();
-            } else if(firstName.length() < 3){
+            } else if(firstName.length() < 4){
                 fName.setError("First Name is too short");
                 fName.requestFocus();
             } else if (lastName.length() < 3){

@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -84,14 +85,41 @@ public class CompleteProfile extends AppCompatActivity {
             } else if (TextUtils.isEmpty(department)){
                 urDepartment.setError("Please Enter your Department");
                 urDepartment.requestFocus();
+            } else if (department.length() < 5){
+                urDepartment.setError("Write your Department correctly");
+                urDepartment.requestFocus();
             } else if (TextUtils.isEmpty(bestFriend)){
                 urBestFriend.setError("Enter your friend name");
                 urBestFriend.requestFocus();
-            } else if (TextUtils.isEmpty(bestCourse)){
+            } else if (bestFriend.length() < 4){
+                urBestFriend.setError("This name is too short");
+                urBestFriend.requestFocus();
+            } else if(bestFriend.equals(department)){
+                urBestFriend.setError("Your department can't be your best friend");
+                urBestFriend.requestFocus();
+            }else if (TextUtils.isEmpty(bestCourse)){
                 urBestCourse.setError("Please write your best course");
+                urBestCourse.requestFocus();
+            } else if (bestCourse.length() < 4){
+                urBestCourse.setError("Enter Correct course name");
+                urBestCourse.requestFocus();
+            } else if (bestCourse.equals(bestFriend)){
+                urBestCourse.setError("Your friend name can't be your course");
                 urBestCourse.requestFocus();
             } else if (TextUtils.isEmpty(skills)){
                 urSkills.setError("Please Write your skill(s)");
+                urSkills.requestFocus();
+            } else if (skills.length() < 5){
+                urSkills.setError("this name is too short");
+                urSkills.requestFocus();
+            } else if (skills.equals(department)){
+                urSkills.setError("Your department can't be your Skill(s)");
+                urSkills.requestFocus();
+            } else if (skills.equals(bestFriend)){
+                urSkills.setError("Your best friend can't be your Skill(s)");
+                urSkills.requestFocus();
+            } else if (skills.equals(bestCourse)){
+                urSkills.setError("Your best course can't be your Skill(s)");
                 urSkills.requestFocus();
             } else {
                 progressBar.setVisibility(View.VISIBLE);
@@ -117,6 +145,7 @@ public class CompleteProfile extends AppCompatActivity {
                         Toast.makeText(CompleteProfile.this, "Your Image is Successfully uploaded", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                         finish();
+                        Animatoo.INSTANCE.animateSlideRight(CompleteProfile.this);
 
                     }
                 }).addOnFailureListener(new OnFailureListener() {
@@ -152,6 +181,7 @@ public class CompleteProfile extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         imageUri = data. getData();
         uploadPicture.setImageURI(imageUri);
+
     }
 
     private String getFileExtension(Uri uploadFile){

@@ -20,10 +20,13 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
 
 public class ForgotPassActivity extends AppCompatActivity {
@@ -91,6 +94,7 @@ public class ForgotPassActivity extends AppCompatActivity {
         login.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
             startActivity(intent);
+            Animatoo.INSTANCE.animateSwipeLeft(this);
         });
     }
 
@@ -104,7 +108,7 @@ public class ForgotPassActivity extends AppCompatActivity {
                 try {
                     throw task.getException();
                 } catch(FirebaseAuthInvalidUserException e){
-                    forgotField.setError("This Email Address doe not exist");
+                    forgotField.setError("This Email Address doe not exist, please register");
                     forgotField.requestFocus();
                 } catch (Exception e){
                     Log.e(TAG, e.getMessage());
