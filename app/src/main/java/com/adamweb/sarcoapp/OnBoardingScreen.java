@@ -12,6 +12,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
@@ -28,6 +29,8 @@ public class OnBoardingScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_on_boarding_screen);
+
+
         onboardPager = findViewById(R.id.onBoardingViewPager);
         indicator = findViewById(R.id.dotIndicators);
         skipBtn = findViewById(R.id.skipBtn);
@@ -44,6 +47,7 @@ public class OnBoardingScreen extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(),LandingPage.class);
             startActivity(intent);
             finish();
+            Animatoo.INSTANCE.animateSwipeLeft(this);
         });
         List<OnBoardingItem> items = new ArrayList<>();
         items.add(new OnBoardingItem("Your Album is Now Digital",

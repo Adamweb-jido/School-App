@@ -2,6 +2,7 @@ package com.adamweb.sarcoapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.Animator;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,6 +12,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -44,7 +47,9 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(),OnBoardingScreen.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
+            Animatoo.INSTANCE.animateZoom(this);
             finish();
+
          sharedPreferences = getSharedPreferences("onBoard", MODE_PRIVATE);
             boolean isFirstTime = sharedPreferences.getBoolean("firstTime", true);
 
@@ -55,10 +60,12 @@ public class MainActivity extends AppCompatActivity {
                intent = new Intent(getApplicationContext(),OnBoardingScreen.class);
                startActivity(intent);
                finish();
+               Animatoo.INSTANCE.animateSlideDown(this);
 
             } else {
                 intent = new Intent(getApplicationContext(),LoginActivity.class);
                 startActivity(intent);
+                Animatoo.INSTANCE.animateCard(this);
             }
         },3500);
     }
