@@ -60,12 +60,12 @@ public class MainActivity extends AppCompatActivity {
                intent = new Intent(getApplicationContext(),OnBoardingScreen.class);
                startActivity(intent);
                finish();
-               Animatoo.INSTANCE.animateSlideDown(this);
+               Animatoo.INSTANCE.animateShrink(this);
 
             } else {
                 intent = new Intent(getApplicationContext(),LoginActivity.class);
                 startActivity(intent);
-                Animatoo.INSTANCE.animateCard(this);
+                Animatoo.INSTANCE.animateShrink(this);
             }
         },3500);
     }

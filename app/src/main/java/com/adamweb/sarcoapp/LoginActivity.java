@@ -54,13 +54,14 @@ public class LoginActivity extends AppCompatActivity {
             Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
             startActivity(intent);
             finish();
-            Animatoo.INSTANCE.animateSwipeLeft(this);
+            Animatoo.INSTANCE.animateSwipeRight(this);
         });
 
         forgetPass.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), ForgotPassActivity.class);
             startActivity(intent);
             finish();
+            Animatoo.INSTANCE.animateSwipeRight(this);
         });
 
 
@@ -93,12 +94,12 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                if (task.isSuccessful()){
-                   Animatoo.INSTANCE.animateCard(LoginActivity.this);
                    Toast.makeText(LoginActivity.this, "You have successfully logged in", Toast.LENGTH_LONG).show();
                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                    startActivity(intent);
                    finish();
+                   Animatoo.INSTANCE.animateSwipeLeft(LoginActivity.this);
                } else {
                    try {
                        throw task.getException();
@@ -106,8 +107,8 @@ public class LoginActivity extends AppCompatActivity {
                        loginEmail.setError("Invalid email or user does not exit, check and enter valid credentials");
                        loginEmail.requestFocus();
                    } catch (FirebaseAuthUserCollisionException e){
-                       loginPassword.setError("Incorrect email or password,please check it and try again");
-                       loginPassword.requestFocus();
+                       loginEmail.setError("Incorrect email or password,please check it and try again");
+                       loginEmail.requestFocus();
                    } catch (Exception e){
                        Log.e(TAG, e.getMessage());
                        Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
@@ -124,6 +125,7 @@ public class LoginActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         finish();
+        finishActivity(0);
         Animatoo.INSTANCE.animateSwipeLeft(this);
     }
 
