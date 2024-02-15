@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(),OnBoardingScreen.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-            Animatoo.INSTANCE.animateZoom(this);
             finish();
 
          sharedPreferences = getSharedPreferences("onBoard", MODE_PRIVATE);
@@ -60,12 +59,10 @@ public class MainActivity extends AppCompatActivity {
                intent = new Intent(getApplicationContext(),OnBoardingScreen.class);
                startActivity(intent);
                finish();
-               Animatoo.INSTANCE.animateShrink(this);
 
             } else {
                 intent = new Intent(getApplicationContext(),LoginActivity.class);
                 startActivity(intent);
-                Animatoo.INSTANCE.animateFade(this);
             }
         },3500);
     }

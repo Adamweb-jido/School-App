@@ -98,7 +98,6 @@ public class LoginActivity extends AppCompatActivity {
                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                    startActivity(intent);
                    finish();
-                   Animatoo.INSTANCE.animateSwipeLeft(LoginActivity.this);
                } else {
                    try {
                        throw task.getException();
@@ -125,19 +124,21 @@ public class LoginActivity extends AppCompatActivity {
         super.onBackPressed();
         finish();
         finishActivity(1);
-        Animatoo.INSTANCE.animateSwipeLeft(this);
+
     }
 
 
-    /*
+
     @Override
     protected void onStart() {
         super.onStart();
         if (userLogin.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
             finish();
         } else {
             Toast.makeText(this, "Please Log in", Toast.LENGTH_SHORT).show();
         }
-    } */
+    }
 }
