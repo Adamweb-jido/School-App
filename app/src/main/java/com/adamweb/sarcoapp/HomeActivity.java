@@ -15,6 +15,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -42,12 +44,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
 
     //------------------Views declaration-------------------------
-    ImageView photoAlbum, chats, profile, menu, home, quoteImg;
+    ImageView photoAlbum, chats, profile, menu, home, quoteImg, welcomeImg;
     RoundedImageView profileDp;
-    TextView userName, visitCount, hiUser, quoteText, quoteName;
+    TextView userName, visitCount, hiUser, quoteText, quoteName, appText;
     RecyclerView leaderRecycler, allUsersRecycler;
     NavigationView navigationView;
     DrawerLayout drawerLayout;
+    Animation imageAnimation, textAnimation;
     FirebaseAuth firebaseAuth;
     FirebaseUser currentUserName;
     DatabaseReference userReference;
@@ -86,6 +89,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         hiUser = findViewById(R.id.hiUserId);
         quoteName = findViewById(R.id.quoteName);
         chats = findViewById(R.id.chatIcon);
+        welcomeImg = findViewById(R.id.welcomeImg);
+        appText = findViewById(R.id.appText);
         quoteText = findViewById(R.id.quoteTextContainerId);
         quoteImg = findViewById(R.id.quoteImageId);
         imageSlider = findViewById(R.id.homeAutoSlider);
@@ -98,6 +103,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         currentUserName = firebaseAuth.getCurrentUser();
         userReference = FirebaseDatabase.getInstance().getReference("Registered Users");
 
+
+        imageAnimation = AnimationUtils.loadAnimation(this, R.anim.slide_anim);
+        textAnimation = AnimationUtils.loadAnimation(this, R.anim.text_anim);
+        welcomeImg.setAnimation(imageAnimation);
+        appText.setAnimation(textAnimation);
 
         handler = new Handler();
         handler.postDelayed(textSliderRunnable, 0);
