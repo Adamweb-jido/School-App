@@ -120,7 +120,7 @@
             android:textSize="17sp"
             android:textStyle="bold"
             android:fontFamily="@font/alata"
-            android:textColor="@color/black"
+            android:textColor="@color/purple_500"
             android:inputType="text"
               android:background="@drawable/header_bg"
               android:autofillHints="username"/>
@@ -136,7 +136,7 @@
               android:textSize="17sp"
               android:textStyle="bold"
               android:fontFamily="@font/alata"
-              android:textColor="@color/black"
+              android:textColor="@color/purple_500"
               android:inputType="text"
               android:background="@drawable/header_bg"
               android:autofillHints="username" />
@@ -152,7 +152,7 @@
               android:textSize="17sp"
               android:textStyle="bold"
               android:fontFamily="@font/alata"
-              android:textColor="@color/black"
+              android:textColor="@color/purple_500"
               android:inputType="text"
               android:background="@drawable/header_bg"
               android:autofillHints="username" />
@@ -168,7 +168,7 @@
               android:textSize="17sp"
               android:textStyle="bold"
               android:fontFamily="@font/alata"
-              android:textColor="@color/black"
+              android:textColor="@color/purple_500"
               android:inputType="text"
               android:background="@drawable/header_bg"
               android:autofillHints="username" />
