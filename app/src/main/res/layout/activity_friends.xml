@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#EBE4D0"
     tools:context=".FriendsActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,7 +20,6 @@
             android:layout_height="40dp"
             android:layout_gravity="center"
             android:layout_marginStart="10dp"
-            android:background="@drawable/icons_bg"
             android:contentDescription="@string/back"
             android:src="@drawable/back_icon"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -66,30 +64,39 @@
          android:paddingEnd="20dp"
          android:paddingTop="20dp">
 
-         <com.google.android.material.textfield.TextInputLayout
-             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
+         <RelativeLayout
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-             android:textAlignment="center"
-             android:hint="@string/search"
-             app:boxCornerRadiusBottomEnd="25dp"
-             app:boxCornerRadiusBottomStart="25dp"
-             app:boxCornerRadiusTopEnd="25dp"
-             app:boxCornerRadiusTopStart="25dp"
-             app:boxStrokeColor="#0D1F82"
-             app:boxStrokeWidth="3dp"
-             app:boxStrokeWidthFocused="2dp"
-             app:endIconMode="clear_text"
-             app:hintTextColor="#0D1F82"
-             app:startIconDrawable="@drawable/user_profile_icon"
-             app:startIconTint="#0D1F82">
+             android:paddingStart="10dp"
+             android:paddingEnd="10dp"
+             android:gravity="center">
+             <EditText
+                 android:id="@+id/search_your_friends_field"
+                 android:layout_width="250dp"
+                 android:layout_height="40dp"
+                 android:hint="@string/search"
+                 android:background="@drawable/search_friends_bg"
+                 android:paddingStart="10dp"
+                 android:paddingEnd="10dp"
+                 android:layout_marginTop="1dp"
+                 android:fontFamily="@font/alata"
+                 android:textColor="@color/purple_500"
+                 android:drawableStart="@drawable/user_profile_icon"
+                 android:drawablePadding="10dp"
+                 android:inputType="text"
+                 android:autofillHints="username" />
 
-             <com.google.android.material.textfield.TextInputEditText
+             <ImageView
+                 android:id="@+id/searchBtn"
                  android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:fontFamily="@font/amaranth_bold"
-                 android:inputType="text" />
-         </com.google.android.material.textfield.TextInputLayout>
+                 android:layout_height="42dp"
+                 android:padding="5dp"
+                 android:layout_toEndOf="@id/search_your_friends_field"
+                 android:src="@drawable/search_icon"
+                 android:background="@drawable/search_button_bg"
+                 android:contentDescription="@string/todo"/>
+         </RelativeLayout>
 
          <TextView
              android:layout_width="match_parent"

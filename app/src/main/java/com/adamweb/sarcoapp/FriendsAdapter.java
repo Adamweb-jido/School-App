@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.FriendListViewHolder> {
@@ -44,7 +46,10 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.FriendLi
 
     @Override
     public void onBindViewHolder(@NonNull FriendListViewHolder holder, int position) {
-
+       UserModel userModel = items.get(position);
+        Picasso.get().load(userModel.imageUri).into(holder.imageCover);
+        holder.fName.setText(userModel.getFirstName());
+        holder.comment.setText(userModel.getComment());
     }
 
     @Override

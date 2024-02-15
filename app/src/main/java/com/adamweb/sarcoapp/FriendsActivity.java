@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,14 +27,25 @@ public class FriendsActivity extends AppCompatActivity {
 
         back.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
+            Animatoo.INSTANCE.animateSwipeRight(this);
             startActivity(intent);
+            finish();
         });
 
         recyclerView = findViewById(R.id.friendListRecycler);
 
         List<UserModel> items = new ArrayList<>();
 
+        FriendsAdapter friendsAdapter = new FriendsAdapter(this, items);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new FriendsAdapter(getApplicationContext(), items));
+        recyclerView.setAdapter(friendsAdapter);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(getApplicationContext(), ChatActivity.class));
+        Animatoo.INSTANCE.animateSwipeRight(this);
+        finish();
     }
 }
