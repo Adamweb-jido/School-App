@@ -8,7 +8,7 @@ import java.util.Map;
 public class UserModel {
     String firstName, lastName, phoneNumber, admissionNumber, combination, comment, imageUri, email, uid;
 
-    public UserModel(){
+    public UserModel() {
 
     }
 
@@ -27,10 +27,11 @@ public class UserModel {
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
-         result.put("imageUri", imageUri);
-         result.put("uid", uid);
+        result.put("imageUri", imageUri);
+        result.put("uid", uid);
         return result;
     }
+
 
     public String getFirstName() {
         return firstName;
