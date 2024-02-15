@@ -48,7 +48,7 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.FriendLi
     public void onBindViewHolder(@NonNull FriendListViewHolder holder, int position) {
        UserModel userModel = items.get(position);
         Picasso.get().load(userModel.getImageUri()).into(holder.imageCover);
-        holder.fName.setText(userModel.getFirstName());
+        holder.fName.setText(userModel.getFirstName() + " "+ userModel.getLastName());
         holder.comment.setText(userModel.getComment());
     }
 

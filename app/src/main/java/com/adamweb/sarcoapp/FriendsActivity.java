@@ -39,8 +39,8 @@ public class FriendsActivity extends AppCompatActivity {
 
         back.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
-            Animatoo.INSTANCE.animateSwipeRight(this);
             startActivity(intent);
+            Animatoo.INSTANCE.animateSwipeRight(this);
             finish();
         });
 
