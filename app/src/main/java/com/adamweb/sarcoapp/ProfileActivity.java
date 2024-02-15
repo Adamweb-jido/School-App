@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -72,6 +73,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         editProfileBtn.setOnClickListener(v ->{
             startActivity(new Intent(getApplicationContext(), EditProfile.class));
+            Animatoo.INSTANCE.animateSwipeLeft(this);
             finish();
         });
 
@@ -79,6 +81,7 @@ public class ProfileActivity extends AppCompatActivity {
         backArrow.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(intent);
+            Animatoo.INSTANCE.animateSwipeRight(this);
             finish();
         });
 
@@ -117,5 +120,13 @@ public class ProfileActivity extends AppCompatActivity {
                  Toast.makeText(ProfileActivity.this, "Failed to load your data", Toast.LENGTH_SHORT).show();
              }
          });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+        Animatoo.INSTANCE.animateSwipeRight(this);
+        finish();
     }
 }
