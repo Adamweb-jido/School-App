@@ -84,8 +84,8 @@ public class ChatActivity extends AppCompatActivity {
 
         newChat.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), FriendsActivity.class);
-            Animatoo.INSTANCE.animateSwipeLeft(this);
             startActivity(intent);
+            Animatoo.INSTANCE.animateSwipeLeft(this);
             finish();
         });
         List<UserModel> lists = new ArrayList<>();
