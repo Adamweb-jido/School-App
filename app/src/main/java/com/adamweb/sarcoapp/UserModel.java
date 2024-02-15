@@ -6,13 +6,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UserModel {
-    String firstName, lastName, phoneNumber, admissionNumber, combination, comment, imageUri, email;
+    String firstName, lastName, phoneNumber, admissionNumber, combination, comment, imageUri, email, uid;
 
     public UserModel(){
 
     }
 
-    public UserModel(String firstName, String lastName, String phoneNumber, String admissionNumber, String combination, String comment, String imageUri, String email) {
+    public UserModel(String firstName, String lastName, String phoneNumber, String admissionNumber, String combination, String comment, String imageUri, String email, String uid) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
@@ -21,6 +21,7 @@ public class UserModel {
         this.comment = comment;
         this.imageUri = imageUri;
         this.email = email;
+        this.uid = uid;
     }
 
     @Exclude
@@ -92,5 +93,13 @@ public class UserModel {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 }
