@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -84,20 +85,25 @@ public class AlbumActivity extends AppCompatActivity {
         profileIcon.setOnClickListener(v ->{
             Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
             startActivity(intent);
+            Animatoo.INSTANCE.animateSwipeLeft(this);
             finish();
-           // onBackPressed();
         });
 
 
         backArrow.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(intent);
+            Animatoo.INSTANCE.animateSwipeRight(this);
+            finish();
+
         });
     }
 
+    @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(getApplicationContext(), AlbumActivity.class));
+        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+        Animatoo.INSTANCE.animateSwipeRight(this);
         finish();
     }
 }

@@ -129,17 +129,16 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-
+  /*
     @Override
     protected void onStart() {
         super.onStart();
         if (userLogin.getCurrentUser() != null){
             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             finish();
         } else {
             Toast.makeText(this, "Please Log in", Toast.LENGTH_SHORT).show();
         }
-    }
+    } */
 }
