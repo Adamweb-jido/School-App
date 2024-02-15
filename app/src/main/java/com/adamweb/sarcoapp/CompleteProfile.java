@@ -140,6 +140,7 @@ public class CompleteProfile extends AppCompatActivity {
                     @Override
                     public void onSuccess(Uri imageUri) {
                         UserModel userModel = new UserModel();
+                        userModel.setUid(firebaseUser.getUid());
                         userModel.setImageUri(imageUri.toString());
                         databaseReference.child(firebaseUser.getUid()).updateChildren(userModel.toMap());
                         Toast.makeText(CompleteProfile.this, "Your Image is Successfully uploaded", Toast.LENGTH_SHORT).show();

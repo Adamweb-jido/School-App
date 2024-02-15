@@ -28,6 +28,7 @@ public class UserModel {
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
          result.put("imageUri", imageUri);
+         result.put("uid", uid);
         return result;
     }
 

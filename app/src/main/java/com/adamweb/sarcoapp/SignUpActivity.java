@@ -60,7 +60,7 @@ public class SignUpActivity extends AppCompatActivity {
 
 
         nextBtn.setOnClickListener(view -> {
-            String firstName, lastName, emailAddress, password, confirmPassword, phoneNumber, admissionNumber, combination, comment, imageUri = "", uid;
+            String firstName, lastName, emailAddress, password, confirmPassword, phoneNumber, admissionNumber, combination, comment, imageUri = "", uid = "";
             firstName = String.valueOf(fName.getText());
             lastName = String.valueOf(lName.getText());
             emailAddress = String.valueOf(email.getText());
@@ -70,7 +70,6 @@ public class SignUpActivity extends AppCompatActivity {
             admissionNumber = String.valueOf(urAdmissionNumber.getText());
             combination = String.valueOf(urCombination.getText());
             comment = String.valueOf(urComment.getText());
-            uid = cUser.getUid();
 
 
             if (TextUtils.isEmpty(firstName)) {
