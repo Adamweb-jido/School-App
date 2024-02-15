@@ -20,6 +20,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -88,6 +89,7 @@ public class EditProfile extends AppCompatActivity {
 
         backArrow.setOnClickListener(v ->{
             startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+            Animatoo.INSTANCE.animateSwipeRight(this);
             finish();
         });
 
@@ -152,6 +154,7 @@ public class EditProfile extends AppCompatActivity {
 
         cancelChangesBtn.setOnClickListener(v ->{
             startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+            Animatoo.INSTANCE.animateSwipeRight(this);
             finish();
         });
     }
@@ -226,5 +229,14 @@ public class EditProfile extends AppCompatActivity {
         ContentResolver contentResolver = getContentResolver();
         MimeTypeMap typeMap = MimeTypeMap.getSingleton();
         return typeMap.getExtensionFromMimeType(contentResolver.getType(uploadFile));
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+        Animatoo.INSTANCE.animateSwipeRight(this);
+        finish();
     }
 }
