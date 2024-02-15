@@ -124,7 +124,7 @@ public class LoginActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         finish();
-        finishActivity(0);
+        finishActivity(1);
         Animatoo.INSTANCE.animateSwipeLeft(this);
     }
 
