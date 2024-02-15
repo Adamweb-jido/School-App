@@ -42,7 +42,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
 
     //------------------Views declaration-------------------------
-    ImageView photoAlbum, chats, profile, menu, home;
+    ImageView photoAlbum, chats, profile, menu, home, quoteImg;
     RoundedImageView profileDp;
     TextView userName, visitCount, hiUser, quoteText, quoteName;
     RecyclerView leaderRecycler, allUsersRecycler;
@@ -56,9 +56,16 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     ImageSlider imageSlider;
      String[]  texts = {"\"Friendship is the hardest thing in the world to explain. It's not something you learn in school. But if you haven't learned the meaning of friendship, you really haven't learned anything.\"",
              "\"Friendship is born at that moment when one person says to another, 'What! You too? I thought I was the only one.\"",
-             "\"Friendship is the shadow of the evening, which increases with the setting sun of life.\""};
-     String  [] names = {"-Muhammad Ali", "-C.S Lewis", " - Jean de La Fontaine"};
-     int counter, currentIndex = 0;
+             "\"Friendship is the shadow of the evening, which increases with the setting sun of life.\"",
+             "\"My mission in life is not merely to survive, but to thrive; and to do so with some passion, some compassion, some humor, and some style.\"",
+             "\"The function of education is to teach one to think intensively and to think critically. Intelligence plus character - that is the goal of true education.\""};
+     String  [] names = {"-Muhammad Ali", "-C.S Lewis", " - Jean de La Fontaine", "- Maya Angelou", "- Martin Luther King Jr."};
+     int [] imgs = {R.drawable.mali,
+                    R.drawable.lewis,
+                    R.drawable.jean,
+                    R.drawable.maya,
+                    R.drawable.martin};
+     int counter, currentIndex = 0, imgCounterIndex = 0;
     private Handler handler;
 
     @SuppressLint("SetTextI18n")
@@ -80,6 +87,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         quoteName = findViewById(R.id.quoteName);
         chats = findViewById(R.id.chatIcon);
         quoteText = findViewById(R.id.quoteTextContainerId);
+        quoteImg = findViewById(R.id.quoteImageId);
         imageSlider = findViewById(R.id.homeAutoSlider);
         progressBar = findViewById(R.id.home_progress_bar);
         userName = findViewById(R.id.homeUserName);
@@ -92,7 +100,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
 
         handler = new Handler();
-        handler.postDelayed(textSliderRunnable, 10000);
+        handler.postDelayed(textSliderRunnable, 0);
 
 
         setImageSlider();
@@ -164,9 +172,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             // Update text and increment index
             quoteText.setText(texts[currentIndex]);
             quoteName.setText(names[currentIndex]);
+            quoteImg.setImageResource(imgs[imgCounterIndex]);
             currentIndex = (currentIndex + 1) % texts.length;
             currentIndex = (currentIndex + 1) % names.length;
-            handler.postDelayed(this, 10000);
+            imgCounterIndex = (imgCounterIndex + 1) % imgs.length;
+            handler.postDelayed(this, 20000);
         }
     };
 
@@ -176,7 +186,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         List<LeaderItem> items = new ArrayList<>();
         items.add(new LeaderItem("https://firebasestorage.googleapis.com/v0/b/sarco-pixel.appspot.com/o/Leaders%2Fprovost.jpg?alt=media&token=59946c96-ba1c-4b87-87c9-e0fddcb780eb", "Provost"));
         items.add(new LeaderItem("https://firebasestorage.googleapis.com/v0/b/sarco-pixel.appspot.com/o/Leaders%2Fregistrer.png?alt=media&token=45266c8c-77e6-4e45-826d-2d09cf672b20", "Registerer"));
-        items.add(new LeaderItem("https://firebasestorage.googleapis.com/v0/b/sarco-pixel.appspot.com/o/Leaders%2Fuser_profile_dp.jpeg?alt=media&token=da7be77e-8be0-4a4e-a5f1-297abf3927d8", "H.O.D"));
+        items.add(new LeaderItem("https://firebasestorage.googleapis.com/v0/b/sarco-pixel.appspot.com/o/Leaders%2FWhatsApp%20Image%202024-02-14%20at%2016.58.36_24a0da1b.jpg?alt=media&token=220d7817-abb6-4a11-9094-69810ccdc68d", "H.O.D"));
         items.add(new LeaderItem("https://firebasestorage.googleapis.com/v0/b/sarco-pixel.appspot.com/o/Leaders%2Fuser_profile_dp.jpeg?alt=media&token=da7be77e-8be0-4a4e-a5f1-297abf3927d8", "Level Coordinator"));
         leaderRecycler.setLayoutManager(new GridLayoutManager(this, 2));
         leaderRecycler.setAdapter(new LeaderAdapter(this, items));
