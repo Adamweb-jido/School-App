@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -44,11 +45,15 @@ public class ChatActivity extends AppCompatActivity {
         backArrow.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(intent);
+            Animatoo.INSTANCE.animateSwipeRight(this);
+            finish();
         });
 
         album.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), AlbumActivity.class);
             startActivity(intent);
+            Animatoo.INSTANCE.animateSwipeLeft(this);
+            finish();
         });
 
 
@@ -73,16 +78,26 @@ public class ChatActivity extends AppCompatActivity {
         profilePic.setOnClickListener(v ->{
             Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
             startActivity(intent);
+            Animatoo.INSTANCE.animateSwipeLeft(this);
             finish();
-            // onBackPressed();
         });
 
         newChat.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), FriendsActivity.class);
+            Animatoo.INSTANCE.animateSwipeLeft(this);
             startActivity(intent);
+            finish();
         });
         List<UserModel> lists = new ArrayList<>();
         chatRecycler.setLayoutManager(new LinearLayoutManager(this));
         chatRecycler.setAdapter(new ChatAdapter(getApplicationContext(), lists));
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+        Animatoo.INSTANCE.animateSwipeRight(this);
+        finish();
     }
 }
