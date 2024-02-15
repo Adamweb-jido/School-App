@@ -57,13 +57,13 @@ public class MainActivity extends AppCompatActivity {
                 editor.putBoolean("firstTime", false);
                 editor.apply();
                intent = new Intent(getApplicationContext(),OnBoardingScreen.class);
-               startActivity(intent);
-               finish();
 
             } else {
                 intent = new Intent(getApplicationContext(),LoginActivity.class);
-                startActivity(intent);
             }
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
         },3500);
     }
 }

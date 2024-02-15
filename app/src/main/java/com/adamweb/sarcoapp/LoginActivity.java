@@ -98,6 +98,7 @@ public class LoginActivity extends AppCompatActivity {
                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                    startActivity(intent);
                    finish();
+                   Animatoo.INSTANCE.animateSwipeRight(LoginActivity.this);
                } else {
                    try {
                        throw task.getException();
