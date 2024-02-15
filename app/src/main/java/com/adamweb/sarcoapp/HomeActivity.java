@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.afdhal_fa.imageslider.ImageSlider;
 import com.afdhal_fa.imageslider.model.SlideUIModel;
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -119,18 +120,21 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             Intent intent = new Intent(getApplicationContext(), AlbumActivity.class);
             startActivity(intent);
             finish();
+            Animatoo.INSTANCE.animateSwipeLeft(this);
         });
         //------------------Chats onclickListener-------------------------------
         chats.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
             startActivity(intent);
             finish();
+            Animatoo.INSTANCE.animateSwipeLeft(this);
         });
    //------------------Profile onclickListener-------------------------------
         profile.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
             startActivity(intent);
             finish();
+            Animatoo.INSTANCE.animateSwipeLeft(this);
         });
     //------------------Leaders recyclerview-------------------------------
         //------------------Navigation drawer-------------------------------
@@ -148,6 +152,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
            Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
            startActivity(intent);
            finish();
+           Animatoo.INSTANCE.animateSwipeLeft(this);
        });
 
     }
@@ -255,6 +260,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         else {
             super.onBackPressed();
         }
+        System.exit(1);
     }
 
     @Override
@@ -268,6 +274,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 Intent intent = new Intent(getApplicationContext(), AlbumActivity.class);
                 startActivity(intent);
                 finish();
+                Animatoo.INSTANCE.animateSwipeRight(this);
                 break;
             case R.id.helpId:
                 Intent intent1 = new Intent(getApplicationContext(), ListActivity.class);
@@ -278,6 +285,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 Intent intent2 = new Intent(getApplicationContext(), ProfileActivity.class);
                 startActivity(intent2);
                 finish();
+                Animatoo.INSTANCE.animateSwipeRight(this);
                 break;
             case R.id.editProfileId:
                 Intent intent3 = new Intent(getApplicationContext(), ChatActivity.class);
