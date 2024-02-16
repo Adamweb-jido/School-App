@@ -90,7 +90,7 @@ public class UserProfile extends AppCompatActivity {
      });
 
      sendMsgToUser.setOnClickListener(v ->{
-         sendSMS();
+
      });
 
      callUser.setOnClickListener(v ->{
