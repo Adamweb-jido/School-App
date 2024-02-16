@@ -100,6 +100,7 @@ public class UserProfile extends AppCompatActivity {
      sendSMSorEmailToUser.setOnClickListener(v ->{
 
      });
+
     }
 
     private void fetchUserData(String userId) {
