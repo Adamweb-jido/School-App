@@ -30,7 +30,7 @@ public class UserProfile extends AppCompatActivity {
 
     TextView clickMe, headerName,userFullName, userEmail, userPhoneNumber, userAdmissionNumber, userCombination, userComment;
     CircleImageView userDp;
-    ImageView backArrow;
+    ImageView backArrow, addUserToContact, sendMsgToUser, callUser, sendSMSorEmailToUser;
     String userId;
     FirebaseUser currentUser;
     DatabaseReference databaseReference;
@@ -41,6 +41,10 @@ public class UserProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
 
+        addUserToContact = findViewById(R.id.addUserToContact);
+        sendMsgToUser = findViewById(R.id.sendMsgToUser);
+        callUser = findViewById(R.id.callUser);
+        sendSMSorEmailToUser = findViewById(R.id.sendSmsOrEmail);
         layout = findViewById(R.id.contactUser);
         headerName = findViewById(R.id.textView4);
         userFullName = findViewById(R.id.userFullName);
@@ -79,6 +83,23 @@ public class UserProfile extends AppCompatActivity {
         }
 
         fetchUserData(userId);
+
+
+     addUserToContact.setOnClickListener( v -> {
+
+     });
+
+     sendMsgToUser.setOnClickListener(v ->{
+         sendSMS();
+     });
+
+     callUser.setOnClickListener(v ->{
+
+     });
+
+     sendSMSorEmailToUser.setOnClickListener(v ->{
+
+     });
     }
 
     private void fetchUserData(String userId) {
