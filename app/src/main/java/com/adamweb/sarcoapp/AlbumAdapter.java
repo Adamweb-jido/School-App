@@ -66,7 +66,6 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
                 Intent intent = new Intent(context, UserProfile.class);
                 intent.putExtra("userId", userModel.getUid());
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                Animatoo.INSTANCE.animateSwipeLeft(context);
                 context.startActivity(intent);
             }
         });
