@@ -54,14 +54,14 @@ public class LoginActivity extends AppCompatActivity {
             Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
             startActivity(intent);
             finish();
-            Animatoo.INSTANCE.animateSwipeRight(this);
+            Animatoo.INSTANCE.animateSwipeLeft(this);
         });
 
         forgetPass.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), ForgotPassActivity.class);
             startActivity(intent);
             finish();
-            Animatoo.INSTANCE.animateSwipeRight(this);
+            Animatoo.INSTANCE.animateSwipeLeft(this);
         });
 
 
@@ -125,6 +125,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onBackPressed();
         finish();
         finishActivity(1);
+        System.exit(1);
 
     }
 
@@ -141,4 +142,5 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(this, "Please Log in", Toast.LENGTH_SHORT).show();
         }
     } */
+
 }

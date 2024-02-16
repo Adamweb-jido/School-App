@@ -4,15 +4,12 @@ package com.adamweb.sarcoapp;
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
@@ -22,7 +19,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import java.util.Objects;
+
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -214,5 +211,14 @@ public class SignUpActivity extends AppCompatActivity {
         finish();
         Animatoo.INSTANCE.animateSlideUp(SignUpActivity.this);
         progressDialog.dismiss();
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+        Animatoo.INSTANCE.animateSwipeRight(this);
+        finish();
     }
 }

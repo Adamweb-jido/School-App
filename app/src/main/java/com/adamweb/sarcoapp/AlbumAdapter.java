@@ -69,6 +69,7 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
             public void onClick(View v) {
                 Intent intent = new Intent(context, ProfileActivity.class);
                 intent.putExtra("userId", userModel.getUid());
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }
         });

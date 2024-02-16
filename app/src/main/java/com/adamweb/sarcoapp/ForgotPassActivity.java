@@ -118,4 +118,12 @@ public class ForgotPassActivity extends AppCompatActivity {
             progressBar.setVisibility(View.INVISIBLE);
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+        Animatoo.INSTANCE.animateSwipeRight(this);
+        finish();
+    }
 }
