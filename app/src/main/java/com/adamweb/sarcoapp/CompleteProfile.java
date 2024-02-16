@@ -123,8 +123,8 @@ public class CompleteProfile extends AppCompatActivity {
                 urSkills.requestFocus();
             } else {
                 progressBar.setVisibility(View.VISIBLE);
-                uploadPicToDatabase(imageUri);
                 addMoreInfo(department, bestFriend, bestCourse, skills);
+                uploadPicToDatabase(imageUri);
             }
 
         });

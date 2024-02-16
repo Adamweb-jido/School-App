@@ -36,7 +36,7 @@ public class ProfileActivity extends AppCompatActivity {
    LinearLayout contactUserLayout;
    MaterialButton editProfileBtn;
     TextView userFullName, userEmail, userPhoneNumber, userCombination, userAdmissionNumber, userComment;
-    String firstName, lastName, email, phoneNumber, combination, admissionNumber, comment;
+    String firstName, lastName, email, phoneNumber, combination, admissionNumber, comment, userId;
     Dialog dialog;
    FirebaseAuth firebaseAuth;
 
@@ -63,13 +63,12 @@ public class ProfileActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser userDetails = firebaseAuth.getCurrentUser();
+        userId = getIntent().getStringExtra("userId");
         if (userDetails == null){
             Toast.makeText(this, "Failed! please refresh the page", Toast.LENGTH_LONG).show();
         }else {
             getUserDetails(userDetails);
         }
-
-
 
         editProfileBtn.setOnClickListener(v ->{
             startActivity(new Intent(getApplicationContext(), EditProfile.class));

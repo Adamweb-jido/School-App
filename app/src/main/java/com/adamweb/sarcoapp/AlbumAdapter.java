@@ -2,6 +2,7 @@ package com.adamweb.sarcoapp;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,6 +62,16 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
         holder.combination.setText(userModel.getCombination());
         holder.phoneNumber.setText(userModel.getPhoneNumber());
         holder.email.setText(userModel.getComment());
+
+
+        holder.userAlbumCover.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ProfileActivity.class);
+                intent.putExtra("userId", userModel.getUid());
+                context.startActivity(intent);
+            }
+        });
     }
 
 
