@@ -31,8 +31,7 @@ public class SignUpActivity extends AppCompatActivity {
     MaterialButton nextBtn;
     TextView login;
     ProgressDialog progressDialog;
-    FirebaseAuth userAuth;
-    FirebaseUser cUser;
+
     private static final String TAG = "SignUpActivity";
 
     @Override
@@ -53,14 +52,13 @@ public class SignUpActivity extends AppCompatActivity {
         urCombination = findViewById(R.id.combination);
         urComment = findViewById(R.id.comment);
 
-        userAuth = FirebaseAuth.getInstance();
-         cUser = userAuth.getCurrentUser();
+
 
 
 
 
         nextBtn.setOnClickListener(view -> {
-            String firstName, lastName, emailAddress, password, confirmPassword, phoneNumber, admissionNumber, combination, comment, imageUri = "", uid = "";
+            String firstName, lastName, emailAddress, password, confirmPassword, phoneNumber, admissionNumber, combination, comment, uid = "", imageUri = "";
             firstName = String.valueOf(fName.getText());
             lastName = String.valueOf(lName.getText());
             emailAddress = String.valueOf(email.getText());
@@ -151,7 +149,7 @@ public class SignUpActivity extends AppCompatActivity {
                 progressDialog.setMessage("Please wait while creating your account");
                 progressDialog.setCanceledOnTouchOutside(false);
                 progressDialog.show();
-               registerUser(firstName, lastName, emailAddress, password, phoneNumber, admissionNumber, combination, comment, imageUri, uid);
+               registerUser(firstName, lastName, emailAddress, password, phoneNumber, admissionNumber, combination, comment, uid, imageUri);
             }
         });
 
@@ -165,13 +163,16 @@ public class SignUpActivity extends AppCompatActivity {
         });
     }
 
-    private void registerUser(String firstName, String lastName, String emailAddress, String password, String phoneNumber, String admissionNumber, String combination, String comment, String imageUri, String uid) {
+    private void registerUser(String firstName, String lastName, String emailAddress, String password, String phoneNumber, String admissionNumber, String combination, String comment, String uid, String imageUri) {
+        FirebaseAuth userAuth = FirebaseAuth.getInstance();
 
         userAuth.createUserWithEmailAndPassword(emailAddress, password)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()){
+                        FirebaseUser cUser = userAuth.getCurrentUser();
+                        UserModel userModel = new UserModel(firstName, lastName, phoneNumber, admissionNumber, combination, comment, uid, imageUri, emailAddress);
                         assert cUser != null;
-                        UserModel userModel = new UserModel(firstName, lastName, phoneNumber, admissionNumber, combination, comment, imageUri, emailAddress, uid);
+                        userModel.setUid(cUser.getUid());
                         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Registered Users");
                         databaseReference.child(cUser.getUid()).setValue(userModel).addOnCompleteListener(task1 -> {
                             if (task1.isSuccessful()){

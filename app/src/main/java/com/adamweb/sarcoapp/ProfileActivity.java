@@ -95,9 +95,9 @@ public class ProfileActivity extends AppCompatActivity {
              public void onDataChange(@NonNull DataSnapshot snapshot) {
                  UserModel userData = snapshot.getValue(UserModel.class);
                  if (userData != null){
-                     email =userData.getEmail();
                      firstName = userData.getFirstName();
                      lastName = userData.getLastName();
+                     email = userData.getEmail();
                      phoneNumber = userData.getPhoneNumber();
                      admissionNumber = userData.getAdmissionNumber();
                      combination = userData.getCombination();

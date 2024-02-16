@@ -6,32 +6,30 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UserModel {
-    String firstName, lastName, phoneNumber, admissionNumber, combination, comment, imageUri, email, uid;
+    String firstName, lastName, phoneNumber, admissionNumber, combination, comment, uid, imageUri, email;
 
     public UserModel() {
 
     }
 
-    public UserModel(String firstName, String lastName, String phoneNumber, String admissionNumber, String combination, String comment, String imageUri, String email, String uid) {
+    public UserModel(String firstName, String lastName, String phoneNumber, String admissionNumber, String combination, String comment, String uid, String imageUri, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.admissionNumber = admissionNumber;
         this.combination = combination;
         this.comment = comment;
+        this.uid = uid;
         this.imageUri = imageUri;
         this.email = email;
-        this.uid = uid;
     }
 
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
         result.put("imageUri", imageUri);
-        result.put("uid", uid);
         return result;
     }
-
 
     public String getFirstName() {
         return firstName;
@@ -81,6 +79,14 @@ public class UserModel {
         this.comment = comment;
     }
 
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
     public String getImageUri() {
         return imageUri;
     }
@@ -95,13 +101,5 @@ public class UserModel {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getUid() {
-        return uid;
-    }
-
-    public void setUid(String uid) {
-        this.uid = uid;
     }
 }
