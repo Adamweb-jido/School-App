@@ -3,19 +3,12 @@ package com.adamweb.sarcoapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,20 +19,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
-
-import java.util.Objects;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileActivity extends AppCompatActivity {
 
-   ImageView saveUserToContact, messageUser, callUser, sendSmsToUser, backArrow;
+   ImageView backArrow;
    CircleImageView profile_image;
-   LinearLayout contactUserLayout;
    MaterialButton editProfileBtn;
     TextView userFullName, userEmail, userPhoneNumber, userCombination, userAdmissionNumber, userComment;
-    String firstName, lastName, email, phoneNumber, combination, admissionNumber, comment, userId;
-    Dialog dialog;
+    String firstName, lastName, email, phoneNumber, combination, admissionNumber, comment;
    FirebaseAuth firebaseAuth;
 
     @Override
@@ -47,7 +35,7 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        dialog = new Dialog(this);
+
         backArrow  = findViewById(R.id.backArrow);
         profile_image = findViewById(R.id.profile_image);
         userFullName = findViewById(R.id.fullName);
@@ -56,16 +44,12 @@ public class ProfileActivity extends AppCompatActivity {
         userCombination = findViewById(R.id.user_comb);
         userComment = findViewById(R.id.user_comment);
         userAdmissionNumber = findViewById(R.id.admissionNo);
-        saveUserToContact = findViewById(R.id.addUserToContact);
-        messageUser = findViewById(R.id.sendMsgToUser);
         editProfileBtn = findViewById(R.id.editProfileBtn);
-        callUser = findViewById(R.id.callUser);
-        sendSmsToUser = findViewById(R.id.sendSmsOrEmail);
-        contactUserLayout = findViewById(R.id.contactUser);
+
 
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser userDetails = firebaseAuth.getCurrentUser();
-        userId = getIntent().getStringExtra("userId");
+
         if (userDetails == null){
             Toast.makeText(this, "Failed! please refresh the page", Toast.LENGTH_LONG).show();
         }else {
@@ -77,12 +61,6 @@ public class ProfileActivity extends AppCompatActivity {
             Animatoo.INSTANCE.animateSwipeLeft(this);
             finish();
         });
-
-        if (!Objects.equals(userId, userDetails.getUid())){
-            editProfileBtn.setVisibility(View.GONE);
-        } else {
-            contactUserLayout.setVisibility(View.GONE);
-        }
 
         backArrow.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
