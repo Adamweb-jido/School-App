@@ -7,6 +7,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,8 +28,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class UserProfile extends AppCompatActivity {
 
-    TextView headerName,userFullName, userEmail, userPhoneNumber, userAdmissionNumber, userCombination, userComment;
+    TextView clickMe, headerName,userFullName, userEmail, userPhoneNumber, userAdmissionNumber, userCombination, userComment;
     CircleImageView userDp;
+    ImageView backArrow;
     String userId;
     FirebaseUser currentUser;
     DatabaseReference databaseReference;
@@ -48,16 +50,32 @@ public class UserProfile extends AppCompatActivity {
         userCombination = findViewById(R.id.user_combination);
         userComment = findViewById(R.id.other_user_comment);
         userDp = findViewById(R.id.user_profile_image);
-
+        clickMe = findViewById(R.id.clickMe);
+        backArrow = findViewById(R.id.backArrow);
         userId = getIntent().getStringExtra("userId");
-
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("Registered Users");
 
+
+        clickMe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                Animatoo.INSTANCE.animateSwipeLeft(UserProfile.this);
+                finish();
+            }
+        });
+
+        backArrow.setOnClickListener( v ->{
+            startActivity(new Intent(getApplicationContext(), AlbumActivity.class));
+            Animatoo.INSTANCE.animateSwipeRight(UserProfile.this);
+            finish();
+        });
         if (!Objects.equals(userId, currentUser.getUid())){
             layout.setVisibility(View.VISIBLE);
         } else {
             layout.setVisibility(View.GONE);
+            clickMe.setVisibility(View.VISIBLE);
         }
 
         fetchUserData(userId);

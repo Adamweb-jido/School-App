@@ -86,13 +86,13 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout
+                android:id="@+id/contactUser"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:padding="15dp"
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:id="@+id/contactUser"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
@@ -167,7 +167,21 @@
                 </LinearLayout>
 
 
+
             </LinearLayout>
+            <TextView
+                android:id="@+id/clickMe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:background="@drawable/header_bg"
+                android:text="You are viewing your profile, click here to view your Main profile to edit your profile."
+                android:textAlignment="center"
+                android:visibility="gone"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/purple_500"
+                android:fontFamily="@font/alata"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
