@@ -85,22 +85,6 @@ public class UserProfile extends AppCompatActivity {
         fetchUserData(userId);
 
 
-     addUserToContact.setOnClickListener( v -> {
-
-     });
-
-     sendMsgToUser.setOnClickListener(v ->{
-
-     });
-
-     callUser.setOnClickListener(v ->{
-
-     });
-
-     sendSMSorEmailToUser.setOnClickListener(v ->{
-
-     });
-
     }
 
     private void fetchUserData(String userId) {
