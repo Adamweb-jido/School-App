@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -35,7 +36,7 @@ public class UserProfile extends AppCompatActivity {
     TextView clickMe, headerName,userFullName, userEmail, userPhoneNumber, userAdmissionNumber, userCombination, userComment, sendEmail, sendDM, cancelArrow;
     CircleImageView userDp;
     ImageView backArrow, addUserToContact, sendMsgToUser, callUser, sendSMSorEmailToUser;
-    String userId;
+    String userId, firstName, lastName, email, phoneNumber, admissionNumber, combination, comment, profileImg;
     FirebaseUser currentUser;
     DatabaseReference databaseReference;
     LinearLayout layout;
@@ -46,10 +47,7 @@ public class UserProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
 
-        dialog = new Dialog(this);
-        sendEmail = dialog.findViewById(R.id.sendEmail);
-        sendDM = dialog.findViewById(R.id.sendSMS);
-        cancelArrow = dialog.findViewById(R.id.cancelArrow);
+
         addUserToContact = findViewById(R.id.addUserToContact);
         sendMsgToUser = findViewById(R.id.sendMsgToUser);
         callUser = findViewById(R.id.callUser);
@@ -69,30 +67,26 @@ public class UserProfile extends AppCompatActivity {
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("Registered Users");
 
+        dialog = new Dialog(this);
         dialog.setContentView(R.layout.message_popup_layout);
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT );
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        sendEmail = dialog.findViewById(R.id.sendEmail);
+        sendDM = dialog.findViewById(R.id.sendSMS);
+        cancelArrow = dialog.findViewById(R.id.cancelArrow);
 
-       /* sendEmail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sendEmailToUser();
-            }
+        sendEmail.setOnClickListener(v ->{
+            Toast.makeText(this, "Abba", Toast.LENGTH_SHORT).show();
         });
 
-        sendDM.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sendSMSToUser();
-            }
+        sendDM.setOnClickListener(v ->{
+            sendSMS(firstName, phoneNumber);
         });
 
-        cancelArrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        }); */
+        cancelArrow.setOnClickListener(v ->{
+            dialog.dismiss();
+        });
+
 
         clickMe.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,6 +102,9 @@ public class UserProfile extends AppCompatActivity {
             Animatoo.INSTANCE.animateSwipeRight(UserProfile.this);
             finish();
         });
+
+
+
         if (!Objects.equals(userId, currentUser.getUid())){
             layout.setVisibility(View.VISIBLE);
         } else {
@@ -125,13 +122,16 @@ public class UserProfile extends AppCompatActivity {
 
     }
 
-    private void sendEmailToUser() {
-        Toast.makeText(this, "You Have clicked email ", Toast.LENGTH_SHORT).show();
+    private void sendSMS(String name, String phoneNumber) {
+        try {
+            SmsManager smsManager = SmsManager.getDefault();
+            smsManager.sendTextMessage(phoneNumber, null, name, null, null);
+        } catch (Exception e){
+            Toast.makeText(this, "wrong" + e.getMessage(), Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
     }
 
-    private void sendSMSToUser() {
-        Toast.makeText(this, "You Have clicked email ", Toast.LENGTH_SHORT).show();
-    }
 
     private void fetchUserData(String userId) {
         databaseReference.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -140,7 +140,6 @@ public class UserProfile extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 UserModel userModel = snapshot.getValue(UserModel.class);
                 if (userModel != null){
-                    String firstName, lastName, email, phoneNumber, admissionNumber, combination, comment, profileImg;
                     firstName = userModel.getFirstName();
                     lastName = userModel.getLastName();
                     email = userModel.getEmail();
