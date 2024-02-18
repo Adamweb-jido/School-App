@@ -4,9 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -28,19 +32,24 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class UserProfile extends AppCompatActivity {
 
-    TextView clickMe, headerName,userFullName, userEmail, userPhoneNumber, userAdmissionNumber, userCombination, userComment;
+    TextView clickMe, headerName,userFullName, userEmail, userPhoneNumber, userAdmissionNumber, userCombination, userComment, sendEmail, sendDM, cancelArrow;
     CircleImageView userDp;
     ImageView backArrow, addUserToContact, sendMsgToUser, callUser, sendSMSorEmailToUser;
     String userId;
     FirebaseUser currentUser;
     DatabaseReference databaseReference;
     LinearLayout layout;
+    Dialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
 
+        dialog = new Dialog(this);
+        sendEmail = dialog.findViewById(R.id.sendEmail);
+        sendDM = dialog.findViewById(R.id.sendSMS);
+        cancelArrow = dialog.findViewById(R.id.cancelArrow);
         addUserToContact = findViewById(R.id.addUserToContact);
         sendMsgToUser = findViewById(R.id.sendMsgToUser);
         callUser = findViewById(R.id.callUser);
@@ -60,6 +69,30 @@ public class UserProfile extends AppCompatActivity {
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("Registered Users");
 
+        dialog.setContentView(R.layout.message_popup_layout);
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT );
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+       /* sendEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendEmailToUser();
+            }
+        });
+
+        sendDM.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendSMSToUser();
+            }
+        });
+
+        cancelArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        }); */
 
         clickMe.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +118,19 @@ public class UserProfile extends AppCompatActivity {
         fetchUserData(userId);
 
 
+     sendSMSorEmailToUser.setOnClickListener(v ->{
+         dialog.show();
+
+     });
+
+    }
+
+    private void sendEmailToUser() {
+        Toast.makeText(this, "You Have clicked email ", Toast.LENGTH_SHORT).show();
+    }
+
+    private void sendSMSToUser() {
+        Toast.makeText(this, "You Have clicked email ", Toast.LENGTH_SHORT).show();
     }
 
     private void fetchUserData(String userId) {
