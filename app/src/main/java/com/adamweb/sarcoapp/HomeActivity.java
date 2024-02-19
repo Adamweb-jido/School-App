@@ -149,7 +149,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         });
    //------------------Profile onclickListener-------------------------------
         profile.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+            Intent intent = new Intent(getApplicationContext(), UserProfile.class);
             startActivity(intent);
             finish();
             Animatoo.INSTANCE.animateSwipeLeft(this);

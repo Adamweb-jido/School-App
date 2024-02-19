@@ -111,7 +111,7 @@ public class UserProfile extends AppCompatActivity {
         } else {
             layout.setVisibility(View.GONE);
             relativeLayout.setVisibility(View.VISIBLE);
-
+            headerName.setText("My Profile");
         }
 
         fetchUserData(userId);
