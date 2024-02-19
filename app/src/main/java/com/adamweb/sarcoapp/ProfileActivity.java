@@ -25,7 +25,7 @@ public class ProfileActivity extends AppCompatActivity {
 
    ImageView backArrow;
    CircleImageView profile_image;
-   MaterialButton editProfileBtn;
+
     TextView userFullName, userEmail, userPhoneNumber, userCombination, userAdmissionNumber, userComment;
     String firstName, lastName, email, phoneNumber, combination, admissionNumber, comment;
    FirebaseAuth firebaseAuth;
@@ -56,11 +56,7 @@ public class ProfileActivity extends AppCompatActivity {
             getUserDetails(userDetails);
         }
 
-        editProfileBtn.setOnClickListener(v ->{
-            startActivity(new Intent(getApplicationContext(), EditProfile.class));
-            Animatoo.INSTANCE.animateSwipeLeft(this);
-            finish();
-        });
+
 
         backArrow.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), HomeActivity.class);

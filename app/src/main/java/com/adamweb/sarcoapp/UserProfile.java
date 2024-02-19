@@ -23,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -40,6 +41,7 @@ public class UserProfile extends AppCompatActivity {
 
     TextView clickMe, headerName,userFullName, userEmail, userPhoneNumber, userAdmissionNumber, userCombination, userComment, sendEmail, sendDM, cancelArrow;
     CircleImageView userDp;
+    MaterialButton editProfileBtn;
     ImageView backArrow, addUserToContact, sendMsgToUser, callUser, sendSMSorEmailToUser;
     String userId, firstName, lastName, email, phoneNumber, admissionNumber, combination, comment, profileImg;
     FirebaseUser currentUser;
@@ -132,6 +134,12 @@ public class UserProfile extends AppCompatActivity {
              } requestPermissions(new String[] {Manifest.permission.CALL_PHONE}, 1);
          }
      });
+
+     editProfileBtn.setOnClickListener(v ->{
+            startActivity(new Intent(getApplicationContext(), EditProfile.class));
+            Animatoo.INSTANCE.animateSwipeLeft(this);
+            finish();
+        });
     }
 
     private void makePhoneCall(String phoneNumber) {

@@ -87,28 +87,7 @@
 
 
 
-              <RelativeLayout
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:layout_marginTop="20dp"
-                  android:layout_marginBottom="10dp"
-                  android:paddingStart="15dp"
-                  android:paddingEnd="15dp">
 
-                  <com.google.android.material.button.MaterialButton
-                      android:id="@+id/editProfileBtn"
-                      android:layout_width="match_parent"
-                      android:layout_height="55dp"
-                      android:text="@string/profileEdit"
-                      app:cornerRadius="15dp"
-                      android:elevation="10dp"
-                      android:backgroundTint="#0D1F82"
-                      app:icon="@drawable/edit_profile_icon"
-                      app:iconGravity="textStart"
-                      app:iconSize="35dp"
-                      android:textStyle="bold"
-                      android:fontFamily="@font/suez_one"/>
-              </RelativeLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
