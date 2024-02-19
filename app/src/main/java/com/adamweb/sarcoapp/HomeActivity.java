@@ -167,7 +167,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
 
        profileDp.setOnClickListener(v ->{
-           Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+           Intent intent = new Intent(getApplicationContext(), UserProfile.class);
            startActivity(intent);
            finish();
            Animatoo.INSTANCE.animateSwipeLeft(this);
@@ -304,13 +304,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 finish();
                 break;
             case R.id.myProfileId:
-                Intent intent2 = new Intent(getApplicationContext(), ProfileActivity.class);
+                Intent intent2 = new Intent(getApplicationContext(), UserProfile.class);
                 startActivity(intent2);
                 finish();
                 Animatoo.INSTANCE.animateSwipeRight(this);
                 break;
             case R.id.editProfileId:
-                Intent intent3 = new Intent(getApplicationContext(), ChatActivity.class);
+                Intent intent3 = new Intent(getApplicationContext(), EditProfile.class);
                 startActivity(intent3);
                 finish();
                 break;
