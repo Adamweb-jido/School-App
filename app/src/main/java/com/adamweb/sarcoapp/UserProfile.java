@@ -99,7 +99,7 @@ public class UserProfile extends AppCompatActivity {
 
 
         backArrow.setOnClickListener( v ->{
-            startActivity(new Intent(getApplicationContext(), AlbumActivity.class));
+            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
             Animatoo.INSTANCE.animateSwipeRight(UserProfile.this);
             finish();
         });
@@ -212,7 +212,7 @@ public class UserProfile extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(getApplicationContext(), AlbumActivity.class));
+        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
         Animatoo.INSTANCE.animateSwipeRight(this);
         finish();
     }

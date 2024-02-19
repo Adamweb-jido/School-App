@@ -44,6 +44,11 @@ public class FriendsActivity extends AppCompatActivity {
             finish();
         });
 
+        profileDp.setOnClickListener(v ->{
+            startActivity(new Intent(getApplicationContext(), UserProfile.class));
+            Animatoo.INSTANCE.animateSwipeRight(this);
+            finish();
+        });
         recyclerView = findViewById(R.id.friendListRecycler);
 
         List<UserModel> items = new ArrayList<>();

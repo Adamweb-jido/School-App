@@ -88,7 +88,7 @@ public class EditProfile extends AppCompatActivity {
         slideTwo.setAnimation(sideAnimation);
 
         backArrow.setOnClickListener(v ->{
-            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+            startActivity(new Intent(getApplicationContext(), UserProfile.class));
             Animatoo.INSTANCE.animateSwipeRight(this);
             finish();
         });
@@ -153,7 +153,7 @@ public class EditProfile extends AppCompatActivity {
         });
 
         cancelChangesBtn.setOnClickListener(v ->{
-            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+            startActivity(new Intent(getApplicationContext(), UserProfile.class));
             Animatoo.INSTANCE.animateSwipeRight(this);
             finish();
         });
@@ -212,7 +212,7 @@ public class EditProfile extends AppCompatActivity {
                        UserModel userModel = new UserModel();
                        userModel.setImageUri(imageUri.toString());
                        databaseReference.child(currentUser.getUid()).updateChildren(userModel.toMap());
-                         startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                         startActivity(new Intent(getApplicationContext(), UserProfile.class));
                          finish();
                      }
                  }).addOnFailureListener(new OnFailureListener() {
@@ -235,7 +235,7 @@ public class EditProfile extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+        startActivity(new Intent(getApplicationContext(), UserProfile.class));
         Animatoo.INSTANCE.animateSwipeRight(this);
         finish();
     }
