@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,9 +40,10 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class UserProfile extends AppCompatActivity {
 
-    TextView clickMe, headerName,userFullName, userEmail, userPhoneNumber, userAdmissionNumber, userCombination, userComment, sendEmail, sendDM, cancelArrow;
+    TextView headerName,userFullName, userEmail, userPhoneNumber, userAdmissionNumber, userCombination, userComment, sendEmail, sendDM, cancelArrow;
     CircleImageView userDp;
     MaterialButton editProfileBtn;
+    RelativeLayout relativeLayout;
     ImageView backArrow, addUserToContact, sendMsgToUser, callUser, sendSMSorEmailToUser;
     String userId, firstName, lastName, email, phoneNumber, admissionNumber, combination, comment, profileImg;
     FirebaseUser currentUser;
@@ -68,7 +70,8 @@ public class UserProfile extends AppCompatActivity {
         userCombination = findViewById(R.id.user_combination);
         userComment = findViewById(R.id.other_user_comment);
         userDp = findViewById(R.id.user_profile_image);
-        clickMe = findViewById(R.id.clickMe);
+        relativeLayout = findViewById(R.id.editProfileLayout);
+        editProfileBtn = findViewById(R.id.editProfileBtn);
         backArrow = findViewById(R.id.backArrow);
         userId = getIntent().getStringExtra("userId");
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -95,15 +98,6 @@ public class UserProfile extends AppCompatActivity {
         });
 
 
-        clickMe.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-                Animatoo.INSTANCE.animateSwipeLeft(UserProfile.this);
-                finish();
-            }
-        });
-
         backArrow.setOnClickListener( v ->{
             startActivity(new Intent(getApplicationContext(), AlbumActivity.class));
             Animatoo.INSTANCE.animateSwipeRight(UserProfile.this);
@@ -116,7 +110,8 @@ public class UserProfile extends AppCompatActivity {
             layout.setVisibility(View.VISIBLE);
         } else {
             layout.setVisibility(View.GONE);
-            clickMe.setVisibility(View.VISIBLE);
+            relativeLayout.setVisibility(View.VISIBLE);
+
         }
 
         fetchUserData(userId);

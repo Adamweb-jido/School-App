@@ -44,7 +44,7 @@ public class ProfileActivity extends AppCompatActivity {
         userCombination = findViewById(R.id.user_comb);
         userComment = findViewById(R.id.user_comment);
         userAdmissionNumber = findViewById(R.id.admissionNo);
-        editProfileBtn = findViewById(R.id.editProfileBtn);
+
 
 
         firebaseAuth = FirebaseAuth.getInstance();
