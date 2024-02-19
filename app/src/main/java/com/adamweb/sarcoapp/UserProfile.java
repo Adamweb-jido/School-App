@@ -3,11 +3,16 @@ package com.adamweb.sarcoapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.view.View;
@@ -76,11 +81,11 @@ public class UserProfile extends AppCompatActivity {
         cancelArrow = dialog.findViewById(R.id.cancelArrow);
 
         sendEmail.setOnClickListener(v ->{
-            Toast.makeText(this, "Abba", Toast.LENGTH_SHORT).show();
+            sendEmailMessage(email);
         });
 
         sendDM.setOnClickListener(v ->{
-            sendSMS(firstName, phoneNumber);
+            sendSMS(phoneNumber);
         });
 
         cancelArrow.setOnClickListener(v ->{
@@ -120,15 +125,46 @@ public class UserProfile extends AppCompatActivity {
 
      });
 
+     callUser.setOnClickListener(v -> {
+         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+             if (checkSelfPermission(Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED){
+                 makePhoneCall(phoneNumber);
+             } requestPermissions(new String[] {Manifest.permission.CALL_PHONE}, 1);
+         }
+     });
     }
 
-    private void sendSMS(String name, String phoneNumber) {
-        try {
-            SmsManager smsManager = SmsManager.getDefault();
-            smsManager.sendTextMessage(phoneNumber, null, name, null, null);
-        } catch (Exception e){
-            Toast.makeText(this, "wrong" + e.getMessage(), Toast.LENGTH_SHORT).show();
-            e.printStackTrace();
+    private void makePhoneCall(String phoneNumber) {
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse(phoneNumber));
+        startActivity(intent);
+    }
+
+    private void sendEmailMessage(String email) {
+        String subject, body;
+        subject = "Email from Sarco Pixel";
+        body = "Write the text you want to send here";
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:"));
+        intent.putExtra(Intent.EXTRA_EMAIL, email);
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent.putExtra(Intent.EXTRA_TEXT, body);
+
+        if (intent.resolveActivity(getPackageManager()) != null){
+            startActivity(intent);
+        } else {
+            Toast.makeText(UserProfile.this, "No email App installed on this device", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    private void sendSMS(String phoneNumber) {
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("smsto:" + Uri.encode(phoneNumber)));
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, "No messaging app found.", Toast.LENGTH_SHORT).show();
         }
     }
 
