@@ -20,6 +20,13 @@
         android:theme="@style/Theme.SarcoApp"
         tools:targetApi="31">
         <activity
+            android:name=".HelpActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".CurrentUserProfile"
             android:exported="false">
             <meta-data

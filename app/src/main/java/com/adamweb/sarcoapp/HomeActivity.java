@@ -137,22 +137,22 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         photoAlbum.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), AlbumActivity.class);
             startActivity(intent);
-            finish();
             Animatoo.INSTANCE.animateSwipeLeft(this);
+            finish();
         });
         //------------------Chats onclickListener-------------------------------
         chats.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), ChatActivity.class);
             startActivity(intent);
-            finish();
             Animatoo.INSTANCE.animateSwipeLeft(this);
+            finish();
         });
    //------------------Profile onclickListener-------------------------------
         profile.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), UserProfile.class);
+            Intent intent = new Intent(getApplicationContext(), CurrentUserProfile.class);
             startActivity(intent);
-            finish();
             Animatoo.INSTANCE.animateSwipeLeft(this);
+            finish();
         });
     //------------------Leaders recyclerview-------------------------------
         //------------------Navigation drawer-------------------------------
@@ -167,10 +167,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
 
        profileDp.setOnClickListener(v ->{
-           Intent intent = new Intent(getApplicationContext(), UserProfile.class);
+           Intent intent = new Intent(getApplicationContext(), CurrentUserProfile.class);
            startActivity(intent);
-           finish();
            Animatoo.INSTANCE.animateSwipeLeft(this);
+           finish();
        });
 
     }
@@ -295,23 +295,25 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             case R.id.photoAlbumId:
                 Intent intent = new Intent(getApplicationContext(), AlbumActivity.class);
                 startActivity(intent);
-                finish();
                 Animatoo.INSTANCE.animateSwipeRight(this);
+                finish();
                 break;
             case R.id.helpId:
-                Intent intent1 = new Intent(getApplicationContext(), ListActivity.class);
+                Intent intent1 = new Intent(getApplicationContext(), HelpActivity.class);
                 startActivity(intent1);
+                Animatoo.INSTANCE.animateSwipeRight(this);
                 finish();
                 break;
             case R.id.myProfileId:
-                Intent intent2 = new Intent(getApplicationContext(), UserProfile.class);
+                Intent intent2 = new Intent(getApplicationContext(), CurrentUserProfile.class);
                 startActivity(intent2);
-                finish();
                 Animatoo.INSTANCE.animateSwipeRight(this);
+                finish();
                 break;
             case R.id.editProfileId:
                 Intent intent3 = new Intent(getApplicationContext(), EditProfile.class);
                 startActivity(intent3);
+                Animatoo.INSTANCE.animateSwipeRight(this);
                 finish();
                 break;
             case R.id.logoutId:
