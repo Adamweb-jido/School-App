@@ -200,6 +200,7 @@
                   android:hint="@string/loading"
                   android:textColor="@color/black"
                   android:textSize="20sp"
+                  android:textAllCaps="true"
                   android:alpha="0.8"
                   android:textStyle="bold"
                   android:fontFamily="@font/alata"/>

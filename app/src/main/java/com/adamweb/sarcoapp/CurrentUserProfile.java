@@ -55,6 +55,13 @@ public class CurrentUserProfile extends AppCompatActivity {
             finish();
         });
 
+        editProfileBtn.setOnClickListener(v ->{
+            startActivity(new Intent(getApplicationContext(), EditProfile.class));
+            Animatoo.INSTANCE.animateSwipeLeft(this);
+            finish();
+        });
+
+
         if (currentUser != null){
             fetchCurrentUserData();
         } else {
