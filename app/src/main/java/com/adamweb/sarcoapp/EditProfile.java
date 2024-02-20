@@ -147,8 +147,9 @@ public class EditProfile extends AppCompatActivity {
                 Toast.makeText(this, "Upload your pic First!", Toast.LENGTH_SHORT).show();
             }
             else {
-                editProfile();
                 progressBar.setVisibility(View.VISIBLE);
+                editProfilePic();
+                editProfileData();
             }
         });
 
@@ -157,6 +158,10 @@ public class EditProfile extends AppCompatActivity {
             Animatoo.INSTANCE.animateSwipeRight(this);
             finish();
         });
+    }
+
+    private void editProfileData() {
+
     }
 
     private void fetchUserData() {
@@ -201,7 +206,7 @@ public class EditProfile extends AppCompatActivity {
         profilePic.setImageURI(imageUri);
     }
 
-    private void editProfile() {
+    private void editProfilePic() {
         StorageReference fileReference = storageReference.child(currentUser.getUid() + getFileExtension(imageUri));
          fileReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
              @Override

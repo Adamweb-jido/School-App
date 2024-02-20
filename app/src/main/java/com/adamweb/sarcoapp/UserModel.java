@@ -27,7 +27,13 @@ public class UserModel {
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
+        result.put("firstName", firstName);
+        result.put("lastName", lastName);
+        result.put("email", email);
+        result.put("phoneNumber", phoneNumber);
+        result.put("comment", comment);
         result.put("imageUri", imageUri);
+
         return result;
     }
 
