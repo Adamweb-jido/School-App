@@ -22,8 +22,10 @@ import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.github.dhaval2404.imagepicker.ImagePicker;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -143,13 +145,10 @@ public class EditProfile extends AppCompatActivity {
                 Toast.makeText(this, "Comment is Empty", Toast.LENGTH_SHORT).show();
                 editComment.setError("This field can't be empty");
                 editComment.requestFocus();
-            } else if (imageUri == null){
-                Toast.makeText(this, "Upload your pic First!", Toast.LENGTH_SHORT).show();
-            }
-            else {
+            } else {
                 progressBar.setVisibility(View.VISIBLE);
+                editProfileData(firstName, lastName, emailAddress, phoneNumber, comment);
                 editProfilePic();
-                editProfileData();
             }
         });
 
@@ -160,8 +159,23 @@ public class EditProfile extends AppCompatActivity {
         });
     }
 
-    private void editProfileData() {
-
+    private void editProfileData(String firstName, String lastName, String emailAddress, String phoneNumber, String comment) {
+        UserModel userModel = new UserModel();
+        userModel.setFirstName(firstName);
+        userModel.setLastName(lastName);
+        userModel.setPhoneNumber(phoneNumber);
+        userModel.setEmail(emailAddress);
+        userModel.setComment(comment);
+        databaseReference.child(currentUser.getUid()).setValue(userModel).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()){
+                    Toast.makeText(EditProfile.this, "Info Submitted", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(EditProfile.this, "Error try again", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     private void fetchUserData() {
