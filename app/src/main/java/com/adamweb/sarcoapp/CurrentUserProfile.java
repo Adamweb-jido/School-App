@@ -66,7 +66,7 @@ public class CurrentUserProfile extends AppCompatActivity {
         databaseReference.child(currentUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                UserModel userModel = snapshot.getValue(UserModel.class;
+                UserModel userModel = snapshot.getValue(UserModel.class);
                 if (userModel != null){
                     String fName, lName, emailAddress, phoneNo, admissionNo, comb, userComment, profileDp;
                     fName = userModel.getFirstName();
@@ -96,5 +96,14 @@ public class CurrentUserProfile extends AppCompatActivity {
                 Toast.makeText(CurrentUserProfile.this, "Please try again", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+        Animatoo.INSTANCE.animateSwipeRight(this);
+        finish();
     }
 }

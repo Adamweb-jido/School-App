@@ -188,7 +188,6 @@ public class UserProfile extends AppCompatActivity {
                     comment = userModel.getComment();
                     profileImg = userModel.getImageUri();
 
-                    headerName.setText(firstName + " - Profile");
                     userFullName.setText(firstName + " " + lastName);
                     userEmail.setText(email);
                     userPhoneNumber.setText(phoneNumber);
@@ -196,6 +195,12 @@ public class UserProfile extends AppCompatActivity {
                     userCombination.setText(combination);
                     userComment.setText(comment);
                     Picasso.get().load(profileImg).into(userDp);
+
+                       if (!userId.equals(currentUser.getUid())){
+                           headerName.setText(firstName + " - Profile");
+                       } else {
+                           headerName.setText("My Profile");
+                       }
                 } else {
                     Toast.makeText(UserProfile.this, "Failed to load user data try again", Toast.LENGTH_SHORT).show();
                 }

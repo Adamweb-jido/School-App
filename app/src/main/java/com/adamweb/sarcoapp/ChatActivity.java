@@ -76,7 +76,7 @@ public class ChatActivity extends AppCompatActivity {
 
 
         profilePic.setOnClickListener(v ->{
-            Intent intent = new Intent(getApplicationContext(), UserProfile.class);
+            Intent intent = new Intent(getApplicationContext(), CurrentUserProfile.class);
             startActivity(intent);
             Animatoo.INSTANCE.animateSwipeLeft(this);
             finish();

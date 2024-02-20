@@ -45,7 +45,7 @@ public class FriendsActivity extends AppCompatActivity {
         });
 
         profileDp.setOnClickListener(v ->{
-            startActivity(new Intent(getApplicationContext(), UserProfile.class));
+            startActivity(new Intent(getApplicationContext(), CurrentUserProfile.class));
             Animatoo.INSTANCE.animateSwipeRight(this);
             finish();
         });
