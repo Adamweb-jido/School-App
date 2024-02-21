@@ -139,7 +139,7 @@ public class UserProfile extends AppCompatActivity {
 
 
      sendSMSorEmailToUser.setOnClickListener(v ->{
-         dialog.show();
+
 
      });
 
