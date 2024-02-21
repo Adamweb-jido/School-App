@@ -15,6 +15,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.telephony.SmsManager;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -74,6 +75,7 @@ public class UserProfile extends AppCompatActivity {
         editProfileBtn = findViewById(R.id.editProfileBtn);
         backArrow = findViewById(R.id.backArrow);
         userId = getIntent().getStringExtra("userId");
+        Log.i(this.getClass().getName(), "userId" + userId);
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("Registered Users");
 

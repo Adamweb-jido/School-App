@@ -147,8 +147,7 @@ public class EditProfile extends AppCompatActivity {
                 editComment.requestFocus();
             } else {
                 progressBar.setVisibility(View.VISIBLE);
-                editProfileData(firstName, lastName, emailAddress, phoneNumber, comment);
-                editProfilePic();
+                editProfilePic(firstName, lastName, emailAddress, phoneNumber, comment);
             }
         });
 
@@ -156,25 +155,6 @@ public class EditProfile extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), CurrentUserProfile.class));
             Animatoo.INSTANCE.animateSwipeRight(this);
             finish();
-        });
-    }
-
-    private void editProfileData(String firstName, String lastName, String emailAddress, String phoneNumber, String comment) {
-        UserModel userModel = new UserModel();
-        userModel.setFirstName(firstName);
-        userModel.setLastName(lastName);
-        userModel.setPhoneNumber(phoneNumber);
-        userModel.setEmail(emailAddress);
-        userModel.setComment(comment);
-        databaseReference.child(currentUser.getUid()).setValue(userModel).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()){
-                    Toast.makeText(EditProfile.this, "Info Submitted", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(EditProfile.this, "Error try again", Toast.LENGTH_SHORT).show();
-                }
-            }
         });
     }
 
@@ -196,7 +176,7 @@ public class EditProfile extends AppCompatActivity {
                     editPhoneNumber.setText(phoneNumber);
                     editEmailAddress.setText(emailAddress);
                     editComment.setText(comment);
-                     Picasso.get().load(userModel.getImageUri()).into(profilePic);
+                    Picasso.get().load(userModel.getImageUri()).into(profilePic);
 
 
                 } else {
@@ -212,6 +192,7 @@ public class EditProfile extends AppCompatActivity {
         });
     }
 
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -220,7 +201,7 @@ public class EditProfile extends AppCompatActivity {
         profilePic.setImageURI(imageUri);
     }
 
-    private void editProfilePic() {
+    private void editProfilePic(String firstName, String lastName, String emailAddress, String phoneNumber, String comment) {
         StorageReference fileReference = storageReference.child(currentUser.getUid() + getFileExtension(imageUri));
          fileReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
              @Override
@@ -228,8 +209,13 @@ public class EditProfile extends AppCompatActivity {
                  fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                      @Override
                      public void onSuccess(Uri imageUri) {
-                       UserModel userModel = new UserModel();
-                       userModel.setImageUri(imageUri.toString());
+                         UserModel userModel = new UserModel();
+                         userModel.setFirstName(firstName);
+                         userModel.setLastName(lastName);
+                         userModel.setPhoneNumber(phoneNumber);
+                         userModel.setEmail(emailAddress);
+                         userModel.setComment(comment);
+                         userModel.setImageUri(imageUri.toString());
                        databaseReference.child(currentUser.getUid()).updateChildren(userModel.toMap());
                          startActivity(new Intent(getApplicationContext(), UserProfile.class));
                          finish();
