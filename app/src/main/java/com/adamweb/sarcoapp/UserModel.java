@@ -37,6 +37,15 @@ public class UserModel {
         return result;
     }
 
+    @Exclude
+    public Map<String, Object> imgMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("imageUri", imageUri);
+
+        return result;
+    }
+
+
     public String getFirstName() {
         return firstName;
     }

@@ -141,7 +141,7 @@ public class CompleteProfile extends AppCompatActivity {
                     public void onSuccess(Uri imageUri) {
                         UserModel userModel = new UserModel();
                         userModel.setImageUri(imageUri.toString());
-                        databaseReference.child(firebaseUser.getUid()).updateChildren(userModel.toMap());
+                        databaseReference.child(firebaseUser.getUid()).updateChildren(userModel.imgMap());
                         Toast.makeText(CompleteProfile.this, "Your Image is Successfully uploaded", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                         finish();
