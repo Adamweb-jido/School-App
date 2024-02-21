@@ -159,7 +159,7 @@ public class UserProfile extends AppCompatActivity {
      editProfileBtn.setOnClickListener(v ->{
             startActivity(new Intent(getApplicationContext(), EditProfile.class));
             Animatoo.INSTANCE.animateSwipeLeft(this);
-            finish();
+
         });
     }
 
