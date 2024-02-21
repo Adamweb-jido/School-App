@@ -2,6 +2,8 @@ package com.adamweb.sarcoapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -125,11 +127,7 @@ public class UserProfile extends AppCompatActivity {
      });
 
      callUser.setOnClickListener(v -> {
-         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-             if (checkSelfPermission(Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED){
-                 makePhoneCall(phoneNumber);
-             } requestPermissions(new String[] {Manifest.permission.CALL_PHONE}, 1);
-         }
+         makePhoneCall(phoneNumber);
      });
 
      editProfileBtn.setOnClickListener(v ->{
@@ -140,11 +138,28 @@ public class UserProfile extends AppCompatActivity {
     }
 
     private void makePhoneCall(String phoneNumber) {
-        Intent intent = new Intent(Intent.ACTION_DIAL);
-        intent.setData(Uri.parse(phoneNumber));
-        startActivity(intent);
+
+       if (ContextCompat.checkSelfPermission(UserProfile.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){
+           ActivityCompat.requestPermissions(UserProfile.this, new String[] {Manifest.permission.CALL_PHONE}, 1);
+       } else {
+           Intent intent = new Intent(Intent.ACTION_DIAL);
+           intent.setData(Uri.parse("tel:" + phoneNumber));
+           startActivity(intent);
+       }
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == 1) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                makePhoneCall(phoneNumber);
+            } else {
+                Toast.makeText(this, "Please Allow the Permission first", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
     private void sendEmailMessage(String email) {
         String subject, body;
         subject = "Email from Sarco Pixel";
