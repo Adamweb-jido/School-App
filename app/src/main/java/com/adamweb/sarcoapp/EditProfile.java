@@ -233,7 +233,7 @@ public class EditProfile extends AppCompatActivity {
                          UserModel userModel = new UserModel();
                          userModel.setImageUri(imageUri.toString());
                        databaseReference.child(currentUser.getUid()).updateChildren(userModel.imgMap());
-                         startActivity(new Intent(getApplicationContext(), UserProfile.class));
+                         startActivity(new Intent(getApplicationContext(), CurrentUserProfile.class));
                          finish();
                      }
                  }).addOnFailureListener(new OnFailureListener() {

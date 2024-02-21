@@ -8,14 +8,18 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.ContentProviderOperation;
 import android.content.Context;
 import android.content.Intent;
+import android.content.OperationApplicationException;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.RemoteException;
+import android.provider.ContactsContract;
 import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.View;
@@ -37,6 +41,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -90,11 +95,23 @@ public class UserProfile extends AppCompatActivity {
         cancelArrow = dialog.findViewById(R.id.cancelArrow);
 
         sendEmail.setOnClickListener(v ->{
-            sendEmailMessage(email);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (checkSelfPermission(Manifest.permission.WRITE_CONTACTS) == PackageManager.PERMISSION_GRANTED){
+                    sendEmailMessage(email);
+                } else {
+                    requestPermissions(new String[] {Manifest.permission.WRITE_CONTACTS}, 1);
+                }
+            }
         });
 
         sendDM.setOnClickListener(v ->{
-            sendSMS(phoneNumber);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (checkSelfPermission(Manifest.permission.WRITE_CONTACTS) == PackageManager.PERMISSION_GRANTED){
+                      sendSMS(phoneNumber);
+                } else {
+                    requestPermissions(new String[] {Manifest.permission.WRITE_CONTACTS}, 1);
+                }
+            }
         });
 
         cancelArrow.setOnClickListener(v ->{
@@ -130,11 +147,50 @@ public class UserProfile extends AppCompatActivity {
          makePhoneCall(phoneNumber);
      });
 
+     addUserToContact.setOnClickListener(v ->{
+         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+             if (checkSelfPermission(Manifest.permission.WRITE_CONTACTS) == PackageManager.PERMISSION_GRANTED){
+                 addToContact(userFullName, phoneNumber);
+             } else {
+                 requestPermissions(new String[] {Manifest.permission.WRITE_CONTACTS}, 1);
+             }
+         }
+     });
      editProfileBtn.setOnClickListener(v ->{
             startActivity(new Intent(getApplicationContext(), EditProfile.class));
             Animatoo.INSTANCE.animateSwipeLeft(this);
             finish();
         });
+    }
+
+    private void addToContact(TextView userFullName, String phoneNumber) {
+        ArrayList<ContentProviderOperation> saveContact = new ArrayList<>();
+        saveContact.add(ContentProviderOperation.newInsert(
+                ContactsContract.RawContacts.CONTENT_URI)
+                .withValue(ContactsContract.RawContacts.ACCOUNT_TYPE, null)
+                .withValue(ContactsContract.RawContacts.ACCOUNT_NAME, null)
+        .build());
+
+        saveContact.add(ContentProviderOperation.newInsert(
+                ContactsContract.Data.CONTENT_URI)
+                        .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+                        .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE)
+                        .withValue(ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME, userFullName)
+        .build());
+
+        saveContact.add(ContentProviderOperation.newInsert(
+                        ContactsContract.Data.CONTENT_URI)
+                .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+                .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE)
+                .withValue(ContactsContract.CommonDataKinds.Phone.NUMBER, phoneNumber)
+                        .withValue(ContactsContract.CommonDataKinds.Phone.TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE)
+                .build());
+
+        try {
+            getContentResolver().applyBatch(ContactsContract.AUTHORITY, saveContact);
+        } catch (OperationApplicationException | RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     private void makePhoneCall(String phoneNumber) {
@@ -166,7 +222,7 @@ public class UserProfile extends AppCompatActivity {
         body = "Write the text you want to send here";
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setData(Uri.parse("mailto:"));
-        intent.putExtra(Intent.EXTRA_EMAIL, email);
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{email});
         intent.putExtra(Intent.EXTRA_SUBJECT, subject);
         intent.putExtra(Intent.EXTRA_TEXT, body);
 
