@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.setContentView(R.layout.progress_bar_dialog);
         progressDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT );
         progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
+        progressDialog.setCancelable(false);
 
         CounterUtil.incrementVisitCount(LoginActivity.this);
 

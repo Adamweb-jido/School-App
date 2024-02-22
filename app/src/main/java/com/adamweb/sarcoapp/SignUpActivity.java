@@ -2,12 +2,17 @@ package com.adamweb.sarcoapp;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
+import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
@@ -27,7 +32,7 @@ public class SignUpActivity extends AppCompatActivity {
     TextInputEditText fName, lName, email, newPassword, cPassword, urPhoneNumber, urAdmissionNumber, urCombination, urComment;
     MaterialButton nextBtn;
     TextView login;
-    ProgressDialog progressDialog;
+    Dialog progressDialog;
 
     private static final String TAG = "SignUpActivity";
 
@@ -49,7 +54,11 @@ public class SignUpActivity extends AppCompatActivity {
         urCombination = findViewById(R.id.combination);
         urComment = findViewById(R.id.comment);
 
-
+        progressDialog = new Dialog(this);
+        progressDialog.setContentView(R.layout.progress_bar_dialog);
+        progressDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT );
+        progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        progressDialog.setCancelable(false);
 
 
 
@@ -141,10 +150,6 @@ public class SignUpActivity extends AppCompatActivity {
                 urComment.setError("your comment is too short");
                 urComment.requestFocus();
             } else {
-                progressDialog = new ProgressDialog(SignUpActivity.this);
-                progressDialog.setTitle("Registration.....");
-                progressDialog.setMessage("Please wait while creating your account");
-                progressDialog.setCanceledOnTouchOutside(false);
                 progressDialog.show();
                registerUser(firstName, lastName, emailAddress, password, phoneNumber, admissionNumber, combination, comment, uid, imageUri);
             }

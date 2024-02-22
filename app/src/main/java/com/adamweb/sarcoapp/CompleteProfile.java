@@ -4,12 +4,17 @@ package com.adamweb.sarcoapp;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.Dialog;
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -43,7 +48,7 @@ public class CompleteProfile extends AppCompatActivity {
     FirebaseUser firebaseUser;
     DatabaseReference databaseReference;
     StorageReference storageReference;
-    ProgressBar progressBar;
+    Dialog progressDialog;
     Uri imageUri;
 
     @Override
@@ -54,11 +59,17 @@ public class CompleteProfile extends AppCompatActivity {
         completeBtn = findViewById(R.id.completeBtn);
         uploadPicture = findViewById(R.id.profile_image);
         uploadBtn = findViewById(R.id.uploadBtn);
-        progressBar = findViewById(R.id.completeProgressBar);
         urDepartment = findViewById(R.id.yourDept);
         urBestFriend = findViewById(R.id.bestFriend);
         urBestCourse = findViewById(R.id.bestCourse);
         urSkills = findViewById(R.id.yourSkill);
+
+        progressDialog = new Dialog(this);
+        progressDialog.setContentView(R.layout.progress_bar_dialog);
+        progressDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT );
+        progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        progressDialog.setCancelable(false);
+
 
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -122,7 +133,7 @@ public class CompleteProfile extends AppCompatActivity {
                 urSkills.setError("Your best course can't be your Skill(s)");
                 urSkills.requestFocus();
             } else {
-                progressBar.setVisibility(View.VISIBLE);
+                progressDialog.show();
                 addMoreInfo(department, bestFriend, bestCourse, skills);
                 uploadPicToDatabase(imageUri);
             }
