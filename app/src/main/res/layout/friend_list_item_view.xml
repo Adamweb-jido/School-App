@@ -36,6 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
+                android:textAllCaps="false"
                 android:textStyle="bold"
                 android:alpha="0.8"/>
         </LinearLayout>

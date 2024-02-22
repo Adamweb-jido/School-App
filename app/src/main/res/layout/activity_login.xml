@@ -123,15 +123,6 @@
                 android:textStyle="bold" />
 
 
-                <ProgressBar
-                    android:id="@+id/loginProgressBar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:indeterminateTint="#0D1F82"
-                    android:visibility="gone"
-                    android:layout_gravity="center"/>
-
-
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/myLoginBtn"
                     android:layout_width="match_parent"

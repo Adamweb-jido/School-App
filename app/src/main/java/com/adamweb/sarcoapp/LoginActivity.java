@@ -3,12 +3,16 @@ package com.adamweb.sarcoapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
     MaterialButton registerBtn, loginBtn;
     TextView forgetPass;
     TextInputEditText loginEmail, loginPassword;
-    ProgressBar progressBar;
+    Dialog progressDialog;
     FirebaseAuth userLogin;
     private static final String TAG = "LoginActivity";
     @Override
@@ -45,8 +49,13 @@ public class LoginActivity extends AppCompatActivity {
         forgetPass = findViewById(R.id.forgetPassword);
         loginEmail = findViewById(R.id.loginEmail);
         loginPassword = findViewById(R.id.loginPassword);
-        progressBar = findViewById(R.id.loginProgressBar);
         userLogin = FirebaseAuth.getInstance();
+
+        progressDialog = new Dialog(this);
+        progressDialog.setContentView(R.layout.progress_bar_dialog);
+        progressDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT );
+        progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
 
         CounterUtil.incrementVisitCount(LoginActivity.this);
 
@@ -83,7 +92,7 @@ public class LoginActivity extends AppCompatActivity {
               loginPassword.setError("Please fill the password");
               loginPassword.requestFocus();
           } else {
-              progressBar.setVisibility(View.VISIBLE);
+              progressDialog.show();
               userLogin(emailAddress, password);
           }
         });
@@ -94,7 +103,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                if (task.isSuccessful()){
-                   Toast.makeText(LoginActivity.this, "You have successfully logged in", Toast.LENGTH_LONG).show();
                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                    startActivity(intent);
                    finish();
@@ -113,9 +121,8 @@ public class LoginActivity extends AppCompatActivity {
                        Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                    }
 
-                   progressBar.setVisibility(View.GONE);
                }
-               progressBar.setVisibility(View.GONE);
+               progressDialog.dismiss();
             }
         });
     }
