@@ -24,6 +24,7 @@ import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -31,6 +32,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -39,9 +42,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -52,12 +59,14 @@ public class UserProfile extends AppCompatActivity {
     TextView headerName,userFullName, userEmail, userPhoneNumber, userAdmissionNumber, userCombination, userComment, sendEmail, sendDM, cancelArrow;
     CircleImageView userDp;
     RoundedImageView fullSizeImg;
+    ImageButton backBtn, saveBtn;
     MaterialButton editProfileBtn;
     RelativeLayout relativeLayout;
     ImageView backArrow, addUserToContact, sendMsgToUser, callUser, sendSMSorEmailToUser;
     String userId, firstName, lastName, email, phoneNumber, admissionNumber, combination, comment, profileImg;
     FirebaseUser currentUser;
     DatabaseReference databaseReference;
+    StorageReference storageReference;
     LinearLayout layout;
     Dialog contactUserDialog, full_size_image_dialog;
 
@@ -87,6 +96,7 @@ public class UserProfile extends AppCompatActivity {
         Log.i(this.getClass().getName(), "userId" + userId);
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("Registered Users");
+        storageReference = FirebaseStorage.getInstance().getReference("Users Pics");
 
         contactUserDialog = new Dialog(this);
         contactUserDialog.setContentView(R.layout.message_popup_layout);
@@ -102,6 +112,23 @@ public class UserProfile extends AppCompatActivity {
         full_size_image_dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT );
         full_size_image_dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         fullSizeImg = full_size_image_dialog.findViewById(R.id.full_size_img);
+        backBtn = full_size_image_dialog.findViewById(R.id.backImgBtn);
+        saveBtn = full_size_image_dialog.findViewById(R.id.saveImgBtn);
+
+        backBtn.setOnClickListener( v ->{
+            full_size_image_dialog.dismiss();
+        });
+
+        saveBtn.setOnClickListener( v ->{
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
+                    saveImageToPhone(profileImg);
+                } else {
+                    requestPermissions(new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                }
+            }
+        });
+
 
 
         sendEmail.setOnClickListener(v ->{
@@ -173,6 +200,26 @@ public class UserProfile extends AppCompatActivity {
             Animatoo.INSTANCE.animateSwipeLeft(this);
             finish();
         });
+    }
+
+    private void saveImageToPhone(String profileImg) {
+
+        StorageReference imageRef = storageReference.child(currentUser.getUid());
+
+        File saveImage = new File(getExternalFilesDir(null), profileImg);
+
+        imageRef.getFile(saveImage).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                Toast.makeText(UserProfile.this, "Image Successfully saved", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(UserProfile.this, "Failed to save image", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     private void addToContact(TextView userFullName, String phoneNumber) {

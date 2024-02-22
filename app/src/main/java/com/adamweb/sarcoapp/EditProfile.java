@@ -147,7 +147,7 @@ public class EditProfile extends AppCompatActivity {
                 editComment.requestFocus();
             } else {
                 progressBar.setVisibility(View.VISIBLE);
-                editProfileData();
+               // editProfileData();
                 editProfilePic(firstName, lastName, emailAddress, phoneNumber, comment);
             }
         });
@@ -159,7 +159,7 @@ public class EditProfile extends AppCompatActivity {
         });
     }
 
-    private void editProfileData() {
+    /* private void editProfileData() {
         UserModel userModel = new UserModel();
 
 
@@ -173,7 +173,7 @@ public class EditProfile extends AppCompatActivity {
                 }
             }
         });
-    }
+    } */
 
     private void fetchUserData() {
         String userId = currentUser.getUid();
