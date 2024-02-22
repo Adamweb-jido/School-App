@@ -147,8 +147,8 @@ public class EditProfile extends AppCompatActivity {
                 editComment.requestFocus();
             } else {
                 progressBar.setVisibility(View.VISIBLE);
-                editProfileData(firstName, lastName, emailAddress, phoneNumber, comment);
-                editProfilePic();
+                editProfileData();
+                editProfilePic(firstName, lastName, emailAddress, phoneNumber, comment);
             }
         });
 
@@ -159,13 +159,9 @@ public class EditProfile extends AppCompatActivity {
         });
     }
 
-    private void editProfileData(String firstName, String lastName, String emailAddress, String phoneNumber, String comment) {
+    private void editProfileData() {
         UserModel userModel = new UserModel();
-        userModel.setFirstName(firstName);
-        userModel.setLastName(lastName);
-        userModel.setPhoneNumber(phoneNumber);
-        userModel.setEmail(emailAddress);
-        userModel.setComment(comment);
+
 
         databaseReference.child(currentUser.getUid()).updateChildren(userModel.toMap()).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -222,7 +218,7 @@ public class EditProfile extends AppCompatActivity {
         profilePic.setImageURI(imageUri);
     }
 
-    private void editProfilePic() {
+    private void editProfilePic(String firstName, String lastName, String emailAddress, String phoneNumber, String comment) {
         StorageReference fileReference = storageReference.child(currentUser.getUid() + getFileExtension(imageUri));
          fileReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
              @Override
@@ -231,8 +227,13 @@ public class EditProfile extends AppCompatActivity {
                      @Override
                      public void onSuccess(Uri imageUri) {
                          UserModel userModel = new UserModel();
+                         userModel.setFirstName(firstName);
+                         userModel.setLastName(lastName);
+                         userModel.setPhoneNumber(phoneNumber);
+                         userModel.setEmail(emailAddress);
+                         userModel.setComment(comment);
                          userModel.setImageUri(imageUri.toString());
-                       databaseReference.child(currentUser.getUid()).updateChildren(userModel.imgMap());
+                       databaseReference.child(currentUser.getUid()).updateChildren(userModel.toMap());
                          startActivity(new Intent(getApplicationContext(), CurrentUserProfile.class));
                          finish();
                      }

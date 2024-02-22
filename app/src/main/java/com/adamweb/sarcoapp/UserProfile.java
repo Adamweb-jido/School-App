@@ -39,6 +39,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -50,6 +51,7 @@ public class UserProfile extends AppCompatActivity {
 
     TextView headerName,userFullName, userEmail, userPhoneNumber, userAdmissionNumber, userCombination, userComment, sendEmail, sendDM, cancelArrow;
     CircleImageView userDp;
+    RoundedImageView fullSizeImg;
     MaterialButton editProfileBtn;
     RelativeLayout relativeLayout;
     ImageView backArrow, addUserToContact, sendMsgToUser, callUser, sendSMSorEmailToUser;
@@ -57,7 +59,7 @@ public class UserProfile extends AppCompatActivity {
     FirebaseUser currentUser;
     DatabaseReference databaseReference;
     LinearLayout layout;
-    Dialog dialog;
+    Dialog contactUserDialog, full_size_image_dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,13 +88,21 @@ public class UserProfile extends AppCompatActivity {
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("Registered Users");
 
-        dialog = new Dialog(this);
-        dialog.setContentView(R.layout.message_popup_layout);
-        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT );
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        sendEmail = dialog.findViewById(R.id.sendEmail);
-        sendDM = dialog.findViewById(R.id.sendSMS);
-        cancelArrow = dialog.findViewById(R.id.cancelArrow);
+        contactUserDialog = new Dialog(this);
+        contactUserDialog.setContentView(R.layout.message_popup_layout);
+        contactUserDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT );
+        contactUserDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        sendEmail = contactUserDialog.findViewById(R.id.sendEmail);
+        sendDM = contactUserDialog.findViewById(R.id.sendSMS);
+        cancelArrow = contactUserDialog.findViewById(R.id.cancelArrow);
+
+
+        full_size_image_dialog = new Dialog(this);
+        full_size_image_dialog.setContentView(R.layout.full_size_img_dialog);
+        full_size_image_dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT );
+        full_size_image_dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        fullSizeImg = full_size_image_dialog.findViewById(R.id.full_size_img);
+
 
         sendEmail.setOnClickListener(v ->{
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -115,7 +125,7 @@ public class UserProfile extends AppCompatActivity {
         });
 
         cancelArrow.setOnClickListener(v ->{
-            dialog.dismiss();
+            contactUserDialog.dismiss();
         });
 
 
@@ -126,7 +136,9 @@ public class UserProfile extends AppCompatActivity {
         });
 
 
-
+        userDp.setOnClickListener(v ->{
+            full_size_image_dialog.show();
+        });
         if (!Objects.equals(userId, currentUser.getUid())){
             layout.setVisibility(View.VISIBLE);
         } else {
@@ -139,7 +151,7 @@ public class UserProfile extends AppCompatActivity {
 
 
      sendSMSorEmailToUser.setOnClickListener(v ->{
-         dialog.show();
+         contactUserDialog.show();
 
      });
 
@@ -173,17 +185,17 @@ public class UserProfile extends AppCompatActivity {
 
         saveContact.add(ContentProviderOperation.newInsert(
                 ContactsContract.Data.CONTENT_URI)
-                        .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
-                        .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE)
-                        .withValue(ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME, userFullName)
-        .build());
+                .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+                .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE)
+                .withValue(ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME, userFullName)
+                .build());
 
         saveContact.add(ContentProviderOperation.newInsert(
-                        ContactsContract.Data.CONTENT_URI)
+                ContactsContract.Data.CONTENT_URI)
                 .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
                 .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE)
                 .withValue(ContactsContract.CommonDataKinds.Phone.NUMBER, phoneNumber)
-                        .withValue(ContactsContract.CommonDataKinds.Phone.TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE)
+                .withValue(ContactsContract.CommonDataKinds.Phone.TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE)
                 .build());
 
         try {
@@ -268,6 +280,7 @@ public class UserProfile extends AppCompatActivity {
                     userCombination.setText(combination);
                     userComment.setText(comment);
                     Picasso.get().load(profileImg).into(userDp);
+                    Picasso.get().load(profileImg).into(fullSizeImg);
 
                        if (!userId.equals(currentUser.getUid())){
                            headerName.setText(firstName + " - Profile");
