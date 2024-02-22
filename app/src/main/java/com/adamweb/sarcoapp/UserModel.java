@@ -32,7 +32,6 @@ public class UserModel {
         result.put("email", email);
         result.put("phoneNumber", phoneNumber);
         result.put("comment", comment);
-        result.put("imageUri", imageUri);
 
         return result;
     }

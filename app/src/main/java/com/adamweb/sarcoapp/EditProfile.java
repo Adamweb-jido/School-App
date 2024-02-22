@@ -50,15 +50,11 @@ public class EditProfile extends AppCompatActivity {
     MaterialButton saveChangesBtn, cancelChangesBtn;
     String firstName, lastName, phoneNumber, emailAddress, comment;
     ImageView backArrow;
-    CircleImageView profilePic;
-    FloatingActionButton floatingActionButton;
-    ProgressBar progressBar;
     FirebaseAuth firebaseAuth;
    Animation topAnimation, sideAnimation;
    DatabaseReference databaseReference;
     FirebaseUser currentUser;
-    Uri imageUri;
-    StorageReference storageReference;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,13 +71,9 @@ public class EditProfile extends AppCompatActivity {
         saveChangesBtn = findViewById(R.id.saveChangesBtn);
         cancelChangesBtn = findViewById(R.id.cancelBtn);
         backArrow = findViewById(R.id.backArrow);
-        profilePic = findViewById(R.id.profile_image);
-        floatingActionButton = findViewById(R.id.floatingActionButton);
-        progressBar = findViewById(R.id.editProgressBar);
         firebaseAuth = FirebaseAuth.getInstance();
         currentUser = firebaseAuth.getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("Registered Users");
-        storageReference = FirebaseStorage.getInstance().getReference("Users Pics");
 
         topAnimation = AnimationUtils.loadAnimation(this, R.anim.side_anim);
         sideAnimation = AnimationUtils.loadAnimation(this, R.anim.text_anim);
@@ -95,14 +87,11 @@ public class EditProfile extends AppCompatActivity {
             finish();
         });
 
-        floatingActionButton.setOnClickListener(v ->{
-            ImagePicker.with(this).crop().compress(1024).maxResultSize(1080, 1080).start();
-        });
+
 
         if (currentUser == null){
             Toast.makeText(this, "Something went wrong please try again", Toast.LENGTH_SHORT).show();
         } else {
-            progressBar.setVisibility(View.VISIBLE);
             fetchUserData();
         }
         saveChangesBtn.setOnClickListener(v ->{
@@ -146,9 +135,7 @@ public class EditProfile extends AppCompatActivity {
                 editComment.setError("This field can't be empty");
                 editComment.requestFocus();
             } else {
-                progressBar.setVisibility(View.VISIBLE);
-               // editProfileData();
-                editProfilePic(firstName, lastName, emailAddress, phoneNumber, comment);
+               editProfileData(firstName, lastName, emailAddress, phoneNumber, comment);
             }
         });
 
@@ -159,8 +146,13 @@ public class EditProfile extends AppCompatActivity {
         });
     }
 
-    /* private void editProfileData() {
+     private void editProfileData(String firstName, String lastName, String emailAddress, String phoneNumber, String comment) {
         UserModel userModel = new UserModel();
+         userModel.setFirstName(firstName);
+         userModel.setLastName(lastName);
+         userModel.setPhoneNumber(phoneNumber);
+         userModel.setEmail(emailAddress);
+         userModel.setComment(comment);
 
 
         databaseReference.child(currentUser.getUid()).updateChildren(userModel.toMap()).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -168,12 +160,14 @@ public class EditProfile extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()){
                     Toast.makeText(EditProfile.this, "Successfully Updated", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getApplicationContext(), CurrentUserProfile.class));
+                    finish();
                 } else {
                     Toast.makeText(EditProfile.this, "Error try again", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-    } */
+    }
 
     private void fetchUserData() {
         String userId = currentUser.getUid();
@@ -193,13 +187,11 @@ public class EditProfile extends AppCompatActivity {
                     editPhoneNumber.setText(phoneNumber);
                     editEmailAddress.setText(emailAddress);
                     editComment.setText(comment);
-                    Picasso.get().load(userModel.getImageUri()).into(profilePic);
 
 
                 } else {
                     Toast.makeText(EditProfile.this, "Unable to fetch the user data", Toast.LENGTH_SHORT).show();
                 }
-                progressBar.setVisibility(View.GONE);
             }
 
             @Override
@@ -207,50 +199,6 @@ public class EditProfile extends AppCompatActivity {
                 Toast.makeText(EditProfile.this, "Something Went Wrong!, try again!", Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        assert data != null;
-        imageUri = data.getData();
-        profilePic.setImageURI(imageUri);
-    }
-
-    private void editProfilePic(String firstName, String lastName, String emailAddress, String phoneNumber, String comment) {
-        StorageReference fileReference = storageReference.child(currentUser.getUid() + getFileExtension(imageUri));
-         fileReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-             @Override
-             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                 fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                     @Override
-                     public void onSuccess(Uri imageUri) {
-                         UserModel userModel = new UserModel();
-                         userModel.setFirstName(firstName);
-                         userModel.setLastName(lastName);
-                         userModel.setPhoneNumber(phoneNumber);
-                         userModel.setEmail(emailAddress);
-                         userModel.setComment(comment);
-                         userModel.setImageUri(imageUri.toString());
-                       databaseReference.child(currentUser.getUid()).updateChildren(userModel.toMap());
-                         startActivity(new Intent(getApplicationContext(), CurrentUserProfile.class));
-                         finish();
-                     }
-                 }).addOnFailureListener(new OnFailureListener() {
-                     @Override
-                     public void onFailure(@NonNull Exception e) {
-                         Toast.makeText(EditProfile.this, "wrong", Toast.LENGTH_SHORT).show();
-                     }
-                 });
-             }
-         });
-    }
-
-    private String getFileExtension(Uri uploadFile){
-        ContentResolver contentResolver = getContentResolver();
-        MimeTypeMap typeMap = MimeTypeMap.getSingleton();
-        return typeMap.getExtensionFromMimeType(contentResolver.getType(uploadFile));
     }
 
 
