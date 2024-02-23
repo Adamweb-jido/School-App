@@ -204,18 +204,19 @@ public class UserProfile extends AppCompatActivity {
 
     private void saveImageToPhone(String userId) {
         StorageReference storageReference = FirebaseStorage.getInstance().getReference("Users Pics");
-        StorageReference imageRef = storageReference.child(userId + ".jpg"); // Assuming the image is saved with ".jpg" extension
+        StorageReference imageRef = storageReference.child(userId + ".jpg");
 
-        File saveImage = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), userId + ".jpg"); // Specify the file path correctly
+        File saveImage = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), userId + ".jpg");
 
-        imageRef.getFile(saveImage).addOnCompleteListener(new OnCompleteListener<FileDownloadTask.TaskSnapshot>() {
+        imageRef.getFile(saveImage).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
             @Override
-            public void onComplete(@NonNull Task<FileDownloadTask.TaskSnapshot> task) {
-                if(task.isSuccessful()){
-                    Toast.makeText(UserProfile.this, "Successfully saved", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(UserProfile.this, "Failed to save", Toast.LENGTH_SHORT).show();
-                }
+            public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                Toast.makeText(UserProfile.this, "Save Successfully", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(UserProfile.this, "Failed To Save", Toast.LENGTH_SHORT).show();
             }
         });
     }
