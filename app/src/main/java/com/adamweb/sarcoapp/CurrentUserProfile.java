@@ -108,7 +108,11 @@ public class CurrentUserProfile extends AppCompatActivity {
 
 
         saveDpBtn.setOnClickListener(v ->{
-            editProfilePic();
+           if (imageUri == null){
+               Toast.makeText(this, "You must Upload the pic before save", Toast.LENGTH_SHORT).show();
+           } else {
+               editProfilePic();
+           }
         });
 
         editProfileBtn.setOnClickListener(v ->{

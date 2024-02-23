@@ -110,8 +110,11 @@
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/saveDpBtn"
                     android:layout_width="150dp"
-                    android:layout_height="40dp"
-                    android:text="save dp"/>
+                    android:layout_height="45dp"
+                    app:cornerRadius="30dp"
+                    android:textAllCaps="false"
+                    android:text="save dp"
+                    android:textSize="18sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -123,8 +126,11 @@
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/editProfileBtn"
                         android:layout_width="150dp"
-                        android:layout_height="40dp"
-                        android:text="Edit Info"/>
+                        android:layout_height="45dp"
+                        app:cornerRadius="30dp"
+                        android:text="Edit Info"
+                        android:textAllCaps="false"
+                        android:textSize="18sp"/>
                 </LinearLayout>
             </RelativeLayout>
 
