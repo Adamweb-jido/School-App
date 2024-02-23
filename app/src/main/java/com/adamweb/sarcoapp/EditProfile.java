@@ -4,13 +4,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.webkit.MimeTypeMap;
@@ -54,6 +58,7 @@ public class EditProfile extends AppCompatActivity {
    Animation topAnimation, sideAnimation;
    DatabaseReference databaseReference;
     FirebaseUser currentUser;
+    Dialog progressDialog;
 
 
     @Override
@@ -71,6 +76,14 @@ public class EditProfile extends AppCompatActivity {
         saveChangesBtn = findViewById(R.id.saveChangesBtn);
         cancelChangesBtn = findViewById(R.id.cancelBtn);
         backArrow = findViewById(R.id.backArrow);
+
+        progressDialog = new Dialog(this);
+        progressDialog.setContentView(R.layout.progress_bar_dialog);
+        progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        progressDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        progressDialog.setCancelable(false);
+
+
         firebaseAuth = FirebaseAuth.getInstance();
         currentUser = firebaseAuth.getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("Registered Users");
@@ -135,6 +148,7 @@ public class EditProfile extends AppCompatActivity {
                 editComment.setError("This field can't be empty");
                 editComment.requestFocus();
             } else {
+                progressDialog.show();
                editProfileData(firstName, lastName, emailAddress, phoneNumber, comment);
             }
         });
@@ -165,6 +179,8 @@ public class EditProfile extends AppCompatActivity {
                 } else {
                     Toast.makeText(EditProfile.this, "Error try again", Toast.LENGTH_SHORT).show();
                 }
+
+                progressDialog.dismiss();
             }
         });
     }

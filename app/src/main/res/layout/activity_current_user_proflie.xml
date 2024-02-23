@@ -369,7 +369,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Department"
+                            android:text="Department:"
                             android:fontFamily="@font/alata"
                             android:textColor="@color/black"
                             android:textSize="18sp"
@@ -397,7 +397,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Best Friend"
+                            android:text="Best Friend:"
                             android:fontFamily="@font/alata"
                             android:textColor="@color/black"
                             android:textSize="18sp"
@@ -426,7 +426,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Best Course"
+                            android:text="Best Course:"
                             android:fontFamily="@font/alata"
                             android:textColor="@color/black"
                             android:textSize="18sp"
@@ -456,7 +456,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Skill(s)"
+                            android:text="Skill(s):"
                             android:fontFamily="@font/alata"
                             android:textColor="@color/black"
                             android:textSize="18sp"

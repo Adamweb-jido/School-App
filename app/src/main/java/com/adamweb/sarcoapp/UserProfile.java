@@ -70,6 +70,12 @@ public class UserProfile extends AppCompatActivity {
     LinearLayout layout;
     Dialog contactUserDialog, full_size_image_dialog;
 
+
+    private static final int REQUEST_CALL_PHONE_PERMISSION = 1;
+    private static final int REQUEST_WRITE_CONTACTS_PERMISSION = 2;
+    private static final int REQUEST_WRITE_EXTERNAL_STORAGE_PERMISSION = 3;
+    private static final int REQUEST_SEND_SMS_PERMISSION = 4;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -124,7 +130,7 @@ public class UserProfile extends AppCompatActivity {
                 if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
                     saveImageToPhone(profileImg);
                 } else {
-                    requestPermissions(new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                    requestPermissions(new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_WRITE_EXTERNAL_STORAGE_PERMISSION);
                 }
             }
         });
@@ -132,21 +138,16 @@ public class UserProfile extends AppCompatActivity {
 
 
         sendEmail.setOnClickListener(v ->{
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                if (checkSelfPermission(Manifest.permission.WRITE_CONTACTS) == PackageManager.PERMISSION_GRANTED){
                     sendEmailMessage(email);
-                } else {
-                    requestPermissions(new String[] {Manifest.permission.WRITE_CONTACTS}, 1);
-                }
-            }
+
         });
 
         sendDM.setOnClickListener(v ->{
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                if (checkSelfPermission(Manifest.permission.WRITE_CONTACTS) == PackageManager.PERMISSION_GRANTED){
+                if (checkSelfPermission(Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED){
                       sendSMS(phoneNumber);
                 } else {
-                    requestPermissions(new String[] {Manifest.permission.WRITE_CONTACTS}, 1);
+                    requestPermissions(new String[] {Manifest.permission.SEND_SMS}, REQUEST_SEND_SMS_PERMISSION);
                 }
             }
         });
@@ -189,9 +190,9 @@ public class UserProfile extends AppCompatActivity {
      addUserToContact.setOnClickListener(v ->{
          if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
              if (checkSelfPermission(Manifest.permission.WRITE_CONTACTS) == PackageManager.PERMISSION_GRANTED){
-                 addToContact(userFullName, phoneNumber);
+                 addToContact(firstName, phoneNumber);
              } else {
-                 requestPermissions(new String[] {Manifest.permission.WRITE_CONTACTS}, 1);
+                 requestPermissions(new String[] {Manifest.permission.WRITE_CONTACTS}, REQUEST_WRITE_CONTACTS_PERMISSION);
              }
          }
      });
@@ -222,7 +223,7 @@ public class UserProfile extends AppCompatActivity {
 
     }
 
-    private void addToContact(TextView userFullName, String phoneNumber) {
+    private void addToContact(String fullName, String phoneNumber) {
         ArrayList<ContentProviderOperation> saveContact = new ArrayList<>();
         saveContact.add(ContentProviderOperation.newInsert(
                 ContactsContract.RawContacts.CONTENT_URI)
@@ -234,7 +235,7 @@ public class UserProfile extends AppCompatActivity {
                 ContactsContract.Data.CONTENT_URI)
                 .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
                 .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE)
-                .withValue(ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME, userFullName)
+                .withValue(ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME, fullName)
                 .build());
 
         saveContact.add(ContentProviderOperation.newInsert(
@@ -255,7 +256,7 @@ public class UserProfile extends AppCompatActivity {
     private void makePhoneCall(String phoneNumber) {
 
        if (ContextCompat.checkSelfPermission(UserProfile.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){
-           ActivityCompat.requestPermissions(UserProfile.this, new String[] {Manifest.permission.CALL_PHONE}, 1);
+           ActivityCompat.requestPermissions(UserProfile.this, new String[] {Manifest.permission.CALL_PHONE}, REQUEST_CALL_PHONE_PERMISSION);
        } else {
            Intent intent = new Intent(Intent.ACTION_DIAL);
            intent.setData(Uri.parse("tel:" + phoneNumber));
@@ -267,7 +268,7 @@ public class UserProfile extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        if (requestCode == 1) {
+        if (requestCode == REQUEST_CALL_PHONE_PERMISSION) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 makePhoneCall(phoneNumber);
             } else {

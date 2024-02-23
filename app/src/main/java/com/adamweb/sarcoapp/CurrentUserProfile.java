@@ -83,6 +83,12 @@ public class CurrentUserProfile extends AppCompatActivity {
         cancelBtn = profileDpDialog.findViewById(R.id.backImgBtn);
         uploadDpBtn = profileDpDialog.findViewById(R.id.editDpImgBtn);
 
+        progressDialog = new Dialog(this);
+        progressDialog.setContentView(R.layout.progress_bar_dialog);
+        progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        progressDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        progressDialog.setCancelable(false);
+
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("Registered Users");
         otherInfoRef = FirebaseDatabase.getInstance().getReference("Users More Info");
@@ -116,6 +122,7 @@ public class CurrentUserProfile extends AppCompatActivity {
            if (imageUri == null){
                Toast.makeText(this, "You must Upload the pic before save", Toast.LENGTH_SHORT).show();
            } else {
+               progressDialog.show();
                editProfilePic();
            }
         });
@@ -220,6 +227,7 @@ public class CurrentUserProfile extends AppCompatActivity {
                         Toast.makeText(CurrentUserProfile.this, "wrong", Toast.LENGTH_SHORT).show();
                     }
                 });
+                profileDpDialog.dismiss();
             }
         });
     }
