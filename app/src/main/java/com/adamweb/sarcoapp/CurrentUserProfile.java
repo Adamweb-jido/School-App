@@ -46,9 +46,9 @@ public class CurrentUserProfile extends AppCompatActivity {
     RoundedImageView userProfileDp;
     ImageButton cancelBtn, uploadDpBtn;
     MaterialButton editProfileBtn, saveDpBtn;
-    TextView fullName, email, phoneNumber, admNo, combination, comment;
+    TextView fullName, email, phoneNumber, admNo, combination, comment, department, bestFriend, bestCourse, skills;
     FirebaseUser currentUser;
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference, otherInfoRef;
     StorageReference storageReference;
     Dialog progressDialog, profileDpDialog;
     FloatingActionButton floatingActionButton;
@@ -69,6 +69,10 @@ public class CurrentUserProfile extends AppCompatActivity {
         admNo = findViewById(R.id.admissionNo);
         combination = findViewById(R.id.combination);
         comment = findViewById(R.id.comment);
+        department = findViewById(R.id.department);
+        bestFriend = findViewById(R.id.urBestFriend);
+        bestCourse = findViewById(R.id.urBestCourse);
+        skills = findViewById(R.id.urSkills);
         floatingActionButton = findViewById(R.id.floatingActionButton);
 
         profileDpDialog = new Dialog(this);
@@ -81,6 +85,7 @@ public class CurrentUserProfile extends AppCompatActivity {
 
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("Registered Users");
+        otherInfoRef = FirebaseDatabase.getInstance().getReference("Users More Info");
         storageReference = FirebaseStorage.getInstance().getReference("Users Pics");
 
 
@@ -124,9 +129,37 @@ public class CurrentUserProfile extends AppCompatActivity {
 
         if (currentUser != null){
             fetchCurrentUserData();
+            fetchOtherInfo();
         } else {
             Toast.makeText(this, "Wrong please try again", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void fetchOtherInfo() {
+        otherInfoRef.child(currentUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                MoreInfo moreInfo = snapshot.getValue(MoreInfo.class);
+                if (moreInfo != null){
+                    String dep, friend, course, urSkills;
+                    dep = moreInfo.getDepartment();
+                    friend = moreInfo.getBestFriend();
+                    course = moreInfo.getBestCourse();
+                    urSkills = moreInfo.getSkills();
+
+                    department.setText(dep);
+                    bestFriend.setText(friend);
+                    bestCourse.setText(course);
+                    skills.setText(urSkills);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(CurrentUserProfile.this, "Error While Fetching your data", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void fetchCurrentUserData() {
