@@ -104,8 +104,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp">
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/saveDpBtn"
@@ -113,7 +113,7 @@
                     android:layout_height="45dp"
                     app:cornerRadius="30dp"
                     android:textAllCaps="false"
-                    android:text="save dp"
+                    android:text="Save dp"
                     android:textSize="18sp" />
 
                 <LinearLayout
@@ -297,6 +297,126 @@
 
                         <TextView
                             android:id="@+id/comment"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:hint="@string/loading"
+                            android:textStyle="bold"
+                            android:layout_marginStart="10dp"/>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/header_bg"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Other Information"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/suez_one"
+                        android:textColor="@color/black"
+                        android:alpha="0.8"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/header_bg"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Department"
+                            android:textSize="18sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/department"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/loading"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:layout_marginStart="10dp"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/header_bg"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Best Friend"
+                            android:textSize="18sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/urBestFriend"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:hint="@string/loading"
+                            android:layout_marginStart="10dp"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/header_bg"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Best Course"
+                            android:textSize="18sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/urBestCourse"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:hint="@string/loading"
+                            android:textStyle="bold"
+                            android:layout_marginStart="10dp"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/header_bg"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Skill(s)"
+                            android:textSize="18sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/urSkills"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="18sp"
