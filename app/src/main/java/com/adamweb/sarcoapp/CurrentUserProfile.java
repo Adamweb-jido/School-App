@@ -45,7 +45,7 @@ public class CurrentUserProfile extends AppCompatActivity {
     CircleImageView profileImage;
     RoundedImageView userProfileDp;
     ImageButton cancelBtn, uploadDpBtn;
-    MaterialButton editProfileBtn;
+    MaterialButton editProfileBtn, saveDpBtn;
     TextView fullName, email, phoneNumber, admNo, combination, comment;
     FirebaseUser currentUser;
     DatabaseReference databaseReference;
@@ -62,6 +62,7 @@ public class CurrentUserProfile extends AppCompatActivity {
         backArrow = findViewById(R.id.backArrow);
         profileImage = findViewById(R.id.profile_image);
         editProfileBtn = findViewById(R.id.editProfileBtn);
+        saveDpBtn = findViewById(R.id.saveDpBtn);
         fullName = findViewById(R.id.fullName);
         email = findViewById(R.id.email_address);
         phoneNumber = findViewById(R.id.phone_number);
@@ -105,6 +106,10 @@ public class CurrentUserProfile extends AppCompatActivity {
             ImagePicker.with(this).crop().compress(1024).maxResultSize(1080, 1080).start();
         });
 
+
+        saveDpBtn.setOnClickListener(v ->{
+            editProfilePic();
+        });
 
         editProfileBtn.setOnClickListener(v ->{
             startActivity(new Intent(getApplicationContext(), EditProfile.class));
@@ -168,7 +173,7 @@ public class CurrentUserProfile extends AppCompatActivity {
                     public void onSuccess(Uri imageUri) {
                         UserModel userModel = new UserModel();
                         userModel.setImageUri(imageUri.toString());
-                        databaseReference.child(currentUser.getUid()).updateChildren(userModel.toMap());
+                        databaseReference.child(currentUser.getUid()).updateChildren(userModel.imgMap());
                         startActivity(new Intent(getApplicationContext(), CurrentUserProfile.class));
                         finish();
                     }
