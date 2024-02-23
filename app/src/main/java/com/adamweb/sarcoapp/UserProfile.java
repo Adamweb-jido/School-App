@@ -9,7 +9,6 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.ContentProviderOperation;
-import android.content.Context;
 import android.content.Intent;
 import android.content.OperationApplicationException;
 import android.content.pm.PackageManager;
@@ -18,9 +17,9 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.RemoteException;
 import android.provider.ContactsContract;
-import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,8 +31,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -66,7 +67,6 @@ public class UserProfile extends AppCompatActivity {
     String userId, firstName, lastName, email, phoneNumber, admissionNumber, combination, comment, profileImg;
     FirebaseUser currentUser;
     DatabaseReference databaseReference;
-    StorageReference storageReference;
     LinearLayout layout;
     Dialog contactUserDialog, full_size_image_dialog;
 
@@ -102,7 +102,6 @@ public class UserProfile extends AppCompatActivity {
         Log.i(this.getClass().getName(), "userId" + userId);
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("Registered Users");
-        storageReference = FirebaseStorage.getInstance().getReference("Users Pics");
 
         contactUserDialog = new Dialog(this);
         contactUserDialog.setContentView(R.layout.message_popup_layout);
@@ -128,7 +127,7 @@ public class UserProfile extends AppCompatActivity {
         saveBtn.setOnClickListener( v ->{
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
-                    saveImageToPhone(profileImg);
+                    saveImageToPhone(userId);
                 } else {
                     requestPermissions(new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_WRITE_EXTERNAL_STORAGE_PERMISSION);
                 }
@@ -190,7 +189,7 @@ public class UserProfile extends AppCompatActivity {
      addUserToContact.setOnClickListener(v ->{
          if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
              if (checkSelfPermission(Manifest.permission.WRITE_CONTACTS) == PackageManager.PERMISSION_GRANTED){
-                 addToContact(firstName, phoneNumber);
+                 addToContact(firstName, lastName, phoneNumber);
              } else {
                  requestPermissions(new String[] {Manifest.permission.WRITE_CONTACTS}, REQUEST_WRITE_CONTACTS_PERMISSION);
              }
@@ -203,54 +202,36 @@ public class UserProfile extends AppCompatActivity {
         });
     }
 
-    private void saveImageToPhone(String profileImg) {
+    private void saveImageToPhone(String userId) {
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference("Users Pics");
+        StorageReference imageRef = storageReference.child(userId + ".jpg"); // Assuming the image is saved with ".jpg" extension
 
-        StorageReference imageRef = storageReference.child(currentUser.getUid());
+        File saveImage = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), userId + ".jpg"); // Specify the file path correctly
 
-        File saveImage = new File(getExternalFilesDir(null), profileImg);
-
-        imageRef.getFile(saveImage).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+        imageRef.getFile(saveImage).addOnCompleteListener(new OnCompleteListener<FileDownloadTask.TaskSnapshot>() {
             @Override
-            public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                Toast.makeText(UserProfile.this, "Image Successfully saved", Toast.LENGTH_SHORT).show();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(UserProfile.this, "Failed to save image", Toast.LENGTH_SHORT).show();
+            public void onComplete(@NonNull Task<FileDownloadTask.TaskSnapshot> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(UserProfile.this, "Successfully saved", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(UserProfile.this, "Failed to save", Toast.LENGTH_SHORT).show();
+                }
             }
         });
-
     }
 
-    private void addToContact(String fullName, String phoneNumber) {
-        ArrayList<ContentProviderOperation> saveContact = new ArrayList<>();
-        saveContact.add(ContentProviderOperation.newInsert(
-                ContactsContract.RawContacts.CONTENT_URI)
-                .withValue(ContactsContract.RawContacts.ACCOUNT_TYPE, null)
-                .withValue(ContactsContract.RawContacts.ACCOUNT_NAME, null)
-        .build());
 
-        saveContact.add(ContentProviderOperation.newInsert(
-                ContactsContract.Data.CONTENT_URI)
-                .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
-                .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE)
-                .withValue(ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME, fullName)
-                .build());
+    private void addToContact(String fullName, String lastName, String phoneNumber) {
+        Intent intent = new Intent(Intent.ACTION_INSERT);
+        intent.setType(ContactsContract.Contacts.CONTENT_TYPE);
+        intent.putExtra(ContactsContract.Intents.Insert.NAME, fullName + " " + lastName);
+        intent.putExtra(ContactsContract.Intents.Insert.PHONE, phoneNumber);
+        startActivity(intent);
 
-        saveContact.add(ContentProviderOperation.newInsert(
-                ContactsContract.Data.CONTENT_URI)
-                .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
-                .withValue(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE)
-                .withValue(ContactsContract.CommonDataKinds.Phone.NUMBER, phoneNumber)
-                .withValue(ContactsContract.CommonDataKinds.Phone.TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE)
-                .build());
 
-        try {
-            getContentResolver().applyBatch(ContactsContract.AUTHORITY, saveContact);
-        } catch (OperationApplicationException | RemoteException e) {
-            e.printStackTrace();
-        }
+
+
+
     }
 
     private void makePhoneCall(String phoneNumber) {
