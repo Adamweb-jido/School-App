@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/header_bg"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal">
+           <androidx.cardview.widget.CardView
+               android:id="@+id/cardView"
+               android:layout_width="50dp"
+               android:layout_height="50dp"
+               android:layout_marginBottom="10dp"
+               app:cardCornerRadius="10dp"
+               app:cardBackgroundColor="@color/purple_700"
+               app:cardElevation="5dp">
+
+               <TextView
+                   android:id="@+id/nav_cancelTextBtn"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:layout_gravity="center"
+                   android:gravity="center"
+                   android:text="X"
+                   android:textSize="30sp"
+                   android:textStyle="bold"
+                   android:textColor="@color/white"/>
+           </androidx.cardview.widget.CardView>
+           <TextView
+               android:layout_width="250dp"
+               android:layout_height="wrap_content"
+               android:background="@drawable/quote_texts_bg"
+               android:text="About Me"
+               android:layout_marginStart="30dp"
+               android:textAlignment="center"
+               android:textSize="32sp"
+               android:fontFamily="@font/alata"
+               android:textStyle="bold"
+               android:textColor="@color/purple_500"/>
+       </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/msg_popup">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/image"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="10dp"
+                app:riv_corner_radius="20dp"
+                app:riv_border_color="@color/purple_500"
+                app:riv_border_width="5dp"
+                android:src="@drawable/user_profile_icon"/>
+
+            <TextView
+                android:id="@+id/nameText"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_toEndOf="@id/image"
+                android:layout_marginTop="25dp"
+                android:gravity="center"
+                android:text="Real Adamweb"
+                android:textAlignment="center"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/alata"
+                android:textColor="@color/purple_500"/>
+           <View
+               android:id="@+id/view"
+               android:layout_width="160dp"
+               android:layout_height="3dp"
+               android:layout_marginStart="10dp"
+               android:layout_below="@id/nameText"
+               android:layout_toEndOf="@id/image"
+               android:background="@color/purple_500"/>
+
+            <TextView
+                android:id="@+id/skill"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_toEndOf="@id/image"
+                android:layout_below="@id/view"
+                android:gravity="center"
+                android:text="App Developer"
+                android:textAlignment="center"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/alata"
+                android:textColor="@color/purple_500"/>
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:background="@drawable/header_bg">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/aboutMe"
+                android:textSize="16sp"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:alpha="0.8"
+                android:fontFamily="@font/alata"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</LinearLayout>

@@ -9,13 +9,17 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.app.ListActivity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -74,6 +78,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     R.drawable.martin};
      int counter, currentIndex = 0, imgCounterIndex = 0;
     private Handler handler;
+    Dialog aboutMeDialog;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -108,6 +113,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         visitCount = findViewById(R.id.visitCounter);
         profileDp = findViewById(R.id.profileDp);
         allUsersRecycler = findViewById(R.id.allUsersRecycler);
+
+        aboutMeDialog = new Dialog(this);
+        aboutMeDialog.setContentView(R.layout.about_me_dialog);
+        aboutMeDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        aboutMeDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
         firebaseAuth = FirebaseAuth.getInstance();
         currentUserName = firebaseAuth.getCurrentUser();
         userReference = FirebaseDatabase.getInstance().getReference("Registered Users");
@@ -307,6 +318,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         switch (item.getItemId()){
 
             case R.id.darkMode:
+                aboutMeDialog.show();
                 break;
             case R.id.photoAlbumId:
                 Intent intent = new Intent(getApplicationContext(), AlbumActivity.class);
