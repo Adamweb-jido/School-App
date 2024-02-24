@@ -169,8 +169,7 @@ public class UserProfile extends AppCompatActivity {
         if (!Objects.equals(userId, currentUser.getUid())){
             layout.setVisibility(View.VISIBLE);
         } else {
-            layout.setVisibility(View.GONE);
-            relativeLayout.setVisibility(View.VISIBLE);
+          startActivity(new Intent(getApplicationContext(), CurrentUserProfile.class));
 
         }
 
@@ -204,20 +203,14 @@ public class UserProfile extends AppCompatActivity {
 
     private void saveImageToPhone(String userId) {
         StorageReference storageReference = FirebaseStorage.getInstance().getReference("Users Pics");
-        StorageReference imageRef = storageReference.child(userId + ".jpg");
+        StorageReference imageRef = storageReference.child(userId + ".jpeg"); // Correct image reference
 
-        File saveImage = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), userId + ".jpg");
+        File saveImage = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), userId + ".jpeg"); // Correct local file path
 
-        imageRef.getFile(saveImage).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                Toast.makeText(UserProfile.this, "Save Successfully", Toast.LENGTH_SHORT).show();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(UserProfile.this, "Failed To Save", Toast.LENGTH_SHORT).show();
-            }
+        imageRef.getFile(saveImage).addOnSuccessListener(taskSnapshot -> {
+            Toast.makeText(UserProfile.this, "Saved Successfully", Toast.LENGTH_SHORT).show();
+        }).addOnFailureListener(e -> {
+            Toast.makeText(UserProfile.this, "Failed To Save: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         });
     }
 
@@ -303,6 +296,7 @@ public class UserProfile extends AppCompatActivity {
                     comment = userModel.getComment();
                     profileImg = userModel.getImageUri();
 
+                    headerName.setText(firstName + " - Profile");
                     userFullName.setText(firstName + " " + lastName);
                     userEmail.setText(email);
                     userPhoneNumber.setText(phoneNumber);
@@ -312,11 +306,6 @@ public class UserProfile extends AppCompatActivity {
                     Picasso.get().load(profileImg).into(userDp);
                     Picasso.get().load(profileImg).into(fullSizeImg);
 
-                       if (!userId.equals(currentUser.getUid())){
-                           headerName.setText(firstName + " - Profile");
-                       } else {
-                           headerName.setText("My Profile");
-                       }
                 } else {
                     Toast.makeText(UserProfile.this, "Failed to load user data try again", Toast.LENGTH_SHORT).show();
                 }

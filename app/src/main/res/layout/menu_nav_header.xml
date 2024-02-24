@@ -30,18 +30,31 @@
               app:layout_constraintStart_toStartOf="parent"
               app:layout_constraintTop_toTopOf="parent" />
 
-          <ImageView
-              android:layout_width="50dp"
-              android:layout_height="50dp"
-              android:background="@drawable/icons_bg"
-              android:src="@drawable/back_icon_left"
-              app:layout_constraintBottom_toBottomOf="@+id/nav_profile_icon"
+          <androidx.cardview.widget.CardView
+              android:id="@+id/cardView"
+              android:layout_width="40dp"
+              android:layout_height="40dp"
+              app:cardCornerRadius="5dp"
+              app:cardElevation="5dp"
+              app:layout_constraintBottom_toBottomOf="parent"
               app:layout_constraintEnd_toEndOf="parent"
-              app:layout_constraintHorizontal_bias="1.0"
+              app:layout_constraintHorizontal_bias="0.831"
               app:layout_constraintStart_toEndOf="@+id/nav_profile_icon"
               app:layout_constraintTop_toTopOf="parent"
-              app:layout_constraintVertical_bias="0.0"
-              android:contentDescription="@string/todo"/>
+              app:layout_constraintVertical_bias="0.2" >
+
+              <TextView
+                  android:id="@+id/nav_cancelTextBtn"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:layout_gravity="center"
+                  android:gravity="center"
+                  android:text="X"
+                  android:textSize="30sp"
+                  android:textStyle="bold"
+                  android:textColor="@color/purple_700"/>
+          </androidx.cardview.widget.CardView>
+
       </androidx.constraintlayout.widget.ConstraintLayout>
       
       

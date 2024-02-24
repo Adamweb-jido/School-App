@@ -231,6 +231,8 @@
                             android:layout_height="wrap_content"
                             android:text="@string/yourName"
                             android:textSize="18sp"
+                            android:fontFamily="@font/alata"
+                            android:textColor="@color/black"
                             android:textStyle="bold"/>
 
                         <TextView
@@ -239,6 +241,9 @@
                             android:layout_height="wrap_content"
                             android:hint="@string/loading"
                             android:textSize="18sp"
+                            android:fontFamily="@font/alata"
+                            android:textColor="@color/black"
+                            android:alpha="0.8"
                             android:textStyle="bold"
                             android:layout_marginStart="10dp"/>
                     </LinearLayout>
@@ -254,6 +259,8 @@
                             android:layout_height="wrap_content"
                             android:text="@string/emailAddress"
                             android:textSize="18sp"
+                            android:fontFamily="@font/alata"
+                            android:textColor="@color/black"
                             android:textStyle="bold"/>
 
                         <TextView
@@ -262,6 +269,9 @@
                             android:layout_height="wrap_content"
                             android:textSize="18sp"
                             android:textStyle="bold"
+                            android:fontFamily="@font/alata"
+                            android:textColor="@color/black"
+                            android:alpha="0.8"
                             android:hint="@string/loading"
                             android:layout_marginStart="10dp"/>
                     </LinearLayout>
@@ -278,6 +288,8 @@
                             android:layout_height="wrap_content"
                             android:text="@string/yourPhoneNumber"
                             android:textSize="18sp"
+                            android:fontFamily="@font/alata"
+                            android:textColor="@color/black"
                             android:textStyle="bold"/>
 
                         <TextView
@@ -286,6 +298,9 @@
                             android:layout_height="wrap_content"
                             android:textSize="18sp"
                             android:hint="@string/loading"
+                            android:fontFamily="@font/alata"
+                            android:textColor="@color/black"
+                            android:alpha="0.8"
                             android:textStyle="bold"
                             android:layout_marginStart="10dp"/>
 
@@ -302,6 +317,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/admNo"
+                            android:fontFamily="@font/alata"
+                            android:textColor="@color/black"
                             android:textSize="18sp"
                             android:textStyle="bold"/>
 
@@ -311,6 +328,9 @@
                             android:layout_height="wrap_content"
                             android:textSize="18sp"
                             android:hint="@string/loading"
+                            android:fontFamily="@font/alata"
+                            android:textColor="@color/black"
+                            android:alpha="0.8"
                             android:textStyle="bold"
                             android:layout_marginStart="10dp"/>
 
@@ -327,6 +347,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/comb"
+                            android:fontFamily="@font/alata"
+                            android:textColor="@color/black"
                             android:textSize="18sp"
                             android:textStyle="bold"/>
 
@@ -337,6 +359,9 @@
                             android:textSize="18sp"
                             android:textStyle="bold"
                             android:hint="@string/loading"
+                            android:fontFamily="@font/alata"
+                            android:textColor="@color/black"
+                            android:alpha="0.8"
                             android:layout_marginStart="10dp"/>
 
                     </LinearLayout>
@@ -352,6 +377,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/yourComment"
+                            android:fontFamily="@font/alata"
+                            android:textColor="@color/black"
                             android:textSize="18sp"
                             android:textStyle="bold"/>
 
@@ -361,6 +388,9 @@
                             android:layout_height="wrap_content"
                             android:textSize="18sp"
                             android:hint="@string/loading"
+                            android:fontFamily="@font/alata"
+                            android:textColor="@color/black"
+                            android:alpha="0.8"
                             android:textStyle="bold"
                             android:layout_marginStart="10dp"/>
 

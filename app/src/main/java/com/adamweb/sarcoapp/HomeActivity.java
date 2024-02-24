@@ -39,6 +39,8 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -46,7 +48,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     //------------------Views declaration-------------------------
     ImageView photoAlbum, chats, profile, menu, home, quoteImg, welcomeImg;
     RoundedImageView profileDp;
-    TextView userName, visitCount, hiUser, quoteText, quoteName, appText;
+    CircleImageView navUserProfileImage;
+    TextView userName, visitCount, hiUser, quoteText, quoteName, appText, navUserName, navUserEmail, navCancelBtn;
     RecyclerView leaderRecycler, allUsersRecycler;
     NavigationView navigationView;
     DrawerLayout drawerLayout;
@@ -81,12 +84,17 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
    //------------------Accessing views. Hooks---------------------
         menu = findViewById(R.id.menuIcon);
         navigationView = findViewById(R.id.menu_nav_view_id);
+        View headerView = navigationView.getHeaderView(0);
         photoAlbum = findViewById(R.id.albumIcon);
         leaderRecycler = findViewById(R.id.leadersRecycler);
         drawerLayout = findViewById(R.id.menu_drawer_layout);
         profile = findViewById(R.id.profileIcon);
         home = findViewById(R.id.homeIcon);
         hiUser = findViewById(R.id.hiUserId);
+        navUserName = headerView.findViewById(R.id.nav_Profile_name);
+        navUserEmail = headerView.findViewById(R.id.nav_Profile_email);
+        navUserProfileImage = headerView.findViewById(R.id.nav_profile_icon);
+        navCancelBtn = headerView.findViewById(R.id.nav_cancelTextBtn);
         quoteName = findViewById(R.id.quoteName);
         chats = findViewById(R.id.chatIcon);
         welcomeImg = findViewById(R.id.welcomeImg);
@@ -259,8 +267,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     lastName = readUserDetails.getLastName();
 
                   Picasso.get().load(readUserDetails.getImageUri()).into(profileDp);
-                    userName.setText(firstName + " " + lastName);
+                  //  Picasso.get().load(readUserDetails.getImageUri()).into(navUserProfileImage);
+                     userName.setText(firstName + " " + lastName);
+                      //navUserName.setText(firstName + " " + lastName);
                     hiUser.setText("Hi, " +firstName);
+                   // navUserEmail.setText(readUserDetails.getEmail());
                 }
             }
 
