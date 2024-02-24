@@ -306,7 +306,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                      navUserName.setText(firstName + " " + lastName);
                     hiUser.setText("Hi, " +firstName);
                    navUserEmail.setText(readUserDetails.getEmail());
-                   contactUserName.setText("Thanks " + firstName + ", you can contact me through the following, feel free to talk to me about your issue, we really need your feedback all the time");
+                   contactUserName.setText("Thanks " + firstName + ", you can contact me through the following media handles, please feel free to reach out to me. I'm here to help!");
                 }
             }
 

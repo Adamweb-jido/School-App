@@ -92,6 +92,23 @@
                    android:orientation="horizontal"
                    android:elevation="10dp">
 
+                   <ImageView
+                       android:layout_width="40dp"
+                       android:layout_height="match_parent"
+                       android:src="@drawable/user_profile_icon"
+                       android:layout_marginStart="10dp"
+                       android:contentDescription="@string/todo"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="08160807055"
+                        android:textSize="25sp"
+                        android:layout_marginStart="10dp"
+                        android:textAlignment="textStart"
+                        android:fontFamily="@font/alata"
+                        android:textColor="@color/black"/>
+
                </LinearLayout>
 
                 <LinearLayout
@@ -102,6 +119,24 @@
                     android:orientation="horizontal"
                     android:elevation="10dp">
 
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="3dp"
+                        android:src="@drawable/send_email_icon"
+                        android:layout_marginStart="10dp"
+                        android:contentDescription="@string/todo"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="realadamweb@gmail.com"
+                        android:textSize="21sp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginStart="10dp"
+                        android:textAlignment="textStart"
+                        android:fontFamily="@font/alata"
+                        android:textColor="@color/black"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -112,6 +147,24 @@
                     android:orientation="horizontal"
                     android:elevation="10dp">
 
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="3dp"
+                        android:src="@drawable/flogo"
+                        android:layout_marginStart="10dp"
+                        android:contentDescription="@string/todo"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Adam Zakariyya jido"
+                        android:textSize="21sp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginStart="10dp"
+                        android:textAlignment="textStart"
+                        android:fontFamily="@font/alata"
+                        android:textColor="@color/black"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -122,6 +175,24 @@
                     android:orientation="horizontal"
                     android:elevation="10dp">
 
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="3dp"
+                        android:src="@drawable/github"
+                        android:layout_marginStart="10dp"
+                        android:contentDescription="@string/todo"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Adamweb-jido"
+                        android:textSize="21sp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginStart="10dp"
+                        android:textAlignment="textStart"
+                        android:fontFamily="@font/alata"
+                        android:textColor="@color/black"/>
                 </LinearLayout>
 
                 <LinearLayout
