@@ -121,10 +121,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         about_cancel_btn = aboutMeDialog.findViewById(R.id.aboutMe_cancel_btn);
 
         contactMeDialog = new Dialog(this);
-        contactMeDialog.setContentView(R.layout.about_me_dialog);
+        contactMeDialog.setContentView(R.layout.contact_me_dialog);
         contactMeDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         contactMeDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        contact_cancel_btn = aboutMeDialog.findViewById(R.id.contactMe_cancel_btn);
+        contact_cancel_btn = contactMeDialog.findViewById(R.id.contactMe_cancel_btn);
         contactUserName = contactMeDialog.findViewById(R.id.userInContactMe);
 
 
