@@ -267,11 +267,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     lastName = readUserDetails.getLastName();
 
                   Picasso.get().load(readUserDetails.getImageUri()).into(profileDp);
-                  //  Picasso.get().load(readUserDetails.getImageUri()).into(navUserProfileImage);
+                  Picasso.get().load(readUserDetails.getImageUri()).into(navUserProfileImage);
                      userName.setText(firstName + " " + lastName);
-                      //navUserName.setText(firstName + " " + lastName);
+                     navUserName.setText(firstName + " " + lastName);
                     hiUser.setText("Hi, " +firstName);
-                   // navUserEmail.setText(readUserDetails.getEmail());
+                   navUserEmail.setText(readUserDetails.getEmail());
                 }
             }
 

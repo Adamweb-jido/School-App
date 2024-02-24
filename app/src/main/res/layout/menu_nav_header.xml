@@ -39,9 +39,9 @@
               app:layout_constraintBottom_toBottomOf="parent"
               app:layout_constraintEnd_toEndOf="parent"
               app:layout_constraintHorizontal_bias="0.831"
+              android:layout_marginBottom="20dp"
               app:layout_constraintStart_toEndOf="@+id/nav_profile_icon"
-              app:layout_constraintTop_toTopOf="parent"
-              app:layout_constraintVertical_bias="0.2" >
+              app:layout_constraintTop_toTopOf="parent">
 
               <TextView
                   android:id="@+id/nav_cancelTextBtn"
