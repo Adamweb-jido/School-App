@@ -54,7 +54,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     ImageView photoAlbum, chats, profile, menu, home, quoteImg, welcomeImg;
     RoundedImageView profileDp;
     CircleImageView navUserProfileImage;
-    TextView about_cancel_btn, userName, visitCount, hiUser, quoteText, quoteName, appText, navUserName, navUserEmail, navCancelBtn;
+    TextView contactUserName, about_cancel_btn, contact_cancel_btn, userName, visitCount, hiUser, quoteText, quoteName, appText, navUserName, navUserEmail, navCancelBtn;
     RecyclerView leaderRecycler, allUsersRecycler;
     NavigationView navigationView;
     DrawerLayout drawerLayout;
@@ -78,7 +78,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     R.drawable.martin};
      int counter, currentIndex = 0, imgCounterIndex = 0;
     private Handler handler;
-    Dialog aboutMeDialog;
+    Dialog aboutMeDialog, contactMeDialog;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -120,8 +120,20 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         aboutMeDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         about_cancel_btn = aboutMeDialog.findViewById(R.id.aboutMe_cancel_btn);
 
+        contactMeDialog = new Dialog(this);
+        contactMeDialog.setContentView(R.layout.about_me_dialog);
+        contactMeDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        contactMeDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        contact_cancel_btn = aboutMeDialog.findViewById(R.id.contactMe_cancel_btn);
+        contactUserName = contactMeDialog.findViewById(R.id.userInContactMe);
+
+
         about_cancel_btn.setOnClickListener(v ->{
             aboutMeDialog.dismiss();
+        });
+
+        contact_cancel_btn.setOnClickListener(v ->{
+            contactMeDialog.dismiss();
         });
 
 
@@ -294,6 +306,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                      navUserName.setText(firstName + " " + lastName);
                     hiUser.setText("Hi, " +firstName);
                    navUserEmail.setText(readUserDetails.getEmail());
+                   contactUserName.setText("Thanks " + firstName + ", you can contact me through the following, feel free to talk to me about your issue, we really need your feedback all the time");
                 }
             }
 
@@ -357,6 +370,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.aboutMeId:
                 aboutMeDialog.show();
+                break;
+            case R.id.contactMeId:
+                contactMeDialog.show();
                 break;
         }
         return true;
