@@ -40,10 +40,6 @@
     <item android:title="About Developer">
         <menu>
             <group android:checkableBehavior="single">
-                <item android:id="@+id/whatsAppIcon"
-                    android:icon="@drawable/about_me_icon"
-                    android:title="WhatsApp"/>
-
                 <item android:id="@+id/aboutMeId"
                     android:icon="@drawable/about_me_icon"
                     android:title="About Me"/>
