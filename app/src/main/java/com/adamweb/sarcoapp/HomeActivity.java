@@ -54,7 +54,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     ImageView photoAlbum, chats, profile, menu, home, quoteImg, welcomeImg;
     RoundedImageView profileDp;
     CircleImageView navUserProfileImage;
-    TextView userName, visitCount, hiUser, quoteText, quoteName, appText, navUserName, navUserEmail, navCancelBtn;
+    TextView about_cancel_btn, userName, visitCount, hiUser, quoteText, quoteName, appText, navUserName, navUserEmail, navCancelBtn;
     RecyclerView leaderRecycler, allUsersRecycler;
     NavigationView navigationView;
     DrawerLayout drawerLayout;
@@ -118,6 +118,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         aboutMeDialog.setContentView(R.layout.about_me_dialog);
         aboutMeDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         aboutMeDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        about_cancel_btn = aboutMeDialog.findViewById(R.id.aboutMe_cancel_btn);
+
+        about_cancel_btn.setOnClickListener(v ->{
+            aboutMeDialog.dismiss();
+        });
+
 
         firebaseAuth = FirebaseAuth.getInstance();
         currentUserName = firebaseAuth.getCurrentUser();
@@ -318,7 +324,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         switch (item.getItemId()){
 
             case R.id.darkMode:
-                aboutMeDialog.show();
+
                 break;
             case R.id.photoAlbumId:
                 Intent intent = new Intent(getApplicationContext(), AlbumActivity.class);
@@ -348,6 +354,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 Intent intent4 = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent4);
                 finish();
+                break;
+            case R.id.aboutMeId:
+                aboutMeDialog.show();
                 break;
         }
         return true;
