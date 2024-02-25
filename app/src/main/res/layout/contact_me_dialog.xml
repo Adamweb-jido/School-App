@@ -87,7 +87,7 @@
                <LinearLayout
                    android:layout_width="match_parent"
                    android:layout_height="45dp"
-                   android:background="@drawable/msg_popup"
+                   android:background="@drawable/header_bg"
                    android:layout_marginTop="10dp"
                    android:orientation="horizontal"
                    android:elevation="10dp">
@@ -103,7 +103,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="08160807055"
-                        android:textSize="25sp"
+                        android:textSize="22sp"
+                        android:layout_marginTop="5dp"
                         android:layout_marginStart="10dp"
                         android:textAlignment="textStart"
                         android:fontFamily="@font/alata"
@@ -114,7 +115,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-                    android:background="@drawable/msg_popup"
+                    android:background="@drawable/header_bg"
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal"
                     android:elevation="10dp">
@@ -142,7 +143,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-                    android:background="@drawable/msg_popup"
+                    android:background="@drawable/header_bg"
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal"
                     android:elevation="10dp">
@@ -170,7 +171,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-                    android:background="@drawable/msg_popup"
+                    android:background="@drawable/header_bg"
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal"
                     android:elevation="10dp">
@@ -198,31 +199,85 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-                    android:background="@drawable/msg_popup"
+                    android:background="@drawable/header_bg"
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal"
                     android:elevation="10dp">
 
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="3dp"
+                        android:src="@drawable/twitter"
+                        android:layout_marginStart="10dp"
+                        android:contentDescription="@string/todo"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="\@AdamZakariyya16"
+                        android:textSize="21sp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginStart="10dp"
+                        android:textAlignment="textStart"
+                        android:fontFamily="@font/alata"
+                        android:textColor="@color/black"/>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-                    android:background="@drawable/msg_popup"
+                    android:background="@drawable/header_bg"
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal"
                     android:elevation="10dp">
 
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="3dp"
+                        android:src="@drawable/linkin"
+                        android:layout_marginStart="10dp"
+                        android:contentDescription="@string/todo"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Adam Zakariyya"
+                        android:textSize="21sp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginStart="10dp"
+                        android:textAlignment="textStart"
+                        android:fontFamily="@font/alata"
+                        android:textColor="@color/black"/>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-                    android:background="@drawable/msg_popup"
+                    android:background="@drawable/header_bg"
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal"
                     android:elevation="10dp">
 
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="3dp"
+                        android:src="@drawable/whatsapp"
+                        android:layout_marginStart="10dp"
+                        android:contentDescription="@string/todo"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="+2348160807055"
+                        android:textSize="21sp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginStart="10dp"
+                        android:textAlignment="textStart"
+                        android:fontFamily="@font/alata"
+                        android:textColor="@color/black"/>
                 </LinearLayout>
 
             </LinearLayout>

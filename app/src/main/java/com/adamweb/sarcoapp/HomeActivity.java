@@ -318,6 +318,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         });
     }
 
+    private void logOut(){
+        firebaseAuth.signOut();
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
     @Override
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.END)){
@@ -364,9 +371,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 finish();
                 break;
             case R.id.logoutId:
-                Intent intent4 = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent4);
-                finish();
+               logOut();
                 break;
             case R.id.aboutMeId:
                 aboutMeDialog.show();
