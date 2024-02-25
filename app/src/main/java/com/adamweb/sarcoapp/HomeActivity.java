@@ -371,7 +371,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 finish();
                 break;
             case R.id.logoutId:
-
+               logOut();
                 break;
             case R.id.aboutMeId:
                 aboutMeDialog.show();
