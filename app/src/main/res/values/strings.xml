@@ -32,7 +32,7 @@
     <string name="yourComment">Comment:</string>
     <string name="profileEdit">Edit Profile</string>
     <string name="startChat">Select your friend here to start a conversation.</string>
-
+    <string name="chats">Chats</string>
     <string name="newChat">New Chat</string>
     <string name="noChats">No More Chats</string>
     <string name="search">Search your friends here</string>
