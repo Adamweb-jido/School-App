@@ -368,10 +368,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
                 break;
             case R.id.aboutMeId:
-             //   aboutMeDialog.show();
+               aboutMeDialog.show();
                 break;
             case R.id.contactMeId:
-              //  contactMeDialog.show();
+               contactMeDialog.show();
                 break;
         }
         return true;
