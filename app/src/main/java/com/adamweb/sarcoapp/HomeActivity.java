@@ -58,8 +58,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     RecyclerView leaderRecycler, allUsersRecycler;
     NavigationView navigationView;
     DrawerLayout drawerLayout;
-    Animation imageAnimation, textAnimation;
-    FirebaseAuth firebaseAuth;
+
     FirebaseUser currentUserName;
     DatabaseReference userReference;
     String firstName, lastName;
