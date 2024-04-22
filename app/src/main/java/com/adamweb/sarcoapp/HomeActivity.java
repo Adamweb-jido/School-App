@@ -114,7 +114,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         profileDp = findViewById(R.id.profileDp);
         allUsersRecycler = findViewById(R.id.allUsersRecycler);
 
-        aboutMeDialog = new Dialog(this);    aboutMeDialog.setContentView(R.layout.about_me_dialog);
+        aboutMeDialog = new Dialog(this);
+        aboutMeDialog.setContentView(R.layout.about_me_dialog);
         aboutMeDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         aboutMeDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         about_cancel_btn = aboutMeDialog.findViewById(R.id.aboutMe_cancel_btn);
