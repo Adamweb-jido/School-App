@@ -52,7 +52,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     //------------------Views declaration-------------------------
     ImageView photoAlbum, chats, profile, menu, home, quoteImg, welcomeImg;
-    RoundedImageView profileDp;
+
     CircleImageView navUserProfileImage;
     TextView contactUserName, about_cancel_btn, contact_cancel_btn, userName, visitCount, hiUser, quoteText, quoteName, appText, navUserName, navUserEmail, navCancelBtn;
     RecyclerView leaderRecycler, allUsersRecycler;
