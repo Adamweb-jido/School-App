@@ -117,7 +117,7 @@ public class LoginActivity extends AppCompatActivity {
                        loginEmail.setError("Incorrect email or password,please check it and try again");
                        loginEmail.requestFocus();
                    } catch (Exception e){
-                       Log.e(TAG, e.getMessage());
+
                        Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                    }
 
